@@ -6,7 +6,7 @@ const path = require('path') as any
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue(), vueJsx()],
-  base: '/tulip/',
+  base: '/tulp/',
   build: {
     // cssCodeSplit: true, // 使用 js 模块化 css 代码
     lib: {
