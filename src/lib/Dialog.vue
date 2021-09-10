@@ -5,7 +5,7 @@
       @after-leave="handleAfterLeave"
     >
       <div
-        v-if="visible"
+        v-show="visible"
         class="tulp-dialog-container"
         v-bind="$attrs"
       >
