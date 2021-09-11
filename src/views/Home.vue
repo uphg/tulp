@@ -1,7 +1,7 @@
 <template>
   <div class="home-content">
     <h1 class="home-title">
-      Tulip
+      Tulp
     </h1>
     <div class="description">
       <p>一个 Vue 3 组件库</p>

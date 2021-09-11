@@ -6,20 +6,25 @@
     >
       <div
         v-show="visible"
-        class="tulp-dialog-container"
+        class="tu-dialog-container"
         v-bind="$attrs"
       >
-        <div class="tulp-dialog-overlay" @click="closeDialog"></div>
-        <div class="tulp-dialog">
-          <div class="tulp-dialog-content">
-            <div class="tulp-dialog-header">
-              <span class="tulp-dialog-title">{{ title }}</span>
-              <span class="tulp-dialog-close" @click="closeDialog"></span>
+        <div class="tu-dialog-overlay" @click="closeDialog"></div>
+        <div class="tu-dialog">
+          <div class="tu-dialog-content">
+            <div class="tu-dialog-header">
+              <template v-if="!$slots.header">
+                <span class="tu-dialog-title">{{ title }}</span>
+                <span class="tu-dialog-close" @click="closeDialog"></span>
+              </template>
+              <template v-else>
+                <slot name="header" />
+              </template>
             </div>
-            <div class="tulp-dialog-body">
+            <div class="tu-dialog-body">
               <slot />
             </div>
-            <div class="tulp-dialog-footer">
+            <div class="tu-dialog-footer">
               <slot name="footer" />
             </div>
           </div>
@@ -29,7 +34,7 @@
   </Teleport>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, provide } from 'vue'
 import { Lib } from '../utils/default-config'
 export default defineComponent({
   name: `${Lib.Prefix}Dialog`,
@@ -50,6 +55,8 @@ export default defineComponent({
     const handleAfterLeave = () => {
       context.emit('close', false)
     }
+
+    provide('TuCloseDialog', closeDialog)
 
     return { closeDialog, handleAfterLeave }
   }

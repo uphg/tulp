@@ -5,7 +5,7 @@
       <router-link
         class="logo-link"
         to="/home"
-      >Tulip</router-link>
+      >Tulp</router-link>
     </div>
     <NavLinks />
   </header>

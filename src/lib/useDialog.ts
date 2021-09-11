@@ -1,25 +1,33 @@
 import Button from './Button.vue'
 import Dialog from './Dialog.vue'
+import Icon from './Icon.vue'
 import { createApp, h, nextTick } from 'vue'
 
 interface dialogOptions {
-  title: string
-  content: string
+  type: string,
+  title?: string
+  content?: string
 }
 
-export const useDialog = () => (options: dialogOptions) => {
-  const { title, content } = options
+interface dialogOption {
+  [key: string]: string
+}
+
+interface dialogApi {
+  [key: string]: (options: dialogOption) => dialogApi
+}
+
+// dialog type 
+// 成功 success
+// 警告 warning
+// 信息 info
+// 错误 error
+// 问题 question
+
+const createDialog = (options: dialogOptions) => {
+  const { type, title, content } = options
   const div = document.createElement('div')
   document.body.appendChild(div)
-
-  const openDialog = () => {
-    app.mount(div)
-    div.remove()
-  }
-
-  const closeDialog = () => {
-    app.unmount()
-  }
 
   const app = createApp({
     data() {
@@ -44,6 +52,25 @@ export const useDialog = () => (options: dialogOptions) => {
           'onClose': closeDialog
         },
         {
+          header: () => [
+            h(
+              Icon,
+              { class: 'prefix-icon', name: `${type}` }
+            ),
+            h('span',
+              { class: 'tu-dialog-title' },
+              { default: () => title }
+            ),
+            h(
+              'span',
+              {
+                class: 'tu-dialog-close',
+                onClick: () => {
+                  this.visible = false
+                }
+              }
+            )
+          ],
           default: () => content,
           footer: () => [
             h(
@@ -73,5 +100,32 @@ export const useDialog = () => (options: dialogOptions) => {
     },
   })
 
+  const openDialog = () => {
+    app.mount(div)
+    div.remove()
+  }
+
+  const closeDialog = () => {
+    app.unmount()
+  }
+
   openDialog()
+}
+
+const createApi = (type: string, api: dialogApi) => (
+  (options?: dialogOption): dialogApi => {
+    createDialog({ type, ...options })
+    return api
+  }
+)
+
+export const useDialog = (options?: { [key: string]: string }) => {
+
+  const api = {} as dialogApi
+
+  (['success', 'warning', 'info', 'error', 'question']).forEach((item) => {
+    api[item] = createApi(item, api)
+  })
+
+  return api
 }

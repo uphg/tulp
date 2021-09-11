@@ -1,15 +1,17 @@
 <template>
   <input
-    class="tulp-input"
+    class="tu-input"
     type="text"
     @input="handleInput"
   >
 </template>
 <script lang="ts">
+import { Lib } from '../utils/default-config'
 import { defineComponent, PropType } from 'vue'
 type TuInputValue = PropType<string | null>
 
 export default defineComponent({
+  name: `${Lib.Prefix}Input`,
   props: {
     value: String as TuInputValue
   },

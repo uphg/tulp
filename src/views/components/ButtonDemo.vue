@@ -21,7 +21,7 @@ export default defineComponent({
 </script>
 <style lang="scss">
 .button-demo {
-  .tulp-button {
+  .tu-button {
     margin-right: 10px;
   }
 }

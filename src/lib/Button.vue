@@ -1,20 +1,20 @@
 <template>
   <button
-    class="tulp-button"
+    class="tu-button"
     :class="{
-      [`tulp-button-${type}`]: type,
-      [`tulp-button-${size}`]: size
+      [`tu-button-${type}`]: type,
+      [`tu-button-${size}`]: size
     }"
     ref="button"
     @click="triggerWave"
   >
-    <span class="tulp-button-content">
+    <span class="tu-button-content">
       <slot />
     </span>
-    <span class="tulp-button-border"></span>
+    <span class="tu-button-border"></span>
     <span
       v-if="isWave && !text"
-      class="tulp-button-wave"
+      class="tu-button-wave"
       :class="{ active: isWave }"
     />
   </button>

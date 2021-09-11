@@ -1,15 +1,15 @@
 <template>
   <button
-    class="tulp-switch"
-    :class="{ 'tulp-switch--checked': value }"
+    class="tu-switch"
+    :class="{ 'tu-switch--checked': value }"
     @click="toggle"
   >
     <span
       v-if="isWave"
-      class="tulp-switch-wave"
+      class="tu-switch-wave"
       :class="{ active: isWave }"
     />
-    <span class="tulp-switch-core"></span>
+    <span class="tu-switch-core"></span>
   </button>
 </template>
 <script lang="ts">

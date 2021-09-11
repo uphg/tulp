@@ -3,6 +3,7 @@ import InputDemo from '../views/components/InputDemo.vue'
 import SwitchDemo from '../views/components/SwitchDemo.vue'
 import DialogDemo from '../views/components/DialogDemo.vue'
 import JsxDemo from '../views/components/JsxDemo'
+import IconDemo from '../views/components/IconDemo.vue'
 
 export const components = [
   {
@@ -34,5 +35,11 @@ export const components = [
     name: 'ComponentsJsx',
     component: JsxDemo,
     meta: { title: 'JSX 语法测试' }
+  },
+  {
+    path: 'icon',
+    name: 'ComponentsIcon',
+    component: IconDemo,
+    meta: { title: 'Icon 测试案例' }
   }
 ]
