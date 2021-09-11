@@ -8,7 +8,6 @@
         v-model:visible="dialogVisible"
       >
         <template #header>
-          <Icon name="error" />
           <span>我是标题</span>
         </template>
         <p>我只想保持本色</p>
@@ -39,11 +38,10 @@
 import { defineComponent, ref } from 'vue'
 import Button from '../../lib/Button.vue'
 import Dialog from '../../lib/Dialog.vue'
-import Icon from '../../lib/Icon.vue'
 import { useDialog } from '../../lib/useDialog'
 
 export default defineComponent({
-  components: { Button, Dialog, Icon },
+  components: { Button, Dialog },
   setup() {
     const dialogVisible = ref(false)
     const dialog = useDialog()
