@@ -1,14 +1,13 @@
 <template>
   <div class="button-demo">
     <h2>Button 组件示例</h2>
-    <Button @click="onClick">默认按钮</Button>
-    <Button type="primary" @click="onClick">主要按钮</Button>
-    <Button type="primary" size="small" @click="onClick">迷你按钮</Button>
     <div style="margin-top: 10px;">
-      <Button type="success" @click="onClick">主要按钮</Button>
-      <Button type="info" @click="onClick">主要按钮</Button>
-      <Button type="warning" @click="onClick">主要按钮</Button>
-      <Button type="error" @click="onClick">主要按钮</Button>
+      <Button @click="onClick">默认按钮</Button>
+      <Button type="primary" @click="onClick">主要按钮</Button>
+      <Button type="success" @click="onClick">成功按钮</Button>
+      <Button type="info" @click="onClick">信息按钮</Button>
+      <Button type="warning" @click="onClick">警告按钮</Button>
+      <Button type="error" @click="onClick">错误按钮</Button>
     </div>
   </div>
 </template>

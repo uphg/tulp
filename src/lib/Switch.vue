@@ -6,10 +6,10 @@
   >
     <span
       v-if="isWave"
-      class="tu-switch-wave"
+      class="tu-switch__wave"
       :class="{ active: isWave }"
     />
-    <span class="tu-switch-core"></span>
+    <span class="tu-switch__core"></span>
   </button>
 </template>
 
