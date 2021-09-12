@@ -18,7 +18,7 @@ export default defineComponent({
   }
 })
 </script>
-<style lang="scss">
+<style lang="stylus">
 .sidebar {
   box-sizing: border-box;
   width: 320px;

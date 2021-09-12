@@ -1,18 +1,13 @@
-@import '../common/variable.scss';
+@require '../common/variable'
 
 // 防止执行动画时内容抖动
-@mixin prevent-jitter {
+prevent-jitter()
   transform: translateZ(0);
-}
 
 .tu-dialog {
   width: 446px;
   position: relative;
-  margin: {
-    top: 30vh;
-    left: auto;
-    right: auto;
-  };
+  margin: 30vh auto 0 auto;
   display: flex;
   flex-direction: column;
   &-container {
@@ -37,7 +32,7 @@
 /* --- 默认组件样式 */
 
 .tu-dialog-content {
-  @include prevent-jitter;
+  prevent-jitter()
   background-color: #fff;
   border-radius: $_dialog-border-radius;
   box-shadow: 0 6px 16px -9px rgba(0, 0, 0, 0.08), 0 9px 28px 0 rgba(0, 0, 0, 0.05), 0 12px 48px 16px rgba(0, 0, 0, 0.03);
@@ -148,7 +143,7 @@
     opacity: 0;
   }
   100% {
-    @include prevent-jitter;
+    prevent-jitter()
     transform: scale(1);
     opacity: 1;
   }

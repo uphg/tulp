@@ -18,21 +18,18 @@ const sidebarVisible = inject<Ref<boolean>>('sidebarVisible')
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="stylus" scoped>
 .home-wrapper {
   max-width: 1260px;
   min-height: calc(100vh - 60px);
   box-sizing: border-box;
   padding: 0.02px;
-  margin: {
-    left: auto;
-    right: auto;
-  }
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
 @media (min-width: 720px) {
   .no-sidebar {

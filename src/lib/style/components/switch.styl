@@ -1,0 +1,53 @@
+@require '../common/variable'
+@require '../common/transition'
+@require '../common/animation'
+@require '../utils/mixins'
+
+px(value)
+  return value * 1px
+
+$height = 20
+$core-height = $height - 4
+.tu-switch 
+  cursor pointer
+  width px($height * 2)
+  height px($height)
+  border none
+  border-radius px($height / 2)
+  background-color rgba(0, 0, 0, 0.14)
+  transition background-color 0.25s
+  transition $_background-transition, $_box-shadow-transition
+  position relative
+  --ripple-color #415fcc
+  &:focus 
+    outline none
+    box-shadow $_wave-box-shadow
+  &:hover 
+    box-shadow none
+  &:active > .tu-switch-core 
+    width px($core-height + 4)
+  &.tu-switch--checked 
+    background-color #415fcc
+    & > .tu-switch-core 
+      left calc(100% - 18px)
+    &:focus 
+      box-shadow $_wave-active-box-shadow
+    &:hover 
+      box-shadow none
+    &:active > .tu-switch-core 
+      width px($core-height + 4)
+      margin-left -4px
+
+.tu-switch-core 
+  width px($core-height)
+  height px($core-height)
+  border-radius px($core-height / 2)
+  background-color #fff
+  box-shadow 0 2px 4px #00230b33
+  position absolute
+  top 2px
+  left 2px
+  transition left $_transition-duration, margin-left $_transition-duration, width $_transition-duration
+
+.tu-switch-wave
+  wave-effect(large-wave-spread, large-wave-opacity)

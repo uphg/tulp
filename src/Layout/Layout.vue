@@ -18,7 +18,7 @@ const sidebarVisible = inject<Ref<boolean>>('sidebarVisible')
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="stylus" scoped>
 .page {
   padding-left: 320px;
   transition: padding .2s ease;

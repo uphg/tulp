@@ -19,7 +19,7 @@ export default defineComponent({
   }
 })
 </script>
-<style lang="scss">
+<style lang="stylus">
 .sidebar-link {
   color: inherit;
   text-decoration: none;

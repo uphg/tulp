@@ -79,7 +79,7 @@ export default defineComponent({
   },
 })
 </script>
-<style lang="scss">
+<style lang="stylus">
 p {
   margin: 0;
   line-height: 2.2;

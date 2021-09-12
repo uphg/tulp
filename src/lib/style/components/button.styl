@@ -1,0 +1,78 @@
+@require '../common/variable'
+@require '../common/transition'
+@require '../common/animation'
+@require '../utils/mixins'
+
+type(base, light, dark)
+  --ripple-color base
+  color #fff
+  background-color base
+  &:hover, &:focus
+    background-color light
+  &:active
+    background-color dark
+  &.is-loading, &.is-disabled 
+    background-color light
+
+type-style(base, light, dark)
+  type(base, light, dark)
+
+.tu-button
+  position relative
+  font-size 14px
+  background-color #ffffff
+  border none
+  border-radius $_border-radius
+  box-sizing border-box
+  cursor pointer
+  display inline-flex
+  justify-content center
+  align-items center
+  flex-wrap nowrap
+  white-space nowrap
+  transition transition-effect(color), transition-effect(background-color)
+  padding 0 $_button-padding
+  height $_button-height
+  text-decoration none
+  line-height normal
+  &__content 
+    line-height 1
+    display flex
+    align-items center
+    flex-wrap nowrap
+  &__border
+    transition transition-effect(border-color)
+    box-sizing border-box
+    width 100%
+    border-radius inherit
+    position-fill()
+  &__wave
+    wave-effect(wave-spread, wave-opacity)
+
+.tu-button
+  &--default
+    --ripple-color $_color-primary
+    .tu-button__border
+      border 1px solid #dcdfe6
+    &:hover, &:focus
+      color $_color-primary
+      .tu-button__border
+        border-color $_color-primary
+    &:active
+      color $_color-primary-dark
+      .tu-button__border
+        border-color $_color-primary-dark
+  &--primary
+    type-style($_color-primary, $_color-primary-light, $_color-primary-dark)
+  &--success
+    type-style($_color-success, $_color-success-light, $_color-success-dark)
+  &--info
+    type-style($_color-info, $_color-info-light, $_color-info-dark)
+  &--warning
+    type-style($_color-warning, $_color-warning-light, $_color-warning-dark)
+  &--error
+    type-style($_color-error, $_color-error-light, $_color-error-dark)
+
+  &--small
+    padding 0 $_button-small-padding
+    height $_button-small-height

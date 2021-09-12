@@ -62,6 +62,8 @@ export default defineComponent({
   }
 })
 </script>
-<style lang="scss">
-@import 'style/components/dialog';
+
+<style lang="stylus">
+@require './style/components/dialog'
 </style>
+

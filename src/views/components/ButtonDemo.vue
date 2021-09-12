@@ -4,6 +4,12 @@
     <Button @click="onClick">默认按钮</Button>
     <Button type="primary" @click="onClick">主要按钮</Button>
     <Button type="primary" size="small" @click="onClick">迷你按钮</Button>
+    <div style="margin-top: 10px;">
+      <Button type="success" @click="onClick">主要按钮</Button>
+      <Button type="info" @click="onClick">主要按钮</Button>
+      <Button type="warning" @click="onClick">主要按钮</Button>
+      <Button type="error" @click="onClick">主要按钮</Button>
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -19,7 +25,7 @@ export default defineComponent({
   }
 })
 </script>
-<style lang="scss">
+<style lang="stylus">
 .button-demo {
   .tu-button {
     margin-right: 10px;

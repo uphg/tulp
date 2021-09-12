@@ -27,7 +27,7 @@ export default defineComponent({
   }
 })
 </script>
-<style lang="scss">
+<style lang="stylus">
 .navbar {
   padding: 12px 24px;
   height: 60px;

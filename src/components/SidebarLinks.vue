@@ -42,7 +42,7 @@ export default defineComponent({
   }
 })
 </script>
-<style lang="scss">
+<style lang="stylus">
 .sidebar-links {
   padding: 18px 24px;
 }

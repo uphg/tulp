@@ -12,6 +12,7 @@
     <span class="tu-switch-core"></span>
   </button>
 </template>
+
 <script lang="ts">
 import { defineComponent } from "vue"
 import { useButtonWave } from "./useButtonWave"
@@ -31,6 +32,7 @@ export default defineComponent({
   }
 })
 </script>
-<style lang="scss">
-@import 'style/components/switch';
+
+<style lang="stylus">
+@require './style/components/switch'
 </style>

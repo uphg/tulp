@@ -25,6 +25,7 @@ export default defineComponent({
   },
 })
 </script>
-<style lang="scss">
-@import 'style/components/input';
+
+<style lang="stylus">
+@require './style/components/input'
 </style>

@@ -3,7 +3,8 @@
     <use :xlink:href="`#tu-icon-${name}`"></use>
   </svg>
 </template>
-<script>
+
+<script lang="ts">
 import { Lib } from '../utils/default-config'
 import { defineComponent } from 'vue'
 import '../icons'
@@ -15,6 +16,7 @@ export default defineComponent({
   }
 })
 </script>
-<style lang="scss">
-@import 'style/components/icon';
+
+<style lang="stylus">
+@require './style/components/icon'
 </style>

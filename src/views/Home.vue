@@ -20,7 +20,7 @@ export default defineComponent({
   components: { Button }
 })
 </script>
-<style lang="scss">
+<style lang="stylus">
 .home-content {
   text-align: center;
   margin-top: -16vh;

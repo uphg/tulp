@@ -2,19 +2,19 @@
   <button
     class="tu-button"
     :class="{
-      [`tu-button-${type}`]: type,
-      [`tu-button-${size}`]: size
+      [`tu-button--${type}`]: type,
+      [`tu-button--${size}`]: size
     }"
     ref="button"
     @click="triggerWave"
   >
-    <span class="tu-button-content">
+    <span class="tu-button__content">
       <slot />
     </span>
-    <span class="tu-button-border"></span>
+    <span class="tu-button__border"></span>
     <span
       v-if="isWave && !text"
-      class="tu-button-wave"
+      class="tu-button__wave"
       :class="{ active: isWave }"
     />
   </button>
@@ -24,7 +24,7 @@ import { Lib } from '../utils/default-config'
 import { defineComponent, PropType } from 'vue';
 import { useButtonWave } from './useButtonWave'
 
-type TButtonType = PropType<'primary' | 'success' | 'warning' | 'danger'>
+type TButtonType = PropType<'primary' | 'success' | 'warning' | 'info' | 'error'>
 type TButtonNativeType = PropType<'button' | 'submit' | 'reset'>
 
 interface TButtonProps {
@@ -48,7 +48,9 @@ export default defineComponent({
           'default',
           'primary',
           'success',
-          'warning'
+          'warning',
+          'info',
+          'error'
         ].includes(value)
       }
     },
@@ -82,6 +84,7 @@ export default defineComponent({
   }
 })
 </script>
-<style lang="scss">
-@import 'style/components/button';
+
+<style lang="stylus">
+@require './style/components/button'
 </style>
