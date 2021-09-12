@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import { inject, Ref } from 'vue'
+import Navbar from '../components/Navbar.vue'
+import Sidebar from '../components/Sidebar.vue'
+
+const sidebarVisible = inject<Ref<boolean>>('sidebarVisible')
+</script>
+
 <template>
   <div class="vue-docs-container">
     <Navbar />
@@ -9,20 +17,6 @@
     </main>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent, inject, Ref } from 'vue'
-import Navbar from '../components/Navbar.vue'
-import Sidebar from '../components/Sidebar.vue'
-
-export default defineComponent({
-  components: { Navbar, Sidebar },
-  setup () {
-    const sidebarVisible = inject<Ref<boolean>>('sidebarVisible')
-
-    return { sidebarVisible }
-  }
-})
-</script>
 
 <style lang="scss" scoped>
 .home-wrapper {

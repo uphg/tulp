@@ -1,7 +1,7 @@
 @import '../common/variable.scss';
 
+// 防止执行动画时内容抖动
 @mixin prevent-jitter {
-  // transform: translate3d(0, 0, 0);
   transform: translateZ(0);
 }
 
@@ -49,7 +49,6 @@
     display: flex;
     align-items: center;
     .prefix-icon {
-      @include prevent-jitter;
       margin-right: 8px;
       width: 1.2em;
       height: 1.2em;

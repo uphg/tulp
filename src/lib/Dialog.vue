@@ -35,9 +35,9 @@
 </template>
 <script lang="ts">
 import { defineComponent, provide } from 'vue'
-import { Lib } from '../utils/default-config'
+
 export default defineComponent({
-  name: `${Lib.Prefix}Dialog`,
+  name: 'TuDialog',
   emits: ['update:visible', 'close'],
   props: {
     visible: {

@@ -1,25 +1,36 @@
+<script setup lang="ts">
+import { inject, Ref } from 'vue'
+import Navbar from '../components/Navbar.vue'
+import Sidebar from '../components/Sidebar.vue'
+
+const sidebarVisible = inject<Ref<boolean>>('sidebarVisible')
+</script>
+
 <template>
   <div class="vue-docs-container">
     <Navbar />
     <Sidebar :class="{ open: sidebarVisible }" />
-    <PageWrap>
-      <router-view />
-    </PageWrap>
+    <main class="page">
+      <div class="page-wrapper">
+        <router-view />
+      </div>
+    </main>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent, inject, Ref } from 'vue'
-import Navbar from '../components/Navbar.vue'
-import Sidebar from '../components/Sidebar.vue'
-import PageWrap from './components/PageWrap.vue'
 
-export default defineComponent({
-  components: { Navbar, Sidebar, PageWrap },
-  setup() {
-    const sidebarVisible = inject<Ref<boolean>>('sidebarVisible')
+<style lang="scss" scoped>
+.page {
+  padding-left: 320px;
+  transition: padding .2s ease;
+}
+.page-wrapper {
+  box-sizing: border-box;
+  padding: 24px;
+}
 
-    return { sidebarVisible }
+@media (max-width: 719px) {
+ .page {
+    padding-left: 0;
   }
-})
-</script>
-
+}
+</style>
