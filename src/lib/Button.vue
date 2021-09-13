@@ -17,10 +17,20 @@
       @leave="iconLeave"
       @after-leave="iconAfterLeave"
     >
-      <span v-if="loading" class="tu-button__icon" :class="{ 'is-uncontent': !$slots.default }">
+      <span
+        v-if="loading"
+        class="tu-button__icon tu-base-loading"
+        :class="{ 'is-uncontent': !$slots.default }"
+        :data-has-icon="icon ? true : false"
+      >
         <BaseLoading />
       </span>
-      <span v-else-if="icon" class="tu-button__icon" :class="{ 'is-uncontent': !$slots.default }">
+      <span
+        v-else-if="icon"
+        class="tu-button__icon"
+        :class="{ 'is-uncontent': !$slots.default }"
+        :data-has-icon="icon ? true : false"
+      >
         <Icon :name="icon" />
       </span>
     </Transition>

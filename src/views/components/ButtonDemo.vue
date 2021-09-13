@@ -14,8 +14,8 @@
       <Button native-type="submit" @click="onClick">默认按钮</Button>
     </div>
     <h2>测试 Loading 状态</h2>
-    <div>
-      <Button :loading="loading" @click="loading = !loading">默认按钮</Button>
+    <div style="display: flex;">
+      <!-- <Button :loading="loading" @click="loading = !loading">默认按钮</Button> -->
       <Button icon="success" :loading="loading" @click="loading = !loading">默认按钮</Button>
     </div>
   </div>
