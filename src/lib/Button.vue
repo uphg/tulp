@@ -6,8 +6,24 @@
       [`tu-button--${size}`]: size
     }"
     ref="button"
+    :type="nativeType"
     @click="triggerWave"
   >
+    <Transition
+      @before-enter="iconBeforeEnter"
+      @enter="iconEnter"
+      @after-enter="iconAfterEnter"
+      @before-leave="iconBeforeLeave"
+      @leave="iconLeave"
+      @after-leave="iconAfterLeave"
+    >
+      <span v-if="loading" class="tu-button__icon" :class="{ 'is-uncontent': !$slots.default }">
+        <BaseLoading />
+      </span>
+      <span v-else-if="icon" class="tu-button__icon" :class="{ 'is-uncontent': !$slots.default }">
+        <Icon :name="icon" />
+      </span>
+    </Transition>
     <span class="tu-button__content">
       <slot />
     </span>
@@ -23,6 +39,9 @@
 import { Lib } from '../utils/default-config'
 import { defineComponent, PropType } from 'vue';
 import { useButtonWave } from './useButtonWave'
+import { useButtonIconTransition } from './useButtonIconTransition'
+import BaseLoading from './BaseLoading.vue'
+import Icon from './Icon.vue'
 
 type TButtonType = PropType<'primary' | 'success' | 'warning' | 'info' | 'error'>
 type TButtonNativeType = PropType<'button' | 'submit' | 'reset'>
@@ -39,6 +58,7 @@ interface TButtonProps {
 
 export default defineComponent({
   name: `${Lib.Prefix}Button`,
+  components: { Icon, BaseLoading },
   props: {
     type: {
       type: String as TButtonType,
@@ -80,7 +100,9 @@ export default defineComponent({
   setup() {
     const { isWave, triggerWave } = useButtonWave()
 
-    return { isWave, triggerWave }
+    const { iconBeforeEnter, iconEnter, iconAfterEnter, iconBeforeLeave, iconLeave, iconAfterLeave } = useButtonIconTransition()
+
+    return { isWave, triggerWave, iconBeforeEnter, iconEnter, iconAfterEnter, iconBeforeLeave, iconLeave, iconAfterLeave }
   }
 })
 </script>

@@ -1,7 +1,7 @@
 @require '../common/variable'
 @require '../common/transition'
 @require '../common/animation'
-@require '../utils/mixins'
+@require '../utils/index'
 
 px(value)
   return value * 1px
@@ -24,21 +24,21 @@ $core-height = $height - 4
     box-shadow $_wave-box-shadow
   &:hover 
     box-shadow none
-  &:active > .tu-switch__core 
+  &:active > .tu-switch__core
     width px($core-height + 4)
   &.tu-switch--checked 
     background-color #415fcc
-    & > .tu-switch__core 
+    & > .tu-switch__core
       left calc(100% - 18px)
     &:focus 
       box-shadow $_wave-active-box-shadow
     &:hover 
       box-shadow none
-    &:active > .tu-switch__core 
+    &:active > .tu-switch__core
       width px($core-height + 4)
       margin-left -4px
 
-.tu-switch__core 
+.tu-switch__core
   width px($core-height)
   height px($core-height)
   border-radius px($core-height / 2)

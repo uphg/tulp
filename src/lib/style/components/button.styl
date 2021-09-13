@@ -1,7 +1,7 @@
 @require '../common/variable'
 @require '../common/transition'
 @require '../common/animation'
-@require '../utils/mixins'
+@require '../utils/index'
 
 type(base, light, dark)
   --ripple-color base
@@ -76,3 +76,25 @@ type-style(base, light, dark)
   &--small
     padding 0 $_button-small-padding
     height $_button-small-height
+  
+  &__icon
+    box-sizing border-box
+    display inline-flex
+    width 1em
+    margin-right 6px
+    height 1em
+    &.is-uncontent
+      margin-right 0
+  &__icon-loading
+    width 1em
+    height 1em
+
+.tu-button__icon
+  display flex
+  margin-right 5px
+.tu-base-loading__icon
+  width 1em
+  height 1em
+
+.tu-width-expand
+  transition width 0.3s ease-in-out, margin 0.3s ease-in-out, opacity 0.3s ease-in-out
