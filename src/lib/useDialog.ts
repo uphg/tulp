@@ -1,4 +1,4 @@
-import Button from './Button.vue'
+import Button from './button/Button.vue'
 import Dialog from './Dialog.vue'
 import Icon from './Icon.vue'
 import { createApp, h, nextTick } from 'vue'

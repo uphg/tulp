@@ -1,8 +1,8 @@
-import dom from './utils/dom'
+import dom from '../utils/dom'
 
 const TRANSITION_CLASS = 'tu-loading-transition'
 
-export function useButtonIconTransition() {
+export const useIconTransition = () => {
   const iconBeforeEnter = (element: Element) => {
     const el = element as HTMLElement
     dom.addClass(el, TRANSITION_CLASS)

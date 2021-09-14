@@ -20,6 +20,7 @@ type-style(base, light, dark)
 .tu-button
   position relative
   font-size 14px
+  color $_color-text-primary
   background-color #ffffff
   border none
   border-radius $_border-radius
@@ -82,20 +83,10 @@ type-style(base, light, dark)
     box-sizing border-box
     display inline-flex
     width 1em
-    margin-right 6px
     height 1em
+    margin-right 6px
     &.is-uncontent
       margin-right 0
-  &__icon-loading
-    width 1em
-    height 1em
-
-.tu-button__icon
-  display flex
-  margin-right 5px
-.tu-base-loading__icon
-  width 1em
-  height 1em
 
 .tu-loading-transition
   transition width 0.25s ease-in-out, margin 0.25s ease-in-out, opacity 0.25s ease-in-out

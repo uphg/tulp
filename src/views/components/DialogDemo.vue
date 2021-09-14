@@ -36,7 +36,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import Button from '../../lib/Button.vue'
+import Button from '../../lib/button/Button.vue'
 import Dialog from '../../lib/Dialog.vue'
 import { useDialog } from '../../lib/useDialog'
 

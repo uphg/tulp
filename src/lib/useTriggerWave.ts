@@ -1,6 +1,6 @@
 import { ref, nextTick, Ref  } from 'vue';
 
-export function useButtonWave() {
+export function useTriggerWave() {
   const isWave: Ref<boolean> = ref(false)
   let animationTimerId: number | null = null
 

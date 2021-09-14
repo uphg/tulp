@@ -15,14 +15,14 @@
 
 <script lang="ts">
 import { defineComponent } from "vue"
-import { useButtonWave } from "./useButtonWave"
+import { useTriggerWave } from "./useTriggerWave"
 
 export default defineComponent({
   props: {
     value: Boolean
   },
   setup (props, context) {
-    const { isWave, triggerWave } = useButtonWave()
+    const { isWave, triggerWave } = useTriggerWave()
     const toggle = () => {
       triggerWave()
       context.emit('update:value', !props.value)
