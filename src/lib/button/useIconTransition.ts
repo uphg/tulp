@@ -1,11 +1,11 @@
-import dom from '../utils/dom'
+import { addClass, removeClass } from '../utils/dom'
 
 const TRANSITION_CLASS = 'tu-loading-transition'
 
 export const useIconTransition = () => {
   const iconBeforeEnter = (element: Element) => {
     const el = element as HTMLElement
-    dom.addClass(el, TRANSITION_CLASS)
+    addClass(el, TRANSITION_CLASS)
     el.style.marginRight = '0'
     el.style.width = '0'
     el.style.opacity = '0'
@@ -26,7 +26,7 @@ export const useIconTransition = () => {
 
   const iconAfterEnter = (element: Element) => {
     const el = element as HTMLElement
-    dom.removeClass(el, TRANSITION_CLASS)
+    removeClass(el, TRANSITION_CLASS)
     el.style.width = ''
     el.style.opacity = ''
   }
@@ -40,7 +40,7 @@ export const useIconTransition = () => {
   const iconLeave = (element: Element) => {
     const el = element as HTMLElement
     if (el.scrollWidth !== 0) {
-      dom.addClass(el, TRANSITION_CLASS)
+      addClass(el, TRANSITION_CLASS)
       el.style.marginRight = '0'
       el.style.width = '0'
       el.style.opacity = '0'
@@ -49,7 +49,7 @@ export const useIconTransition = () => {
 
   const iconAfterLeave = (element: Element) => {
     const el = element as HTMLElement
-    dom.removeClass(el, TRANSITION_CLASS)
+    removeClass(el, TRANSITION_CLASS)
     el.style.marginRight = ''
     el.style.width = ''
     el.style.opacity = ''
