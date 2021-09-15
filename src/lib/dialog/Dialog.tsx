@@ -12,27 +12,31 @@ import '../style/components/dialog.styl'
 
 export default defineComponent({
   name: 'TuDialog',
-  emits: ['update:visible', 'close'],
+  emits: ['update:visible', 'close', 'closed'],
   props: {
     visible: {
       type: Boolean,
       default: false
     },
     title: String,
-    displayDirective: {
+    renderDirective: {
       type: String as PropType<'if' | 'show'>,
       default: 'if'
     },
     wrap: Boolean,
-    customize: Boolean
+    preset: {
+      type: String as PropType<'default' | 'customize'>,
+      default: 'default'
+    }
   },
   setup(props, context) {
     const closeDialog = () => {
       context.emit('update:visible', false)
+      context.emit('close', false)
     }
 
     const handleAfterLeave = () => {
-      context.emit('close', false)
+      context.emit('closed', false)
     }
 
     provide('TuCloseDialog', closeDialog)
@@ -48,7 +52,7 @@ export default defineComponent({
         <div class="tu-dialog-overlay" onClick={this.closeDialog}></div>
         <div class="tu-dialog">
           {
-            !this.customize ? (
+            this.preset === 'default' ? (
               <div class="tu-dialog-content">
                 <div class="tu-dialog-header">
                   {
@@ -70,7 +74,7 @@ export default defineComponent({
                 </div>
               </div>
             ) : (
-              renderSlot(this.$slots, 'default')
+              this.preset === 'customize' ? renderSlot(this.$slots, 'default') : null
             ) 
           }
         </div>
@@ -85,9 +89,9 @@ export default defineComponent({
         >
           {{
             default: () => {
-              if (this.displayDirective === 'if') {
+              if (this.renderDirective === 'if') {
                 return (this.visible ? contentTemplate : null)
-              } else if (this.displayDirective === 'show') {
+              } else if (this.renderDirective === 'show') {
                 return withDirectives(
                   contentTemplate,
                   [

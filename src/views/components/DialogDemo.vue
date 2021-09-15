@@ -6,6 +6,8 @@
       <Dialog
         title="我是标题"
         v-model:visible="dialogVisible"
+        @close="close"
+        @closed="closed"
       >
         <template #header>
           <span>我是标题</span>
@@ -29,9 +31,9 @@
     <div>
       <Button @click="clickCustomize">点击打开</Button>
       <Dialog
-        display-directive="show"
+        render-directive="show"
         v-model:visible="customizeVisible"
-        customize
+        preset="customize"
       >
         <div class="dialog-block">
           <p>我是自定义内容</p>
@@ -95,7 +97,15 @@ export default defineComponent({
       customizeVisible.value = !customizeVisible.value
     }
 
-    return { dialogVisible, customizeVisible, openSuccess, openWarning, openInfo, openError, clickDialog, clickCustomize }
+    const close = () => {
+      console.log('关闭了')
+    }
+
+    const closed = () => {
+      console.log('关闭动画结束')
+    }
+
+    return { close, closed, dialogVisible, customizeVisible, openSuccess, openWarning, openInfo, openError, clickDialog, clickCustomize }
   },
 })
 </script>
