@@ -29,6 +29,7 @@
     <div>
       <Button @click="clickCustomize">点击打开</Button>
       <Dialog
+        display-directive="show"
         v-model:visible="customizeVisible"
         customize
       >
@@ -99,23 +100,24 @@ export default defineComponent({
 })
 </script>
 <style lang="stylus">
-p {
-  margin: 0;
-  line-height: 2.2;
-}
-.dialog-options {
-  .tu-button {
-    margin-right: 10px;
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-}
-.dialog-block {
+p
+  margin 0
+  line-height 2.2
+
+.dialog-options
+  .tu-button
+    margin-right 10px
+    &:last-child
+      margin-right 0
+
+.dialog-block
   background-color #fff
   padding 20px
-  .tu-button {
-    margin-right 10px
-  }
-}
+  .tu-button
+    margin-left 10px
+  & > p
+    padding 0 0 20px
+  & > div
+    text-align right 
+
 </style>

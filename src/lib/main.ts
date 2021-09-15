@@ -1,5 +1,5 @@
 export { default as Switch } from './Switch.vue'
 export { default as Button } from './button/Button.vue'
 export { default as Input } from './Input.vue'
-export { default as Dialog } from './dialog/Dialog.vue'
+export { default as Dialog } from './dialog/Dialog'
 export { useDialog as useDialog } from './dialog/useDialog'

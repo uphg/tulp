@@ -18,8 +18,6 @@
       <Button :loading="loading" @click="loading = !loading">默认按钮</Button>
       <Button icon="success" :loading="loading" @click="loading = !loading">默认按钮</Button>
     </div>
-    <div>
-    </div>
   </div>
 </template>
 <script lang="ts">
