@@ -25,6 +25,22 @@
         </template>
       </Dialog>
     </div>
+    <h2>可以自定义内容</h2>
+    <div>
+      <Button @click="clickCustomize">点击打开</Button>
+      <Dialog
+        v-model:visible="customizeVisible"
+        customize
+      >
+        <div class="dialog-block">
+          <p>我是自定义内容</p>
+          <div>
+            <Button @click="customizeVisible = false" type="info">关闭</Button>
+            <Button @click="customizeVisible = false" type="success">确认</Button>
+          </div>
+        </div>
+      </Dialog>
+    </div>
     <h2>快捷打开</h2>
     <div class="dialog-options">
       <Button @click="openSuccess">成功</Button>
@@ -36,14 +52,13 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import Button from '../../lib/button/Button.vue'
-import Dialog from '../../lib/Dialog.vue'
-import { useDialog } from '../../lib/useDialog'
+import { Button, Dialog, useDialog } from '../../lib/main'
 
 export default defineComponent({
   components: { Button, Dialog },
   setup() {
     const dialogVisible = ref(false)
+    const customizeVisible = ref(false)
     const dialog = useDialog()
     const openSuccess = () => {
       dialog.success({
@@ -75,7 +90,11 @@ export default defineComponent({
       dialogVisible.value = !dialogVisible.value
     }
 
-    return { dialogVisible, openSuccess, openWarning, openInfo, openError, clickDialog }
+    const clickCustomize = () => {
+      customizeVisible.value = !customizeVisible.value
+    }
+
+    return { dialogVisible, customizeVisible, openSuccess, openWarning, openInfo, openError, clickDialog, clickCustomize }
   },
 })
 </script>
@@ -90,6 +109,13 @@ p {
     &:last-child {
       margin-right: 0;
     }
+  }
+}
+.dialog-block {
+  background-color #fff
+  padding 20px
+  .tu-button {
+    margin-right 10px
   }
 }
 </style>

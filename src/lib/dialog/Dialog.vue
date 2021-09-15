@@ -11,7 +11,7 @@
       >
         <div class="tu-dialog-overlay" @click="closeDialog"></div>
         <div class="tu-dialog">
-          <div class="tu-dialog-content">
+          <div v-if="!customize" class="tu-dialog-content">
             <div class="tu-dialog-header">
               <template v-if="!$slots.header">
                 <span class="tu-dialog-title">{{ title }}</span>
@@ -28,6 +28,9 @@
               <slot name="footer" />
             </div>
           </div>
+          <template v-else>
+            <slot />
+          </template>
         </div>
       </div>
     </transition>
@@ -45,7 +48,8 @@ export default defineComponent({
       default: false
     },
     title: String,
-    wrap: Boolean
+    wrap: Boolean,
+    customize: Boolean
   },
   setup(props, context) {
     const closeDialog = () => {
@@ -64,6 +68,6 @@ export default defineComponent({
 </script>
 
 <style lang="stylus">
-@require './style/components/dialog'
+@require '../style/components/dialog'
 </style>
 

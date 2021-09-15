@@ -1,6 +1,5 @@
-import Button from './button/Button.vue'
-import Dialog from './Dialog.vue'
-import Icon from './Icon.vue'
+import { Button, Dialog } from '../main'
+import Icon from '../Icon.vue'
 import { createApp, h, nextTick } from 'vue'
 
 interface dialogOptions {
