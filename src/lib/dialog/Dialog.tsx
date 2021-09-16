@@ -6,9 +6,15 @@ import {
   Teleport,
   Transition,
   renderSlot,
+  onMounted,
+  onBeforeUnmount,
+  watch,
+  watchEffect,
+  toRef,
   PropType
 } from 'vue';
 import '../style/components/dialog.styl'
+import { offBodyScroll, onBodyScroll } from '../utils/body'
 
 export default defineComponent({
   name: 'TuDialog',
@@ -29,7 +35,7 @@ export default defineComponent({
     },
     wrap: Boolean,
     preset: {
-      type: String as PropType<'default' | 'customize'>,
+      type: String as PropType<'default' | 'custom'>,
       default: 'default'
     }
   },
@@ -41,6 +47,7 @@ export default defineComponent({
 
     const handleAfterLeave = () => {
       context.emit('closed', false)
+      onBodyScroll()
     }
 
     const handleMaskClick = () => {
@@ -48,7 +55,18 @@ export default defineComponent({
       props.maskOff && closeDialog()
     }
 
-    provide('TuCloseDialog', closeDialog)
+    // provide('TuCloseDialog', closeDialog)
+    watch(toRef(props, 'visible'), value => {
+      value && offBodyScroll()
+    })
+
+    // onMounted(() => {
+    //   offBodyScroll()
+    // })
+
+    // onBeforeUnmount(() => {
+    //   onBodyScroll()
+    // })
 
     return { closeDialog, handleAfterLeave, handleMaskClick }
   },
@@ -86,7 +104,7 @@ export default defineComponent({
                 </div>
               </div>
             ) : (
-              this.preset === 'customize' ? renderSlot(this.$slots, 'default') : null
+              this.preset === 'custom' ? renderSlot(this.$slots, 'default') : null
             ) 
           }
         </div>

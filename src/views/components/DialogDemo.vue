@@ -29,19 +29,19 @@
     </div>
     <h2>可以自定义内容</h2>
     <div>
-      <Button @click="clickCustomize">点击打开</Button>
+      <Button @click="clickCustom">点击打开</Button>
       <Dialog
         render-directive="show"
-        v-model:visible="customizeVisible"
-        preset="customize"
+        v-model:visible="customVisible"
+        preset="custom"
         :maskOff="false"
         @on-mask-click="onMaskClick"
       >
         <div class="dialog-block">
           <p>我是自定义内容</p>
           <div>
-            <Button @click="customizeVisible = false" type="info">关闭</Button>
-            <Button @click="customizeVisible = false" type="success">确认</Button>
+            <Button @click="customVisible = false" type="info">关闭</Button>
+            <Button @click="customVisible = false" type="success">确认</Button>
           </div>
         </div>
       </Dialog>
@@ -53,6 +53,9 @@
       <Button @click="openInfo">信息</Button>
       <Button @click="openError">错误</Button>
     </div>
+    <div>
+      <p v-for="item in 20">{{ '你好啊' }}</p>
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -63,7 +66,7 @@ export default defineComponent({
   components: { Button, Dialog },
   setup() {
     const dialogVisible = ref(false)
-    const customizeVisible = ref(false)
+    const customVisible = ref(false)
     const dialog = useDialog()
     const openSuccess = () => {
       dialog.success({
@@ -101,8 +104,8 @@ export default defineComponent({
       dialogVisible.value = !dialogVisible.value
     }
 
-    const clickCustomize = () => {
-      customizeVisible.value = !customizeVisible.value
+    const clickCustom = () => {
+      customVisible.value = !customVisible.value
     }
 
     const close = () => {
@@ -117,7 +120,7 @@ export default defineComponent({
       console.log('不能关闭！')
     }
 
-    return { close, closed, onMaskClick, dialogVisible, customizeVisible, openSuccess, openWarning, openInfo, openError, clickDialog, clickCustomize }
+    return { close, closed, onMaskClick, dialogVisible, customVisible, openSuccess, openWarning, openInfo, openError, clickDialog, clickCustom }
   },
 })
 </script>
