@@ -66,7 +66,13 @@ export default defineComponent({
     const openSuccess = () => {
       dialog.success({
         title: '成功',
-        content: '你成功了'
+        content: '你成功了',
+        yes: () => {
+          console.log('你确认了')
+        },
+        no: () => {
+          console.log('你取消了')
+        }
       })
     }
     const openWarning = () => {

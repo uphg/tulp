@@ -48,9 +48,6 @@ const createDialog = (options: dialogOptions) => {
           'onUpdate:visible': (newVisible: boolean) => {
             this.visible = newVisible
           },
-          'onClose': () => {
-            this.visible = false
-          },
           'onClosed': destroyDialog
         },
         {
@@ -102,7 +99,7 @@ const createDialog = (options: dialogOptions) => {
     },
   })
 
-  const createDialog = () => {
+  const mountDialog = () => {
     app.mount(div)
     div.remove()
   }
@@ -111,10 +108,10 @@ const createDialog = (options: dialogOptions) => {
     app.unmount()
   }
 
-  createDialog()
+  mountDialog()
 }
 
-const createApi = (type: string, api: dialogApi) => (
+const createTypeApi = (type: string, api: dialogApi) => (
   (options?: dialogOption): dialogApi => {
     createDialog({ type, ...options })
     return api
@@ -126,7 +123,7 @@ export const useDialog = (options?: { [key: string]: string }) => {
   const api = {} as dialogApi
 
   (['success', 'warning', 'info', 'error', 'question']).forEach((item) => {
-    api[item] = createApi(item, api)
+    api[item] = createTypeApi(item, api)
   })
 
   return api
