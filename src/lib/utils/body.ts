@@ -1,4 +1,4 @@
-import { getScrollBarWidth } from './scrollbar-width'
+import getScrollBarWidth from './scrollbar-width'
 
 const body = document.body
 
