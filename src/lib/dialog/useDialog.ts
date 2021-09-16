@@ -48,7 +48,10 @@ const createDialog = (options: dialogOptions) => {
           'onUpdate:visible': (newVisible: boolean) => {
             this.visible = newVisible
           },
-          'onClose': closeDialog
+          'onClose': () => {
+            this.visible = false
+          },
+          'onClosed': destroyDialog
         },
         {
           header: () => [
@@ -99,16 +102,16 @@ const createDialog = (options: dialogOptions) => {
     },
   })
 
-  const openDialog = () => {
+  const createDialog = () => {
     app.mount(div)
     div.remove()
   }
 
-  const closeDialog = () => {
+  const destroyDialog = () => {
     app.unmount()
   }
 
-  openDialog()
+  createDialog()
 }
 
 const createApi = (type: string, api: dialogApi) => (
