@@ -34,6 +34,8 @@
         render-directive="show"
         v-model:visible="customizeVisible"
         preset="customize"
+        :maskOff="false"
+        @on-mask-click="onMaskClick"
       >
         <div class="dialog-block">
           <p>我是自定义内容</p>
@@ -67,10 +69,10 @@ export default defineComponent({
       dialog.success({
         title: '成功',
         content: '你成功了',
-        yes: () => {
+        confirm: () => {
           console.log('你确认了')
         },
-        no: () => {
+        cancel: () => {
           console.log('你取消了')
         }
       })
@@ -111,7 +113,11 @@ export default defineComponent({
       console.log('关闭动画结束')
     }
 
-    return { close, closed, dialogVisible, customizeVisible, openSuccess, openWarning, openInfo, openError, clickDialog, clickCustomize }
+    const onMaskClick = () => {
+      console.log('不能关闭！')
+    }
+
+    return { close, closed, onMaskClick, dialogVisible, customizeVisible, openSuccess, openWarning, openInfo, openError, clickDialog, clickCustomize }
   },
 })
 </script>

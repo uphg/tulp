@@ -1,21 +1,24 @@
 import { Button, Dialog } from '../main'
 import Icon from '../Icon.vue'
-import { createApp, h, nextTick } from 'vue'
+import { createApp, nextTick } from 'vue'
 
-interface dialogOptions {
+interface DialogOptions {
   type: string,
   title?: string
   content?: string,
-  yes: () => void,
-  no: () => void
+  confirm: () => void,
+  cancel: () => void
 }
 
-interface dialogOption {
-  [key: string]: string
+interface DialogTypeOption {
+  title?: string
+  content?: string,
+  confirm?: () => void,
+  cancel?: () => void
 }
 
-interface dialogApi {
-  [key: string]: (options: dialogOption) => dialogApi
+interface DialogApi {
+  [key: string]: (options: DialogTypeOption) => DialogApi
 }
 
 /**
@@ -28,7 +31,7 @@ interface dialogApi {
  * 问题 question
  */
 
- const typeApi = [
+ const typeApi: string[] = [
   'success',
   'warning',
   'info',
@@ -36,8 +39,8 @@ interface dialogApi {
   'question'
  ] 
 
- const createDialog = (options: dialogOptions) => {
-  const { type, title, content, close, yes, no } = options
+ const createDialog = (options: DialogOptions) => {
+  const { type, title, content, confirm, cancel } = options
   const div = document.createElement('div')
   document.body.appendChild(div)
 
@@ -75,8 +78,8 @@ interface dialogApi {
               <Button
                 size="small"
                 onClick={() => {
-                  no()
                   this.visible = false
+                  cancel?.()
                 }}
               >
                 {() => '取消'}
@@ -85,8 +88,8 @@ interface dialogApi {
                 size="small"
                 type="primary"
                 onClick={() => {
-                  yes()
                   this.visible = false
+                  confirm?.()
                 }}
               >
                 {() => '确定'}
@@ -110,16 +113,16 @@ interface dialogApi {
   mountDialog()
 }
 
-const createTypeApi = (type: string, api: dialogApi) => (
-  (options?: dialogOption): dialogApi => {
-    createDialog({ type, ...options })
+const createTypeApi = (type: string, api: DialogApi) => (
+  (options?: DialogTypeOption) => {
+    createDialog({ type, ...options } as DialogOptions)
     return api
   }
 )
 
 export const useDialog = (options?: { [key: string]: string }) => {
 
-  const api = {} as dialogApi
+  const api = {} as DialogApi
 
   typeApi.forEach((item) => {
     api[item] = createTypeApi(item, api)

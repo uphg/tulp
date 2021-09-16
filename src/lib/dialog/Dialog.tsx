@@ -12,11 +12,15 @@ import '../style/components/dialog.styl'
 
 export default defineComponent({
   name: 'TuDialog',
-  emits: ['update:visible', 'close', 'closed'],
+  emits: ['update:visible', 'close', 'closed', 'onMaskClick'],
   props: {
     visible: {
       type: Boolean,
       default: false
+    },
+    maskOff: {
+      type: Boolean,
+      default: true
     },
     title: String,
     renderDirective: {
@@ -39,9 +43,14 @@ export default defineComponent({
       context.emit('closed', false)
     }
 
+    const handleMaskClick = () => {
+      context.emit('onMaskClick', false)
+      props.maskOff && closeDialog()
+    }
+
     provide('TuCloseDialog', closeDialog)
 
-    return { closeDialog, handleAfterLeave }
+    return { closeDialog, handleAfterLeave, handleMaskClick }
   },
   render() {
     const contentTemplate = (
@@ -49,7 +58,10 @@ export default defineComponent({
         class="tu-dialog-container"
         {...this.$attrs}
       >
-        <div class="tu-dialog-overlay" onClick={this.closeDialog}></div>
+        <div
+          class="tu-dialog-overlay"
+          onClick={this.handleMaskClick}
+        ></div>
         <div class="tu-dialog">
           {
             this.preset === 'default' ? (
