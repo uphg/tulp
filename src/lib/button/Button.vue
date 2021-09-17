@@ -60,7 +60,7 @@
   </button>
 </template>
 <script lang="ts">
-import { Lib } from '../../utils/default-config'
+import { Lib } from '../utils/default-config'
 import { defineComponent, PropType } from 'vue';
 import { useTriggerWave } from '../useTriggerWave'
 import { useIconTransition } from './useIconTransition'

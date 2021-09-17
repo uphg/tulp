@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { Lib } from '../utils/default-config'
+import { Lib } from './utils/default-config'
 import { defineComponent } from 'vue'
 import '../icons'
 

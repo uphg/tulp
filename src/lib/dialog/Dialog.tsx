@@ -1,30 +1,27 @@
 import {
   defineComponent,
-  provide,
   withDirectives,
   vShow,
   Teleport,
   Transition,
   renderSlot,
-  onMounted,
-  onBeforeUnmount,
   watch,
-  watchEffect,
   toRef,
   PropType
 } from 'vue';
 import '../style/components/dialog.styl'
+import { Lib } from '../utils/default-config'
 import { offBodyScroll, onBodyScroll } from '../utils/body'
 
 export default defineComponent({
-  name: 'TuDialog',
-  emits: ['update:visible', 'close', 'closed', 'onMaskClick'],
+  name: `${Lib.Prefix}Dialog`,
+  emits: ['update:visible', 'open', 'opened', 'close', 'closed', 'onMaskClick'],
   props: {
     visible: {
       type: Boolean,
       default: false
     },
-    maskOff: {
+    maskClosable: {
       type: Boolean,
       default: true
     },
@@ -40,35 +37,35 @@ export default defineComponent({
     }
   },
   setup(props, context) {
+    const openDialog = () => {
+      context.emit('open')
+      offBodyScroll()
+    }
+
     const closeDialog = () => {
       context.emit('update:visible', false)
-      context.emit('close', false)
+      context.emit('close')
+    }
+
+    const handleBeforeLeave = () => {
+      context.emit('opened')
     }
 
     const handleAfterLeave = () => {
-      context.emit('closed', false)
+      context.emit('closed')
       onBodyScroll()
     }
 
-    const handleMaskClick = () => {
-      context.emit('onMaskClick', false)
-      props.maskOff && closeDialog()
+    const handleMaskClick = (event: Event) => {
+      context.emit('onMaskClick', event)
+      props.maskClosable && closeDialog()
     }
 
-    // provide('TuCloseDialog', closeDialog)
     watch(toRef(props, 'visible'), value => {
-      value && offBodyScroll()
+      value && openDialog()
     })
 
-    // onMounted(() => {
-    //   offBodyScroll()
-    // })
-
-    // onBeforeUnmount(() => {
-    //   onBodyScroll()
-    // })
-
-    return { closeDialog, handleAfterLeave, handleMaskClick }
+    return { closeDialog, handleBeforeLeave, handleAfterLeave, handleMaskClick }
   },
   render() {
     const contentTemplate = (
@@ -116,6 +113,7 @@ export default defineComponent({
         <Transition
           name="dialog-fade"
           onAfterLeave={this.handleAfterLeave}
+          onBeforeLeave={this.handleBeforeLeave}
         >
           {{
             default: () => {

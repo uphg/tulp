@@ -34,7 +34,7 @@
         render-directive="show"
         v-model:visible="customVisible"
         preset="custom"
-        :maskOff="false"
+        :mask-closable="false"
         @on-mask-click="onMaskClick"
       >
         <div class="dialog-block">
@@ -54,7 +54,7 @@
       <Button @click="openError">错误</Button>
     </div>
     <div>
-      <p v-for="item in 20">{{ '你好啊' }}</p>
+      <p v-for="item in 20" :key="item">{{ '你好啊' }}</p>
     </div>
   </div>
 </template>
@@ -116,8 +116,9 @@ export default defineComponent({
       console.log('关闭动画结束')
     }
 
-    const onMaskClick = () => {
+    const onMaskClick = (event: Event) => {
       console.log('不能关闭！')
+      console.log(event)
     }
 
     return { close, closed, onMaskClick, dialogVisible, customVisible, openSuccess, openWarning, openInfo, openError, clickDialog, clickCustom }

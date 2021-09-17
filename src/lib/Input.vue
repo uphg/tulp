@@ -6,7 +6,7 @@
   >
 </template>
 <script lang="ts">
-import { Lib } from '../utils/default-config'
+import { Lib } from './utils/default-config'
 import { defineComponent, PropType } from 'vue'
 type TuInputValue = PropType<string | null>
 

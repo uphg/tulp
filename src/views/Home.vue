@@ -25,8 +25,13 @@ export default defineComponent({
   text-align: center;
   margin-top: -16vh;
   .home-title{
+    font-weight: 700; 
     font-size: 100px;
-    text-shadow: 3px 3px 0 #ff6666;
+    // font-family: https://fonts.google.com/specimen/Bangers#standard-styles
+    font: 8em/1 Bangers, sans-serif;
+    text-align: center;
+    text-shadow: -.025em -.025em 0 #444, .025em -.025em 0 #444, -.025em .025em 0 #444, .025em .025em 0 #444;
+    color: #fff;
     margin: 0 0 20px;
     transition: font-size 0.25s;
   }
@@ -37,7 +42,7 @@ export default defineComponent({
   @media (max-width: 719px) {
     .home-title {
       font-size: 60px;
-      text-shadow: 2px 2px 0 #ff6666;
+      // text-shadow: 3px 3px 0 #ffc947;
     }
   }
 }

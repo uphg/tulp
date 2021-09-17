@@ -59,10 +59,12 @@ export default defineComponent({
     color: #262626;
     font-size: 24px;
     text-decoration: none;
-    text-shadow: 1px 1px 1px #ff0000;
+    // text-shadow: 1px 1px 1px #ff0000;
+    text-shadow: -.025em -.025em 0 #444, .025em -.025em 0 #444, -.025em .025em 0 #444, .025em .025em 0 #444;
+    color: #fff;
     &:active {
       color: #262626;
-      text-shadow: 1px 1px 1px #ff0000;
+      // text-shadow: 1px 1px 1px #ff0000;
     }
   }
 
