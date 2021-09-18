@@ -4,6 +4,7 @@ import SwitchDemo from '../views/components/SwitchDemo.vue'
 import DialogDemo from '../views/components/DialogDemo.vue'
 import JsxDemo from '../views/components/JsxDemo'
 import IconDemo from '../views/components/IconDemo.vue'
+import CollapseTransitionDemo from '../views/components/CollapseTransitionDemo.vue'
 
 export const components = [
   {
@@ -41,5 +42,11 @@ export const components = [
     name: 'ComponentsIcon',
     component: IconDemo,
     meta: { title: 'Icon 测试案例' }
+  },
+  {
+    path: 'collapse-transition',
+    name: 'ComponentsCollapseTransition',
+    component: CollapseTransitionDemo,
+    meta: { title: 'CollapseTransition 过渡' }
   }
 ]
