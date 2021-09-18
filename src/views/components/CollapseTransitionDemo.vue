@@ -2,15 +2,15 @@
   <div class="collapse-transition-demo">
     <Button @click="show = !show">Click Me</Button>
 
-    <div style="padding-top: 20px;">
+    <div style="background-color: #d9ecff; overflow: hidden;">
       <CollapseTransition>
-        <div v-show="show" style="margin: 40px 0;">
+        <div v-show="show" class="transition-box-parent">
           <div class="transition-box">collapse-transition</div>
-          <div class="transition-box">collapse-transition</div>
+          <!-- <div class="transition-box">collapse-transition</div> -->
         </div>
       </CollapseTransition>
-      <Button >Click Me</Button>
     </div>
+    <Button>Click Me</Button>
   </div>
 </template>
 <script lang="ts">
@@ -28,8 +28,11 @@ export default defineComponent({
 </script>
 
 <style>
+  .transition-box-parent {
+    padding: 20px 0; background-color: #f2f6fc;
+  }
   .transition-box {
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     width: 200px;
     height: 100px;
     border-radius: 4px;

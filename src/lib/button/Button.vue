@@ -10,14 +10,7 @@
     @click="triggerWave"
   >
     <template v-if="!icon">
-      <Transition
-        @before-enter="iconBeforeEnter"
-        @enter="iconEnter"
-        @after-enter="iconAfterEnter"
-        @before-leave="iconBeforeLeave"
-        @leave="iconLeave"
-        @after-leave="iconAfterLeave"
-      >
+      <IconTransition>
         <span
           v-if="loading"
           class="tu-button__icon"
@@ -25,7 +18,7 @@
         >
           <LoadingIcon />
         </span>
-      </Transition>
+      </IconTransition>
     </template>
     <template v-else>
       <Transition
@@ -65,6 +58,7 @@ import { defineComponent, PropType } from 'vue';
 import { useTriggerWave } from '../useTriggerWave'
 import { useIconTransition } from './useIconTransition'
 import LoadingIcon from './LoadingIcon.vue'
+import { IconTransition } from '../main'
 import Icon from '../Icon.vue'
 
 type TButtonType = PropType<'primary' | 'success' | 'warning' | 'info' | 'error'>
@@ -82,7 +76,7 @@ interface TButtonProps {
 
 export default defineComponent({
   name: `${Lib.Prefix}Button`,
-  components: { Icon, LoadingIcon },
+  components: { Icon, LoadingIcon, IconTransition },
   props: {
     type: {
       type: String as TButtonType,

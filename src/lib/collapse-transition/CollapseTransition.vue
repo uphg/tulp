@@ -7,24 +7,26 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { addClass, removeClass } from '../utils/dom'
+import { Lib } from '../utils/default-config'
 
 export default defineComponent({
+  name: `${Lib.Prefix}CollapseTransition`,
   setup() {
     const TRANSITION_CLASS = 'tulp-collapse-transition--active'
     const beforeEnter = (el: HTMLElement) => {
       addClass(el, TRANSITION_CLASS)
-
+      
       el.dataset.oldPaddingTop = el.style.paddingTop
       el.dataset.oldPaddingBottom = el.style.paddingBottom
 
-      el.dataset.oldMarginTop = el.style.marginTop
-      el.dataset.oldMarginBottom = el.style.marginBottom
+      // el.dataset.oldMarginTop = el.style.marginTop
+      // el.dataset.oldMarginBottom = el.style.marginBottom
 
       el.style.height = '0'
       el.style.paddingTop = '0'
       el.style.paddingBottom = '0'
-      el.style.marginTop = '0'
-      el.style.marginBottom = '0'
+      // el.style.marginTop = '0'
+      // el.style.marginBottom = '0'
     }
 
     const enter = (el: HTMLElement) => {
@@ -38,8 +40,8 @@ export default defineComponent({
       
       el.style.paddingTop = String(el.dataset.oldPaddingTop)
       el.style.paddingBottom = String(el.dataset.oldPaddingBottom)
-      el.style.marginTop = String(el.dataset.oldMarginTop)
-      el.style.marginBottom = String(el.dataset.oldMarginBottom)
+      // el.style.marginTop = String(el.dataset.oldMarginTop)
+      // el.style.marginBottom = String(el.dataset.oldMarginBottom)
 
       el.style.overflow = 'hidden'
     }
@@ -55,8 +57,8 @@ export default defineComponent({
       el.dataset.oldPaddingTop = el.style.paddingTop
       el.dataset.oldPaddingBottom = el.style.paddingBottom
 
-      el.dataset.oldMarginTop = el.style.marginTop
-      el.dataset.oldMarginBottom = el.style.marginBottom
+      // el.dataset.oldMarginTop = el.style.marginTop
+      // el.dataset.oldMarginBottom = el.style.marginBottom
 
       // 修复回弹动画高度错误的 bug
       const padding = (parseInt(el.dataset.oldPaddingTop, 10) + parseInt(el.dataset.oldPaddingBottom, 10)) || 0
@@ -71,8 +73,8 @@ export default defineComponent({
         el.style.height = '0'
         el.style.paddingTop = '0'
         el.style.paddingBottom = '0'
-        el.style.marginTop = '0'
-        el.style.marginBottom = '0'
+        // el.style.marginTop = '0'
+        // el.style.marginBottom = '0'
       }
     }
 
@@ -82,8 +84,8 @@ export default defineComponent({
       el.style.height = ''
       el.style.paddingTop = String(el.dataset.oldPaddingTop)
       el.style.paddingBottom = String(el.dataset.oldPaddingBottom)
-      el.style.marginTop = String(el.dataset.oldMarginTop)
-      el.style.marginBottom = String(el.dataset.oldMarginBottom)
+      // el.style.marginTop = String(el.dataset.oldMarginTop)
+      // el.style.marginBottom = String(el.dataset.oldMarginBottom)
     }
 
     return {
