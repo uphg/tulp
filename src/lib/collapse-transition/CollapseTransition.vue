@@ -14,28 +14,21 @@ export default defineComponent({
   setup() {
     const TRANSITION_CLASS = 'tulp-collapse-transition--active'
 
-    const enterStatus = ref(false)
     const leaveStatus = ref(false)
-    let tranistionTimeId = null
 
     // 进入动画 --- 执行前
     const beforeEnter = (el: HTMLElement) => {
       console.log('进入动画，执行前')
       addClass(el, TRANSITION_CLASS)
 
-      if (!enterStatus.value) {
+      if(!leaveStatus.value) {
         el.dataset.oldPaddingTop = el.style.paddingTop
         el.dataset.oldPaddingBottom = el.style.paddingBottom
       }
 
-      // el.dataset.oldMarginTop = el.style.marginTop
-      // el.dataset.oldMarginBottom = el.style.marginBottom
-
       el.style.height = '0'
       el.style.paddingTop = '0'
       el.style.paddingBottom = '0'
-      // el.style.marginTop = '0'
-      // el.style.marginBottom = '0'
     }
 
     // 进入动画 --- 执行中
@@ -51,8 +44,6 @@ export default defineComponent({
       
       el.style.paddingTop = String(el.dataset.oldPaddingTop)
       el.style.paddingBottom = String(el.dataset.oldPaddingBottom)
-      // el.style.marginTop = String(el.dataset.oldMarginTop)
-      // el.style.marginBottom = String(el.dataset.oldMarginBottom)
 
       el.style.overflow = 'hidden'
     }
@@ -60,12 +51,7 @@ export default defineComponent({
     // 进入动画 --- 执行后
     const afterEnter = (el: HTMLElement) => {
       console.log('进入动画，执行后')
-      enterStatus.value = false
       removeClass(el, TRANSITION_CLASS)
-
-      console.log('最后 padding 的值')
-      console.log(el.dataset.oldPaddingTop)
-      console.log(el.dataset.oldPaddingBottom)
       
       el.style.height = ''
       el.style.overflow = String(el.dataset.oldOverflow)
@@ -74,20 +60,15 @@ export default defineComponent({
     // 进入动画 --- 取消执行
     const enterCancelled = (el: HTMLElement) => {
       console.log('进入动画，取消执行')
-      enterStatus.value = true
     }
 
     // 离开动画 --- 执行前
     const beforeLeave = (el: HTMLElement) => {
       console.log('离开动画，执行前')
-
+      leaveStatus.value = true
       el.dataset.oldOverflow = el.style.overflow
       el.dataset.oldPaddingTop = el.style.paddingTop
       el.dataset.oldPaddingBottom = el.style.paddingBottom
-      console.log('el.style.paddingTop')
-      console.log(el.style.paddingTop)
-      // el.dataset.oldMarginTop = el.style.marginTop
-      // el.dataset.oldMarginBottom = el.style.marginBottom
 
       // 修复回弹动画高度错误的 bug
       const padding = (parseInt(el.dataset.oldPaddingTop, 10) + parseInt(el.dataset.oldPaddingBottom, 10)) || 0
@@ -107,8 +88,6 @@ export default defineComponent({
         el.style.height = '0'
         el.style.paddingTop = '0'
         el.style.paddingBottom = '0'
-        // el.style.marginTop = '0'
-        // el.style.marginBottom = '0'
       }
     }
 
@@ -122,15 +101,11 @@ export default defineComponent({
       el.style.height = ''
       el.style.paddingTop = String(el.dataset.oldPaddingTop)
       el.style.paddingBottom = String(el.dataset.oldPaddingBottom)
-      // el.style.marginTop = String(el.dataset.oldMarginTop)
-      // el.style.marginBottom = String(el.dataset.oldMarginBottom)
-
     }
 
     // 离开动画 --- 取消执行
     const leaveCancelled = (el: HTMLElement) => {
       console.log('离开动画，取消执行')
-      leaveStatus.value = true
     }
 
     return {
@@ -150,7 +125,7 @@ export default defineComponent({
 </script>
 
 <style lang="stylus">
-$transition-time = 0.3s
+$transition-time = 3s
 .tulp-collapse-transition--active
   transition height $transition-time ease-in-out, padding-top $transition-time ease-in-out, padding-bottom $transition-time ease-in-out, margin-top $transition-time ease-in-out, margin-bottom $transition-time ease-in-out
 </style>
