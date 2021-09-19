@@ -4,7 +4,7 @@
 
     <div style="background-color: #d9ecff; overflow: hidden;">
       <CollapseTransition>
-        <div v-show="show" class="transition-box-parent" style="padding: 20px 0;">
+        <div v-if="show" class="transition-box-parent">
           <div class="transition-box">collapse-transition</div>
           <!-- <div class="transition-box">collapse-transition</div> -->
         </div>
@@ -29,7 +29,7 @@ export default defineComponent({
 
 <style>
   .transition-box-parent {
-    /* padding: 20px 0; */ background-color: #f2f6fc;
+    padding: 20px 0; background-color: #f2f6fc;
   }
   .transition-box {
     /* margin-bottom: 10px; */

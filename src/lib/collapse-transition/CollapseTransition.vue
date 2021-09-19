@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { addClass, removeClass } from '../utils/dom'
+import { addClass, removeClass, getStyle } from '../utils/dom'
 import { Lib } from '../utils/default-config'
 
 export default defineComponent({
@@ -60,7 +60,7 @@ export default defineComponent({
       el.dataset.oldPaddingBottom = el.style.paddingBottom
 
       // 修复回弹动画高度错误的 bug
-      const padding = (parseInt(el.dataset.oldPaddingTop, 10) + parseInt(el.dataset.oldPaddingBottom, 10)) || 0
+      const padding = (parseInt(el.dataset.oldPaddingTop, 10) + parseInt(el.dataset.oldPaddingBottom, 10)) || (getStyle(el).paddingTop + getStyle(el).paddingBottom)
       el.style.height = el.scrollHeight - padding + 'px'
       el.style.overflow = 'hidden'
     }
