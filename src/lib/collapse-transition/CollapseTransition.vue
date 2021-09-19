@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import { addClass, removeClass } from '../utils/dom'
 import { Lib } from '../utils/default-config'
 
@@ -13,11 +13,20 @@ export default defineComponent({
   name: `${Lib.Prefix}CollapseTransition`,
   setup() {
     const TRANSITION_CLASS = 'tulp-collapse-transition--active'
+
+    const enterStatus = ref(false)
+    const leaveStatus = ref(false)
+    let tranistionTimeId = null
+
+    // 进入动画 --- 执行前
     const beforeEnter = (el: HTMLElement) => {
+      console.log('进入动画，执行前')
       addClass(el, TRANSITION_CLASS)
-      
-      el.dataset.oldPaddingTop = el.style.paddingTop
-      el.dataset.oldPaddingBottom = el.style.paddingBottom
+
+      if (!enterStatus.value) {
+        el.dataset.oldPaddingTop = el.style.paddingTop
+        el.dataset.oldPaddingBottom = el.style.paddingBottom
+      }
 
       // el.dataset.oldMarginTop = el.style.marginTop
       // el.dataset.oldMarginBottom = el.style.marginBottom
@@ -29,7 +38,9 @@ export default defineComponent({
       // el.style.marginBottom = '0'
     }
 
+    // 进入动画 --- 执行中
     const enter = (el: HTMLElement) => {
+      console.log('进入动画，执行中')
       el.dataset.oldOverflow = el.style.overflow
 
       if (el.scrollHeight !== 0) {
@@ -46,27 +57,50 @@ export default defineComponent({
       el.style.overflow = 'hidden'
     }
 
+    // 进入动画 --- 执行后
     const afterEnter = (el: HTMLElement) => {
+      console.log('进入动画，执行后')
+      enterStatus.value = false
       removeClass(el, TRANSITION_CLASS)
+
+      console.log('最后 padding 的值')
+      console.log(el.dataset.oldPaddingTop)
+      console.log(el.dataset.oldPaddingBottom)
+      
       el.style.height = ''
       el.style.overflow = String(el.dataset.oldOverflow)
     }
 
+    // 进入动画 --- 取消执行
+    const enterCancelled = (el: HTMLElement) => {
+      console.log('进入动画，取消执行')
+      enterStatus.value = true
+    }
+
+    // 离开动画 --- 执行前
     const beforeLeave = (el: HTMLElement) => {
+      console.log('离开动画，执行前')
+
       el.dataset.oldOverflow = el.style.overflow
       el.dataset.oldPaddingTop = el.style.paddingTop
       el.dataset.oldPaddingBottom = el.style.paddingBottom
-
+      console.log('el.style.paddingTop')
+      console.log(el.style.paddingTop)
       // el.dataset.oldMarginTop = el.style.marginTop
       // el.dataset.oldMarginBottom = el.style.marginBottom
 
       // 修复回弹动画高度错误的 bug
       const padding = (parseInt(el.dataset.oldPaddingTop, 10) + parseInt(el.dataset.oldPaddingBottom, 10)) || 0
+      console.log('padding')
+      console.log(padding)
       el.style.height = el.scrollHeight - padding + 'px'
       el.style.overflow = 'hidden'
     }
 
+    // 离开动画 --- 执行中
     const leave = (el: HTMLElement) => {
+      console.log('离开动画，执行中')
+
       if (el.scrollHeight !== 0) {
         // 在设置高度后添加 class 样式，防止无回弹动画
         addClass(el, TRANSITION_CLASS)
@@ -78,14 +112,25 @@ export default defineComponent({
       }
     }
 
+    // 离开动画 --- 执行后
     const afterLeave = (el: HTMLElement) => {
+      console.log('离开动画，执行后')
+      leaveStatus.value = false
       removeClass(el, TRANSITION_CLASS)
       el.style.overflow = String(el.dataset.oldOverflow)
+
       el.style.height = ''
       el.style.paddingTop = String(el.dataset.oldPaddingTop)
       el.style.paddingBottom = String(el.dataset.oldPaddingBottom)
       // el.style.marginTop = String(el.dataset.oldMarginTop)
       // el.style.marginBottom = String(el.dataset.oldMarginBottom)
+
+    }
+
+    // 离开动画 --- 取消执行
+    const leaveCancelled = (el: HTMLElement) => {
+      console.log('离开动画，取消执行')
+      leaveStatus.value = true
     }
 
     return {
@@ -93,9 +138,11 @@ export default defineComponent({
         beforeEnter,
         enter,
         afterEnter,
+        enterCancelled,
         beforeLeave,
         leave,
-        afterLeave
+        afterLeave,
+        leaveCancelled
       }
     }
   },
@@ -103,6 +150,7 @@ export default defineComponent({
 </script>
 
 <style lang="stylus">
+$transition-time = 0.3s
 .tulp-collapse-transition--active
-  transition height 0.3s ease-in-out, padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out, margin-top 0.3s ease-in-out, margin-bottom 0.3s ease-in-out
+  transition height $transition-time ease-in-out, padding-top $transition-time ease-in-out, padding-bottom $transition-time ease-in-out, margin-top $transition-time ease-in-out, margin-bottom $transition-time ease-in-out
 </style>

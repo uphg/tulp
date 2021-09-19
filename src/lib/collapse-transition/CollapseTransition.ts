@@ -69,6 +69,8 @@ export default defineComponent({
         el.style.paddingTop = el.dataset.oldPaddingTop
         el.style.paddingBottom = el.dataset.oldPaddingBottom
       }
-    }, this.$slots.default && this.$slots.default())
+    }, {
+      default: () => this.$slots.default && this.$slots.default()
+    })
   }
 })
