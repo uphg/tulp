@@ -4,9 +4,9 @@
 
     <div style="background-color: #d9ecff; overflow: hidden;">
       <CollapseTransition>
-        <div v-if="show" class="transition-box-parent">
+        <div v-show="show" class="transition-box-parent">
           <div class="transition-box">collapse-transition</div>
-          <!-- <div class="transition-box">collapse-transition</div> -->
+          <div class="transition-box">collapse-transition</div>
         </div>
       </CollapseTransition>
     </div>
@@ -27,7 +27,7 @@ export default defineComponent({
 })
 </script>
 
-<style>
+<style lang="stylus">
   .transition-box-parent {
     padding: 20px 0; background-color: #f2f6fc;
   }
@@ -42,5 +42,8 @@ export default defineComponent({
     padding: 40px 20px;
     box-sizing: border-box;
     margin-right: 20px;
+    &:not(:last-child) {
+      margin-bottom 10px
+    }
   }
 </style>

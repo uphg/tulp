@@ -34,7 +34,12 @@ export default defineComponent({
       el.dataset.oldOverflow = el.style.overflow
 
       if (el.scrollHeight !== 0) {
-        el.style.height = el.scrollHeight + 'px'
+        if (!leaveStatus.value) {
+          el.style.height = el.scrollHeight + 'px'
+        } else {
+          const padding = getStyle(el).paddingTop + getStyle(el).paddingBottom
+          el.style.height = el.scrollHeight - padding + 'px'
+        }
       } else {
         el.style.height = ''
       }
@@ -90,7 +95,7 @@ export default defineComponent({
     // 离开动画 --- 取消执行
     const leaveCancelled = (el: HTMLElement) => {
       // 调用 获取高度的属性，修复 回弹后过渡高度错误的 bug
-      el.scrollHeight
+      // el.scrollHeight
     }
 
     return {
