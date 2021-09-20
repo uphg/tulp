@@ -22,11 +22,15 @@ export default defineComponent({
       if(!leaveStatus.value) {
         el.dataset.oldPaddingTop = el.style.paddingTop
         el.dataset.oldPaddingBottom = el.style.paddingBottom
+        el.dataset.oldMarginTop = el.style.marginTop
+        el.dataset.oldMarginBottom = el.style.marginBottom
       }
 
       el.style.height = '0'
       el.style.paddingTop = '0'
       el.style.paddingBottom = '0'
+      el.style.marginTop = '0'
+      el.style.marginBottom = '0'
     }
 
     // 进入动画 --- 执行中
@@ -46,6 +50,8 @@ export default defineComponent({
       
       el.style.paddingTop = String(el.dataset.oldPaddingTop)
       el.style.paddingBottom = String(el.dataset.oldPaddingBottom)
+      el.style.marginTop = String(el.dataset.oldMarginTop)
+      el.style.marginBottom = String(el.dataset.oldMarginBottom)
       el.style.overflow = 'hidden'
     }
 
@@ -63,6 +69,8 @@ export default defineComponent({
       el.dataset.oldOverflow = el.style.overflow
       el.dataset.oldPaddingTop = el.style.paddingTop
       el.dataset.oldPaddingBottom = el.style.paddingBottom
+      el.dataset.oldMarginTop = el.style.marginTop
+      el.dataset.oldMarginBottom = el.style.marginBottom
 
       // 修复回弹动画高度错误的 bug
       const padding = (parseInt(el.dataset.oldPaddingTop, 10) + parseInt(el.dataset.oldPaddingBottom, 10)) || (getStyle(el).paddingTop + getStyle(el).paddingBottom)
@@ -78,6 +86,8 @@ export default defineComponent({
         el.style.height = '0'
         el.style.paddingTop = '0'
         el.style.paddingBottom = '0'
+        el.style.marginTop = '0'
+        el.style.marginBottom = '0'
       }
     }
 
@@ -90,6 +100,8 @@ export default defineComponent({
       el.style.height = ''
       el.style.paddingTop = String(el.dataset.oldPaddingTop)
       el.style.paddingBottom = String(el.dataset.oldPaddingBottom)
+      el.style.marginTop = String(el.dataset.oldMarginTop)
+      el.style.marginBottom = String(el.dataset.oldMarginBottom)
     }
 
     // 离开动画 --- 取消执行

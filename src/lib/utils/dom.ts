@@ -35,6 +35,24 @@ export const removeClass = (el: Element, name: string) => {
   }
 }
 
+export const style = (el: HTMLElement) => {
+  const styles = window.getComputedStyle(el, null)
+  console.log('styles')
+  console.log(styles)
+  const stylesKey: string[] = [
+    'paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight',
+    'marginTop', 'marginBottom', 'marginLeft', 'marginRight',
+  ]
+  const stylesMap: {[key: string]: string} = { }
+
+  stylesKey.forEach((key) => {
+    stylesMap[key] = el.style[key] || styles[key]
+  })
+
+  return stylesMap
+  // const Attributes = window.getComputedStyle(el, null)
+}
+
 export const getStyle = (el: Element) => {
   const style = window.getComputedStyle(el, null)
   return {
