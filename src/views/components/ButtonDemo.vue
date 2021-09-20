@@ -1,9 +1,20 @@
 <template>
   <div class="button-demo">
+    <h2>原生按钮</h2>
+    <div>
+      <button
+        @focus="onFocus(), onFocus2(), onFocus3()"
+        @blur="onBlur(), onBlur2(), onBlur3()"
+        @click="onClick(), onClick2(), onClick3()"
+      >普通按钮</button>
+    </div>
     <h2>Button 组件示例</h2>
     <div style="margin-top: 10px;">
-      <button @click="onClick(), onClick2(), onClick3()">普通按钮</button>
-      <Button @click="onClick(), onClick2(), onClick3()">默认按钮</Button>
+      <Button
+        @focus="onFocus(), onFocus2(), onFocus3()"
+        @blur="onBlur(), onBlur2(), onBlur3()"
+        @click="onClick(), onClick2(), onClick3()"
+      >默认按钮</Button>
       <Button type="primary" @click="onClick">主要按钮</Button>
       <Button type="success" @click="onClick">成功按钮</Button>
       <Button type="info" @click="onClick">信息按钮</Button>
@@ -22,7 +33,7 @@
   </div>
 </template>
 <script lang="ts">
-import Button from '../../lib/button/Button.vue'
+import { Button } from '../../lib/main'
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   components: { Button },
@@ -37,7 +48,39 @@ export default defineComponent({
     const onClick3 = (event: Event) => {
       console.log('onClick3')
     }
-    return { onClick, onClick2, onClick3, loading }
+    const onBlur = (event: Event) => {
+      console.log('onBlur')
+    }
+    const onBlur2 = (event: Event) => {
+      console.log('onBlur2')
+    }
+    const onBlur3 = (event: Event) => {
+      console.log('onBlur3')
+    }
+
+    const onFocus = (event: Event) => {
+      console.log('onFocus')
+    }
+
+    const onFocus2 = (event: Event) => {
+      console.log('onFocus2')
+    }
+
+    const onFocus3 = (event: Event) => {
+      console.log('onFocus3')
+    }
+    return {
+      onClick,
+      onClick2,
+      onClick3,
+      onBlur,
+      onBlur2,
+      onBlur3,
+      onFocus,
+      onFocus2,
+      onFocus3,
+      loading
+    }
   }
 })
 </script>

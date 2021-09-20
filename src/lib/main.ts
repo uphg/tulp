@@ -1,7 +1,6 @@
 export { default as Switch } from './Switch.vue'
-export { default as Button } from './button/Button.tsx'
+export { TButton as Button } from './button/index'
 export { default as Input } from './Input.vue'
 export { default as Dialog } from './dialog/Dialog'
-export { default as IconTransition } from './icon-transition/IconTransition.vue'
 export { default as CollapseTransition } from './collapse-transition/CollapseTransition.vue'
 export { useDialog as useDialog } from './dialog/useDialog'

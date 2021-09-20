@@ -1,12 +1,18 @@
-import '../style/components/icon-transition.styl'
-import { defineComponent, h, Transition } from 'vue'
-import { addClass, removeClass } from '../utils/dom'
-import { Lib } from '../utils/default-config'
+<template>
+  <transition v-on="on">
+    <slot />
+  </transition>
+</template>
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { addClass, removeClass } from '../../utils/dom'
+import { Lib } from '../../utils/default-config'
+const TRANSITION_CLASS = 'tu-expand-transition--active'
 
 export default defineComponent({
-  name: `${Lib.Prefix}IconTransition`,
+  name: `${Lib.Prefix}ExpandTransition`,
   setup() {
-    const TRANSITION_CLASS = 'tu-icon-transition--active'
+    
     const beforeEnter = (element: Element) => {
       const el = element as HTMLElement
       addClass(el, TRANSITION_CLASS)
@@ -58,7 +64,6 @@ export default defineComponent({
       el.style.width = ''
       el.style.opacity = ''
     }
-
     return {
       on: {
         beforeEnter,
@@ -70,11 +75,9 @@ export default defineComponent({
       }
     }
   },
-
-  render() {
-    return h(Transition,
-      { on: this.on },
-      { default: () => this.$slots }
-    )
-  }
 })
+</script>
+
+<style lang="stylus">
+@require '../../style/components/expand-transition'
+</style>

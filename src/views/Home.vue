@@ -14,7 +14,7 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
-import Button from '../lib/button/Button.vue';
+import { Button } from '../lib/main';
 
 export default defineComponent({
   components: { Button }

@@ -1,3 +1,4 @@
+  
 <template>
   <button
     class="tu-button"
@@ -9,38 +10,24 @@
     :type="nativeType"
     @click="triggerWave"
   >
-    <template v-if="!icon">
-      <IconTransition>
-        <span
-          v-if="loading"
-          class="tu-button__icon"
-          :class="{ 'is-uncontent': !$slots.default }"
-        >
-          <LoadingIcon />
-        </span>
-      </IconTransition>
-    </template>
-    <template v-else>
-      <Transition
-        name="component-fade"
-        mode="out-in"
+    <TExpandTransition>
+      <span
+        v-if="icon || loading"
+        :class="[
+          'tu-button__icon',
+          { 'is-uncontent': !$slots.default }
+        ]"
       >
-        <span
-          v-if="loading"
-          class="tu-button__icon"
-          :class="{ 'is-uncontent': !$slots.default }"
-        >
-          <LoadingIcon />
-        </span>
-        <span
-          v-else-if="icon && !loading"
-          class="tu-button__icon"
-          :class="{ 'is-uncontent': !$slots.default }"
-        >
-          <Icon :name="icon" />
-        </span>
-      </Transition>
-    </template>
+        <TFadeTransition>
+          <template v-if="loading">
+            <LoadingIcon />
+          </template>
+          <template v-else>
+            <Icon :name="icon" />
+          </template>
+        </TFadeTransition>
+      </span>
+    </TExpandTransition>
     <span class="tu-button__content">
       <slot />
     </span>
@@ -53,29 +40,23 @@
   </button>
 </template>
 <script lang="ts">
-import { Lib } from '../utils/default-config'
-import { defineComponent, PropType } from 'vue';
-import { useTriggerWave } from '../useTriggerWave'
+import { Lib } from '../../utils/default-config'
+import { defineComponent } from 'vue';
+import { useTriggerWave } from '../../useTriggerWave'
+import { TButtonType, TButtonNativeType } from './interface'
+import { TExpandTransition } from '../../expand-transition/index'
+import { TFadeTransition } from '../../fade-transition/index'
 import LoadingIcon from './LoadingIcon.vue'
-import { IconTransition } from '../main'
-import Icon from '../Icon.vue'
-
-type TButtonType = PropType<'primary' | 'success' | 'warning' | 'info' | 'error'>
-type TButtonNativeType = PropType<'button' | 'submit' | 'reset'>
-
-interface TButtonProps {
-  type: TButtonType
-  size: PropType<ComponentSize>,
-  icon: string,
-  nativeType: string,
-  loading: boolean,
-  disabled: boolean,
-  text: boolean
-}
+import Icon from '../../Icon.vue'
 
 export default defineComponent({
   name: `${Lib.Prefix}Button`,
-  components: { Icon, LoadingIcon, IconTransition },
+  components: {
+    Icon,
+    LoadingIcon,
+    TExpandTransition,
+    TFadeTransition,
+  },
   props: {
     type: {
       type: String as TButtonType,
@@ -117,12 +98,11 @@ export default defineComponent({
   },
   setup() {
     const { isWave, triggerWave } = useTriggerWave()
-
     return { isWave, triggerWave }
   }
 })
 </script>
 
 <style lang="stylus">
-@require '../style/components/button'
+@require '../../style/components/button'
 </style>
