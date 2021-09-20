@@ -7,7 +7,7 @@
 <script lang="ts">
 import { Lib } from './utils/default-config'
 import { defineComponent } from 'vue'
-import '../icons'
+import './icons'
 
 export default defineComponent({
   name: `${Lib.Prefix}Icon`,
