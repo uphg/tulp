@@ -12,7 +12,7 @@ import { Lib } from '../utils/default-config'
 export default defineComponent({
   name: `${Lib.Prefix}CollapseTransition`,
   setup() {
-    const TRANSITION_CLASS = 'tulp-collapse-transition--active'
+    const TRANSITION_CLASS = 'tu-collapse-transition--active'
     const leaveStatus = ref(false)
 
     // 进入动画 --- 执行前
@@ -104,22 +104,14 @@ export default defineComponent({
       el.style.marginBottom = String(el.dataset.oldMarginBottom)
     }
 
-    // 离开动画 --- 取消执行
-    const leaveCancelled = (el: HTMLElement) => {
-      // 调用 获取高度的属性，修复 回弹后过渡高度错误的 bug
-      // el.scrollHeight
-    }
-
     return {
       on: {
         beforeEnter,
         enter,
         afterEnter,
-        // enterCancelled,
         beforeLeave,
         leave,
-        afterLeave,
-        leaveCancelled
+        afterLeave
       }
     }
   },
@@ -127,7 +119,5 @@ export default defineComponent({
 </script>
 
 <style lang="stylus">
-$transition-time = 0.3s
-.tulp-collapse-transition--active
-  transition height $transition-time ease-in-out, padding-top $transition-time ease-in-out, padding-bottom $transition-time ease-in-out, margin-top $transition-time ease-in-out, margin-bottom $transition-time ease-in-out
+@require '../style/components/collapse-transition'
 </style>

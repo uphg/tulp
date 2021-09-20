@@ -119,9 +119,7 @@ export default defineComponent({
   setup() {
     const { isWave, triggerWave } = useTriggerWave()
 
-    const { iconBeforeEnter, iconEnter, iconAfterEnter, iconBeforeLeave, iconLeave, iconAfterLeave } = useIconTransition()
-
-    return { isWave, triggerWave, iconBeforeEnter, iconEnter, iconAfterEnter, iconBeforeLeave, iconLeave, iconAfterLeave }
+    return { isWave, triggerWave }
   }
 })
 </script>

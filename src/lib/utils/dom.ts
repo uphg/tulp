@@ -1,4 +1,5 @@
 // 添加 class
+
 export const trim = (string: string) => {
   return string.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '')
 }
@@ -33,20 +34,21 @@ export const removeClass = (el: Element, name: string) => {
   if (!el.classList) {
     el.className = trim(oldClass)
   }
-}
+} 
 
 export const style = (el: HTMLElement) => {
   const styles = window.getComputedStyle(el, null)
   console.log('styles')
   console.log(styles)
-  const stylesKey: string[] = [
+  const stylesKey = [
     'paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight',
     'marginTop', 'marginBottom', 'marginLeft', 'marginRight',
   ]
+
   const stylesMap: {[key: string]: string} = { }
 
   stylesKey.forEach((key) => {
-    stylesMap[key] = el.style[key] || styles[key]
+    stylesMap[key] = (el.style[key as keyof CSSStyleDeclaration] || styles[key as keyof CSSStyleDeclaration] || null) as string
   })
 
   return stylesMap

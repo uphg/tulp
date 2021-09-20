@@ -70,33 +70,33 @@ export default defineComponent({
   render() {
     const contentTemplate = (
       <div
-        class="tu-dialog-container"
+        class="tu-dialog__container"
         {...this.$attrs}
       >
         <div
-          class="tu-dialog-overlay"
+          class="tu-dialog__overlay"
           onClick={this.handleMaskClick}
         ></div>
         <div class="tu-dialog">
           {
             this.preset === 'default' ? (
-              <div class="tu-dialog-content">
-                <div class="tu-dialog-header">
+              <div class="tu-dialog__content">
+                <div class="tu-dialog__header">
                   {
                     !this.$slots.header ? (
                       <>
-                        <span class="tu-dialog-title">{this.title}</span>
-                        <span class="tu-dialog-close" onClick={this.closeDialog}></span>
+                        <span class="tu-dialog__title">{this.title}</span>
+                        <span class="tu-dialog__close" onClick={this.closeDialog}></span>
                       </>
                     ) : (
                       renderSlot(this.$slots, 'header')
                     )
                   }
                 </div>
-                <div class="tu-dialog-body">
+                <div class="tu-dialog__body">
                   {renderSlot(this.$slots, 'default')}
                 </div>
-                <div class="tu-dialog-footer">
+                <div class="tu-dialog__footer">
                   {renderSlot(this.$slots, 'footer')}
                 </div>
               </div>
