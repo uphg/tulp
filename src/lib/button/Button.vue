@@ -56,7 +56,6 @@
 import { Lib } from '../utils/default-config'
 import { defineComponent, PropType } from 'vue';
 import { useTriggerWave } from '../useTriggerWave'
-import { useIconTransition } from './useIconTransition'
 import LoadingIcon from './LoadingIcon.vue'
 import { IconTransition } from '../main'
 import Icon from '../Icon.vue'
@@ -126,14 +125,4 @@ export default defineComponent({
 
 <style lang="stylus">
 @require '../style/components/button'
-
-.component-fade-enter-active,
-.component-fade-leave-active {
-  transition: opacity 0.25s ease;
-}
-
-.component-fade-enter-from,
-.component-fade-leave-to {
-  opacity: 0;
-}
 </style>

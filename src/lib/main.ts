@@ -1,5 +1,5 @@
 export { default as Switch } from './Switch.vue'
-export { default as Button } from './button/Button.vue'
+export { default as Button } from './button/Button.tsx'
 export { default as Input } from './Input.vue'
 export { default as Dialog } from './dialog/Dialog'
 export { default as IconTransition } from './icon-transition/IconTransition.vue'

@@ -1,6 +1,6 @@
 <template>
   <div class="collapse-transition-demo">
-    <Button @click="show = !show">Click Me</Button>
+    <TButton @click="show = !show">Click Me</TButton>
 
     <div class="transition-box__wrap">
       <CollapseTransition>
@@ -12,7 +12,7 @@
         </div>
       </CollapseTransition>
     </div>
-    <Button>Click Me</Button>
+    <TButton>Click Me</TButton>
   </div>
 </template>
 <script lang="ts">
@@ -20,7 +20,7 @@ import { defineComponent, ref } from 'vue'
 import { Button, CollapseTransition } from '../../lib/main'
 
 export default defineComponent({
-  components: { Button, CollapseTransition },
+  components: { TButton: Button, CollapseTransition },
   setup() {
     return {
       show: ref(false)

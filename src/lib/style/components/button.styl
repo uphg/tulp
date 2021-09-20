@@ -90,3 +90,13 @@ type-style(base, light, dark)
 
 .tu-icon-transition--active
   transition width 0.25s ease-in-out, margin 0.25s ease-in-out, opacity 0.25s ease-in-out
+
+.component-fade-enter-active,
+.component-fade-leave-active {
+  transition: opacity 0.25s ease;
+}
+
+.component-fade-enter-from,
+.component-fade-leave-to {
+  opacity: 0;
+}
