@@ -73,9 +73,13 @@ export default defineComponent({
     const handleClick = (event: MouseEvent  ) => {
       const { onClick } = props
       if (onClick) {
+        console.log('onClick')
+        console.log(onClick)
         if (Array.isArray(onClick)) {
           onClick.forEach((click) => click(event))
-        } else return onClick(event)
+        } else {
+          onClick(event)
+        }
       }
       triggerWave()
     }

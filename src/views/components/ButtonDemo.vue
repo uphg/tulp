@@ -2,7 +2,8 @@
   <div class="button-demo">
     <h2>Button 组件示例</h2>
     <div style="margin-top: 10px;">
-      <Button @click="onClick">默认按钮</Button>
+      <button @click="onClick(), onClick2(), onClick3()">普通按钮</button>
+      <Button @click="onClick(), onClick2(), onClick3()">默认按钮</Button>
       <Button type="primary" @click="onClick">主要按钮</Button>
       <Button type="success" @click="onClick">成功按钮</Button>
       <Button type="info" @click="onClick">信息按钮</Button>
@@ -28,9 +29,15 @@ export default defineComponent({
   setup() {
     const loading = ref(false)
     const onClick = (event: Event) => {
-      console.log('hi')
+      console.log('hi onClick')
     }
-    return { onClick, loading }
+    const onClick2 = (event: Event) => {
+      console.log('onClick2')
+    }
+    const onClick3 = (event: Event) => {
+      console.log('onClick3')
+    }
+    return { onClick, onClick2, onClick3, loading }
   }
 })
 </script>
