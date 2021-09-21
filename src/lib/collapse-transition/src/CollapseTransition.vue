@@ -13,7 +13,6 @@ export default defineComponent({
   name: `${Lib.Prefix}CollapseTransition`,
   setup() {
     const TRANSITION_CLASS = 'tu-collapse-transition--active'
-
     const enterStatus = ref(false)
     const leaveStatus = ref(false)
 
@@ -21,6 +20,7 @@ export default defineComponent({
     const beforeEnter = (el: HTMLElement) => {
       enterStatus.value = true
       addClass(el, TRANSITION_CLASS)
+
       // 如果离开动画没有做完，禁止存储当前 padding，margin 值
       if (!leaveStatus.value) {
         el.dataset.oldPaddingTop = getStyle(el).paddingTop
@@ -41,8 +41,13 @@ export default defineComponent({
       el.dataset.oldOverflow = el.style.overflow
       void el.scrollHeight
       if (getStyle(el).boxSizing === 'border-box') {
-        const padding = parseFloat(el.dataset.oldPaddingTop as string) + parseFloat(el.dataset.oldPaddingBottom as string)
-        el.style.height = el.scrollHeight + padding + 'px'
+        const padding = (parseFloat(el.dataset.oldPaddingTop as string) + parseFloat(el.dataset.oldPaddingBottom as string)) || 0
+        if(!leaveStatus.value) {
+          el.style.height = el.scrollHeight + padding + 'px'
+        } else {
+          const extraPadding = parseFloat(getStyle(el).paddingTop) + parseFloat(getStyle(el).paddingBottom)
+          el.style.height = el.scrollHeight + padding - extraPadding + 'px'
+        }
       } else {
         if (!leaveStatus.value) {
           el.style.height = el.scrollHeight + 'px'
@@ -51,6 +56,7 @@ export default defineComponent({
           el.style.height = el.scrollHeight - padding + 'px'
         }
       }
+
       el.style.paddingTop = el.dataset.oldPaddingTop as string
       el.style.paddingBottom = el.dataset.oldPaddingBottom as string
       el.style.marginTop = el.dataset.oldMarginTop as string
