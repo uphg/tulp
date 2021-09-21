@@ -58,16 +58,5 @@ export const style = (el: HTMLElement) => {
 
 export const getStyle = (el: Element) => {
   const style = window.getComputedStyle(el, null)
-  return {
-    width: parseInt(style.width, 10),
-    height: parseInt(style.height, 10),
-    paddingTop: parseInt(style.paddingTop, 10),
-    paddingLeft: parseInt(style.paddingLeft, 10),
-    paddingRight: parseInt(style.paddingRight, 10),
-    paddingBottom: parseInt(style.paddingBottom, 10),
-    marginTop: parseInt(style.marginTop, 10),
-    marginLeft: parseInt(style.marginLeft, 10),
-    marginRight: parseInt(style.marginRight, 10),
-    marginBottom: parseInt(style.marginBottom, 10)
-  }
+  return style
 }

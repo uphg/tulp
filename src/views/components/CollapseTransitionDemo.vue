@@ -4,7 +4,11 @@
 
     <div class="collapse-box__wrap">
       <CollapseTransition>
-        <div v-show="show" class="collapse-box__parent">
+        <div
+          v-show="show"
+          class="collapse-box__parent"
+          style="padding: 20px 0; margin: 32px 0;"
+        >
           <div class="collapse-box__part">
             <div class="collapse-box">collapse-transition</div>
             <div class="collapse-box">collapse-transition</div>
@@ -50,8 +54,9 @@ export default defineComponent({
     background-color #c6e2ff
     overflow hidden
   &__parent
-    box-sizing border-box
-    margin 40px 0
+    // box-sizing border-box
+    // margin 40px 0
+    // padding 5vh 0
     background-color #e1f3d8
   &__part
     background-color #fff
