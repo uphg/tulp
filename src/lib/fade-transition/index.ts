@@ -1,1 +1,1 @@
-export { default as TFadeTransition } from './src/FadeTransition.vue'
+export { default as FadeTransition } from './src/FadeTransition.vue'

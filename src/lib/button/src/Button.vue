@@ -10,7 +10,7 @@
     :type="nativeType"
     @click="triggerWave"
   >
-    <TExpandTransition>
+    <ExpandTransition>
       <span
         v-if="icon || loading"
         :class="[
@@ -18,16 +18,16 @@
           { 'is-uncontent': !$slots.default }
         ]"
       >
-        <TFadeTransition>
+        <FadeTransition>
           <template v-if="loading">
             <LoadingIcon />
           </template>
           <template v-else>
             <Icon :name="icon" />
           </template>
-        </TFadeTransition>
+        </FadeTransition>
       </span>
-    </TExpandTransition>
+    </ExpandTransition>
     <span class="tu-button__content">
       <slot />
     </span>
@@ -44,8 +44,8 @@ import { Lib } from '../../utils/default-config'
 import { defineComponent } from 'vue';
 import { useTriggerWave } from '../../useTriggerWave'
 import { TButtonType, TButtonNativeType } from './interface'
-import { TExpandTransition } from '../../expand-transition/index'
-import { TFadeTransition } from '../../fade-transition/index'
+import { ExpandTransition } from '../../expand-transition/index'
+import { FadeTransition } from '../../fade-transition/index'
 import LoadingIcon from './LoadingIcon.vue'
 import Icon from '../../Icon.vue'
 
@@ -54,8 +54,8 @@ export default defineComponent({
   components: {
     Icon,
     LoadingIcon,
-    TExpandTransition,
-    TFadeTransition,
+    ExpandTransition,
+    FadeTransition,
   },
   props: {
     type: {

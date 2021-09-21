@@ -12,18 +12,33 @@
         </div>
       </CollapseTransition>
     </div>
-    <TButton>Click Me</TButton>
+    <h2>横向过渡</h2>
+    <div>
+      <TButton @click="show2 = !show2">on/off</TButton>
+      <div class="expand-box__wrap" style="height: 210px;">
+        <ExpandTransition>
+          <div v-show="show2" class="expand-box__parent">
+            <div class="expand-box__part">
+              <div class="expand-box">expand-transition</div>
+              <div class="expand-box">expand-transition</div>
+            </div>
+          </div>
+        </ExpandTransition>
+      </div>
+      <TButton>我是按钮</TButton>
+    </div>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { Button, CollapseTransition } from '../../lib/main'
+import { Button, CollapseTransition, ExpandTransition } from '../../lib/main'
 
 export default defineComponent({
-  components: { TButton: Button, CollapseTransition },
+  components: { TButton: Button, CollapseTransition, ExpandTransition },
   setup() {
     return {
-      show: ref(false)
+      show: ref(false),
+      show2: ref(false)
     }
   },
 })
@@ -35,8 +50,8 @@ export default defineComponent({
     background-color #c6e2ff
     overflow hidden
   &__parent
+    box-sizing border-box
     margin 40px 0
-    padding 40px 0
     background-color #e1f3d8
   &__part
     background-color #fff
@@ -49,7 +64,27 @@ export default defineComponent({
     color #fff
     padding 40px 20px
     box-sizing border-box
-    margin-right 20px
+    &:not(:last-child)
+      margin-bottom 10px
+
+.expand-box
+  &__wrap
+    background-color #c6e2ff
+    overflow hidden
+  &__parent
+    width 200px
+    margin 0 40px
+    background-color #e1f3d8
+  &__part
+    background-color #fff
+  &
+    height 100px
+    border-radius 4px
+    background-color #415fcf
+    text-align center
+    color #fff
+    padding 40px 20px
+    box-sizing border-box
     &:not(:last-child)
       margin-bottom 10px
   
