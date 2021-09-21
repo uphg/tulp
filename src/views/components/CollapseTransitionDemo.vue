@@ -1,13 +1,13 @@
 <template>
-  <div class="collapse-transition-demo">
+  <div class="transition-demo">
     <TButton @click="show = !show">Click Me</TButton>
 
-    <div class="transition-box__wrap">
+    <div class="collapse-box__wrap">
       <CollapseTransition>
-        <div v-show="show" class="transition-box__parent">
-          <div class="transition-box__part">
-            <div class="transition-box">collapse-transition</div>
-            <div class="transition-box">collapse-transition</div>
+        <div v-show="show" class="collapse-box__parent">
+          <div class="collapse-box__part">
+            <div class="collapse-box">collapse-transition</div>
+            <div class="collapse-box">collapse-transition</div>
           </div>
         </div>
       </CollapseTransition>
@@ -45,7 +45,7 @@ export default defineComponent({
 </script>
 
 <style lang="stylus">
-.transition-box
+.collapse-box
   &__wrap
     background-color #c6e2ff
     overflow hidden
@@ -87,5 +87,5 @@ export default defineComponent({
     box-sizing border-box
     &:not(:last-child)
       margin-bottom 10px
-  
+
 </style>
