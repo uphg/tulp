@@ -5,9 +5,9 @@
 </template>
 
 <script lang="ts">
-import { Lib } from './utils/default-config'
+import { Lib } from '../../_utils/default-config'
 import { defineComponent } from 'vue'
-import './icons'
+import '../../_icons'
 
 export default defineComponent({
   name: `${Lib.Prefix}Icon`,
@@ -18,5 +18,5 @@ export default defineComponent({
 </script>
 
 <style lang="stylus">
-@require './style/components/icon'
+@require '../../_styles/components/icon'
 </style>

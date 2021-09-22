@@ -6,7 +6,7 @@
   >
 </template>
 <script lang="ts">
-import { Lib } from './utils/default-config'
+import { Lib } from '../../_utils/default-config'
 import { defineComponent, PropType } from 'vue'
 type TuInputValue = PropType<string | null>
 
@@ -27,5 +27,5 @@ export default defineComponent({
 </script>
 
 <style lang="stylus">
-@require './style/components/input'
+@require '../../_styles/components/input'
 </style>

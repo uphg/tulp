@@ -7,7 +7,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref, Ref } from 'vue'
-import Input from '../../lib/Input.vue'
+import { Input } from '../../lib/main'
 
 export default defineComponent({
   components: { Input },

@@ -6,8 +6,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { addClass, removeClass } from '../../utils/dom'
-import { Lib } from '../../utils/default-config'
+import { addClass, removeClass } from '../../_utils/dom'
+import { Lib } from '../../_utils/default-config'
 
 const TRANSITION_CLASS = 'tu-expand-transition--active'
 export default defineComponent({
@@ -79,5 +79,5 @@ export default defineComponent({
 </script>
 
 <style lang="stylus">
-@require '../../style/components/expand-transition'
+@require '../../_styles/components/expand-transition'
 </style>

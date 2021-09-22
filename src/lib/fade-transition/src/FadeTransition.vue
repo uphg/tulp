@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts">
-import { Lib } from '../../utils/default-config'
+import { Lib } from '../../_utils/default-config'
 import { defineComponent } from 'vue'
 export default defineComponent({
   name: `${Lib.Prefix}FadeTransition`
@@ -16,5 +16,5 @@ export default defineComponent({
 </script>
 
 <style lang="stylus">
-@require '../../style/components/fade-transition'
+@require '../../_styles/components/fade-transition'
 </style>

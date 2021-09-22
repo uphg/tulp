@@ -9,7 +9,7 @@
 <script lang="ts">
 import { defineComponent, inject, Ref } from 'vue'
 import { NavLinkType } from '../router'
-import { UpdateSidebarLinksFunc } from '../app-type'
+import { UpdateSidebarLinksFunc } from '../app/interface'
 
 export default defineComponent({
   name: 'NavLink',

@@ -1,6 +1,6 @@
-import { Button, Dialog } from '../main'
-import Icon from '../Icon.vue'
-import { createApp, nextTick } from 'vue'
+import { Button, Dialog } from '../../main'
+import { Icon } from '../../icon/index'
+import { createApp, nextTick, ref, h, onMounted } from 'vue'
 
 interface DialogOptions {
   type: string,
@@ -40,21 +40,29 @@ interface DialogApi {
  ] 
 
  const createDialog = (options: DialogOptions) => {
-  const { type, title, content, confirm, cancel } = options
+  const { type, title, content, cancel, confirm } = options
   const div = document.createElement('div')
   document.body.appendChild(div)
 
   const app = createApp({
-    data() {
-      return {
-        visible: false
+    setup() {
+      const visible = ref(false)
+      const handleCancel = () => {
+        visible.value = false
+        cancel?.()
       }
-    },
-    mounted() {
-      void nextTick(() => {
-        this.visible = true
+      const handleConfirm = () => {
+        visible.value = false
+        confirm?.()
+      }
+
+      onMounted(() => {
+        void nextTick(() => { visible.value = true })
       })
+
+      return { visible, handleCancel, handleConfirm }
     },
+    
     render() {
       return (
         <Dialog
@@ -75,25 +83,23 @@ interface DialogApi {
             ],
             default: () => content,
             footer: () => [
-              <Button
-                size="small"
-                onClick={() => {
-                  this.visible = false
-                  cancel?.()
-                }}
-              >
-                {() => '取消'}
-              </Button>,
-              <Button
-                size="small"
-                type="primary"
-                onClick={() => {
-                  this.visible = false
-                  confirm?.()
-                }}
-              >
-                {() => '确定'}
-              </Button>
+              h(
+                Button,
+                {
+                  size: 'small',
+                  onClick: this.handleCancel
+                },
+                { default: () => '取消' }
+              ),
+              h(
+                Button,
+                {
+                  type: 'primary',
+                  size: 'small',
+                  onClick: this.handleConfirm
+                },
+                { default: () => '确定' }
+              )
             ],
           }}
         </Dialog>

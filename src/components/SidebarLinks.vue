@@ -17,7 +17,7 @@
 import { defineComponent, inject, onMounted, Ref } from 'vue'
 import { useRoute } from 'vue-router'
 import SidebarLink from './SidebarLink.vue'
-import { UpdateSidebarLinksFunc } from '../app-type'
+import { UpdateSidebarLinksFunc } from '../app/interface'
 import { NavLinkType } from '../router';
 
 export default defineComponent({

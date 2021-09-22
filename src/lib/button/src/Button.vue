@@ -8,7 +8,7 @@
     }"
     ref="button"
     :type="nativeType"
-    @click="triggerWave"
+    @click="handleClick"
   >
     <ExpandTransition>
       <span
@@ -40,13 +40,13 @@
   </button>
 </template>
 <script lang="ts">
-import { Lib } from '../../utils/default-config'
+import { Lib } from '../../_utils/default-config'
 import { defineComponent, PropType } from 'vue';
-import { useTriggerWave } from '../../useTriggerWave'
+import { useTriggerWave } from '../../_mixins/use-trigger-wave'
 import { ExpandTransition } from '../../expand-transition/index'
 import { FadeTransition } from '../../fade-transition/index'
 import LoadingIcon from './LoadingIcon.vue'
-import Icon from '../../Icon.vue'
+import { Icon } from '../../icon/index'
 
 export default defineComponent({
   name: `${Lib.Prefix}Button`,
@@ -83,13 +83,16 @@ export default defineComponent({
     disabled: Boolean,
     text: Boolean
   },
-  setup() {
+  setup(props) {
     const { isWave, triggerWave } = useTriggerWave()
-    return { isWave, triggerWave }
+    const handleClick = () => {
+      triggerWave()
+    }
+    return { isWave, handleClick }
   }
 })
 </script>
 
 <style lang="stylus">
-@require '../../style/components/button'
+@require '../../_styles/components/button'
 </style>

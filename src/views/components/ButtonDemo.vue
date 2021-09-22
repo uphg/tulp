@@ -3,17 +3,17 @@
     <h2>原生按钮</h2>
     <div>
       <button
-        @focus="onFocus(), onFocus2(), onFocus3()"
-        @blur="onBlur(), onBlur2(), onBlur3()"
-        @click="onClick(), onClick2(), onClick3()"
+        @focus="onFocus($event), onFocus2($event), onFocus3($event)"
+        @blur="onBlur($event), onBlur2($event), onBlur3($event)"
+        @click="onClick($event), onClick2($event), onClick3($event)"
       >普通按钮</button>
     </div>
     <h2>Button 组件示例</h2>
     <div style="margin-top: 10px;">
       <Button
-        @focus="onFocus(), onFocus2(), onFocus3()"
-        @blur="onBlur(), onBlur2(), onBlur3()"
-        @click="onClick(), onClick2(), onClick3()"
+        @focus="onFocus($event), onFocus2($event), onFocus3($event)"
+        @blur="onBlur($event), onBlur2($event), onBlur3($event)"
+        @click="onClick($event), onClick2($event), onClick3($event)"
       >默认按钮</Button>
       <Button type="primary" @click="onClick">主要按钮</Button>
       <Button type="success" @click="onClick">成功按钮</Button>

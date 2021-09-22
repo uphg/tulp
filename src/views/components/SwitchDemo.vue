@@ -6,9 +6,9 @@
     <Switch v-model:value="value" />
   </div>
 </template>
-<script>
+<script lang="ts">
 import { defineComponent, ref } from 'vue'
-import Switch from '../../lib/Switch.vue'
+import { Switch } from '../../lib/main'
 export default defineComponent({
   components: { Switch },
   setup() {

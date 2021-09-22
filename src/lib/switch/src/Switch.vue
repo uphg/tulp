@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue"
-import { useTriggerWave } from "./useTriggerWave"
+import { useTriggerWave } from "../../_mixins/use-trigger-wave"
 
 export default defineComponent({
   props: {
@@ -34,5 +34,5 @@ export default defineComponent({
 </script>
 
 <style lang="stylus">
-@require './style/components/switch'
+@require '../../_styles/components/switch'
 </style>

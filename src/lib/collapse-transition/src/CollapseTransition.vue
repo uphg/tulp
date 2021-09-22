@@ -6,8 +6,8 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { addClass, removeClass, getStyle } from '../../utils/dom'
-import { Lib } from '../../utils/default-config'
+import { addClass, removeClass, getStyle } from '../../_utils/dom'
+import { Lib } from '../../_utils/default-config'
 
 export default defineComponent({
   name: `${Lib.Prefix}CollapseTransition`,
@@ -130,5 +130,5 @@ export default defineComponent({
 </script>
 
 <style lang="stylus">
-@require '../../style/components/collapse-transition'
+@require '../../_styles/components/collapse-transition'
 </style>

@@ -9,9 +9,9 @@ import {
   toRef,
   PropType
 } from 'vue';
-import '../style/components/dialog.styl'
-import { Lib } from '../utils/default-config'
-import { offBodyScroll, onBodyScroll } from '../utils/body'
+import '../../_styles/components/dialog.styl'
+import { Lib } from '../../_utils/default-config'
+import { offBodyScroll, onBodyScroll } from '../../_utils/body'
 
 export default defineComponent({
   name: `${Lib.Prefix}Dialog`,

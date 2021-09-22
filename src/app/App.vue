@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { defineComponent, provide, readonly, ref, onMounted, nextTick } from 'vue'
-import { routes, router, NavLinkType } from './router/index'
+import { routes, router, NavLinkType } from '../router/index'
 
 export default defineComponent({
   name: 'App',
