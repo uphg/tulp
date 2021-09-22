@@ -41,9 +41,8 @@
 </template>
 <script lang="ts">
 import { Lib } from '../../utils/default-config'
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
 import { useTriggerWave } from '../../useTriggerWave'
-import { TButtonType, TButtonNativeType } from './interface'
 import { ExpandTransition } from '../../expand-transition/index'
 import { FadeTransition } from '../../fade-transition/index'
 import LoadingIcon from './LoadingIcon.vue'
@@ -59,34 +58,22 @@ export default defineComponent({
   },
   props: {
     type: {
-      type: String as TButtonType,
+      type: String as PropType<'default' | 'primary' | 'success' | 'warning' | 'info' | 'error'>,
       default: 'default',
       validator: (value: string) => {
-        return [
-          'default',
-          'primary',
-          'success',
-          'warning',
-          'info',
-          'error'
-        ].includes(value)
+        return ['default', 'primary', 'success', 'warning', 'info', 'error'].includes(value)
       }
     },
     size: {
-      type: String,
+      type: String as PropType<'' | 'large' | 'medium' | 'small'>,
       validator: (value: string) => {
-        return [
-          '',
-          'large',
-          'medium',
-          'small',
-        ].includes(value)
+        return ['', 'large', 'medium', 'small'].includes(value)
       }
     },
     icon: String,
     loadingIcon: String,
     nativeType: {
-      type: String as TButtonNativeType,
+      type: String as PropType<'button' | 'submit' | 'reset'>,
       default: 'button',
       validator: (value: string) => {
         return ['button', 'submit', 'reset'].includes(value)

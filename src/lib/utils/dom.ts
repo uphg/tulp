@@ -34,26 +34,6 @@ export const removeClass = (el: Element, name: string) => {
   if (!el.classList) {
     el.className = trim(oldClass)
   }
-} 
-
-export const style = (el: HTMLElement) => {
-  const styles = window.getComputedStyle(el, null)
-  console.log('styles')
-  console.log(styles)
-  const stylesKey = [
-    'width', 'height',
-    'paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight',
-    'marginTop', 'marginBottom', 'marginLeft', 'marginRight',
-  ]
-
-  const stylesMap: {[key: string]: string} = { }
-
-  stylesKey.forEach((key) => {
-    stylesMap[key] = (el.style[key as keyof CSSStyleDeclaration] || styles[key as keyof CSSStyleDeclaration] || null) as string
-  })
-
-  return stylesMap
-  // const Attributes = window.getComputedStyle(el, null)
 }
 
 export const getStyle = (el: Element) => {
