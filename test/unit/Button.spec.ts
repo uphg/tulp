@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import Button from '../../src/lib/button/src/Button.vue'
+import { Button } from '../../src/lib/index'
 
 describe('Button', () => {
   it('create', () => {
@@ -21,6 +21,20 @@ describe('Button', () => {
       props: { type: 'primary' },
     })
     expect(wrapper.classes()).toContain('tu-button--primary')
+  })
+
+  it('size', () => {
+    const wrapper = mount(Button, {
+      props: { size: 'large' }
+    })
+    expect(wrapper.classes()).toContain('tu-button--large')
+  })
+
+  it('icon', () => {
+    const wrapper = mount(Button, {
+      props: { size: 'close' }
+    })
+    expect(wrapper.find('.tu-icon-close').exists()).toBeTruthy()
   })
 
   it('nativeType', () => {
