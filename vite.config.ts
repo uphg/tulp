@@ -5,16 +5,14 @@ const path = require('path') as any
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueJsx({
-    transformOn: true
-  })],
+  plugins: [vue(), vueJsx()],
   base: '/tulp/',
   build: {
-    // cssCodeSplit: true, // 使用 js 模块化 css 代码
+    // cssCodeSplit: false, // 使用 js 模块化 css 代码
     lib: {
-      entry: path.resolve(__dirname, 'src/lib/main.ts'),
-      name: 'MyLib',
-      fileName: (format) => `lib/my-lib.${format}.js`
+      entry: path.resolve(__dirname, 'src/lib/index.ts'),
+      name: 'tulp-ui', // 暴露的全局变量
+      fileName: (format) => `index.${format}.js`
     },
     rollupOptions: {
       // 确保外部化处理那些你不想打包进库的依赖
