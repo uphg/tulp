@@ -7,12 +7,16 @@
 <script lang="ts">
 import { Lib } from '../../_utils/default-config'
 import { defineComponent } from 'vue'
-import '../../_icons'
+// import '../../_icons'
+import { useIcons } from '../../_icons/use-icons'
 
 export default defineComponent({
   name: `${Lib.Prefix}Icon`,
   props: {
     name: String 
+  },
+  setup() {
+    useIcons(window)
   }
 })
 </script>
