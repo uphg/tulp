@@ -30,18 +30,18 @@ describe('Button', () => {
     expect(wrapper.classes()).toContain('tu-button--large')
   })
 
-  // it('icon', () => {
-  //   const wrapper = mount(Button, {
-  //     props: { size: 'close' }
-  //   })
-  //   expect(wrapper.find('.tu-icon-close').exists()).toBeTruthy()
-  // })
+  it('icon', () => {
+    const wrapper = mount(Button, {
+      props: { icon: 'close' }
+    })
+    expect(wrapper.find('.tu-icon-close').exists()).toBeTruthy()
+  })
 
-  // it('nativeType', () => {
-  //   const wrapper = mount(Button, {
-  //     props: { nativeType: 'submit' },
-  //   })
-  //   expect(wrapper.attributes('type')).toBe('submit')
-  // })
+  it('nativeType', () => {
+    const wrapper = mount(Button, {
+      props: { nativeType: 'submit' },
+    })
+    expect(wrapper.attributes('type')).toBe('submit')
+  })
 })
 
