@@ -13,7 +13,6 @@ module.exports = {
   transform: {
     '^.+\\.ts$': 'ts-jest',
     '^.+\\.vue$': 'vue-jest',
-    // ".+\\.(css|styl|less|sass|scss)$": "jest-css-modules-transform",
     ".+\\.(css|styl)$": "jest-css-modules-transform",
     '^.+\\.(j|t)sx?$': 'babel-jest'
   },

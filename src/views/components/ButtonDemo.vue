@@ -30,6 +30,10 @@
       <Button :loading="loading" @click="loading = !loading">默认按钮</Button>
       <Button icon="success" :loading="loading" @click="loading = !loading">默认按钮</Button>
     </div>
+    <h2>测试 disabled 状态</h2>
+    <div>
+      <Button disabled>默认按钮</Button>
+    </div>
   </div>
 </template>
 <script lang="ts">

@@ -73,9 +73,9 @@ interface DialogApi {
           {{
             header: () => [
               <Icon class="prefix-icon" name={type} />,
-              <span class="tu-dialog-title">{() => title}</span>,
+              <span class="tu-dialog__title">{() => title}</span>,
               <span
-                class="tu-dialog-close"
+                class="tu-dialog__close"
                 onClick={() => {
                   this.visible = false
                 }}

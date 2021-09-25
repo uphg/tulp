@@ -9,6 +9,7 @@
     ref="button"
     :type="nativeType"
     @click="handleClick"
+    :disabled="disabled"
   >
     <ExpandTransition>
       <span
@@ -71,7 +72,6 @@ export default defineComponent({
       }
     },
     icon: String,
-    loadingIcon: String,
     nativeType: {
       type: String as PropType<'button' | 'submit' | 'reset'>,
       default: 'button',

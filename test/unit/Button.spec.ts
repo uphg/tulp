@@ -43,5 +43,21 @@ describe('Button', () => {
     })
     expect(wrapper.attributes('type')).toBe('submit')
   })
+
+  it('loading', () => {
+    const wrapper = mount(Button, {
+      props: { loading: true }
+    })
+    expect(wrapper.find('.tu-button__loading-icon').exists()).toBeTruthy()
+  })
+
+  it('disabled', async () => {
+    const wrapper = mount(Button, {
+      props: { disabled: true }
+    })
+    /* 测试 disabled 样式，暂时省略 */
+    await wrapper.trigger('click')
+    expect(wrapper.emitted('click')).toBeUndefined()
+  })
 })
 
