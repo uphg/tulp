@@ -6,7 +6,7 @@
     "build": "vue-tsc --noEmit --skipLibCheck && vite build && stylus --compress src/lib/_styles/components --out dist/styles && sh scripts/set-file.sh",
     "build:docs": "vue-tsc --noEmit --skipLibCheck && vite build --config docs-config.ts",
     "serve": "vite preview",
-    "test": "jest test --watch"
+    "test": "jest test"
   },
   "dependencies": {
     "vue": "^3.2.6",
