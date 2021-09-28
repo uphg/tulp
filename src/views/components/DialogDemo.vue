@@ -59,7 +59,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, onMounted, ref } from 'vue'
 import { Button, Dialog, useDialog } from '../../lib/index'
 
 export default defineComponent({
