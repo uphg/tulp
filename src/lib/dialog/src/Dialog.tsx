@@ -7,6 +7,8 @@ import {
   renderSlot,
   watch,
   toRef,
+  h,
+  Fragment,
   PropType
 } from 'vue';
 import '../../_styles/components/dialog.styl'
