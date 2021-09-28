@@ -6,4 +6,5 @@ dist-docs
 *.local
 .idea
 
+coverage
 yarn.lock
