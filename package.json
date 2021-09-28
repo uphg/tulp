@@ -1,10 +1,19 @@
 {
   "name": "tulp-ui",
   "version": "0.0.1",
+  "files": ["dist"],
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit --skipLibCheck && vite build && stylus --compress src/lib/_styles/components --out dist/styles && sh scripts/set-file.sh",
-    "build:docs": "vue-tsc --noEmit --skipLibCheck && vite build --config docs-config.ts",
+    "build:docs": "vue-tsc --noEmit --skipLibCheck && vite build --config vite.config.docs.ts",
     "serve": "vite preview",
     "test": "jest test --watch"
   },
