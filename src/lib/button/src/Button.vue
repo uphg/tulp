@@ -29,7 +29,7 @@
         </FadeTransition>
       </span>
     </ExpandTransition>
-    <span class="tu-button__content">
+    <span class="tu-button__content" v-if="$slots.default">
       <slot />
     </span>
     <span class="tu-button__border"></span>
@@ -71,7 +71,10 @@ export default defineComponent({
         return ['', 'large', 'medium', 'small'].includes(value)
       }
     },
-    icon: String,
+    icon: {
+      type: String,
+      default: ''
+    },
     nativeType: {
       type: String as PropType<'button' | 'submit' | 'reset'>,
       default: 'button',

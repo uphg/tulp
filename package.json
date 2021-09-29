@@ -1,14 +1,17 @@
 {
   "name": "tulp-ui",
   "version": "0.0.1",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
   "exports": {
     ".": {
       "import": "./dist/index.es.js",
       "require": "./dist/index.umd.js"
-    }
+    },
+    "./styles/*": "./dist/styles/*"
   },
   "scripts": {
     "dev": "vite",
@@ -18,7 +21,7 @@
     "test": "jest test"
   },
   "dependencies": {
-    "vue": "^3.2.6",
+    "vue": "3.2.19",
     "vue-router": "4.0.10"
   },
   "devDependencies": {
