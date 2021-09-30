@@ -7,6 +7,7 @@ const path = require('path') as any
 export default defineConfig({
   plugins: [vue(), vueJsx()],
   base: '/tulp/',
+  publicDir: process.env.NODE_ENV === 'production' ? false : 'public',
   build: {
     // cssCodeSplit: false, // 使用 js 模块化 css 代码
     lib: {
