@@ -1,32 +1,40 @@
-<template>
-  <router-link
-    class="nav-link"
-    :class="{ 'nav-link-active': activeClass }"
-    :to="`${link.path === '/' ? '' : link.path}/${link.children[0].path}`"
-    @click="clickLinks({ children: link.children })"
-  >{{ link.meta && link.meta.title || link.name }}</router-link>
-</template>
-<script lang="ts">
-import { defineComponent, inject, Ref } from 'vue'
-import { NavLinkType } from '../router'
-import { UpdateSidebarLinksFunc } from '../app/interface'
+<script setup lang="ts">
+import { inject, computed } from 'vue'
+import { useRoute } from 'vue-router'
 
-export default defineComponent({
-  name: 'NavLink',
-  props: {
-    link: {
-      type: Object,
-      default: () => ({})
-    },
-    activeClass: Boolean
+const route = useRoute()
+
+const props = defineProps({
+  link: {
+    type: Object,
+    default: () => ({})
   },
-  setup () {
-    const updateSidebarLinks = inject<UpdateSidebarLinksFunc>('updateSidebarLinks')
-    const clickLinks = ({ children }: { children: NavLinkType[] }) => {
-      updateSidebarLinks && updateSidebarLinks(children)
-    }
-
-    return { clickLinks }
-  }
+  active: Boolean
 })
+
+const setSidebar: any = inject('setSidebar')
+
+const clickLinks = (param: any) => {
+  if (props.link.name === 'Home') {
+    setSidebar([])
+  } else {
+    setSidebar(param)
+  }
+}
+const getLink = computed(() => {
+  const link = props.link
+  return `${link?.path === '/' ? '' : link.path}/${link.items[0].items[0].path}`
+})
+
 </script>
+
+<template>
+  <div class="nav-link-item">
+    <router-link
+      class="nav-link"
+      :class="{ 'nav-link-active': active }"
+      :to="getLink"
+      @click="clickLinks(link.items)"
+    >{{ link?.meta?.title || link.name }}</router-link>
+  </div>
+</template>

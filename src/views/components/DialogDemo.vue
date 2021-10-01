@@ -60,7 +60,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue'
-import { Button, Dialog, useDialog } from 'src/lib/index'
+import { Button, Dialog, useDialog } from '../../lib/index'
 
 export default defineComponent({
   components: { Button, Dialog },

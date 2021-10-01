@@ -1,54 +1,12 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
-import Layout from '../Layout/Layout.vue'
-import HomeLayout from '../Layout/HomeLayout.vue'
+import { createRouter, createWebHashHistory } from 'vue-router' // RouteRecordRaw
 import NotFound from '../Layout/404.vue'
-import { docs } from './docs'
-import { components } from './components'
-import Home from '../views/Home.vue'
-import { DefineComponent, Component } from 'vue'
-
-export interface NavLinkType {
-  path: string;
-  component: DefineComponent | Component;
-  name?: string;
-  redirect?: string;
-  hidden?: boolean;
-  meta?: { [key: string]: string };
-  children?: NavLinkType[]
-}
+import { navbarRoute } from './navbar'
+import { filterNavbar } from '../utils/filter-route'
 
 const history = createWebHashHistory()
 
-export const routes: NavLinkType[] = [
-  {
-    path: '/',
-    component: HomeLayout ,
-    redirect: '/home',
-    meta: { title: '首页' },
-    children: [
-      {
-        path: 'home',
-        name: 'Home',
-        component: Home,
-        meta: { title: '首页' },
-        hidden: true
-      }
-    ]
-  },
-  {
-    path: '/docs',
-    name: 'Docs',
-    component: Layout,
-    meta: { title: '文档' },
-    children: docs
-  },
-  {
-    path: '/components',
-    name: 'Components',
-    component: Layout,
-    meta: { title: '组件' },
-    children: components
-  },
+export const routes = [
+  ...filterNavbar(navbarRoute),
   {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',

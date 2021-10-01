@@ -1,5 +1,1 @@
-import { NavLinkType } from '../router';
-
-export interface UpdateSidebarLinksFunc {
-  (value: NavLinkType[]): void;
-}
+export type SetSidebarVisibleFun = (value: boolean) => void

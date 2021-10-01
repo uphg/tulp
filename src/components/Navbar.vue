@@ -1,7 +1,22 @@
+<script setup lang="ts">
+import { inject, Ref } from 'vue'
+import { SetSidebarVisibleFun } from '../app/interface'
+import NavLinks from './Navlinks.vue'
+
+const sidebarVisible = inject<Ref<boolean>>('sidebarVisible')
+const setSidebarVisible = inject<SetSidebarVisibleFun>('setSidebarVisible')
+const toggleSidebar = (): void => {
+  setSidebarVisible?.(Boolean(!(sidebarVisible?.value)))
+}
+</script>
+
 <template>
   <header class="navbar" @click.stop>
     <div class="navbar-left">
-      <button class="sidebar-button" @click="toggleSidebar">{{ sidebarVisible ? '关闭' : '开启' }}</button>
+      <button
+        class="sidebar-button"
+        @click="toggleSidebar"
+      >{{ sidebarVisible ? '关闭' : '开启' }}</button>
       <router-link
         class="logo-link"
         to="/home"
@@ -10,23 +25,7 @@
     <NavLinks />
   </header>
 </template>
-<script lang="ts">
-import { defineComponent, inject, Ref } from 'vue'
-import NavLinks from './NavLinks.vue'
 
-export default defineComponent({
-  components: { NavLinks },
-  setup() {
-    const sidebarVisible = inject<Ref<boolean>>('sidebarVisible')
-    const updateSidebarVisible = inject<(value: boolean)=>void>('updateSidebarVisible')
-    const toggleSidebar = () => {
-      updateSidebarVisible && updateSidebarVisible(Boolean(!(sidebarVisible && sidebarVisible.value)))
-    }
-
-    return { sidebarVisible, toggleSidebar }
-  }
-})
-</script>
 <style lang="stylus">
 .navbar {
   padding: 12px 24px;
@@ -39,21 +38,13 @@ export default defineComponent({
   .nav-links {
     display: flex;
   }
-  .nav-item:not(:first-child) {
-    margin-left: 10px;
-  }
-  .nav-link {
-    color: inherit;
-    text-decoration: none;
-    padding: 0 10px;
-  }
-  .nav-link-active {
-    color: #243457;
-  }
   .navbar-left {
+    box-sizing: border-box;
     width: calc(320px - 24px);
+    padding-right: 10px;
     display: flex;
     align-items: center;
+    transition: width 2s;
   }
   .logo-link {
     color: #262626;
@@ -79,6 +70,9 @@ export default defineComponent({
     }
     .nav-links {
       display: none;
+    }
+    .navbar-left {
+      width: auto;
     }
   }
 }

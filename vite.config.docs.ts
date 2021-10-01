@@ -10,7 +10,7 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        find: 'src',
+        find: '~src',
         replacement: path.resolve(__dirname, './src')
       }
     ]

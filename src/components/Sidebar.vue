@@ -1,23 +1,30 @@
+<script setup lang="ts">
+import { inject } from 'vue'
+import NavLinks from "./NavLinks.vue";
+const sidebar: any = inject('sidebar')
+</script>
+
 <template>
   <aside class="sidebar" @click.stop>
     <NavLinks />
-    <SidebarLinks />
+    <hr>
+    <div
+      class="sidebar-links"
+      v-for="(item, index) in sidebar"
+      :key="index"
+    >
+      <h2>{{ item.text }}</h2>
+      <div
+        class="sidebar-link"
+        v-for="(route, i) in item.items"
+        :key="`sidebar-link-${String(i)}`"
+      >
+        <span>{{ route.meta.title }}</span>
+      </div>
+    </div>
   </aside>
 </template>
-<script lang="ts">
-import { defineComponent, inject } from 'vue'
-import NavLinks from './NavLinks.vue'
-import SidebarLinks from './SidebarLinks.vue'
 
-export default defineComponent({
-  components: { NavLinks, SidebarLinks },
-  setup () {
-    const navbarLinks = inject('navbarLinks')
-
-    return { navbarLinks }
-  }
-})
-</script>
 <style lang="stylus">
 .sidebar {
   box-sizing: border-box;
@@ -28,31 +35,17 @@ export default defineComponent({
   bottom: 0;
   z-index: 1;
   border-right: 1px solid #eaecef;
-  background-color: #fff;
-  &.open {
+  background-color: #eee;
+  transition: transform .2s ease;
+  &.no-sidebar {
+    // display: none;
+    transform: translateX(-100%);
+  }
+  &.is-open {
     transform: translateX(0);
-    transition: transform .2s ease;
-  }
-  .nav-links {
-    display: none;
-    padding: 18px 24px;
-    border-bottom: 1px solid #eaecef;
-  }
-  .nav-item {
-    padding: 6px 0;
-  }
-  .nav-link {
-    font-size: 18px;
-    font-weight: bold;
-    color: inherit;
-    text-decoration: inherit;
-    &.nav-link-active {
-      color: #243457;
-    }
   }
   @media (max-width: 719px) {
     transform: translateX(-100%);
-    transition: transform .2s ease;
     .nav-links {
       display: block;
     }
