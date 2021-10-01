@@ -37,7 +37,7 @@
   </div>
 </template>
 <script lang="ts">
-import { Button } from '../../lib/index'
+import { Button } from 'src/lib/index'
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   components: { Button },

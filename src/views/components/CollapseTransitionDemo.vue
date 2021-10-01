@@ -34,7 +34,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { Button, CollapseTransition, ExpandTransition } from '../../lib/index'
+import { Button, CollapseTransition, ExpandTransition } from 'src/lib/index'
 
 export default defineComponent({
   components: { TButton: Button, CollapseTransition, ExpandTransition },

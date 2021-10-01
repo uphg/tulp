@@ -8,7 +8,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { Switch } from '../../lib/index'
+import { Switch } from 'src/lib/index'
 export default defineComponent({
   components: { Switch },
   setup() {
