@@ -1,28 +1,13 @@
 <script setup lang="ts">
-import { inject } from 'vue'
 import NavLinks from "./NavLinks.vue";
-import { SidebarType } from '~src/router/interface'
-const sidebar = inject('sidebar') as SidebarType[]
+import SidebarLinks from './SidebarLinks.vue'
 </script>
 
 <template>
   <aside class="sidebar" @click.stop>
     <NavLinks />
     <hr>
-    <div
-      class="sidebar-links"
-      v-for="(item, index) in sidebar"
-      :key="index"
-    >
-      <h2>{{ item.text }}</h2>
-      <div
-        class="sidebar-link"
-        v-for="(route, i) in item.items"
-        :key="`sidebar-link-${String(i)}`"
-      >
-        <span>{{ route.meta?.title }}</span>
-      </div>
-    </div>
+    <SidebarLinks />
   </aside>
 </template>
 
