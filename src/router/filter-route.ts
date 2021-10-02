@@ -12,7 +12,7 @@ export const filterSidebar = (sidebars: SidebarType[]) => {
     }
   }
   getRouters(sidebars)
-  return newRoutes
+  return newRoutes as SidebarItemType[]
 }
 
 export const filterNavbar = (navbars: NavBarType[]) => {
