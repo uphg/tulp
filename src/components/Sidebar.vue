@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { inject } from 'vue'
 import NavLinks from "./NavLinks.vue";
-const sidebar: any = inject('sidebar')
+import { SidebarType } from '~src/router/interface'
+const sidebar = inject('sidebar') as SidebarType[]
 </script>
 
 <template>
@@ -19,7 +20,7 @@ const sidebar: any = inject('sidebar')
         v-for="(route, i) in item.items"
         :key="`sidebar-link-${String(i)}`"
       >
-        <span>{{ route.meta.title }}</span>
+        <span>{{ route.meta?.title }}</span>
       </div>
     </div>
   </aside>
