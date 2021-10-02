@@ -36,16 +36,15 @@ const sidebar = inject('sidebar') as SidebarType[]
   padding 10px 20px
 .sidebar-links-title
   color #909399
-  font-size 14px
-  padding 12px 0
+  font-size 13px
+  padding 14px 0
 .sidebar-link-item
-  font-size 16px
+  font-size 14px
   display flex
   padding 10px 18px
   color inherit
   text-decoration none
   border-radius 3px
-  background-color none
   transition background-color $_transition-time, color $_transition-time
   &:hover
     color $_color-primary

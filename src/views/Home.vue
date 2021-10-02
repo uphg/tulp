@@ -1,3 +1,7 @@
+<script lang="ts" setup>
+import { Button } from '../lib/index';
+</script>
+
 <template>
   <div class="home-content">
     <h1 class="home-title">
@@ -12,26 +16,18 @@
     </div>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent } from 'vue';
-import { Button } from '../lib/index';
 
-export default defineComponent({
-  components: { Button }
-})
-</script>
 <style lang="stylus">
 .home-content {
   text-align: center;
   margin-top: -16vh;
   .home-title{
-    font-weight: 700; 
-    font-size: 100px;
+    font-size: 7em;
+    font-weight: bold;
     // font-family: https://fonts.google.com/specimen/Bangers#standard-styles
-    font: 8em/1 Bangers, sans-serif;
+    font-family: Bangers, sans-serif;
     text-align: center;
-    text-shadow: -.025em -.025em 0 #444, .025em -.025em 0 #444, -.025em .025em 0 #444, .025em .025em 0 #444;
-    color: #fff;
+    text-shadow: 6px 6px 0 #ffc947;
     margin: 0 0 20px;
     transition: font-size 0.25s;
   }
@@ -42,7 +38,7 @@ export default defineComponent({
   @media (max-width: 719px) {
     .home-title {
       font-size: 60px;
-      // text-shadow: 3px 3px 0 #ffc947;
+      text-shadow: 3px 3px 0 #ffc947;
     }
   }
 }
