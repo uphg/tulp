@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { inject, computed } from 'vue'
+import { inject, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
 
 const props = defineProps({
-  link: {
+  item: {
     type: Object,
     default: () => ({})
   },
@@ -15,15 +15,17 @@ const props = defineProps({
 const setSidebar: any = inject('setSidebar')
 
 const clickLinks = (param: any) => {
-  if (props.link.name === 'Home') {
-    setSidebar([])
-  } else {
+  if (props.item.name !== 'Home') {
     setSidebar(param)
+  } else {
+    setSidebar([])
   }
 }
-const getLink = computed(() => {
-  const link = props.link
-  return `${link?.path === '/' ? '' : link.path}/${link.items[0].items[0].path}`
+const link = computed(() => {
+  const item = props.item
+  console.log('item')
+  console.log(item)
+  return `${item?.path === '/' ? '' : item.path}/${item.items[0].items[0].path}`
 })
 
 </script>
@@ -33,8 +35,8 @@ const getLink = computed(() => {
     <router-link
       class="nav-link"
       :class="{ 'nav-link-active': active }"
-      :to="getLink"
-      @click="clickLinks(link.items)"
-    >{{ link?.meta?.title || link.name }}</router-link>
+      :to="link"
+      @click="clickLinks(item.items)"
+    >{{ item?.meta?.title || item.name }}</router-link>
   </div>
 </template>

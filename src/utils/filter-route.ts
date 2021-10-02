@@ -18,6 +18,7 @@ export const filterNavbar = (navbars: any) => {
   const newNavbar: any = []
   navbars.forEach(({
     path,
+    name,
     component,
     redirect,
     meta,
@@ -26,6 +27,7 @@ export const filterNavbar = (navbars: any) => {
     newNavbar.push({
       path,
       ...(redirect ? { redirect } : {}),
+      name,
       component,
       meta,
       children: filterSidebar(items),

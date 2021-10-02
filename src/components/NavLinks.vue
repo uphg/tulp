@@ -9,7 +9,7 @@ import { navbarRoute } from '../router/navbar/index'
     <NavLink
       v-for="(item, index) in navbarRoute"
       :key="`nav-link-${ String(index) }`"
-      :link="item"
+      :item="item"
     />
   </div>
 </template>
