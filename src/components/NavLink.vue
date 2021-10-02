@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { inject, computed, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
-
-const route = useRoute()
+import { inject, computed } from 'vue'
+import { SidebarType } from '~src/router/interface'
+import { SetSidebarType } from '~src/app/use-set-sidebar'
 
 const props = defineProps({
   item: {
@@ -12,19 +11,17 @@ const props = defineProps({
   active: Boolean
 })
 
-const setSidebar: any = inject('setSidebar')
+const setSidebar = inject<SetSidebarType>('setSidebar')
 
-const clickLinks = (param: any) => {
+const clickLinks = (param: SidebarType) => {
   if (props.item.name !== 'Home') {
-    setSidebar(param)
+    setSidebar?.(param)
   } else {
-    setSidebar([])
+    setSidebar?.([])
   }
 }
 const link = computed(() => {
   const item = props.item
-  console.log('item')
-  console.log(item)
   return `${item?.path === '/' ? '' : item.path}/${item.items[0].items[0].path}`
 })
 

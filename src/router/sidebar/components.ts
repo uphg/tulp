@@ -5,8 +5,9 @@ import DialogDemo from '../../views/components/DialogDemo.vue'
 import JsxDemo from '../../views/components/JsxDemo'
 import IconDemo from '../../views/components/IconDemo.vue'
 import CollapseTransitionDemo from '../../views/components/CollapseTransitionDemo.vue'
+import { SidebarType } from '../interface'
 
-export const components = [
+export const components: SidebarType[] = [
   {
     text: '基础组件',
     items: [

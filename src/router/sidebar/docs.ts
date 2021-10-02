@@ -1,7 +1,8 @@
 import Installation from '../../views/docs/Installation.vue'
 import ImportOnDemand from '../../views/docs/ImportOnDemand.vue'
+import { SidebarType } from '../interface'
 
-export const docs = [
+export const docs: SidebarType[] = [
   {
     text: '快速入门',
     items: [

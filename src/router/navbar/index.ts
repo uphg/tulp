@@ -1,8 +1,9 @@
 import Layout from '../../Layout/Layout.vue'
 import Home from '../../views/Home.vue'
 import { docs, components } from '../sidebar/index'
+import { NavBarType } from '../interface'
 
-export const navbarRoute: any = [
+export const navbarRoute: NavBarType[] = [
   {
     path: '/',
     component: Layout,

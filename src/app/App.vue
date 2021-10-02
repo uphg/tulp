@@ -6,6 +6,7 @@ import useSetSidebar from './use-set-sidebar'
 import { useRoute } from 'vue-router';
 import { navbarRoute } from '../router/navbar/index';
 import { find } from '~src/utils/find'
+import { NavBarType } from '~src/router/interface'
 
 const { setSidebarVisible } = useSidebarSwitch()
 const route = useRoute()
@@ -18,11 +19,12 @@ onMounted(() => {
 })
 
 router.beforeEach((to) => {
-  console.log('to')
-  console.log(to)
+  // 第一次加载非首页的页面
   if (sidebar.value.length < 1 && to.name !== 'Home') {
-    // 第一次加载非首页的页面
-    const currentNav = find(navbarRoute, ({ name }: any) => name === to.matched[0].name)
+    const currentNav = find<NavBarType>(
+      navbarRoute,
+      (item) => item.name === to.matched[0].name
+    ) as NavBarType
     setSidebar(currentNav.items)
   }
 })

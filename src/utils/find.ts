@@ -1,7 +1,10 @@
-export const find = (array: any, testFun: any) => {
-  for(const item of array) {
-    if(testFun(item)) {
-      return item
+export const find = <T>(
+  array: Array<T>,
+  testFun: (item: T, index?: number, array?: T[]) => boolean
+) => {
+  for (let i = 0; i < array.length; i++) {
+    if(testFun(array[i], i, array)) {
+      return array[i]
     }
   }
 }
