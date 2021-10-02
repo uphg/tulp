@@ -22,23 +22,29 @@ import SidebarLinks from './SidebarLinks.vue'
   border-right 1px solid #eaecef
   transition transform .2s ease
   background-color #fff
+  padding 16px 28px
   &.no-sidebar
-    transform translateX(-100%)
-
+    display none
   &.is-open
     transform translateX(0)
-
   .nav-links
+    padding 16px 10px
     display none
     flex-direction column
     border-bottom 1px solid #dcdfe6
     .nav-link-item
       &:not(:last-child)
         margin-right 0
-        margin-bottom 10px
-
+        margin-bottom 6px
+      .nav-link
+        line-height 1
+        height auto
+        padding 6px 10px
+    
   @media (max-width 719px)
     transform translateX(-100%)
+    &.no-sidebar
+      display block
     .nav-links
       display block
 </style>

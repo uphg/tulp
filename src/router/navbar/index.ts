@@ -29,7 +29,7 @@ export const navbarRoute: NavBarType[] = [
     path: '/docs',
     name: 'Docs',
     component: Layout,
-    meta: { title: '文档' },
+    meta: { title: '文档啊啊阿' },
     items: docs,
   },
   {

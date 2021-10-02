@@ -14,11 +14,13 @@ const sidebar = inject('sidebar') as SidebarType[]
     <div
       v-for="(sidebar, i) in item.items"
       :key="`sidebar-link-${String(i)}`"
-      :class="['sidebar-link', {
-        active: sidebar.name === $route.name
-      }]"
+      :class="['sidebar-link']"
     >
       <router-link
+        class="sidebar-link-item"
+        :class="{
+          active: sidebar.name === $route.name
+        }"
         :to="sidebar.path"
       >{{ sidebar.meta?.title }}</router-link>
     </div>
@@ -26,16 +28,27 @@ const sidebar = inject('sidebar') as SidebarType[]
 </template>
 
 <style lang="stylus">
+@require '../styles/variable'
 
 .sidebar-links
   display flex
   flex-direction column
 .sidebar-links-title
-  font-size 22px
-.sidebar-link
+  font-weight bold
+  font-size 18px
+  padding 12px 0
+.sidebar-link-item
+  font-size 16px
+  display flex
+  padding 10px 18px
   color inherit
   text-decoration none
-  &.active .router-link-active
-    color red
-
+  border-radius 3px
+  background-color none
+  transition background-color $_transition-time, color $_transition-time
+  &:hover
+    color $_color-primary
+  &.active
+    color $_color-primary
+    background-color #e8f3ff
 </style>

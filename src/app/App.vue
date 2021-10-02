@@ -1,22 +1,12 @@
 <script lang="ts" setup>
-import { onMounted } from 'vue'
 import { router } from '../router';
 import useSidebarSwitch from './use-sidebar-switch'
 import useSetSidebar from './use-set-sidebar'
-import { useRoute } from 'vue-router';
 import { navbarRoute } from '../router/navbar/index';
 import { find } from '~src/utils/find'
 import { NavBarType } from '~src/router/interface'
-
 const { setSidebarVisible } = useSidebarSwitch()
-const route = useRoute()
-
 const { sidebar, setSidebar } = useSetSidebar()
-
-onMounted(() => {
-  console.log('route')
-  console.log({...route})
-})
 
 router.beforeEach((to) => {
   // 第一次加载非首页的页面

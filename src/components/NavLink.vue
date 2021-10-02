@@ -41,17 +41,23 @@ const link = computed(() => {
 </template>
 
 <style lang="stylus">
+@require '../styles/variable'
+
 .nav-link-item
   &:not(:last-child)
     margin-right 10px
 .nav-link
+  box-sizing border-box
   color inherit
   text-decoration none
-  line-height 1
   display flex
-  padding 10px 20px
-  background-color #eee
+  line-height 60px
+  height 100%
+  transition color $_transition-time
+  padding $_nav-item-padding
+  position relative
+  &:hover
+    color $_color-primary
   &.nav-link-active
-    color red
-
+    color $_color-primary
 </style>

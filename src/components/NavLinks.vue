@@ -23,4 +23,5 @@ const currentName = computed(() => route.matched[0].name)
 .nav-links
   display flex
   box-sizing border-box
+  padding 0 10px
 </style>

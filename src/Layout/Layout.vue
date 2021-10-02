@@ -21,12 +21,18 @@ const isHome = computed(() => {
       }"
     />
     <main
-      :class="[!isHome ? 'page': 'home']"
+      v-if="!isHome"
+      class="page"
     >
-      <div
-        class="page-wrapper"
-        :class="[!isHome ? 'page-wrapper': 'home-wrapper']"
-      >
+      <div class="page-wrapper">
+        <router-view />
+      </div>
+    </main>
+    <main
+      v-else
+      class="home"
+    >
+      <div class="home-wrapper">
         <router-view />
       </div>
     </main>
@@ -47,8 +53,8 @@ const isHome = computed(() => {
   align-items: center;
 }
 .page {
-  padding-left: 320px;
   transition: padding .2s ease;
+  padding-left: 320px;
 }
 .page-wrapper {
   box-sizing: border-box;
