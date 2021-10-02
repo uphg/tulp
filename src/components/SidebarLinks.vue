@@ -33,9 +33,10 @@ const sidebar = inject('sidebar') as SidebarType[]
 .sidebar-links
   display flex
   flex-direction column
+  padding 10px 20px
 .sidebar-links-title
-  font-weight bold
-  font-size 18px
+  color #909399
+  font-size 14px
   padding 12px 0
 .sidebar-link-item
   font-size 16px

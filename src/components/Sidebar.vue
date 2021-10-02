@@ -22,7 +22,6 @@ import SidebarLinks from './SidebarLinks.vue'
   border-right 1px solid #eaecef
   transition transform .2s ease
   background-color #fff
-  padding 16px 28px
   &.no-sidebar
     display none
   &.is-open
