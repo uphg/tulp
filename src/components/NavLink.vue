@@ -30,10 +30,28 @@ const link = computed(() => {
 <template>
   <div class="nav-link-item">
     <router-link
-      class="nav-link"
-      :class="{ 'nav-link-active': active }"
+      :class="[
+        'nav-link',
+        { 'nav-link-active': active }
+      ]"
       :to="link"
       @click="clickLinks(item.items)"
     >{{ item?.meta?.title || item.name }}</router-link>
   </div>
 </template>
+
+<style lang="stylus">
+.nav-link-item
+  &:not(:last-child)
+    margin-right 10px
+.nav-link
+  color inherit
+  text-decoration none
+  line-height 1
+  display flex
+  padding 10px 20px
+  background-color #eee
+  &.nav-link-active
+    color red
+
+</style>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { inject, computed, onMounted, Ref } from 'vue'
+import { inject, computed, Ref } from 'vue'
 import { useRoute } from 'vue-router'
 import Navbar from '~src/components/Navbar.vue'
 import Sidebar from '~src/components/Sidebar.vue'
@@ -8,11 +8,6 @@ const sidebarVisible = inject<Ref<boolean>>('sidebarVisible')
 const route = useRoute()
 const isHome = computed(() => {
   return route.name === 'Home'
-})
-
-onMounted(() => {
-  console.log('route')
-  console.log()
 })
 </script>
 

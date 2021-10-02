@@ -10,7 +10,7 @@ const sidebar = inject('sidebar') as SidebarType[]
     v-for="(item, index) in sidebar"
     :key="`sidebar-links-${index}`"
   >
-    <h2>{{ item.text }}</h2>
+    <div class="sidebar-links-title">{{ item.text }}</div>
     <div
       v-for="(sidebar, i) in item.items"
       :key="`sidebar-link-${String(i)}`"
@@ -26,7 +26,16 @@ const sidebar = inject('sidebar') as SidebarType[]
 </template>
 
 <style lang="stylus">
+
+.sidebar-links
+  display flex
+  flex-direction column
+.sidebar-links-title
+  font-size 22px
 .sidebar-link
+  color inherit
+  text-decoration none
   &.active .router-link-active
     color red
+
 </style>
