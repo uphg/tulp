@@ -35,12 +35,6 @@ import { Button } from '../lib/index';
     color: #476582;
     margin-bottom: 20px;
   }
-  @media (max-width: 719px) {
-    .home-title {
-      font-size: 60px;
-      text-shadow: 3px 3px 0 #ffc947;
-    }
-  }
 }
 
 </style>
