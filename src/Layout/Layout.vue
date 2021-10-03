@@ -1,14 +1,22 @@
 <script setup lang="ts">
-import { inject, computed, Ref } from 'vue'
+import { inject, computed, onMounted, watch, nextTick, Ref } from 'vue'
 import { useRoute } from 'vue-router'
 import Navbar from '~src/components/Navbar.vue'
 import Sidebar from '~src/components/Sidebar.vue'
+import Prism from 'prismjs'
 
 const sidebarVisible = inject<Ref<boolean>>('sidebarVisible')
 const route = useRoute()
 const isHome = computed(() => {
   return route.name === 'Home'
 })
+
+watch(route, () => {
+  nextTick(() => {
+    Prism.highlightAll()
+  })
+})
+
 </script>
 
 <template>

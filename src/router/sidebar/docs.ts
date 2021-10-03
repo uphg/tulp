@@ -1,4 +1,4 @@
-import Installation from '../../views/docs/Installation.vue'
+import Installation from '~src/views/docs/installation.md'
 import ImportOnDemand from '../../views/docs/ImportOnDemand.vue'
 import { SidebarType } from '../interface'
 

@@ -10,7 +10,10 @@ export default {
     vue({
       include: [/\.vue$/, /\.md$/], // 添加 markdown 文件支持
     }),
-    Markdown(),
+    Markdown({
+      // Class names for the wrapper div
+      // wrapperClasses: 'page-markdown-body'
+    }),
     vueJsx()
   ],
   base: '/tulp/',

@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { Button } from '../lib/index';
+import HomeDemo from './home-demo.md'
 </script>
 
 <template>
@@ -14,6 +15,7 @@ import { Button } from '../lib/index';
     <div class="home-operations">
       <Button type="primary">开始使用</Button>
     </div>
+    <HomeDemo />
   </div>
 </template>
 

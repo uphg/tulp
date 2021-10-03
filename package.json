@@ -22,6 +22,7 @@
     "test": "jest test"
   },
   "dependencies": {
+    "prismjs": "^1.25.0",
     "vue": "^3.2.16",
     "vue-router": "4.0.10"
   },
@@ -33,6 +34,7 @@
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.6",
     "@types/nprogress": "^0.2.0",
+    "@types/prismjs": "^1.16.6",
     "@vitejs/plugin-vue": "^1.9.2",
     "@vitejs/plugin-vue-jsx": "^1.1.7",
     "@vue/compiler-sfc": "^3.2.6",

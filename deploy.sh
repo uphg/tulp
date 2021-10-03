@@ -17,3 +17,4 @@ echo -e "\n# push Gitee"
 git push -f git@gitee.com:uphg/tulp.git master:gh-pages
 echo -e "\n# Exit the build folder"
 cd -
+echo https://uphg.github.io/tulp/
