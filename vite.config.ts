@@ -1,21 +1,12 @@
 import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
+import commonOptions from './vite.config.common'
+
 const path = require('path')
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueJsx()],
-  base: '/tulp/',
+  ...commonOptions,
   publicDir: process.env.NODE_ENV === 'production' ? false : 'public',
-  resolve: {
-    alias: [
-      {
-        find: '~src',
-        replacement: path.resolve(__dirname, './src')
-      }
-    ]
-  },
   build: {
     // cssCodeSplit: false, // 使用 js 模块化 css 代码
     lib: {
