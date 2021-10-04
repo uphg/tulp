@@ -2,17 +2,21 @@
 title: Button 组件示例
 ---
 
-## 原生按钮
+## 基本示例
 
-<Button>普通按钮</Button>
-
-```js
-const a = 1
-const fn = () => 1 + 2
-console.log(123)
-```
+<Example class="button-type-demo" :component="ButtonType" />
 
 <script setup lang="ts">
-  import { Button } from '~src/lib/index'
-  console.log(123)
+import Example from '~src/components/Example.vue'
+import * as ButtonType from './ButtonType.example.vue'
+console.log('ButtonType')
+console.log(ButtonType)
 </script>
+
+<style lang="stylus">
+.button-type-demo{
+  .tu-button {
+    margin-right: 10px;
+  }
+}
+</style>

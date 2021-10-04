@@ -1,5 +1,5 @@
 $contentClass = '.markdown-body'
-$codeBgColor = #fff
+$codeBgColor = #f6f8fa
 
 {$contentClass}
   code
@@ -17,12 +17,14 @@ $codeBgColor = #fff
 
 {$contentClass}
   pre, pre[class*="language-"]
-    line-height 1.4
+    font-size 14px
+    line-height 1.6
     padding 18px 20px
     margin 0.85rem 0
     background-color $codeBgColor
     border-radius 3px
     overflow auto
+    font-family SFMono-Regular,Consolas,Liberation Mono,Menlo,"Microsoft Yahei", SimHei, monospace
     code
       white-space pre
       padding 0
@@ -33,7 +35,7 @@ pre[class*="language-"]
   position relative
   background-color $codeBgColor
   border-radius 3px
-  border 1px solid #eaecef
+  // border 1px solid #eaecef
 
 for lang in $codeLang
   div{'[class~="language-' + lang + '"]'}
@@ -74,17 +76,34 @@ div[class~="language-php"]:before
 .token.punctuation 
   color #a8a9cc
 
-.token.tag, .token.attr-name, .token.namespace, .token.deleted
-  color #b2085f
+.attr-name
+  color #00bec4
+
+.token.parameter
+  color #db6400
+
+// .token.tag, .token.attr-name, .token.namespace, .token.deleted
+.token.tag, .token.namespace, .token.deleted
+  // color #b2085f
+  color #DA0037
 
 .token.string, .token.char, .token.attr-value, .token.regex, .token.variable
-  color #42b983
+  // color #42b983
+  color #34a853
 
-.token.selector, .token.important, .token.atrule, .token.keyword, .token.builtin
-  color #b92dbc
+.token.selector, .token.important, .token.atrule, .token.builtin
+  // color #b92dbc
+  color #7c4dff
 
-.token.boolean, .token.number, .token.function
+.token.function
+  color $_color-primary
+.token.number
   color #db6400
+.token.keyword, .token.boolean
+  color #c838c6
+
+// .token.boolean, .token.number, .token.function
+//   color #db6400
 
 .token.property, .token.class-name, .token.constant, .token.symbol
   color #3182bd

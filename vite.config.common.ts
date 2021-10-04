@@ -1,6 +1,7 @@
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import Markdown from 'vite-plugin-md'
+import { vueExampleCode } from './plugins/vue-example-code'
 
 const path = require('path')
 
@@ -14,7 +15,8 @@ export default {
       // Class names for the wrapper div
       // wrapperClasses: 'page-markdown-body'
     }),
-    vueJsx()
+    vueJsx(),
+    vueExampleCode()
   ],
   base: '/tulp/',
   resolve: {

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 const message: string[] = [
   `这里什么都没有。`,
   `你是怎么来到这里的？`,
