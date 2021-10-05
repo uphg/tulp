@@ -65,6 +65,8 @@ watch(route, () => {
   padding-left: 320px;
 }
 .page-wrapper {
+  height: calc(100vh - 60px);
+  overflow: auto;
   box-sizing: border-box;
   padding: 24px;
 }

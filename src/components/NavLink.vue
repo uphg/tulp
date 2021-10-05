@@ -41,8 +41,6 @@ const link = computed(() => {
 </template>
 
 <style lang="stylus">
-@require '../styles/variable'
-
 .nav-link-item
   &:not(:last-child)
     margin-right 10px
@@ -53,8 +51,8 @@ const link = computed(() => {
   display flex
   line-height 60px
   height 100%
-  transition color $_transition-time
-  padding $_nav-item-padding
+  transition color $transitionTime
+  padding $navItemPadding
   position relative
   &:hover
     color $_color-primary

@@ -12,6 +12,7 @@ import SidebarLinks from './SidebarLinks.vue'
 
 <style lang="stylus">
 .sidebar
+  overflow: auto;
   box-sizing border-box
   width 320px
   position absolute

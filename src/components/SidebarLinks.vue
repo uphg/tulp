@@ -28,8 +28,6 @@ const sidebar = inject('sidebar') as SidebarType[]
 </template>
 
 <style lang="stylus">
-@require '../styles/variable'
-
 .sidebar-links
   display flex
   flex-direction column
@@ -45,7 +43,7 @@ const sidebar = inject('sidebar') as SidebarType[]
   color inherit
   text-decoration none
   border-radius 3px
-  transition background-color $_transition-time, color $_transition-time
+  transition background-color $transitionTime, color $transitionTime
   &:hover
     color $_color-primary
   &.active

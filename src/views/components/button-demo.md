@@ -2,6 +2,8 @@
 title: Button 组件示例
 ---
 
+标题：{{ frontmatter.title }}
+
 ## 基本示例
 
 <Example class="button-type-demo" :component="ButtonType" />
@@ -14,9 +16,7 @@ console.log(ButtonType)
 </script>
 
 <style lang="stylus">
-.button-type-demo{
-  .tu-button {
-    margin-right: 10px;
-  }
-}
+.button-type-demo
+  .tu-button
+    margin-right 10px
 </style>

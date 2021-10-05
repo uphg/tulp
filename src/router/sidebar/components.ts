@@ -1,28 +1,11 @@
-// import { DefineComponent, Component } from 'vue'
-import Markdown from '../../components/Markdown.vue'
-// import ButtonDemo from '../../views/components/ButtonDemo.vue'
-import ButtonDemo from '../../views/components/button-demo.md'
-import InputDemo from '../../views/components/InputDemo.vue'
-import SwitchDemo from '../../views/components/SwitchDemo.vue'
-import DialogDemo from '../../views/components/DialogDemo.vue'
-import JsxDemo from '../../views/components/JsxDemo'
-import IconDemo from '../../views/components/IconDemo.vue'
-import CollapseTransitionDemo from '../../views/components/CollapseTransitionDemo.vue'
+import ButtonDemo from '~src/views/components/button-demo.md'
+import InputDemo from '~src/views/components/InputDemo.vue'
+import SwitchDemo from '~src/views/components/SwitchDemo.vue'
+import DialogDemo from '~src/views/components/DialogDemo.vue'
+import JsxDemo from '~src/views/components/JsxDemo'
+import IconDemo from '~src/views/components/IconDemo.vue'
+import CollapseTransitionDemo from '~src/views/components/CollapseTransitionDemo.vue'
 import { SidebarType } from '../interface'
-import { h } from 'vue'
-
-let componentKey = 0 
-const md = (component: any) => {
-  componentKey+=1
-  return h(Markdown, {
-    key: componentKey
-  }, {
-    default: () => component
-  })
-}
-
-console.log('md')
-console.log(md)
 
 export const components: SidebarType[] = [
   {
