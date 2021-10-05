@@ -14,6 +14,5 @@ body {
 ```
 
 ```js
-console.log(123)
 const fn = () => 1 + 2
 ```

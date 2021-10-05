@@ -22,12 +22,4 @@ const obj1 = {
   key2: 99,
   key3: Symbol()
 }
-
-if(number1 === 1) {
-  console.log(123)
-}
-
-const clickButton = (e: MouseEvent) => {
-  console.log(e)
-}
 </script>
