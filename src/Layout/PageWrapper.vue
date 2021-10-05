@@ -4,7 +4,7 @@ const HEADER_GAP = NAVBAR_HEIGHT + 10
 </script>
 
 <script setup lang="ts">
-import { onMounted, watch, onUpdated, nextTick, ref, toRefs } from 'vue'
+import { onMounted, watch, nextTick, ref } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { AnchorType } from './interface'
 import Anchor from './Anchor.vue'
@@ -21,7 +21,7 @@ const wrapperRef = ref<HTMLElement | null>(null)
 const anchors = ref<AnchorType[]>([])
 const currentAnchorIndex = ref(0)
 
-const onScroll = (event: UIEvent) => {
+const handleScroll = (event: UIEvent) => {
   const main = event.target as HTMLElement
   const scrollTop = main.scrollTop
 
@@ -51,7 +51,7 @@ const setAnchorJump = (item: AnchorType) => {
   contentRef.value?.scroll(0, offsetTop - HEADER_GAP)
 }
 
-const updateAnchor = () => {
+const updateAnchors = () => {
   const markdown = wrapperRef.value?.querySelector('.page-wrapper .markdown-body')
   const titles = markdown?.querySelectorAll('.markdown-body > h2')
   const newAnchors = [] as AnchorType[]
@@ -66,24 +66,23 @@ const updateAnchor = () => {
 }
 
 onMounted(() => {
-  updateAnchor()
+  updateAnchors()
   const currentIndex = Number(route.query?.anchorIndex) || 0
   currentIndex && setAnchorJump(anchors.value[currentIndex]) 
 })
 
 watch(route, () => {
   nextTick(() => {
-    updateAnchor()
+    updateAnchors()
     Prism.highlightAll()
   })
 })
-
 </script>
 
 <template>
   <main
     class="docs-content"
-    @scroll="onScroll"
+    @scroll="handleScroll"
     ref="contentRef"
   >
     <div
@@ -112,7 +111,7 @@ watch(route, () => {
 
 .page
   min-height 100%
-  transition padding .2s ease
+  transition padding $_transition-time, width $_transition-time 
   padding-left 320px
   display flex
   flex-wrap nowrap
@@ -134,6 +133,11 @@ watch(route, () => {
   flex-direction column
   justify-content center
   align-items center
+
+@media (max-width 1200px)
+  .page .page-wrapper
+    width 100%
+
 @media (max-width 719px)
  .page
     padding-left 0

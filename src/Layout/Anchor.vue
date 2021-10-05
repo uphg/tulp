@@ -57,4 +57,7 @@ const emit = defineEmits<{
     &:not(:last-child)
       margin-bottom 5px
 
+@media (max-width 1200px)
+  .page-anchor
+    display none
 </style>
