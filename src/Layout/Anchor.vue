@@ -15,12 +15,12 @@ const emit = defineEmits<{
   <div class="page-anchor">
     <div class="anchor-links">
       <button
+        v-for="(item, index) in anchors"
+        :key="`anchor-${index}`"
         :class="[
           'anchor-link',
           { active: index === activeIndex }
         ]"
-        v-for="(item, index) in anchors"
-        :key="`anchor-${index}`"
         @click="emit('change', item)"
         :title="String(item.title)"
       >{{ item.title }}</button>

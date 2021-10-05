@@ -4,7 +4,7 @@ const HEADER_GAP = NAVBAR_HEIGHT + 10
 </script>
 
 <script setup lang="ts">
-import { onMounted, watch, onUpdated, nextTick, ref, toRefs } from 'vue'
+import { onMounted, onUpdated, watchEffect, watch, nextTick, ref } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { AnchorType } from './interface'
 import Anchor from './Anchor.vue'
@@ -24,31 +24,27 @@ const currentAnchorIndex = ref(0)
 const onScroll = (event: UIEvent) => {
   const main = event.target as HTMLElement
   const scrollTop = main.scrollTop
+  anchors.value.forEach(anchor => {
+    // 内容区向上卷曲距离大于当前元素距离顶部距离
+    if (!((scrollTop + HEADER_GAP) > anchor.el.offsetTop)) return
 
-  // 找出距离顶部最小的标题
-  let recentAnchor = anchors.value[0]
-  anchors.value.forEach((anchor) => {
-    const min = recentAnchor.el.offsetTop
-    scrollTop > min && (recentAnchor = anchor)
-  })
-
-  // 判断元素是否滚动到底部
-  const viewHeight = Math.max(window.innerHeight, document.documentElement.clientHeight, document.body.clientHeight)
-  const contentHeight = main.querySelector('.docs-content > .page')?.clientHeight || 0
-  if (scrollTop >= (contentHeight - viewHeight)) {
-    currentAnchorIndex.value = anchors.value.length - 1 
-  } else {
-    currentAnchorIndex.value = recentAnchor.index
-  }
-
-  // 更新查询参数
-  router.push({ query: { anchorIndex: currentAnchorIndex.value } })
+    const viewHeight = Math.max(window.innerHeight, document.documentElement.clientHeight, document.body.clientHeight)
+    const contentHeight = main.querySelector('.docs-content > .page')?.clientHeight || 0
+    // 判断元素是否滚动到底部
+    if (scrollTop >= (contentHeight - viewHeight)) {
+      currentAnchorIndex.value = anchors.value.length - 1 
+    } else {
+      currentAnchorIndex.value = anchor.index
+    }
+    router.push({ query: { anchorIndex: currentAnchorIndex.value } })
+  });
 }
 
 const setAnchorJump = (item: AnchorType) => {
-  if (!item) return
+  // currentAnchorIndex.value = item.index
   const offsetTop = item.el.offsetTop
-  contentRef.value?.scroll(0, offsetTop - HEADER_GAP)
+  const el = contentRef.value
+  el?.scroll(0, offsetTop - HEADER_GAP + 1)
 }
 
 const updateAnchor = () => {
@@ -56,18 +52,21 @@ const updateAnchor = () => {
   const titles = markdown?.querySelectorAll('.markdown-body > h2')
   const newAnchors = [] as AnchorType[]
   titles?.forEach((el, index) => {
+    console.log('index')
+    console.log(index)
     newAnchors.push({
       index,
       el: el as HTMLElement,
       title: el.textContent 
     })
+    // el.setAttribute('data-anchors-index', String(index))
   })
   anchors.value = newAnchors
 }
 
 onMounted(() => {
   updateAnchor()
-  const currentIndex = Number(route.query?.anchorIndex) || 0
+  const currentIndex = Number(route.query.anchorIndex)
   currentIndex && setAnchorJump(anchors.value[currentIndex]) 
 })
 
