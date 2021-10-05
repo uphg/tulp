@@ -91,7 +91,6 @@ watch(route, () => {
     >
       <div class="page-wrapper" ref="wrapperRef">
         <slot />
-        <div class="footer"> 底部栏占位 </div>
       </div>
       <Anchor
         v-if="!isHome"

@@ -36,9 +36,3 @@ export default {
   }
 }
 ```
-
-编译 markdown 插件
-
-```bash
-yarn add -D marked
-```
