@@ -3,6 +3,7 @@ import { inject, computed, onMounted, watch, nextTick, Ref } from 'vue'
 import { useRoute } from 'vue-router'
 import Navbar from '~src/components/Navbar.vue'
 import Sidebar from '~src/components/Sidebar.vue'
+import PageWrapper from './PageWrapper.vue'
 import Prism from 'prismjs'
 
 const sidebarVisible = inject<Ref<boolean>>('sidebarVisible')
@@ -16,7 +17,6 @@ watch(route, () => {
     Prism.highlightAll()
   })
 })
-
 </script>
 
 <template>
@@ -28,52 +28,37 @@ watch(route, () => {
         'no-sidebar': isHome
       }"
     />
-    <main
-      v-if="!isHome"
-      class="page"
+    <PageWrapper
+      :class="[!isHome ? 'page' : 'home']"
+      :key="!isHome ? 'page' : 'home'"
     >
-      <div class="page-wrapper">
-        <router-view />
-      </div>
-    </main>
-    <main
-      v-else
-      class="home"
-    >
-      <div class="home-wrapper">
-        <router-view />
-      </div>
-    </main>
+      <router-view />
+    </PageWrapper>
   </div>
 </template>
 
-<style lang="stylus" scoped>
-.home-wrapper {
-  max-width: 1260px;
-  min-height: calc(100vh - 60px);
-  box-sizing: border-box;
-  padding: 0.02px;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.page {
-  transition: padding .2s ease;
-  padding-left: 320px;
-}
-.page-wrapper {
-  height: calc(100vh - 60px);
-  overflow: auto;
-  box-sizing: border-box;
-  padding: 24px;
-}
+<style lang="stylus">
+.page
+  transition padding .2s ease
+  padding-left 320px
 
-@media (max-width: 719px) {
- .page {
-    padding-left: 0;
-  }
-}
+.page-wrapper
+  max-width 1260px
+  margin-left auto
+  margin-right auto
+  height calc(100vh - 60px)
+  overflow auto
+  box-sizing border-box
+  padding 24px
+
+.home .page-wrapper
+  display flex
+  flex-direction column
+  justify-content center
+  align-items center
+
+@media (max-width 719px)
+ .page
+    padding-left 0
+
 </style>

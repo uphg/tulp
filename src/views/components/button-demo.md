@@ -2,7 +2,9 @@
 title: Button 组件示例
 ---
 
-标题：{{ frontmatter.title }}
+# {{ frontmatter.title }}
+
+<!-- 标题：{{ frontmatter.title }} -->
 
 ## 基本示例
 
