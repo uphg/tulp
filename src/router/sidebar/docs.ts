@@ -1,5 +1,5 @@
 import Installation from '~src/views/docs/installation.md'
-import ImportOnDemand from '../../views/docs/ImportOnDemand.vue'
+import ImportOnDemand from '~src/views/docs/import-on-demand.md'
 import { SidebarType } from '../interface'
 
 export const docs: SidebarType[] = [

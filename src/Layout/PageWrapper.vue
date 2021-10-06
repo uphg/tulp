@@ -46,12 +46,6 @@ const handleScroll = (event: UIEvent) => {
   router.push({ query: { anchorIndex: currentAnchorIndex.value } })
 }
 
-const setAnchorJump = (item: AnchorType) => {
-  if (!item) return
-  const offsetTop = item.el.offsetTop
-  contentRef.value?.scroll(0, offsetTop - HEADER_GAP)
-}
-
 const updateAnchors = () => {
   const markdown = wrapperRef.value?.querySelector('.page-wrapper .markdown-body')
   const titles = markdown?.querySelectorAll('.markdown-body > h2')
@@ -64,6 +58,12 @@ const updateAnchors = () => {
     })
   })
   anchors.value = newAnchors
+}
+
+const setAnchorJump = (item: AnchorType) => {
+  if (!item) return
+  const offsetTop = item.el.offsetTop
+  contentRef.value?.scroll(0, offsetTop - HEADER_GAP)
 }
 
 const resetPage = () => {
