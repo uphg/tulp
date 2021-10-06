@@ -22,6 +22,7 @@ const anchors = ref<AnchorType[]>([])
 const currentAnchorIndex = ref(0)
 
 const handleScroll = (event: UIEvent) => {
+  if (anchors.value.length < 1) return
   const main = event.target as HTMLElement
   const scrollTop = main.scrollTop
 
@@ -36,7 +37,7 @@ const handleScroll = (event: UIEvent) => {
   const viewHeight = Math.max(window.innerHeight, document.documentElement.clientHeight, document.body.clientHeight)
   const contentHeight = main.querySelector('.docs-content > .page')?.clientHeight || 0
   if (scrollTop >= (contentHeight - viewHeight)) {
-    currentAnchorIndex.value = anchors.value.length - 1 
+    currentAnchorIndex.value = anchors.value.length - 1
   } else {
     currentAnchorIndex.value = recentAnchor.index
   }
@@ -65,18 +66,25 @@ const updateAnchors = () => {
   anchors.value = newAnchors
 }
 
+const resetPage = () => {
+  currentAnchorIndex.value = 0
+  contentRef.value?.scroll(0, 0)
+}
+
 onMounted(() => {
   updateAnchors()
-  const currentIndex = Number(route.query?.anchorIndex) || 0
+  const currentIndex = Number(route.query?.anchorIndex)
   currentIndex && setAnchorJump(anchors.value[currentIndex]) 
 })
 
-watch(route, () => {
-  nextTick(() => {
+watch(
+  () => route.name,
+  () => nextTick(() => {
+    resetPage()
     updateAnchors()
     Prism.highlightAll()
   })
-})
+)
 </script>
 
 <template>

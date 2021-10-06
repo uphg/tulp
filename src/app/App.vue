@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { router } from '../router';
+import { router as routerNavGuards } from '~src/router';
 import useSidebarSwitch from './use-sidebar-switch'
 import useSetSidebar from './use-set-sidebar'
 import { navbarRoute } from '../router/navbar/index';
@@ -8,7 +8,10 @@ import { NavBarType } from '~src/router/interface'
 const { setSidebarVisible } = useSidebarSwitch()
 const { sidebar, setSidebar } = useSetSidebar()
 
-router.beforeEach((to) => {
+routerNavGuards.beforeEach((to, from) => {
+  // 只有在路由的 name 更新时触发
+  if (to.name === from.name) return
+
   // 第一次加载非首页的页面
   if (sidebar.value.length < 1 && to.name !== 'Home') {
     const currentNav = find<NavBarType>(
@@ -19,7 +22,7 @@ router.beforeEach((to) => {
   }
 })
 
-router.afterEach(() => {
+routerNavGuards.afterEach(() => {
   setSidebarVisible?.(false)
 })
 </script>

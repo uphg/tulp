@@ -6,6 +6,11 @@ import JsxDemo from '~src/views/components/JsxDemo'
 import IconDemo from '~src/views/components/IconDemo.vue'
 import CollapseTransitionDemo from '~src/views/components/CollapseTransitionDemo.vue'
 import { SidebarType } from '../interface'
+import { h } from 'vue'
+
+const md = () => h(ButtonDemo,{
+  
+})
 
 export const components: SidebarType[] = [
   {
