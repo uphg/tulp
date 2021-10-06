@@ -12,7 +12,7 @@ title: Button 组件示例
 
 <script setup lang="ts">
 import Example from '~src/components/Example.vue'
-import * as ButtonType from './ButtonType.example.vue'
+import * as ButtonType from './ButtonType.exmp.vue'
 </script>
 
 <style lang="stylus">
