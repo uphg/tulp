@@ -11,7 +11,7 @@ title: Button 组件示例
 <Example class="button-type-demo" :component="ButtonType" />
 
 <script setup lang="ts">
-import Example from '~src/components/Example.vue'
+// import Example from '~src/components/Example.vue'
 import * as ButtonType from './ButtonType.exmp.vue'
 </script>
 
