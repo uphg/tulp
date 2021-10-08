@@ -2,7 +2,15 @@
 
 ## 基础用法
 
+使用 `type` 来定义按钮颜色样式。
+
 <Example class="button-base-demo" :component="ButtonBase" />
+
+## 加载状态
+
+按钮有 loading 状态。
+
+<Example class="button-base-demo" :component="ButtonLoading" />
 
 ## 标题e
 
@@ -42,10 +50,13 @@
 <script setup lang="ts">
 // import Example from '~src/components/Example.vue'
 import * as ButtonBase from '~src/example/button/base.exmp.vue'
+import * as ButtonLoading from '~src/example/button/loading.exmp.vue'
 </script>
 
 <style lang="stylus">
 .button-base-demo
+  .exapmle-component
+    display flex
   .tu-button
     margin-right 10px
 </style>
