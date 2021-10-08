@@ -4,7 +4,7 @@
     class="tu-button"
     :class="{
       [`tu-button--${type}`]: type,
-      [`tu-button--${size}`]: size
+      [`tu-button--${size}`]: size,
     }"
     ref="button"
     :type="nativeType"
@@ -16,7 +16,10 @@
         v-if="icon || loading"
         :class="[
           'tu-button__icon',
-          { 'is-uncontent': !$slots.default }
+          {
+            [`tu-icon--${iconPosition}`]: iconPosition,
+            'is-uncontent': !$slots.default
+          }
         ]"
       >
         <FadeTransition>
@@ -74,6 +77,13 @@ export default defineComponent({
     icon: {
       type: String,
       default: ''
+    },
+    iconPosition: {
+      type: String as PropType<'left' | 'right'>,
+      default: 'left',
+      validator: (value: string) => {
+        return ['left', 'right'].includes(value)
+      },
     },
     nativeType: {
       type: String as PropType<'button' | 'submit' | 'reset'>,

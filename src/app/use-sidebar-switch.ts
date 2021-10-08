@@ -17,7 +17,8 @@ export default function useSidebarSwitch() {
   onMounted(() => {
     monitorDocumentCloseSidebar()
   })
-  return { 
+  return {
+    sidebarVisible,
     setSidebarVisible
   }
 }

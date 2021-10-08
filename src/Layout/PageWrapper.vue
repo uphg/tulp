@@ -7,6 +7,7 @@ const HEADER_GAP = NAVBAR_HEIGHT + 10
 import { onMounted, watch, nextTick, ref } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { AnchorType } from './interface'
+import PageTitlex from './PageTitle.vue'
 import Anchor from './Anchor.vue'
 import Prism from 'prismjs'
 
@@ -98,6 +99,7 @@ watch(
       :key="isHome ? 'home' : 'page'"
     >
       <div class="page-wrapper" ref="wrapperRef">
+        <PageTitlex />
         <slot />
       </div>
       <Anchor
