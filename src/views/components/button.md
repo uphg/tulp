@@ -20,9 +20,9 @@
 
 <script setup lang="ts">
 // import Example from '~src/components/Example.vue'
-import * as ButtonBase from '~src/example/button/base.exmp.vue'
-import * as ButtonLoading from '~src/example/button/loading.exmp.vue'
-import * as ButtonIcon from '~src/example/button/icon.exmp.vue'
+import * as ButtonBase from '~src/example/button/base.vue'
+import * as ButtonLoading from '~src/example/button/loading.vue'
+import * as ButtonIcon from '~src/example/button/icon.vue'
 </script>
 
 <style lang="stylus">

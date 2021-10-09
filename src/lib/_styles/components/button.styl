@@ -36,8 +36,7 @@ type-style(base, light, dark)
   height $_button-height
   text-decoration none
   line-height normal
-  &__content 
-    line-height 1
+  &__content
     display flex
     align-items center
     flex-wrap nowrap
@@ -46,6 +45,7 @@ type-style(base, light, dark)
     box-sizing border-box
     width 100%
     border-radius inherit
+    pointer-events none
     position-fill()
   &__wave
     wave-effect(wave-spread, wave-opacity)
@@ -80,9 +80,11 @@ type-style(base, light, dark)
   
   &__icon
     box-sizing border-box
+    width 18px
+    height 18px
     display inline-flex
-    width 1em
-    height 1em
+    justify-content center
+    align-items center
   .tu-icon
     &--left
       margin-right 6px
@@ -96,3 +98,6 @@ type-style(base, light, dark)
     // margin-right 6px
     // &.is-uncontent
     //   margin-right 0
+  &__loading-icon
+    width 1em
+    height 1em
