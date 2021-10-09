@@ -19,7 +19,7 @@ const emit = defineEmits<{
         :key="`anchor-${index}`"
         :class="[
           'anchor-link',
-          { active: index === activeIndex }
+          { active: activeIndex === -1 ? index === 0 : index === activeIndex }
         ]"
         @click="emit('change', item)"
         :title="String(item.title)"
