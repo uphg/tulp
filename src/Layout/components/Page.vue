@@ -68,10 +68,15 @@ const resetPage = () => {
   contentRef.value?.scroll(0, 0)
 }
 
+const updatePagePosition = () => {
+  console.log('触发 page position')
+  const currentIndex = Number(route.query?.anchorIndex)
+  ;(currentIndex || currentIndex === 0) && setAnchorJump(anchors.value[currentIndex]) 
+}
+
 onMounted(() => {
   updateAnchors()
-  const currentIndex = Number(route.query?.anchorIndex)
-  currentIndex && setAnchorJump(anchors.value[currentIndex]) 
+  updatePagePosition()
 })
 
 watch(
