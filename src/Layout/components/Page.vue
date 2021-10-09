@@ -58,7 +58,7 @@ const handleScroll = debounce((event: UIEvent) => {
 
   // 更新查询参数
   router.push({ query: { anchorIndex: currentAnchorIndex.value } })
-}, 500)
+}, 500, { leading: true }) // leading 第一次触发不需要延迟
 
 const updateAnchors = () => {
   const markdown = wrapperRef.value?.querySelector('.page-wrapper .markdown-body')
