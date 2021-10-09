@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { AnchorType } from './interface'
+import { PageAnchorType } from '../interface'
 
 const props = defineProps<{
   activeIndex: number,
-  anchors: AnchorType[]
+  anchors: PageAnchorType[]
 }>()
 
 const emit = defineEmits<{
-  (e: 'change', item: AnchorType): void
+  (e: 'change', item: PageAnchorType): void
 }>()
 </script>
 

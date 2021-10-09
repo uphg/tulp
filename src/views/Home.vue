@@ -3,21 +3,33 @@ import { Button } from '~src/lib/index';
 </script>
 
 <template>
-  <div class="home-content">
-    <h1 class="home-title">
-      Tulp
-    </h1>
-    <div class="description">
-      <p>一个 Vue 3 组件库</p>
-      <p>...</p>
-    </div>
-    <div class="home-operations">
-      <Button type="primary">开始使用</Button>
+  <div class="home">
+    <div class="home-content">
+      <h1 class="home-title">
+        Tulp
+      </h1>
+      <div class="description">
+        <p>一个 Vue 3 组件库</p>
+        <p>...</p>
+      </div>
+      <div class="home-operations">
+        <Button type="primary">开始使用</Button>
+      </div>
     </div>
   </div>
 </template>
 
 <style lang="stylus">
+.home
+  height 100%
+
+.home .page-wrapper
+  height 100%
+  display flex
+  flex-direction column
+  justify-content center
+  align-items center
+
 .home-content {
   text-align: center;
   margin-top: -16vh;
