@@ -88,7 +88,7 @@ const resetPage = () => {
 const updatePagePosition = () => {
   console.log('触发 page position')
   const currentIndex = Number(route.query?.anchorIndex)
-  ;(currentIndex || currentIndex === 0) && setAnchorJump(anchors.value[currentIndex]) 
+  ;(currentIndex || (currentIndex === 0)) && setAnchorJump(anchors.value[currentIndex]) 
 }
 
 onMounted(() => {
