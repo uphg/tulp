@@ -18,7 +18,7 @@ interface IconStatus extends Window {
 export const useIcons = (window: Window) => {
   if (isServer) return
   if ((window as IconStatus)[ICON_STATUS]) return
-  
+
   (window as IconStatus )[ICON_STATUS] = true
   const div = document.createElement('div')
   div.style.position = 'absolute'

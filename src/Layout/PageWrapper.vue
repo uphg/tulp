@@ -99,7 +99,7 @@ watch(
       :key="isHome ? 'home' : 'page'"
     >
       <div class="page-wrapper" ref="wrapperRef">
-        <PageTitlex />
+        <PageTitlex v-if="!isHome" />
         <slot />
       </div>
       <Anchor
