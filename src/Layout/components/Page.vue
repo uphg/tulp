@@ -50,7 +50,7 @@ const handleScroll = debounce((event: UIEvent) => {
         recentAnchor = item
         break;
         // 只判断两个值都为负数的最大值
-      } else if ((max < 0) && (currentTop < 0) && currentTop > max) {
+      } else if (max < 0 && currentTop < 0 && currentTop > max) {
         recentAnchor = item
         max = item.el.offsetTop - scrollTop - HEADER_GAP
       }
