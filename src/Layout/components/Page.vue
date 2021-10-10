@@ -1,6 +1,6 @@
 <script lang="ts">
-const NAVBAR_HEIGHT = 60  
-const HEADER_GAP = NAVBAR_HEIGHT + 10
+const NAVBAR_HEIGHT = 60 // 导航栏高度
+const HEADER_GAP = NAVBAR_HEIGHT + 10 // 锚点距离顶部距离
 </script>
 
 <script setup lang="ts">
@@ -41,16 +41,19 @@ const handleScroll = debounce((event: UIEvent) => {
     currentAnchorIndex.value = recentAnchor.index
   } else if (max < 0) {
     // 滚动到第一个标题之后的情况
-    for (let i = 0; i < anchors.value.length; i++) {
-      const item = anchors.value[i]
+    for (let i = 0; i < anchors.value.length - 1; i++) {
+      // 从第二项开始对比
+      const item = anchors.value[i + 1]
       const currentTop = item.el.offsetTop - scrollTop - HEADER_GAP
       // 当两个值相减为零时，说明正好在当前标题
       if (max === 0) {
         recentAnchor = item
         break;
         // 只判断两个值都为负数的最大值
-      } else if ((max < 0) && (currentTop < 0)) {
-        currentTop > max && (recentAnchor = item)
+      } else if ((max < 0) && (currentTop < 0) && currentTop > max) {
+        recentAnchor = item
+        max = item.el.offsetTop - scrollTop - HEADER_GAP
+        // currentTop > max && ();()
       }
     }
     currentAnchorIndex.value = recentAnchor.index
@@ -58,7 +61,7 @@ const handleScroll = debounce((event: UIEvent) => {
 
   // 更新查询参数
   router.push({ query: { anchorIndex: currentAnchorIndex.value } })
-}, 500, { leading: true }) // leading 第一次触发不需要延迟
+}, 300) // leading 第一次触发不需要延迟
 
 const updateAnchors = () => {
   const markdown = wrapperRef.value?.querySelector('.page-wrapper .markdown-body')
@@ -86,9 +89,10 @@ const resetPage = () => {
 }
 
 const updatePagePosition = () => {
-  console.log('触发 page position')
-  const currentIndex = Number(route.query?.anchorIndex)
-  ;(currentIndex || (currentIndex === 0)) && setAnchorJump(anchors.value[currentIndex]) 
+  const currentIndex = Number(route.query.anchorIndex)
+  if (currentIndex || (currentIndex === 0)) {
+    setAnchorJump(anchors.value[currentIndex])
+  }
 }
 
 onMounted(() => {

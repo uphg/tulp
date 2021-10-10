@@ -33,11 +33,11 @@ type-style(base, light, dark)
   white-space nowrap
   transition transition-effect(color), transition-effect(background-color)
   padding 0 $_button-padding
-  height $_button-height
+  min-height $_button-height
   text-decoration none
-  // line-height normal
-  line-height 1
+  line-height normal
   &__content
+    line-height 0.8
     display flex
     align-items center
     flex-wrap nowrap
