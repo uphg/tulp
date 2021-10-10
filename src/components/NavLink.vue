@@ -55,7 +55,7 @@ const link = computed(() => {
   padding $navItemPadding
   position relative
   &:hover
-    color $_color-primary
+    color $color-primary
   &.nav-link-active
-    color $_color-primary
+    color $color-primary
 </style>

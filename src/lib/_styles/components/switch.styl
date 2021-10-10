@@ -16,12 +16,12 @@ $core-height = $height - 4
   border-radius px($height / 2)
   background-color rgba(0, 0, 0, 0.14)
   transition background-color 0.25s
-  transition $_background-transition, $_box-shadow-transition
+  transition $background-transition, $box-shadow-transition
   position relative
   --ripple-color #415fcc
   &:focus 
     outline none
-    box-shadow $_wave-box-shadow
+    box-shadow $wave-box-shadow
   &:hover 
     box-shadow none
   &:active > .tu-switch__core
@@ -31,7 +31,7 @@ $core-height = $height - 4
     & > .tu-switch__core
       left calc(100% - 18px)
     &:focus 
-      box-shadow $_wave-active-box-shadow
+      box-shadow $wave-active-box-shadow
     &:hover 
       box-shadow none
     &:active > .tu-switch__core
@@ -47,7 +47,7 @@ $core-height = $height - 4
   position absolute
   top 2px
   left 2px
-  transition left $_transition-duration, margin-left $_transition-duration, width $_transition-duration
+  transition left $transition-duration, margin-left $transition-duration, width $transition-duration
 
 .tu-switch__wave
   wave-effect(large-wave-spread, large-wave-opacity)

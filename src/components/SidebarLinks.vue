@@ -45,8 +45,8 @@ const sidebar = inject('sidebar') as SidebarType[]
   border-radius 3px
   transition background-color $transitionTime, color $transitionTime
   &:hover
-    color $_color-primary
+    color $color-primary
   &.active
-    color $_color-primary
+    color $color-primary
     background-color #e8f3ff
 </style>

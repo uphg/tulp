@@ -60,7 +60,7 @@ const handleScroll = debounce((event: UIEvent) => {
 
   // 更新查询参数
   router.push({ query: { anchorIndex: currentAnchorIndex.value } })
-}, 300) // leading 第一次触发不需要延迟
+}, 300, { leading: true }) // leading 第一次触发不需要延迟
 
 const updateAnchors = () => {
   const markdown = wrapperRef.value?.querySelector('.page-wrapper .markdown-body')
@@ -132,7 +132,7 @@ watch(
 <style lang="stylus">
 .page
   min-height 100%
-  transition padding $_transition-time, width $_transition-time 
+  transition padding $transition-time, width $transition-time 
   padding-left 320px
   display flex
   flex-wrap nowrap

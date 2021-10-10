@@ -45,14 +45,14 @@ const emit = defineEmits<{
     border-radius 2px
     padding 2px 8px
     background-color transparent
-    transition color $_transition-time, background-color $_transition-time
+    transition color $transition-time, background-color $transition-time
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     &:hover
-      color $_color-primary
+      color $color-primary
     &.active
-      color $_color-primary
+      color $color-primary
       background-color #e8f3ff
     &:not(:last-child)
       margin-bottom 5px
