@@ -1,23 +1,21 @@
 @require '../common/variable'
 @require '../common/transition'
+@require '../mixins/index'
 
-.tu-input {
-  font-size: $font-size;
-  font-family: inherit;
-  border: 1px solid $border-color;
-  box-sizing: border-box;
-  border-radius: $border-radius;
-  padding: $input-padding;
-  line-height: $input-line-height;
-  transition: $color-transition, $border-color-transition, $box-shadow-transition;
-  &:hover {
-    border-color: $border-color-dark;
-  }
-  &:focus {
-    border-color: $color-primary;
-    box-shadow: $wave-active-box-shadow;
-  }
-  &:focus, &:focus-visible {
-    outline: none;
-  }
-}
+.tu-input
+  font-size $font-size
+  font-family inherit
+  border 1px solid $border-color
+  box-sizing border-box
+  border-radius $border-radius
+  padding $input-padding
+  line-height $input-line-height
+  transition $color-transition, $border-color-transition, $box-shadow-transition
+  placeholder-color $input-placeholder-color
+  &:hover
+    border-color $border-color-dark
+  &:focus
+    border-color $color-primary
+    box-shadow $wave-active-box-shadow
+  &:focus, &:focus-visible
+    outline none

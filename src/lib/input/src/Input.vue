@@ -8,12 +8,12 @@
 <script lang="ts">
 import { Lib } from '../../_utils/default-config'
 import { defineComponent, PropType } from 'vue'
-type TuInputValue = PropType<string | null>
+type TInputValue = PropType<string | null>
 
 export default defineComponent({
   name: `${Lib.Prefix}Input`,
   props: {
-    value: String as TuInputValue
+    value: String as TInputValue
   },
   setup(props, context) {
     const handleInput = (event: Event) => {

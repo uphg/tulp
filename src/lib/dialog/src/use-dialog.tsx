@@ -1,5 +1,5 @@
 import Dialog from './Dialog'
-import { Button, Icon } from '../../index'
+import { TButton, TIcon } from '../../index'
 import { createApp, nextTick, ref, h, onMounted } from 'vue'
 
 interface DialogOptions {
@@ -72,7 +72,7 @@ interface DialogApi {
         >
           {{
             header: () => [
-              <Icon class="prefix-icon" name={type} />,
+              <TIcon class="prefix-icon" name={type} />,
               <span class="tu-dialog__title">{() => title}</span>,
               <span
                 class="tu-dialog__close"
@@ -84,7 +84,7 @@ interface DialogApi {
             default: () => content,
             footer: () => [
               h(
-                Button,
+                TButton,
                 {
                   size: 'small',
                   onClick: this.handleCancel
@@ -92,7 +92,7 @@ interface DialogApi {
                 { default: () => '取消' }
               ),
               h(
-                Button,
+                TButton,
                 {
                   type: 'primary',
                   size: 'small',

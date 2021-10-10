@@ -35,10 +35,9 @@ type-style(base, light, dark)
   padding 0 $button-padding
   min-height $button-height
   text-decoration none
-  line-height normal
+  line-height 1
   &__content
-    line-height 0.8
-    display flex
+    display inline-flex
     align-items center
     flex-wrap nowrap
   &__border
@@ -74,11 +73,9 @@ type-style(base, light, dark)
     type-style($color-warning, $color-warning-light, $color-warning-dark)
   &--error
     type-style($color-error, $color-error-light, $color-error-dark)
-
   &--small
     padding 0 $button-small-padding
-    height $button-small-height
-  
+    min-height $button-small-height
   &__icon
     box-sizing border-box
     width 18px

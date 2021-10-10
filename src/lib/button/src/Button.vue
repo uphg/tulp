@@ -27,7 +27,7 @@
             <LoadingIcon />
           </template>
           <template v-else>
-            <Icon :name="icon" />
+            <TIcon :name="icon" />
           </template>
         </FadeTransition>
       </span>
@@ -50,12 +50,12 @@ import { useTriggerWave } from '../../_mixins/use-trigger-wave'
 import { ExpandTransition } from '../../expand-transition/index'
 import { FadeTransition } from '../../fade-transition/index'
 import LoadingIcon from './LoadingIcon.vue'
-import { Icon } from '../../icon/index'
+import { TIcon } from '../../icon/index'
 
 export default defineComponent({
   name: `${Lib.Prefix}Button`,
   components: {
-    Icon,
+    TIcon,
     LoadingIcon,
     ExpandTransition,
     FadeTransition,

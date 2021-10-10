@@ -1,10 +1,10 @@
 import ButtonDemo from '~src/views/components/button.md'
-import InputDemo from '~src/views/components/InputDemo.vue'
+import InputDemo from '~src/views/components/input.md'
 import SwitchDemo from '~src/views/components/SwitchDemo.vue'
 import DialogDemo from '~src/views/components/DialogDemo.vue'
 import JsxDemo from '~src/views/components/JsxDemo'
 import IconDemo from '~src/views/components/IconDemo.vue'
-import CollapseTransitionDemo from '~src/views/components/CollapseTransitionDemo.vue'
+import CollapseTransitionDemo from '~src/views/components/collapse-transition.md'
 import { SidebarType } from '../interface'
 
 export const components: SidebarType[] = [

@@ -1,7 +1,7 @@
 <template>
   <div class="dialog-demo">
     <h2>基础示例</h2>
-    <Button @click="clickDialog">点击打开</Button>
+    <TButton @click="clickDialog">点击打开</TButton>
     <div>
       <Dialog
         title="我是标题"
@@ -15,21 +15,21 @@
         <p>我只想保持本色</p>
         <p>和少年的心气</p>
         <template #footer>
-          <Button
+          <TButton
             size="small"
             @click="dialogVisible = false"
-          >取消</Button>
-          <Button
+          >取消</TButton>
+          <TButton
             type="primary"
             size="small"
             @click="dialogVisible = false"
-          >确定</Button>
+          >确定</TButton>
         </template>
       </Dialog>
     </div>
     <h2>可以自定义内容</h2>
     <div>
-      <Button @click="clickCustom">点击打开</Button>
+      <TButton @click="clickCustom">点击打开</TButton>
       <Dialog
         render-directive="show"
         v-model:visible="customVisible"
@@ -40,18 +40,18 @@
         <div class="dialog-block">
           <p>我是自定义内容</p>
           <div>
-            <Button @click="customVisible = false" type="info">关闭</Button>
-            <Button @click="customVisible = false" type="success">确认</Button>
+            <TButton @click="customVisible = false" type="info">关闭</TButton>
+            <TButton @click="customVisible = false" type="success">确认</TButton>
           </div>
         </div>
       </Dialog>
     </div>
     <h2>快捷打开</h2>
     <div class="dialog-options">
-      <Button @click="openSuccess">成功</Button>
-      <Button @click="openWarning">警告</Button>
-      <Button @click="openInfo">信息</Button>
-      <Button @click="openError">错误</Button>
+      <TButton @click="openSuccess">成功</TButton>
+      <TButton @click="openWarning">警告</TButton>
+      <TButton @click="openInfo">信息</TButton>
+      <TButton @click="openError">错误</TButton>
     </div>
     <div>
       <p v-for="item in 20" :key="item">{{ '你好啊' }}</p>
@@ -60,10 +60,10 @@
 </template>
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue'
-import { Button, Dialog, useDialog } from '../../lib/index'
+import { TButton, Dialog, useDialog } from '../../lib/index'
 
 export default defineComponent({
-  components: { Button, Dialog },
+  components: { TButton, Dialog },
   setup() {
     const dialogVisible = ref(false)
     const customVisible = ref(false)

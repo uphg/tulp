@@ -9,7 +9,7 @@
         <p>...</p>
       </div>
       <div class="home-operations">
-        <Button type="primary">开始使用</Button>
+        <t-button type="primary">开始使用</t-button>
       </div>
     </div>
   </div>

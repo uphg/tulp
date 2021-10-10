@@ -5,6 +5,6 @@ const loading = ref<boolean>(false)
 </script>
 
 <template>
-  <Button icon="success" :loading="loading" @click="loading = !loading">点我</Button>
-  <Button :loading="loading" @click="loading = !loading">点我</Button>
+  <t-button icon="success" :loading="loading" @click="loading = !loading">点我</t-button>
+  <t-button :loading="loading" @click="loading = !loading">点我</t-button>
 </template>
