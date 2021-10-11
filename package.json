@@ -22,7 +22,6 @@
     "test": "jest test"
   },
   "dependencies": {
-    "@vueuse/head": "^0.6.0",
     "lodash.debounce": "^4.0.8",
     "prismjs": "^1.25.0",
     "vue": "^3.2.16",
