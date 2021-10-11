@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, DefineComponent, ref } from 'vue'
 import Prism from 'prismjs'
+import { vueSyntaxHighlight } from '../utils/vue-syntax-highlight'
 
 interface ExampleComponent {
   default: DefineComponent,
@@ -14,9 +15,12 @@ const props = defineProps<{
 const visible = ref(false)
 const codeComponent = props.codeComponent as ExampleComponent
 
-const codeHtml = computed(() => (
-  Prism.highlight(codeComponent.__sourceCode, Prism.languages.html, 'html')
-))
+// const codeHtml = computed(() => (
+//   Prism.highlight(codeComponent.__sourceCode, Prism.languages.html, 'html')
+// ))
+
+const codeHtml = computed(() => vueSyntaxHighlight(codeComponent.__sourceCode))
+
 const codeIconName = computed(() => visible.value ? 'code-slash' : 'code')
 </script>
 

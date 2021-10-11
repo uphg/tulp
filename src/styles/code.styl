@@ -79,9 +79,6 @@ div[class~="language-php"]:before
 .attr-name
   color #00bec4
 
-.token.parameter
-  color #db6400
-
 // .token.tag, .token.attr-name, .token.namespace, .token.deleted
 .token.tag, .token.namespace, .token.deleted
   // color #b2085f
@@ -97,8 +94,10 @@ div[class~="language-php"]:before
 
 .token.function
   color $color-primary
-.token.number
+
+.token.number, .token.parameter
   color #db6400
+
 .token.keyword, .token.boolean
   color #c838c6
 
@@ -109,7 +108,8 @@ div[class~="language-php"]:before
   color #3182bd
 
 .token.operator, .token.entity, .token.url
-  color #0b7e7d
+  // color #0b7e7d
+  color #986601
   
 .token.comment, .token.block-comment, .token.prolog, .token.doctype, .token.cdata
   // color #848486

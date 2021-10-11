@@ -4,6 +4,7 @@ import { router } from './router/index'
 import './styles/indes.styl'
 import Example from '~src/components/Example.vue'
 import { TButton, TInput, TCollapseTransition, TIcon } from '~src/lib/index'
+import './utils/vue-syntax-highlight'
 
 const app = createApp(App)
 
