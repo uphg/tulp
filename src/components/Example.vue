@@ -8,14 +8,16 @@ interface ExampleComponent {
 }
 
 const props = defineProps<{
-  component: unknown
+  codeComponent: unknown
 }>()
 
 const visible = ref(false)
-const component = props.component as ExampleComponent
-const codeHtml = computed(() => {
-  return Prism.highlight(component.__sourceCode, Prism.languages.html, 'html')
-})
+const codeComponent = props.codeComponent as ExampleComponent
+
+const codeHtml = computed(() => (
+  Prism.highlight(codeComponent.__sourceCode, Prism.languages.html, 'html')
+))
+const codeIconName = computed(() => visible.value ? 'code-slash' : 'code')
 </script>
 
 <template>
@@ -26,19 +28,19 @@ const codeHtml = computed(() => {
         <transition name="exapmle-fade">
           <t-icon
             class="example-button"
-            :name="visible ? 'code-slash' : 'code'"
-            :key="visible ? 'code-slash' : 'code'"
+            :name="codeIconName"
+            :key="codeIconName"
             @click="visible = !visible"
           ></t-icon>
         </transition>
       </span>
     </div>
     <div class="exapmle-component">
-      <component :is="component.default" />
+      <component :is="codeComponent.default" />
     </div>
     <t-collapse-transition>
       <div class="exapmle-code" v-show="visible">
-        <pre class="language-html" v-html="codeHtml" />
+        <pre class="language-vue-html" v-html="codeHtml" />
       </div>
     </t-collapse-transition>
   </div>

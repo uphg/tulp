@@ -8,19 +8,19 @@ title: Button 组件
 
 使用 `type` 来定义按钮颜色样式。
 
-<Example class="button-demo" :component="ButtonBase" />
+<Example class="button-demo" :code-component="ButtonBase" />
 
 ## 图标按钮
 
 添加图标来增加按钮的辨识度。
 
-<Example class="button-demo" :component="ButtonIcon" />
+<Example class="button-demo" :code-component="ButtonIcon" />
 
 ## 加载状态
 
 按钮有 loading 状态。
 
-<Example class="button-demo" :component="ButtonLoading" />
+<Example class="button-demo" :code-component="ButtonLoading" />
 
 <script setup lang="ts">
 import * as ButtonBase from '~src/example/button/base.vue'
