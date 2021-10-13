@@ -25,6 +25,7 @@ const copyCode = async () => {
   }
   try {
     await copy()
+    console.log('复制成功！')
   } catch (e) {
     console.log('复制错误：')
     console.log(e)
@@ -38,6 +39,7 @@ const codeIconName = computed(() => visible.value ? 'code-slash' : 'code')
 <template>
   <div class="exapmle">
     <div class="example-options">
+      <t-icon class="example-button github" name="github"></t-icon>
       <t-icon class="example-button copy" name="copy-out-line" @click="copyCode"></t-icon>
       <span class="code-wrap">
         <transition name="exapmle-fade">
@@ -72,10 +74,13 @@ const codeIconName = computed(() => visible.value ? 'code-slash' : 'code')
     padding 16px 20px
     border-bottom 1px solid $border-color
   .example-button
+    user-select none
     cursor pointer
     transition fill 0.3s
     &:not(:last-child)
       margin-right 10px
+    &:hover
+      fill $color-primary
     &.copy
       width 1.1em
       height 1.1em
