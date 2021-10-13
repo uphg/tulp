@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, DefineComponent, ref } from 'vue'
-import Prism from 'prismjs'
 import { vueSyntaxHighlight } from '../utils/vue-syntax-highlight'
+import { useClipboard } from '@vueuse/core'
 
 interface ExampleComponent {
   default: DefineComponent,
@@ -14,20 +14,31 @@ const props = defineProps<{
 
 const visible = ref(false)
 const codeComponent = props.codeComponent as ExampleComponent
+const { copy, isSupported } = useClipboard({
+  source: decodeURIComponent(codeComponent.__sourceCode),
+  read: false,
+})
 
-// const codeHtml = computed(() => (
-//   Prism.highlight(codeComponent.__sourceCode, Prism.languages.html, 'html')
-// ))
+const copyCode = async () => {
+  if (!isSupported) {
+    console.log('您的浏览器不支持该方法复制')
+  }
+  try {
+    await copy()
+  } catch (e) {
+    console.log('复制错误：')
+    console.log(e)
+  }
+}
 
 const codeHtml = computed(() => vueSyntaxHighlight(codeComponent.__sourceCode))
-
 const codeIconName = computed(() => visible.value ? 'code-slash' : 'code')
 </script>
 
 <template>
   <div class="exapmle">
     <div class="example-options">
-      <t-icon class="example-button copy" name="copy-out-line"></t-icon>
+      <t-icon class="example-button copy" name="copy-out-line" @click="copyCode"></t-icon>
       <span class="code-wrap">
         <transition name="exapmle-fade">
           <t-icon
