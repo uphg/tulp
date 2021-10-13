@@ -79,8 +79,6 @@ const codeIconName = computed(() => visible.value ? 'code-slash' : 'code')
     transition fill 0.3s
     &:not(:last-child)
       margin-right 10px
-    &:hover
-      fill $color-primary
     &.copy
       width 1.1em
       height 1.1em

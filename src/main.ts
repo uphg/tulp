@@ -3,7 +3,7 @@ import { App } from './app/index'
 import { router } from './router/index'
 import './styles/indes.styl'
 import Example from '~src/components/Example.vue'
-import { TButton, TInput, TCollapseTransition, TIcon } from '~src/lib/index'
+import { TButton, TInput, TCollapseTransition, TIcon, TSwitch } from '~src/lib/index'
 import './utils/vue-syntax-highlight'
 
 const app = createApp(App)
@@ -15,4 +15,5 @@ app.component('Example', Example)
 app.component('t-button', TButton)
 app.component('t-icon', TIcon)
 app.component('t-input', TInput)
+app.component('t-switch', TSwitch)
 app.component('t-collapse-transition', TCollapseTransition)

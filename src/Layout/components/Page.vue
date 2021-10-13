@@ -139,7 +139,7 @@ watch(
 
 .page-wrapper
   width calc(100% - 154px)
-  max-width 1260px
+  max-width 980px
   margin-left auto
   margin-right auto
   box-sizing border-box

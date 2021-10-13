@@ -1,6 +1,6 @@
 import ButtonDemo from '~src/views/components/button.md'
 import InputDemo from '~src/views/components/input.md'
-import SwitchDemo from '~src/views/components/SwitchDemo.vue'
+import SwitchDemo from '~src/views/components/switch.md'
 import DialogDemo from '~src/views/components/DialogDemo.vue'
 import JsxDemo from '~src/views/components/JsxDemo'
 import IconDemo from '~src/views/components/IconDemo.vue'
