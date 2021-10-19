@@ -29,25 +29,6 @@ const createLanguage = (codeNode: string, lang: string = 'html') => (
   `<span class="language-${lang}">${codeNode}</span>`
 )
 
-// const createLangTag = (code: string, options: { before: RegExp, after: RegExp }) => {
-//   const scriptInfo = code.match(options.before)?.[0] as string
-//   let scriptBlock = html(scriptInfo, 'html')
-
-//   const lang = scriptInfo?.match(/(?<=lang=")[a-z]+(?=")/)?.[0] as string
-
-//   const scriptStart = suffix(options.before, code)
-//   const prefixNode = prefix(options.before, code)
-//   const scriptContent = prefix(options.after, scriptStart)
-
-//   scriptBlock += html(scriptContent, lang)
-//   scriptBlock += html(`</script>`, 'html')
-
-//   return {
-//     html: createLanguage(prefixNode + scriptBlock, lang),
-//     suffix: suffix(options.after, scriptStart)
-//   }
-// }
-
 export const codeClassification = (code: string) => {
   const tagName = getTagName(code)
   if (tagName !== 'template') {
@@ -143,4 +124,3 @@ export const vueSyntaxHighlight = (demo: string) => {
   createCode(demo)
   return codeHtml
 }
-// console.log(vueSyntaxHighlight(demo))
