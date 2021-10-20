@@ -19,14 +19,27 @@ const { copy, isSupported } = useClipboard({
   read: false,
 })
 
+const copyStatus = ref(false)
+const copytimerId = ref<number | null>(null)
+
 const copyCode = async () => {
   if (!isSupported) {
     console.log('您的浏览器不支持该方法复制')
   }
+  if (copyStatus.value) return
   try {
     await copy()
+    copyStatus.value = true
     console.log('复制成功！')
+    if (copytimerId.value) {
+      window.clearTimeout(copytimerId.value)
+    }
+    copytimerId.value = setTimeout(() => {
+      copytimerId.value !== null && window.clearTimeout(copytimerId.value)
+      copyStatus.value = false
+    }, 3000)
   } catch (e) {
+    copyStatus.value = false
     console.log('复制错误：')
     console.log(e)
   }
@@ -43,7 +56,20 @@ const codeIconName = computed(() => visible.value ? 'code-slash' : 'code')
     </div>
     <div class="example-options">
       <t-icon class="example-button github" name="github"></t-icon>
-      <t-icon class="example-button copy" name="copy-out-line" @click="copyCode"></t-icon>
+      <span class="copy-wrap">
+        <t-icon
+          v-if="!copyStatus"
+          class="example-button copy"
+          name="copy-out-line"
+          @click="copyCode"
+        ></t-icon>
+        <t-icon
+          v-else
+          class="example-button check-mark"
+          name="check-mark"
+          @click="copyCode"
+        ></t-icon>
+      </span>
       <span class="code-wrap">
         <transition name="exapmle-fade">
           <t-icon
@@ -67,11 +93,12 @@ const codeIconName = computed(() => visible.value ? 'code-slash' : 'code')
 .exapmle
   border 1px solid $border-color
   border-radius 3px
+  
   .example-options
     display flex
     justify-content flex-end
     align-items center
-    padding 8px 10px
+    padding 10px 20px
     border-top 1px solid $border-color
   .example-button
     user-select none
@@ -81,14 +108,16 @@ const codeIconName = computed(() => visible.value ? 'code-slash' : 'code')
     height 1em
     &:not(:last-child)
       margin-right 10px
-    &.copy
-      width 0.9em
-      height 0.9em
+    &.check-mark
+      fill $color-success-light
+
   .exapmle-component
     padding 20px
+
   .exapmle-code
     border-top 1px solid $border-color
-  .code-wrap
+
+  .code-wrap, .copy-wrap
     position relative
     width 1em
     height 1em
@@ -96,10 +125,15 @@ const codeIconName = computed(() => visible.value ? 'code-slash' : 'code')
     align-items center
     .example-button
       position absolute
+
+  .copy-wrap
+    margin-right 10px
+
   pre[class*="language-"]
     margin 0
     font-family Consolas
     font-size 14px
+
   .exapmle-fade-enter-active,
   .exapmle-fade-leave-active
     transition opacity 0.25s ease, transform 0.25s ease
