@@ -38,6 +38,9 @@ const codeIconName = computed(() => visible.value ? 'code-slash' : 'code')
 
 <template>
   <div class="exapmle">
+    <div class="exapmle-component">
+      <component :is="codeComponent.default" />
+    </div>
     <div class="example-options">
       <t-icon class="example-button github" name="github"></t-icon>
       <t-icon class="example-button copy" name="copy-out-line" @click="copyCode"></t-icon>
@@ -51,9 +54,6 @@ const codeIconName = computed(() => visible.value ? 'code-slash' : 'code')
           ></t-icon>
         </transition>
       </span>
-    </div>
-    <div class="exapmle-component">
-      <component :is="codeComponent.default" />
     </div>
     <t-collapse-transition>
       <div class="exapmle-code" v-show="visible">
@@ -71,25 +71,29 @@ const codeIconName = computed(() => visible.value ? 'code-slash' : 'code')
     display flex
     justify-content flex-end
     align-items center
-    padding 16px 20px
-    border-bottom 1px solid $border-color
+    padding 8px 10px
+    border-top 1px solid $border-color
   .example-button
     user-select none
     cursor pointer
     transition fill 0.3s
+    width 1em
+    height 1em
     &:not(:last-child)
       margin-right 10px
     &.copy
-      width 1.1em
-      height 1.1em
+      width 0.9em
+      height 0.9em
   .exapmle-component
     padding 20px
   .exapmle-code
     border-top 1px solid $border-color
   .code-wrap
     position relative
-    width 1.25em
-    height 1.25em
+    width 1em
+    height 1em
+    display flex
+    align-items center
     .example-button
       position absolute
   pre[class*="language-"]
