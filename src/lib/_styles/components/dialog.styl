@@ -34,13 +34,13 @@ prevent-jitter()
 .tu-dialog__content {
   prevent-jitter()
   background-color: #fff;
-  border-radius: $dialog-border-radius;
+  border-radius: var(--t-dialog-border-radius);
   box-shadow: 0 6px 16px -9px rgba(0, 0, 0, 0.08), 0 9px 28px 0 rgba(0, 0, 0, 0.05), 0 12px 48px 16px rgba(0, 0, 0, 0.03);
 }
 .tu-dialog {
   .tu-dialog__header {
     padding: 18px 20px;
-    border-radius: $dialog-border-radius $dialog-border-radius 0 0;
+    border-radius: var(--t-dialog-border-radius) var(--t-dialog-border-radius) 0 0;
     display: flex;
     align-items: center;
     .prefix-icon {
@@ -48,16 +48,16 @@ prevent-jitter()
       width: 1.5em;
       height: 1.5em;
       &.tu-icon-success {
-        fill: $color-success;
+        fill: var(--t-color-success);
       }
       &.tu-icon-warning {
-        fill: $color-warning;
+        fill: var(--t-color-warning);
       }
       &.tu-icon-info {
-        fill: $color-info;
+        fill: var(--t-color-info);
       }
       &.tu-icon-error {
-        fill: $color-error;
+        fill: var(--t-color-error);
       }
     }
   }
@@ -94,7 +94,7 @@ prevent-jitter()
   .tu-dialog__footer {
     padding: 16px 20px;
     // border-top: 1px solid #e8e8e8;
-    border-radius: 0 0 $dialog-border-radius $dialog-border-radius;
+    border-radius: 0 0 var(--t-dialog-border-radius) var(--t-dialog-border-radius);
     text-align: right;
     .tu-button:not(:last-child) {
       margin-right: 10px;

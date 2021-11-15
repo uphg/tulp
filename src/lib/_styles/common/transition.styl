@@ -1,12 +1,6 @@
-$transition-duration = 0.25s;
-$transition-timing-function = cubic-bezier(.645,.045,.355,1);
+// $transition-duration = 0.25s;
+// $transition-timing-function = cubic-bezier(.645,.045,.355,1);
 
 /* --- 默认过渡效果 */
 transition-effect(property)
-  return property 0.25s cubic-bezier(.645, .045, .355, 1)
-
-$all-transition = transition-effect(all);
-$color-transition = transition-effect(color);
-$background-transition = transition-effect(background);
-$border-color-transition = transition-effect(border-color);
-$box-shadow-transition = transition-effect(box-shadow);
+  return property var(--t-transition-duration) var(--t-transition-timing-function)

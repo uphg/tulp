@@ -3,20 +3,15 @@
 @require '../common/animation'
 @require '../mixins/index'
 
-px(value)
-  return value * 1px
-
-$height = 20
-$core-height = $height - 4
-.tu-switch 
+.tu-switch
   cursor pointer
-  width px($height * 2)
-  height px($height)
+  width calc(var(--t-switch-height) * 2)
+  height var(--t-switch-height)
   border none
-  border-radius px($height / 2)
+  border-radius calc(var(--t-switch-height) / 2)
   background-color rgba(0, 0, 0, 0.14)
   transition background-color 0.25s
-  transition $background-transition, $box-shadow-transition
+  transition var(--t-bg-color-transition), var(--t-box-shadow-transition)
   position relative
   --ripple-color #415fcc
   &:focus 
@@ -25,7 +20,7 @@ $core-height = $height - 4
   &:hover 
     box-shadow none
   &:active > .tu-switch__core
-    width px($core-height + 4)
+    width calc(var(--t-switch-core-height) + 4px)
   &.tu-switch--checked 
     background-color #415fcc
     & > .tu-switch__core
@@ -35,19 +30,19 @@ $core-height = $height - 4
     &:hover 
       box-shadow none
     &:active > .tu-switch__core
-      width px($core-height + 4)
+      width calc(var(--t-switch-core-height) + 4px)
       margin-left -4px
 
 .tu-switch__core
-  width px($core-height)
-  height px($core-height)
-  border-radius px($core-height / 2)
+  width var(--t-switch-core-height)
+  height var(--t-switch-core-height)
+  border-radius calc(var(--t-switch-core-height) / 2)
   background-color #fff
   box-shadow 0 2px 4px #00230b33
   position absolute
   top 2px
   left 2px
-  transition left $transition-duration, margin-left $transition-duration, width $transition-duration
+  transition left var(--t-transition-duration), margin-left var(--t-transition-duration), width var(--t-transition-duration)
 
 .tu-switch__wave
   wave-effect(large-wave-spread, large-wave-opacity)

@@ -3,19 +3,19 @@
 @require '../mixins/index'
 
 .tu-input
-  font-size $font-size
+  font-size var(--t-font-size)
   font-family inherit
-  border 1px solid $border-color
+  border 1px solid var(--t-border-color)
   box-sizing border-box
-  border-radius $border-radius
-  padding $input-padding
-  line-height $input-line-height
-  transition $color-transition, $border-color-transition, $box-shadow-transition
-  placeholder-color $input-placeholder-color
+  border-radius var(--t-border-radius)
+  padding var(--t-input-padding)
+  line-height var(--t-input-line-height)
+  transition var(--t-color-transition), var(--t-border-color-transition), var(--t-box-shadow-transition)
+  placeholder-color var(--t-input-placeholder-color)
   &:hover
-    border-color $border-color-dark
+    border-color var(--t-border-color-dark)
   &:focus
-    border-color $color-primary
-    box-shadow $wave-active-box-shadow
+    border-color var(--t-color-primary)
+    box-shadow var(--t-wave-active-box-shadow)
   &:focus, &:focus-visible
     outline none

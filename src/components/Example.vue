@@ -98,14 +98,14 @@ const codeIconName = computed(() => visible.value ? 'code-slash' : 'code')
     display flex
     justify-content flex-end
     align-items center
-    padding 10px 20px
+    padding 14px 20px
     border-top 1px solid $border-color
   .example-button
     user-select none
     cursor pointer
     transition fill 0.3s
-    width 1em
-    height 1em
+    width 1.2em
+    height 1.2em
     &:not(:last-child)
       margin-right 10px
     &.check-mark
