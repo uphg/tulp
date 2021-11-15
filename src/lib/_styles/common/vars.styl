@@ -50,13 +50,13 @@
   --t-border-radius-big-circle 20px
 
   // 过渡效果
-  --t-transition-duration 0.25s
-  --t-transition-timing-function cubic-bezier(.645, .045, .355, 1)
-  --t-all-transition all var(--t-transition-duration) var(--t-transition-timing-function)
-  --t-color-transition color var(--t-transition-duration) var(--t-transition-timing-function)
-  --t-bg-color-transition background-color var(--t-transition-duration) var(--t-transition-timing-function)
-  --t-border-color-transition border-color var(--t-transition-duration) var(--t-transition-timing-function)
-  --t-box-shadow-transition box-shadow var(--t-transition-duration) var(--t-transition-timing-function)
+  --t-transition-time 0.25s
+  --t-transition-effect cubic-bezier(.645, .045, .355, 1)
+  --t-all-transition all var(--t-transition-time) var(--t-transition-effect)
+  --t-color-transition color var(--t-transition-time) var(--t-transition-effect)
+  --t-bg-color-transition background-color var(--t-transition-time) var(--t-transition-effect)
+  --t-border-color-transition border-color var(--t-transition-time) var(--t-transition-effect)
+  --t-box-shadow-transition box-shadow var(--t-transition-time) var(--t-transition-effect)
   
   /* Button default */
   --t-button-border-color #dcdfe6
@@ -92,6 +92,7 @@
 
   /* Dialog */
   --t-dialog-border-radius var(--t-border-radius)
+  --t-dialg-animation-time var(--t-transition-time)
 
   /* Collapse */
   --t-collapse-transition-duration 0.3s

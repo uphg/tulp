@@ -110,16 +110,16 @@ prevent-jitter()
 
 /* --- 动画样式 */
 .dialog-fade-enter-active {
-  animation: dialog-overlay-fade-in 0.25s;
+  animation: dialog-overlay-fade-in var(--t-dialg-animation-time);
   .tu-dialog {
-    animation: dialog-fade-in 0.25s;
+    animation: dialog-fade-in var(--t-dialg-animation-time);
   }
 }
 
 .dialog-fade-leave-active {
-  animation: dialog-overlay-fade-out 0.25s;
+  animation: dialog-overlay-fade-out var(--t-dialg-animation-time);
   .tu-dialog {
-    animation: dialog-fade-out 0.25s;
+    animation: dialog-fade-out var(--t-dialg-animation-time);
   }
 }
 
