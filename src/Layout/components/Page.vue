@@ -105,7 +105,8 @@ watch(
     resetPage()
     updateAnchors()
     Prism.highlightAll()
-  })
+  }),
+  { immediate: true }
 )
 </script>
 
