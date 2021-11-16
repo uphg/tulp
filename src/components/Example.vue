@@ -91,7 +91,7 @@ const codeIconName = computed(() => visible.value ? 'code-slash' : 'code')
 
 <style lang="stylus">
 .exapmle
-  border 1px solid $border-color
+  border 1px solid var(--border-color)
   border-radius 3px
   
   .example-options
@@ -99,7 +99,7 @@ const codeIconName = computed(() => visible.value ? 'code-slash' : 'code')
     justify-content flex-end
     align-items center
     padding 14px 20px
-    border-top 1px solid $border-color
+    border-top 1px solid var(--border-color)
   .example-button
     user-select none
     cursor pointer
@@ -109,13 +109,13 @@ const codeIconName = computed(() => visible.value ? 'code-slash' : 'code')
     &:not(:last-child)
       margin-right 10px
     &.check-mark
-      fill $color-success-light
+      fill var(--t-color-success-light)
 
   .exapmle-component
     padding 20px
 
   .exapmle-code
-    border-top 1px solid $border-color
+    border-top 1px solid var(--border-color)
 
   .code-wrap, .copy-wrap
     position relative

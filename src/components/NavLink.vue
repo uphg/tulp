@@ -51,11 +51,11 @@ const link = computed(() => {
   display flex
   line-height 60px
   height 100%
-  transition color $transitionTime
-  padding $navItemPadding
+  transition color var(--t-transition-time)
+  padding var(--nav-item-padding)
   position relative
   &:hover
-    color $color-primary
+    color var(--t-color-primary)
   &.nav-link-active
-    color $color-primary
+    color var(--t-color-primary)
 </style>

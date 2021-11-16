@@ -132,7 +132,7 @@ watch(
 <style lang="stylus">
 .page
   min-height 100%
-  transition padding $transition-time, width $transition-time 
+  transition padding var(--t-transition-time), width var(--t-transition-time) 
   padding-left 320px
   display flex
   flex-wrap nowrap

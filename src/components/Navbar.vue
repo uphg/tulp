@@ -29,7 +29,7 @@ const toggleSidebar = (): void => {
 <style lang="stylus">
 .navbar {
   padding: 0 24px;
-  height: $navbarHeight;
+  height: var(--navbar-height);
   line-height: 2.2;
   display: flex;
   box-sizing: border-box;

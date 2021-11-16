@@ -1,5 +1,4 @@
 $contentClass = '.markdown-body'
-$codeBgColor = #f6f8fa
 
 {$contentClass}
   code
@@ -21,7 +20,7 @@ $codeBgColor = #f6f8fa
     line-height 1.6
     padding 18px 20px
     margin 0.85rem 0
-    background-color $codeBgColor
+    background-color var(--code-bg-color)
     border-radius 3px
     overflow auto
     font-family SFMono-Regular,Consolas,Liberation Mono,Menlo,"Microsoft Yahei", SimHei, monospace
@@ -33,7 +32,7 @@ $codeBgColor = #f6f8fa
 
 pre[class*="language-"]
   position relative
-  background-color $codeBgColor
+  background-color var(--code-bg-color)
   border-radius 3px
   // border 1px solid #eaecef
 
@@ -93,7 +92,7 @@ div[class~="language-php"]:before
   color #7c4dff
 
 .token.function
-  color $color-primary
+  color var(--t-color-primary)
 
 .token.number, .token.parameter
   color #db6400

@@ -26,13 +26,5 @@ export default {
         replacement: path.resolve(__dirname, './src')
       }
     ]
-  },
-  css: {
-    preprocessorOptions: {
-      stylus: {
-        // 添加自动导入全局 stylus 变量
-        imports: [path.resolve(__dirname, 'src/styles/variable.styl')],
-      }
-   }
   }
 }
