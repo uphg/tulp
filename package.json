@@ -20,7 +20,7 @@
     "build:docs": "vue-tsc --noEmit --skipLibCheck && vite build --config vite.config.docs.ts",
     "serve": "vite preview",
     "test": "jest test",
-    "lint": "eslint \"src/**/*.{js,ts,vue}\""
+    "lint": "eslint \"src/**/*.{js,ts,tsx,vue}\""
   },
   "dependencies": {
     "@vueuse/core": "^6.5.3",
