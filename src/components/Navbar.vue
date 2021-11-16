@@ -6,21 +6,17 @@ import NavLinks from './Navlinks.vue'
 const sidebarVisible = inject<Ref<boolean>>('sidebarVisible')
 const setSidebarVisible = inject<SetSidebarVisibleFun>('setSidebarVisible')
 const toggleSidebar = (): void => {
-  setSidebarVisible?.(Boolean(!(sidebarVisible?.value)))
+  setSidebarVisible?.(Boolean(!sidebarVisible?.value))
 }
 </script>
 
 <template>
   <header class="navbar" @click.stop>
     <div class="navbar-left">
-      <button
-        class="sidebar-button"
-        @click="toggleSidebar"
-      >{{ sidebarVisible ? '关闭' : '开启' }}</button>
-      <router-link
-        class="logo-link"
-        to="/home"
-      >Tulp</router-link>
+      <button class="sidebar-button" @click="toggleSidebar">
+        {{ sidebarVisible ? '关闭' : '开启' }}
+      </button>
+      <router-link class="logo-link" to="/home">Tulp</router-link>
     </div>
     <NavLinks />
   </header>

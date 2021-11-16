@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { PageAnchorType } from '../interface'
 
-const props = defineProps<{
-  activeIndex: number,
+defineProps<{
+  activeIndex: number
   anchors: PageAnchorType[]
 }>()
 
@@ -21,9 +21,11 @@ const emit = defineEmits<{
           'anchor-link',
           { active: activeIndex === -1 ? index === 0 : index === activeIndex }
         ]"
-        @click="emit('change', item)"
         :title="String(item.title)"
-      >{{ item.title }}</button>
+        @click="emit('change', item)"
+      >
+        {{ item.title }}
+      </button>
     </div>
   </div>
 </template>
@@ -41,7 +43,7 @@ const emit = defineEmits<{
     font-size 13px
     width 100%
     display block
-    text-align left 
+    text-align left
     border-radius 2px
     padding 2px 8px
     background-color transparent

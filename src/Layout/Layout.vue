@@ -33,4 +33,3 @@ const isHome = computed(() => {
   overflow auto
   box-sizing border-box
 </style>
-

@@ -1,9 +1,5 @@
 <template>
-  <input
-    class="tu-input"
-    type="text"
-    @input="handleInput"
-  >
+  <input class="tu-input" type="text" @input="handleInput" />
 </template>
 <script lang="ts">
 import { Lib } from '../../_utils/default-config'
@@ -22,7 +18,7 @@ export default defineComponent({
       context.emit('update:value', newValue)
     }
     return { handleInput }
-  },
+  }
 })
 </script>
 

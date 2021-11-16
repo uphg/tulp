@@ -41,19 +41,25 @@ export default defineComponent({
       el.dataset.oldOverflow = el.style.overflow
       void el.scrollHeight
       if (getStyle(el).boxSizing === 'border-box') {
-        const padding = (parseFloat(el.dataset.oldPaddingTop as string) + parseFloat(el.dataset.oldPaddingBottom as string)) || 0
-        if(!leaveStatus.value) {
-          el.style.height = el.scrollHeight + padding + 'px'
+        const padding =
+          parseFloat(el.dataset.oldPaddingTop as string) +
+            parseFloat(el.dataset.oldPaddingBottom as string) || 0
+        if (!leaveStatus.value) {
+          el.style.height = `${el.scrollHeight + padding}px`
         } else {
-          const extraPadding = parseFloat(getStyle(el).paddingTop) + parseFloat(getStyle(el).paddingBottom)
-          el.style.height = el.scrollHeight + padding - extraPadding + 'px'
+          const extraPadding =
+            parseFloat(getStyle(el).paddingTop) +
+            parseFloat(getStyle(el).paddingBottom)
+          el.style.height = `${el.scrollHeight + padding - extraPadding}px`
         }
       } else {
         if (!leaveStatus.value) {
-          el.style.height = el.scrollHeight + 'px'
+          el.style.height = `${el.scrollHeight}px`
         } else {
-          const padding = parseFloat(getStyle(el).paddingTop as string) + parseFloat(getStyle(el).paddingBottom as string)
-          el.style.height = el.scrollHeight - padding + 'px'
+          const padding =
+            parseFloat(getStyle(el).paddingTop as string) +
+            parseFloat(getStyle(el).paddingBottom as string)
+          el.style.height = `${el.scrollHeight - padding}px`
         }
       }
 
@@ -82,12 +88,14 @@ export default defineComponent({
         el.dataset.oldMarginTop = getStyle(el).marginTop
         el.dataset.oldMarginBottom = getStyle(el).marginBottom
       }
-      
+
       if (getStyle(el).boxSizing === 'content-box') {
-        const padding = parseFloat(el.dataset.oldPaddingTop as string) + parseFloat(el.dataset.oldPaddingBottom as string)
-        el.style.height = el.scrollHeight - padding + 'px'
+        const padding =
+          parseFloat(el.dataset.oldPaddingTop as string) +
+          parseFloat(el.dataset.oldPaddingBottom as string)
+        el.style.height = `${el.scrollHeight - padding}px`
       } else {
-        el.style.height = el.scrollHeight + 'px'
+        el.style.height = `${el.scrollHeight}px`
       }
       el.style.overflow = 'hidden'
     }
@@ -125,7 +133,7 @@ export default defineComponent({
         afterLeave
       }
     }
-  },
+  }
 })
 </script>
 

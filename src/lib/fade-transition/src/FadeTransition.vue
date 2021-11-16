@@ -1,8 +1,5 @@
 <template>
-  <Transition
-    name="tu-component-fade"
-    mode="out-in"
-  >
+  <Transition name="tu-component-fade" mode="out-in">
     <slot />
   </Transition>
 </template>

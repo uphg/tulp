@@ -5,5 +5,5 @@ const value = ref('')
 </script>
 
 <template>
-  <t-input v-model:value="value" placeholder="请输入内容"/>
+  <t-input v-model:value="value" placeholder="请输入内容" />
 </template>

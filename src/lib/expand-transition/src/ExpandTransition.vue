@@ -42,7 +42,7 @@ export default defineComponent({
 
     // 离开动画 --- 执行前
     const beforeLeave = (el: HTMLElement) => {
-      el.style.width = el.offsetWidth + 'px'
+      el.style.width = `${el.offsetWidth}px`
       el.style.overflow = 'hidden'
     }
 
@@ -74,7 +74,7 @@ export default defineComponent({
         afterLeave
       }
     }
-  },
+  }
 })
 </script>
 

@@ -1,6 +1,6 @@
 import { ref, provide, readonly } from 'vue'
 import { SidebarType } from '~src/router/interface'
-export type SetSidebarType = (value: SidebarType | []) => void 
+export type SetSidebarType = (value: SidebarType | []) => void
 
 export default function useSetSidebar() {
   const sidebar = ref<SidebarType[]>([])

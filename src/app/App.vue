@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { router as rootRouter } from '~src/router';
+import { router as rootRouter } from '~src/router'
 import useSidebarSwitch from './use-sidebar-switch'
 import useSetSidebar from './use-set-sidebar'
-import { navbarRoute } from '../router/navbar/index';
+import { navbarRoute } from '../router/navbar/index'
 import { find } from '~src/utils/find'
 import { NavBarType } from '~src/router/interface'
 

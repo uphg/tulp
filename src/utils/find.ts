@@ -3,7 +3,7 @@ export const find = <T>(
   testFun: (item: T, index?: number, array?: T[]) => boolean
 ) => {
   for (let i = 0; i < array.length; i++) {
-    if(testFun(array[i], i, array)) {
+    if (testFun(array[i], i, array)) {
       return array[i]
     }
   }

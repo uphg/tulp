@@ -3,11 +3,14 @@ import { SidebarType, SidebarItemType, NavBarType } from './interface'
 export const filterSidebar = (sidebars: SidebarType[]) => {
   const newRoutes: unknown = []
   const getRouters = (sidebars: SidebarType[]) => {
-    for(const route of sidebars) {
+    for (const route of sidebars) {
       if (route.text) {
-        route.items.length > 0 && getRouters(route.items as unknown as SidebarType[])
+        route.items.length > 0 &&
+          getRouters(route.items as unknown as SidebarType[])
       } else {
-        (newRoutes as SidebarItemType[]).push(route as unknown as SidebarItemType)
+        ;(newRoutes as SidebarItemType[]).push(
+          route as unknown as SidebarItemType
+        )
       }
     }
   }
@@ -25,9 +28,9 @@ export const filterNavbar = (navbars: NavBarType[]) => {
       name,
       component,
       meta,
-      children: filterSidebar(items) as SidebarItemType[],
+      children: filterSidebar(items) as SidebarItemType[]
     })
-  });
+  })
 
   return newNavbar
 }

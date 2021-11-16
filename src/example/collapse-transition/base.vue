@@ -7,7 +7,7 @@ const visible = ref(false)
 <template>
   <t-button @click="visible = !visible">点我</t-button>
 
-  <div style="padding: 20px 0; height: 210px;">
+  <div style="padding: 20px 0; height: 210px">
     <t-collapse-transition>
       <div v-show="visible">
         <div class="collapse-box">collapse-transition</div>

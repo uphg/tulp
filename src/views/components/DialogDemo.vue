@@ -4,8 +4,8 @@
     <TButton @click="clickDialog">点击打开</TButton>
     <div>
       <Dialog
-        title="我是标题"
         v-model:visible="dialogVisible"
+        title="我是标题"
         @close="close"
         @closed="closed"
       >
@@ -15,15 +15,10 @@
         <p>我只想保持本色</p>
         <p>和少年的心气</p>
         <template #footer>
-          <TButton
-            size="small"
-            @click="dialogVisible = false"
-          >取消</TButton>
-          <TButton
-            type="primary"
-            size="small"
-            @click="dialogVisible = false"
-          >确定</TButton>
+          <TButton size="small" @click="dialogVisible = false">取消</TButton>
+          <TButton type="primary" size="small" @click="dialogVisible = false"
+            >确定</TButton
+          >
         </template>
       </Dialog>
     </div>
@@ -31,8 +26,8 @@
     <div>
       <TButton @click="clickCustom">点击打开</TButton>
       <Dialog
-        render-directive="show"
         v-model:visible="customVisible"
+        render-directive="show"
         preset="custom"
         :mask-closable="false"
         @on-mask-click="onMaskClick"
@@ -40,8 +35,10 @@
         <div class="dialog-block">
           <p>我是自定义内容</p>
           <div>
-            <TButton @click="customVisible = false" type="info">关闭</TButton>
-            <TButton @click="customVisible = false" type="success">确认</TButton>
+            <TButton type="info" @click="customVisible = false">关闭</TButton>
+            <TButton type="success" @click="customVisible = false"
+              >确认</TButton
+            >
           </div>
         </div>
       </Dialog>
@@ -86,7 +83,7 @@ export default defineComponent({
         content: '我要警告你'
       })
     }
-    
+
     const openInfo = () => {
       dialog.info({
         title: '信息',
@@ -121,8 +118,20 @@ export default defineComponent({
       console.log(event)
     }
 
-    return { close, closed, onMaskClick, dialogVisible, customVisible, openSuccess, openWarning, openInfo, openError, clickDialog, clickCustom }
-  },
+    return {
+      close,
+      closed,
+      onMaskClick,
+      dialogVisible,
+      customVisible,
+      openSuccess,
+      openWarning,
+      openInfo,
+      openError,
+      clickDialog,
+      clickCustom
+    }
+  }
 })
 </script>
 <style lang="stylus">
@@ -144,6 +153,5 @@ p
   & > p
     padding 0 0 20px
   & > div
-    text-align right 
-
+    text-align right
 </style>

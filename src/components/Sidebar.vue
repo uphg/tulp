@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import NavLinks from "./NavLinks.vue"
+import NavLinks from './NavLinks.vue'
 import SidebarLinks from './SidebarLinks.vue'
 </script>
 
@@ -40,7 +40,7 @@ import SidebarLinks from './SidebarLinks.vue'
         line-height 1
         height auto
         padding 6px 10px
-    
+
   @media (max-width 719px)
     transform translateX(-100%)
     &.no-sidebar

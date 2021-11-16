@@ -24,19 +24,16 @@ const link = computed(() => {
   const item = props.item
   return `${item?.path === '/' ? '' : item.path}/${item.items[0].items[0].path}`
 })
-
 </script>
 
 <template>
   <div class="nav-link-item">
     <router-link
-      :class="[
-        'nav-link',
-        { 'nav-link-active': active }
-      ]"
+      :class="['nav-link', { 'nav-link-active': active }]"
       :to="link"
       @click="clickLinks(item.items)"
-    >{{ item?.meta?.title || item.name }}</router-link>
+      >{{ item?.meta?.title || item.name }}</router-link
+    >
   </div>
 </template>
 

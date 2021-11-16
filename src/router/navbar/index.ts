@@ -23,20 +23,20 @@ export const navbarRoute: NavBarType[] = [
           }
         ]
       }
-    ],
+    ]
   },
   {
     path: '/docs',
     name: 'Docs',
     component: Layout,
     meta: { title: '文档' },
-    items: docs,
+    items: docs
   },
   {
     path: '/components',
     name: 'Components',
     component: Layout,
     meta: { title: '组件' },
-    items: components,
-  },
+    items: components
+  }
 ]

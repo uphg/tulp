@@ -35,8 +35,7 @@
     text-shadow 6px 6px 0 #ffc947
     margin -16vh 0 20px
     transition font-size 0.25s
-  .description 
+  .description
     color #476582
     margin-bottom 20px
-
 </style>

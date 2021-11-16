@@ -1,0 +1,11 @@
+node_modules
+dist
+dist-docs
+
+CHANGELOG.en-US.md
+!.*
+
+commitlint.config.js
+
+yarn.lock
+pnpm-lock.yaml

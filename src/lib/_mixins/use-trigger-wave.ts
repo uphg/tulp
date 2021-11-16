@@ -1,4 +1,4 @@
-import { ref, nextTick, Ref  } from 'vue';
+import { ref, nextTick, Ref } from 'vue'
 
 export function useTriggerWave() {
   const isWave: Ref<boolean> = ref(false)
@@ -6,7 +6,8 @@ export function useTriggerWave() {
 
   const destroyTimeout = () => {
     isWave.value = false
-    typeof animationTimerId === 'number' && window.clearTimeout(animationTimerId)
+    typeof animationTimerId === 'number' &&
+      window.clearTimeout(animationTimerId)
     animationTimerId = null
   }
 

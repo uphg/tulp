@@ -6,23 +6,24 @@ const sidebar = inject('sidebar') as SidebarType[]
 
 <template>
   <div
-    class="sidebar-links"
     v-for="(item, index) in sidebar"
     :key="`sidebar-links-${index}`"
+    class="sidebar-links"
   >
     <div class="sidebar-links-title">{{ item.text }}</div>
     <div
-      v-for="(sidebar, i) in item.items"
+      v-for="(link, i) in item.items"
       :key="`sidebar-link-${String(i)}`"
       :class="['sidebar-link']"
     >
       <router-link
         class="sidebar-link-item"
         :class="{
-          active: sidebar.name === $route.name
+          active: link.name === $route.name
         }"
-        :to="sidebar.path"
-      >{{ sidebar.meta?.title }}</router-link>
+        :to="link.path"
+        >{{ link.meta?.title }}</router-link
+      >
     </div>
   </div>
 </template>

@@ -1,15 +1,14 @@
-  
 <template>
   <button
+    ref="button"
     class="tu-button"
     :class="{
       [`tu-button--${type}`]: type,
-      [`tu-button--${size}`]: size,
+      [`tu-button--${size}`]: size
     }"
-    ref="button"
     :type="nativeType"
-    @click="handleClick"
     :disabled="disabled"
+    @click="handleClick"
   >
     <ExpandTransition>
       <span
@@ -32,7 +31,7 @@
         </FadeTransition>
       </span>
     </ExpandTransition>
-    <span class="tu-button__content" v-if="$slots.default">
+    <span v-if="$slots.default" class="tu-button__content">
       <slot />
     </span>
     <span class="tu-button__border"></span>
@@ -45,7 +44,7 @@
 </template>
 <script lang="ts">
 import { Lib } from '../../_utils/default-config'
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, PropType } from 'vue'
 import { useTriggerWave } from '../../_mixins/use-trigger-wave'
 import { ExpandTransition } from '../../expand-transition/index'
 import { FadeTransition } from '../../fade-transition/index'
@@ -58,14 +57,23 @@ export default defineComponent({
     TIcon,
     LoadingIcon,
     ExpandTransition,
-    FadeTransition,
+    FadeTransition
   },
   props: {
     type: {
-      type: String as PropType<'default' | 'primary' | 'success' | 'warning' | 'info' | 'error'>,
+      type: String as PropType<
+        'default' | 'primary' | 'success' | 'warning' | 'info' | 'error'
+      >,
       default: 'default',
       validator: (value: string) => {
-        return ['default', 'primary', 'success', 'warning', 'info', 'error'].includes(value)
+        return [
+          'default',
+          'primary',
+          'success',
+          'warning',
+          'info',
+          'error'
+        ].includes(value)
       }
     },
     size: {
@@ -83,14 +91,14 @@ export default defineComponent({
       default: 'left',
       validator: (value: string) => {
         return ['left', 'right'].includes(value)
-      },
+      }
     },
     nativeType: {
       type: String as PropType<'button' | 'submit' | 'reset'>,
       default: 'button',
       validator: (value: string) => {
         return ['button', 'submit', 'reset'].includes(value)
-      },
+      }
     },
     loading: Boolean,
     disabled: Boolean,

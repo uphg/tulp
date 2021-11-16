@@ -6,7 +6,7 @@ export default function useSidebarSwitch() {
     sidebarVisible.value = value
   }
   const monitorDocumentCloseSidebar = (): void => {
-    document.addEventListener('click',(e: Event) => {
+    document.addEventListener('click', () => {
       setSidebarVisible(false)
     })
   }

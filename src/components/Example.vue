@@ -4,7 +4,7 @@ import { vueSyntaxHighlight } from '../utils/vue-syntax-highlight'
 import { useClipboard } from '@vueuse/core'
 
 interface ExampleComponent {
-  default: DefineComponent,
+  default: DefineComponent
   __sourceCode: string
 }
 
@@ -16,7 +16,7 @@ const visible = ref(false)
 const codeComponent = props.codeComponent as ExampleComponent
 const { copy, isSupported } = useClipboard({
   source: decodeURIComponent(codeComponent.__sourceCode),
-  read: false,
+  read: false
 })
 
 const copyStatus = ref(false)
@@ -46,7 +46,7 @@ const copyCode = async () => {
 }
 
 const codeHtml = computed(() => vueSyntaxHighlight(codeComponent.__sourceCode))
-const codeIconName = computed(() => visible.value ? 'code-slash' : 'code')
+const codeIconName = computed(() => (visible.value ? 'code-slash' : 'code'))
 </script>
 
 <template>
@@ -73,16 +73,16 @@ const codeIconName = computed(() => visible.value ? 'code-slash' : 'code')
       <span class="code-wrap">
         <transition name="exapmle-fade">
           <t-icon
+            :key="codeIconName"
             class="example-button"
             :name="codeIconName"
-            :key="codeIconName"
             @click="visible = !visible"
           ></t-icon>
         </transition>
       </span>
     </div>
     <t-collapse-transition>
-      <div class="exapmle-code" v-show="visible">
+      <div v-show="visible" class="exapmle-code">
         <pre class="language-vue-html" v-html="codeHtml" />
       </div>
     </t-collapse-transition>
@@ -93,7 +93,7 @@ const codeIconName = computed(() => visible.value ? 'code-slash' : 'code')
 .exapmle
   border 1px solid var(--border-color)
   border-radius 3px
-  
+
   .example-options
     display flex
     justify-content flex-end
@@ -141,5 +141,4 @@ const codeIconName = computed(() => visible.value ? 'code-slash' : 'code')
   .exapmle-fade-enter-from,
   .exapmle-fade-leave-to
     opacity 0
-
 </style>

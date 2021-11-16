@@ -12,7 +12,7 @@ export const addClass = (el: Element, name: string) => {
     if (el.classList) {
       el.classList.add(item)
     } else {
-      oldClass += ' ' + item
+      oldClass += ` ${item}`
     }
   }
   if (!el.classList) {
@@ -22,13 +22,13 @@ export const addClass = (el: Element, name: string) => {
 
 export const removeClass = (el: Element, name: string) => {
   if (!el || !name) return
-  let oldClass = ' ' + el.className + ' '
+  let oldClass = ` ${el.className} `
   const classes = name.split(' ')
   for (const item of classes) {
     if (el.className) {
       el.classList.remove(item)
     } else {
-      oldClass = oldClass.replace(' ' + item + ' ', ' ')
+      oldClass = oldClass.replace(` ${item} `, ' ')
     }
   }
   if (!el.classList) {
