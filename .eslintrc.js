@@ -70,6 +70,7 @@ module.exports = {
   parserOptions: {
     parser: '@typescript-eslint/parser', // 防止与 vue-eslint-parser 插件冲突
     ecmaVersion: 2020,
+    sourceType: 'module',
     ecmaFeatures: {
       // 配置 jsx
       jsx: true,
