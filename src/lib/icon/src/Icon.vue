@@ -1,6 +1,6 @@
 <template>
   <svg :class="{ [`tu-icon-${name}`]: name }" aria-hidden="true">
-    <use :xlink:href="`#tu-icon-${name}`"></use>
+    <use :xlink:href="`#tu-icon-${name}`" />
   </svg>
 </template>
 

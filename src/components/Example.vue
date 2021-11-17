@@ -4,20 +4,20 @@
       <component :is="codeComponent.default" />
     </div>
     <div class="example-options">
-      <t-icon class="example-button github" name="github"></t-icon>
+      <t-icon class="example-button github" name="github" />
       <span class="copy-wrap">
         <t-icon
           v-if="!copyStatus"
           class="example-button copy"
           name="copy-out-line"
           @click="copyCode"
-        ></t-icon>
+        />
         <t-icon
           v-else
           class="example-button check-mark"
           name="check-mark"
           @click="copyCode"
-        ></t-icon>
+        />
       </span>
       <span class="code-wrap">
         <transition name="exapmle-fade">
@@ -26,7 +26,7 @@
             class="example-button"
             :name="codeIconName"
             @click="visible = !visible"
-          ></t-icon>
+          />
         </transition>
       </span>
     </div>
@@ -90,6 +90,8 @@ const codeIconName = computed(() => (visible.value ? 'code-slash' : 'code'))
 </script>
 
 <style lang="stylus">
+$options-button-gap = 1em;
+
 .exapmle
   border 1px solid var(--border-color)
   border-radius 3px
@@ -98,8 +100,9 @@ const codeIconName = computed(() => (visible.value ? 'code-slash' : 'code'))
     display flex
     justify-content flex-end
     align-items center
-    padding 14px 20px
+    padding 16px 20px
     border-top 1px solid var(--border-color)
+
   .example-button
     user-select none
     cursor pointer
@@ -107,7 +110,7 @@ const codeIconName = computed(() => (visible.value ? 'code-slash' : 'code'))
     width 1.2em
     height 1.2em
     &:not(:last-child)
-      margin-right 10px
+      margin-right $options-button-gap
     &.check-mark
       fill var(--t-color-success-light)
 
@@ -127,7 +130,7 @@ const codeIconName = computed(() => (visible.value ? 'code-slash' : 'code'))
       position absolute
 
   .copy-wrap
-    margin-right 10px
+    margin-right $options-button-gap
 
   pre[class*="language-"]
     margin 0

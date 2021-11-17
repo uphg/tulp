@@ -5,7 +5,7 @@
     @click="toggle"
   >
     <span v-if="isWave" class="tu-switch__wave" :class="{ active: isWave }" />
-    <span class="tu-switch__core"></span>
+    <span class="tu-switch__core" />
   </button>
 </template>
 
@@ -17,6 +17,7 @@ export default defineComponent({
   props: {
     value: Boolean
   },
+  emits: ['update:value'],
   setup(props, context) {
     const { isWave, triggerWave } = useTriggerWave()
     const toggle = () => {

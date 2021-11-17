@@ -17,7 +17,7 @@ import { offBodyScroll, onBodyScroll } from '../../_utils/body'
 
 export default defineComponent({
   name: `${Lib.Prefix}Dialog`,
-  emits: ['update:visible', 'open', 'opened', 'close', 'closed', 'onMaskClick'],
+  emits: ['update:visible', 'open', 'opened', 'close', 'closed', 'maskClick'],
   props: {
     visible: {
       type: Boolean,
@@ -59,7 +59,7 @@ export default defineComponent({
     }
 
     const handleMaskClick = (event: Event) => {
-      context.emit('onMaskClick', event)
+      context.emit('maskClick', event)
       props.maskClosable && closeDialog()
     }
 
@@ -104,7 +104,7 @@ export default defineComponent({
               </div>
             ) : (
               this.preset === 'custom' ? renderSlot(this.$slots, 'default') : null
-            ) 
+            )
           }
         </div>
       </div>

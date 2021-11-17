@@ -10,7 +10,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:vue/vue3-recommended'
   ],
-  plugins: ['@typescript-eslint', /* 'prettier', */ 'import'],
+  plugins: ['@typescript-eslint', 'import'],
   parser: 'vue-eslint-parser',
   parserOptions: {
     parser: '@typescript-eslint/parser', // 防止与 vue-eslint-parser 插件冲突
@@ -19,7 +19,7 @@ module.exports = {
     ecmaFeatures: {
       // 配置 jsx
       jsx: true,
-      tsx: true,
+      tsx: true
     }
   },
   overrides: [
@@ -33,17 +33,20 @@ module.exports = {
   ],
   rules: {
     // js/ts
+    indent: ['error', 2], // 缩进风格
+    quotes: ['error', 'single', { 'avoidEscape': true }], // 使用单引号
+    'comma-dangle': ['error', 'never'], // 禁止对象尾逗号
     'no-restricted-syntax': [
       'error',
       'WithStatement', // with 语句
-      "BinaryExpression[operator='in']", // in 运算符
+      "BinaryExpression[operator='in']" // in 运算符
     ], // 禁止特定语法，参考：https://eslint.org/docs/rules/no-restricted-syntax
     camelcase: 'error', // 必须使用驼峰式命名法，参考：https://eslint.org/docs/rules/camelcase
     'no-var': 'error',
     'no-empty': 'error', // 禁止空的块语句，参考：https://eslint.org/docs/rules/no-empty
     'prefer-const': [
       'warn',
-      { destructuring: 'all' /* ignoreReadBeforeAssign: true */ },
+      { destructuring: 'all' /* ignoreReadBeforeAssign: true */ }
     ], // 使用 const 声明固定值，参考：https://cn.eslint.org/docs/rules/prefer-const
     'prefer-template': 'error', // 使用模板字面量拼接字符串，参考：https://eslint.org/docs/rules/prefer-template
     'object-shorthand': 'off', // 使用 ES6+ 语法简写对象，参考：https://eslint.org/docs/rules/object-shorthand
@@ -61,7 +64,7 @@ module.exports = {
     // 'vue/require-explicit-emits': 'off', // 关闭：必须要显示的声明 emits，才能使用
     'vue/multi-word-component-names': 'off', // 关闭：组件名必须由多个单词组成
     'vue/component-definition-name-casing': 'off',
-    'vue/comma-dangle': 'off',
+    // 'vue/comma-dangle': 'off', // 尾部逗号
     'vue/multiline-html-element-content-newline': ['off'],
     'vue/singleline-html-element-content-newline': ['off'],
     'vue/max-attributes-per-line': [

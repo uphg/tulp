@@ -1,5 +1,5 @@
 <template>
-  <input class="tu-input" type="text" @input="handleInput" />
+  <input class="tu-input" type="text" @input="handleInput">
 </template>
 <script lang="ts">
 import { Lib } from '../../_utils/default-config'
@@ -11,6 +11,7 @@ export default defineComponent({
   props: {
     value: String as TInputValue
   },
+  emits: ['update:value'],
   setup(props, context) {
     const handleInput = (event: Event) => {
       const newValue = (event.target as HTMLTextAreaElement).value

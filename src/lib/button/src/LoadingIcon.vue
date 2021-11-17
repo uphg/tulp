@@ -13,7 +13,7 @@
         dur="1.6s"
         fill="freeze"
         repeatCount="indefinite"
-      ></animateTransform>
+      />
       <circle
         fill="none"
         stroke="currentColor"
@@ -33,7 +33,7 @@
           dur="1.6s"
           fill="freeze"
           repeatCount="indefinite"
-        ></animateTransform>
+        />
         <animate
           attributeName="stroke-dashoffset"
           values="567;142;567"
@@ -41,7 +41,7 @@
           dur="1.6s"
           fill="freeze"
           repeatCount="indefinite"
-        ></animate>
+        />
       </circle>
     </g>
   </svg>
