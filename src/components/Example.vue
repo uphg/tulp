@@ -49,11 +49,11 @@ interface ExampleComponent {
 }
 
 const props = defineProps<{
-  codeComponent: unknown
+  code: unknown
 }>()
 
 const visible = ref(false)
-const codeComponent = props.codeComponent as ExampleComponent
+const codeComponent = props.code as ExampleComponent
 const { copy, isSupported } = useClipboard({
   source: decodeURIComponent(codeComponent.__sourceCode),
   read: false
