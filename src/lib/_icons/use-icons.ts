@@ -1,24 +1,14 @@
 import { createApp, h } from 'vue'
 import SvgTemplate from './SvgTemplate.vue'
-
-const isServer = typeof window === 'undefined'
-
-const ICON_STATUS = '__tulp__icon__inject__symbol__'
-// element.insertAdjacentHTML
-// parentNode.insertBefore
-// getAttribute
-// getElementsByTagName
-// __tulp__icon__inject__symbol__
-// if(isServer) return
-
-interface IconStatus extends Window {
-  [ICON_STATUS]: boolean
-}
+import { ICON_STATUS_KEY } from './icon-status'
+import type { IconStatus } from './icon-status'
+import isServer from '../_utils/isServer'
 
 export const useIcons = (window: Window) => {
   if (isServer) return
-  if ((window as IconStatus)[ICON_STATUS]) return
-  ;(window as IconStatus)[ICON_STATUS] = true
+  if ((window as IconStatus)[ICON_STATUS_KEY]) return
+  ;(window as IconStatus)[ICON_STATUS_KEY] = true
+
   const div = document.createElement('div')
   div.style.position = 'absolute'
   div.style.width = '0'

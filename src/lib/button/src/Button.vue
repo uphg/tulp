@@ -104,7 +104,7 @@ export default defineComponent({
     disabled: Boolean,
     text: Boolean
   },
-  setup(props) {
+  setup() {
     const { isWave, triggerWave } = useTriggerWave()
     const handleClick = () => {
       triggerWave()

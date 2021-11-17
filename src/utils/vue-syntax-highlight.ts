@@ -1,7 +1,7 @@
 import Prism from 'prismjs'
 import 'prismjs/components/prism-typescript'
 
-const templateTag = /<[\/]?template[^>]*>/
+const templateTag = /<[/]?template[^>]*>/
 
 const scriptTagBefore = /<script[^>]*>/
 const scriptTagAfter = /<\/script>/
@@ -85,7 +85,7 @@ export const codeClassification = (code: string) => {
     const pileUp = (code: string) => {
       if (templateTag.test(code)) {
         const templateTagText = code.match(templateTag)?.[0] as string
-        const startTag = templateTagText.match(/<[\/]?template/)?.[0]
+        const startTag = templateTagText.match(/<[/]?template/)?.[0]
         let length = 0
         if (startTag === '<template') {
           number += 1
