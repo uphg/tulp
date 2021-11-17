@@ -1,9 +1,8 @@
 import ButtonDemo from '~src/views/components/button.md'
 import InputDemo from '~src/views/components/input.md'
 import SwitchDemo from '~src/views/components/switch.md'
-import DialogDemo from '~src/views/components/DialogDemo.vue'
-import JsxDemo from '~src/views/components/JsxDemo'
-import IconDemo from '~src/views/components/IconDemo.vue'
+import DialogDemo from '~src/views/components/dialog.md'
+import IconDemo from '~src/views/components/icon.md'
 import CollapseTransitionDemo from '~src/views/components/collapse-transition.md'
 import { SidebarType } from '../interface'
 
@@ -36,16 +35,10 @@ export const components: SidebarType[] = [
         meta: { title: 'Dialog 对话框' }
       },
       {
-        path: 'jsx',
-        name: 'ComponentsJsx',
-        component: JsxDemo,
-        meta: { title: 'JSX 语法测试' }
-      },
-      {
         path: 'icon',
         name: 'ComponentsIcon',
         component: IconDemo,
-        meta: { title: 'Icon 测试案例' }
+        meta: { title: 'Icon 图标' }
       },
       {
         path: 'collapse-transition',

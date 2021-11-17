@@ -1,52 +1,49 @@
 module.exports = {
-  // 修复 defineProps、defineEmits 未定义的错误警告
+  // 环境
   env: {
-    'vue/setup-compiler-macros': true
+    'vue/setup-compiler-macros': true, // 修复 defineProps、defineEmits 未定义的错误警告
+    browser: true, // 浏览器
+    node: true // Node
   },
   extends: [
-    // add more generic rulesets here, such as:
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:vue/vue3-recommended',
-    // 'plugin:vue/recommended' // Use this if you are using Vue.js 2.x.
-    'prettier'
+    'plugin:vue/vue3-recommended'
   ],
-  plugins: ['@typescript-eslint', 'import', 'prettier'],
+  plugins: ['@typescript-eslint', /* 'prettier', */ 'import'],
+  parser: 'vue-eslint-parser',
+  parserOptions: {
+    parser: '@typescript-eslint/parser', // 防止与 vue-eslint-parser 插件冲突
+    ecmaVersion: 2020,
+    sourceType: 'module',
+    ecmaFeatures: {
+      // 配置 jsx
+      jsx: true,
+      tsx: true,
+    }
+  },
   overrides: [
     // 指定 TS 类型检测启用的文件后缀
     {
-      // enable the rule specifically for TypeScript files
-      files: ['*.js', '*.ts', '*.tsx', '.vue'],
+      files: ['*.ts', '*.tsx', '.vue'],
       rules: {
         'no-undef': 'off' // 参考：https://eslint.org/docs/rules/no-undef
-        // '@typescript-eslint/explicit-module-boundary-types': ['error']
       }
     }
   ],
   rules: {
-    // override/add rules settings here, such as:
-    // 'vue/no-unused-vars': 'error'
-    // "@typescript-eslint/rule-name": "error",
-    // prettier
-    'prettier/prettier': [
-      'error',
-      {
-        endOfLine: 'auto'
-      }
-    ],
-
     // js/ts
     'no-restricted-syntax': [
       'error',
       'WithStatement', // with 语句
-      "BinaryExpression[operator='in']" // in 运算符
+      "BinaryExpression[operator='in']", // in 运算符
     ], // 禁止特定语法，参考：https://eslint.org/docs/rules/no-restricted-syntax
     camelcase: 'error', // 必须使用驼峰式命名法，参考：https://eslint.org/docs/rules/camelcase
     'no-var': 'error',
     'no-empty': 'error', // 禁止空的块语句，参考：https://eslint.org/docs/rules/no-empty
     'prefer-const': [
       'warn',
-      { destructuring: 'all' /* ignoreReadBeforeAssign: true */ }
+      { destructuring: 'all' /* ignoreReadBeforeAssign: true */ },
     ], // 使用 const 声明固定值，参考：https://cn.eslint.org/docs/rules/prefer-const
     'prefer-template': 'error', // 使用模板字面量拼接字符串，参考：https://eslint.org/docs/rules/prefer-template
     'object-shorthand': 'off', // 使用 ES6+ 语法简写对象，参考：https://eslint.org/docs/rules/object-shorthand
@@ -64,17 +61,15 @@ module.exports = {
     // 'vue/require-explicit-emits': 'off', // 关闭：必须要显示的声明 emits，才能使用
     'vue/multi-word-component-names': 'off', // 关闭：组件名必须由多个单词组成
     'vue/component-definition-name-casing': 'off',
-    'vue/comma-dangle': 'off'
-  },
-  parser: 'vue-eslint-parser',
-  parserOptions: {
-    parser: '@typescript-eslint/parser', // 防止与 vue-eslint-parser 插件冲突
-    ecmaVersion: 2020,
-    sourceType: 'module',
-    ecmaFeatures: {
-      // 配置 jsx
-      jsx: true,
-      tsx: true
-    }
+    'vue/comma-dangle': 'off',
+    'vue/multiline-html-element-content-newline': ['off'],
+    'vue/singleline-html-element-content-newline': ['off'],
+    'vue/max-attributes-per-line': [
+      'error',
+      {
+        singleline: 3,
+        multiline: 1
+      }
+    ]
   }
 }

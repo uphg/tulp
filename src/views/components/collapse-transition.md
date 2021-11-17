@@ -1,3 +1,7 @@
+---
+title: CollapseTransition 过渡
+---
+
 添加组件过渡动画。
 
 ## 基础用法

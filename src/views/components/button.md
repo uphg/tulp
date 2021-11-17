@@ -1,5 +1,5 @@
 ---
-title: Button 组件
+title: Button 按钮
 ---
 
 常用的按钮功能。

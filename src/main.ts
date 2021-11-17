@@ -9,7 +9,8 @@ import {
   TInput,
   TCollapseTransition,
   TIcon,
-  TSwitch
+  TSwitch,
+  TDialog
 } from '~src/lib/index'
 import './utils/vue-syntax-highlight'
 
@@ -23,4 +24,5 @@ app.component('t-button', TButton)
 app.component('t-icon', TIcon)
 app.component('t-input', TInput)
 app.component('t-switch', TSwitch)
+app.component('t-dialog', TDialog)
 app.component('t-collapse-transition', TCollapseTransition)

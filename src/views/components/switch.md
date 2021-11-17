@@ -1,3 +1,7 @@
+---
+title: Switch 组件
+---
+
 switch 开关。
 
 ## 基础用法
