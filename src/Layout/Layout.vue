@@ -1,3 +1,17 @@
+<template>
+  <div class="vue-docs-container">
+    <Navbar />
+    <Sidebar
+      :class="{
+        'is-open': sidebarVisible,
+        'no-sidebar': isHome
+      }"
+    />
+    <Custom v-if="isHome" />
+    <Page v-else />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { inject, computed, Ref } from 'vue'
 import { useRoute } from 'vue-router'
@@ -12,20 +26,6 @@ const isHome = computed(() => {
   return route.name === 'Home'
 })
 </script>
-
-<template>
-  <div class="vue-docs-container">
-    <Navbar />
-    <Sidebar
-      :class="{
-        'is-open': sidebarVisible,
-        'no-sidebar': isHome
-      }"
-    />
-    <Custom v-if="isHome" />
-    <Page v-else />
-  </div>
-</template>
 
 <style lang="stylus">
 .docs-content

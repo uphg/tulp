@@ -1,3 +1,7 @@
+<template>
+  <h1 class="page-title">{{ pageTitle }}</h1>
+</template>
+
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { router as rootRouter } from '~src/router'
@@ -16,10 +20,6 @@ onMounted(() => {
     pageTitle.value = (to.meta.title || null) as string | null
   })
 </script>
-
-<template>
-  <h1 class="page-title">{{ pageTitle }}</h1>
-</template>
 
 <style lang="stylus">
 .page-title

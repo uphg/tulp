@@ -1,14 +1,14 @@
-<script setup lang="ts">
-import NavLinks from './NavLinks.vue'
-import SidebarLinks from './SidebarLinks.vue'
-</script>
-
 <template>
   <aside class="sidebar" @click.stop>
     <NavLinks />
     <SidebarLinks />
   </aside>
 </template>
+
+<script setup lang="ts">
+import NavLinks from './NavLinks.vue'
+import SidebarLinks from './SidebarLinks.vue'
+</script>
 
 <style lang="stylus">
 .sidebar

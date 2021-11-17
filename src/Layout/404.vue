@@ -1,3 +1,9 @@
+<script setup lang="ts">
+const getMsg = (): string => {
+  return message[Math.floor(Math.random() * message.length)]
+}
+</script>
+
 <script lang="ts">
 const message: string[] = [
   `这里什么都没有。`,
@@ -5,12 +11,6 @@ const message: string[] = [
   `这是 404。`,
   `你可能已经断开连接了。`
 ]
-</script>
-
-<script setup lang="ts">
-const getMsg = (): string => {
-  return message[Math.floor(Math.random() * message.length)]
-}
 </script>
 
 <template>

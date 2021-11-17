@@ -1,3 +1,19 @@
+<template>
+  <main ref="contentRef" class="docs-content" @scroll="handleScroll">
+    <div class="page">
+      <div ref="wrapperRef" class="page-wrapper">
+        <PageTitlex />
+        <router-view />
+      </div>
+      <PageAnchor
+        :active-index="currentAnchorIndex"
+        :anchors="anchors"
+        @change="setAnchorJump"
+      />
+    </div>
+  </main>
+</template>
+
 <script lang="ts">
 const NAVBAR_HEIGHT = 60 // 导航栏高度
 const HEADER_GAP = NAVBAR_HEIGHT + 10 // 锚点距离顶部距离
@@ -121,22 +137,6 @@ watch(
   { immediate: true }
 )
 </script>
-
-<template>
-  <main ref="contentRef" class="docs-content" @scroll="handleScroll">
-    <div class="page">
-      <div ref="wrapperRef" class="page-wrapper">
-        <PageTitlex />
-        <router-view />
-      </div>
-      <PageAnchor
-        :active-index="currentAnchorIndex"
-        :anchors="anchors"
-        @change="setAnchorJump"
-      />
-    </div>
-  </main>
-</template>
 
 <style lang="stylus">
 .page

@@ -1,3 +1,14 @@
+<template>
+  <div class="nav-link-item">
+    <router-link
+      :class="['nav-link', { 'nav-link-active': active }]"
+      :to="link"
+      @click="clickLinks(item.items)"
+      >{{ item?.meta?.title || item.name }}</router-link
+    >
+  </div>
+</template>
+
 <script setup lang="ts">
 import { inject, computed } from 'vue'
 import { SidebarType } from '~src/router/interface'
@@ -25,17 +36,6 @@ const link = computed(() => {
   return `${item?.path === '/' ? '' : item.path}/${item.items[0].items[0].path}`
 })
 </script>
-
-<template>
-  <div class="nav-link-item">
-    <router-link
-      :class="['nav-link', { 'nav-link-active': active }]"
-      :to="link"
-      @click="clickLinks(item.items)"
-      >{{ item?.meta?.title || item.name }}</router-link
-    >
-  </div>
-</template>
 
 <style lang="stylus">
 .nav-link-item

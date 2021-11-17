@@ -1,3 +1,43 @@
+<template>
+  <div class="exapmle">
+    <div class="exapmle-component">
+      <component :is="codeComponent.default" />
+    </div>
+    <div class="example-options">
+      <t-icon class="example-button github" name="github"></t-icon>
+      <span class="copy-wrap">
+        <t-icon
+          v-if="!copyStatus"
+          class="example-button copy"
+          name="copy-out-line"
+          @click="copyCode"
+        ></t-icon>
+        <t-icon
+          v-else
+          class="example-button check-mark"
+          name="check-mark"
+          @click="copyCode"
+        ></t-icon>
+      </span>
+      <span class="code-wrap">
+        <transition name="exapmle-fade">
+          <t-icon
+            :key="codeIconName"
+            class="example-button"
+            :name="codeIconName"
+            @click="visible = !visible"
+          ></t-icon>
+        </transition>
+      </span>
+    </div>
+    <t-collapse-transition>
+      <div v-show="visible" class="exapmle-code">
+        <pre class="language-vue-html" v-html="codeHtml" />
+      </div>
+    </t-collapse-transition>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { computed, DefineComponent, ref } from 'vue'
 import { vueSyntaxHighlight } from '../utils/vue-syntax-highlight'
@@ -48,46 +88,6 @@ const copyCode = async () => {
 const codeHtml = computed(() => vueSyntaxHighlight(codeComponent.__sourceCode))
 const codeIconName = computed(() => (visible.value ? 'code-slash' : 'code'))
 </script>
-
-<template>
-  <div class="exapmle">
-    <div class="exapmle-component">
-      <component :is="codeComponent.default" />
-    </div>
-    <div class="example-options">
-      <t-icon class="example-button github" name="github"></t-icon>
-      <span class="copy-wrap">
-        <t-icon
-          v-if="!copyStatus"
-          class="example-button copy"
-          name="copy-out-line"
-          @click="copyCode"
-        ></t-icon>
-        <t-icon
-          v-else
-          class="example-button check-mark"
-          name="check-mark"
-          @click="copyCode"
-        ></t-icon>
-      </span>
-      <span class="code-wrap">
-        <transition name="exapmle-fade">
-          <t-icon
-            :key="codeIconName"
-            class="example-button"
-            :name="codeIconName"
-            @click="visible = !visible"
-          ></t-icon>
-        </transition>
-      </span>
-    </div>
-    <t-collapse-transition>
-      <div v-show="visible" class="exapmle-code">
-        <pre class="language-vue-html" v-html="codeHtml" />
-      </div>
-    </t-collapse-transition>
-  </div>
-</template>
 
 <style lang="stylus">
 .exapmle

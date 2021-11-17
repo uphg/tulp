@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { inject } from 'vue'
-import { SidebarType } from '~src/router/interface'
-const sidebar = inject('sidebar') as SidebarType[]
-</script>
-
 <template>
   <div
     v-for="(item, index) in sidebar"
@@ -27,6 +21,12 @@ const sidebar = inject('sidebar') as SidebarType[]
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { inject } from 'vue'
+import { SidebarType } from '~src/router/interface'
+const sidebar = inject('sidebar') as SidebarType[]
+</script>
 
 <style lang="stylus">
 .sidebar-links

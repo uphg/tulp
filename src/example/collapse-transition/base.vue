@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const visible = ref(false)
-</script>
-
 <template>
   <t-button @click="visible = !visible">点我</t-button>
 
@@ -16,6 +10,12 @@ const visible = ref(false)
     </t-collapse-transition>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const visible = ref(false)
+</script>
 
 <style>
 .collapse-box {

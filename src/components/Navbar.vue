@@ -1,15 +1,3 @@
-<script setup lang="ts">
-import { inject, Ref } from 'vue'
-import { SetSidebarVisibleFun } from '../app/interface'
-import NavLinks from './Navlinks.vue'
-
-const sidebarVisible = inject<Ref<boolean>>('sidebarVisible')
-const setSidebarVisible = inject<SetSidebarVisibleFun>('setSidebarVisible')
-const toggleSidebar = (): void => {
-  setSidebarVisible?.(Boolean(!sidebarVisible?.value))
-}
-</script>
-
 <template>
   <header class="navbar" @click.stop>
     <div class="navbar-left">
@@ -21,6 +9,18 @@ const toggleSidebar = (): void => {
     <NavLinks />
   </header>
 </template>
+
+<script setup lang="ts">
+import { inject, Ref } from 'vue'
+import { SetSidebarVisibleFun } from '../app/interface'
+import NavLinks from './Navlinks.vue'
+
+const sidebarVisible = inject<Ref<boolean>>('sidebarVisible')
+const setSidebarVisible = inject<SetSidebarVisibleFun>('setSidebarVisible')
+const toggleSidebar = (): void => {
+  setSidebarVisible?.(Boolean(!sidebarVisible?.value))
+}
+</script>
 
 <style lang="stylus">
 .navbar {

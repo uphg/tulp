@@ -1,16 +1,3 @@
-<script setup lang="ts">
-import { PageAnchorType } from '../interface'
-
-defineProps<{
-  activeIndex: number
-  anchors: PageAnchorType[]
-}>()
-
-const emit = defineEmits<{
-  (e: 'change', item: PageAnchorType): void
-}>()
-</script>
-
 <template>
   <div class="page-anchor">
     <div class="anchor-links">
@@ -29,6 +16,19 @@ const emit = defineEmits<{
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { PageAnchorType } from '../interface'
+
+defineProps<{
+  activeIndex: number
+  anchors: PageAnchorType[]
+}>()
+
+const emit = defineEmits<{
+  (e: 'change', item: PageAnchorType): void
+}>()
+</script>
 
 <style lang="stylus">
 .page-anchor

@@ -1,13 +1,3 @@
-<script setup lang="ts">
-import { computed } from 'vue'
-import NavLink from './NavLink.vue'
-import { navbarRoute } from '../router/navbar/index'
-import { useRoute } from 'vue-router'
-
-const route = useRoute()
-const currentName = computed(() => route.matched[0].name)
-</script>
-
 <template>
   <div class="nav-links">
     <NavLink
@@ -18,6 +8,17 @@ const currentName = computed(() => route.matched[0].name)
     />
   </div>
 </template>
+
+<script setup lang="ts">
+import { computed } from 'vue'
+import NavLink from './NavLink.vue'
+import { navbarRoute } from '../router/navbar/index'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+const currentName = computed(() => route.matched[0].name)
+</script>
+
 <style lang="stylus">
 .nav-links
   display flex
