@@ -11,7 +11,7 @@
       stroke="currentColor"
       stroke-linejoin="round"
       stroke-width="32"
-    ></rect>
+    />
     <path
       d="M383.5 128l.5-24a56.16 56.16 0 0 0-56-56H112a64.19 64.19 0 0 0-64 64v216a56.16 56.16 0 0 0 56 56h24"
       fill="none"
@@ -19,6 +19,6 @@
       stroke-linecap="round"
       stroke-linejoin="round"
       stroke-width="32"
-    ></path>
+    />
   </symbol>
 </template>

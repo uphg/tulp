@@ -16,8 +16,7 @@
           active: link.name === $route.name
         }"
         :to="link.path"
-        >{{ link.meta?.title }}</router-link
-      >
+      >{{ link.meta?.title }}</router-link>
     </div>
   </div>
 </template>

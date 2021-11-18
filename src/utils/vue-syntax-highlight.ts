@@ -47,8 +47,8 @@ export const codeClassification = (code: string) => {
       const scriptContent = prefix(scriptTagAfter, scriptStart)
 
       scriptBlock += html(scriptContent, lang)
-      scriptBlock += `</span>`
-      scriptBlock += html(`</script>`, 'html')
+      scriptBlock += '</span>'
+      scriptBlock += html('</script>', 'html')
 
       return {
         html: prefixNode + scriptBlock,
@@ -69,8 +69,8 @@ export const codeClassification = (code: string) => {
       const styleContent = prefix(styleTagAfter, styleStart)
 
       styleBlock += html(styleContent, lang)
-      styleBlock += `</span>`
-      styleBlock += html(`</script>`, 'html')
+      styleBlock += '</span>'
+      styleBlock += html('</script>', 'html')
 
       return {
         html: prefixNode + styleBlock,

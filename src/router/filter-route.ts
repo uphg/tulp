@@ -8,7 +8,7 @@ export const filterSidebar = (sidebars: SidebarType[]) => {
         route.items.length > 0 &&
           getRouters(route.items as unknown as SidebarType[])
       } else {
-        ;(newRoutes as SidebarItemType[]).push(
+        (newRoutes as SidebarItemType[]).push(
           route as unknown as SidebarItemType
         )
       }

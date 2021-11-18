@@ -31,15 +31,15 @@ interface DialogApi {
  * 问题 question
  */
 
- const typeApi: string[] = [
+const typeApi: string[] = [
   'success',
   'warning',
   'info',
   'error',
   'question'
- ] 
+] 
 
- const createDialog = (options: DialogOptions) => {
+const createDialog = (options: DialogOptions) => {
   const { type, title, content, cancel, confirm } = options
   const div = document.createElement('div')
   document.body.appendChild(div)
@@ -100,7 +100,7 @@ interface DialogApi {
                 },
                 { default: () => '确定' }
               )
-            ],
+            ]
           }}
         </Dialog>
       )
