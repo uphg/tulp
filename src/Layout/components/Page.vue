@@ -1,6 +1,6 @@
 <template>
   <main ref="contentRef" class="docs-content" @scroll="handleScroll">
-    <div class="page">
+    <div ref="pageRef" class="page">
       <div ref="wrapperRef" class="page-wrapper">
         <PageTitlex />
         <router-view />
@@ -20,7 +20,7 @@ const HEADER_GAP = NAVBAR_HEIGHT + 10 // 锚点距离顶部距离
 </script>
 
 <script setup lang="ts">
-import { onMounted, watch, nextTick, ref } from 'vue'
+import { onMounted, watch, nextTick, ref, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { PageAnchorType } from '../interface'
 import PageTitlex from './PageTitle.vue'
@@ -30,6 +30,7 @@ import debounce from 'lodash.debounce'
 
 const router = useRouter()
 const route = useRoute()
+const pageRef = ref<HTMLElement | null>(null)
 const contentRef = ref<HTMLElement | null>(null)
 const wrapperRef = ref<HTMLElement | null>(null)
 const anchors = ref<PageAnchorType[]>([])
@@ -47,13 +48,12 @@ const handleScroll = debounce(
       document.documentElement.clientHeight,
       document.body.clientHeight
     )
-    const contentHeight =
-      main.querySelector('.docs-content > .page')?.clientHeight || 0
+    const contentHeight = computed(() => pageRef.value?.clientHeight || 0)
 
     // 找出距离顶部最小的标题
     let recentAnchor = anchors.value[0]
     let max = recentAnchor.el.offsetTop - scrollTop - HEADER_GAP
-    if (scrollTop >= contentHeight - viewHeight) {
+    if (scrollTop >= contentHeight.value - viewHeight) {
       currentAnchorIndex.value = anchors.value.length - 1
     } else if (max > 0) {
       // 没有到达第一个标题之前
@@ -88,9 +88,7 @@ const handleScroll = debounce(
 ) // leading 第一次触发不需要延迟
 
 const updateAnchors = () => {
-  const markdown = wrapperRef.value?.querySelector(
-    '.page-wrapper .markdown-body'
-  )
+  const markdown = wrapperRef.value?.querySelector('.page-wrapper .markdown-body')
   const titles = markdown?.querySelectorAll('.markdown-body > h2')
   const newAnchors = [] as PageAnchorType[]
   titles?.forEach((el, index) => {
@@ -117,13 +115,13 @@ const resetPage = () => {
 const updatePagePosition = () => {
   const currentIndex = Number(route.query.anchorIndex)
   if (currentIndex || currentIndex === 0) {
-    setAnchorJump(anchors.value[currentIndex])
+    nextTick(() => { setAnchorJump(anchors.value[currentIndex]) })
   }
 }
 
 onMounted(() => {
-  updateAnchors()
   updatePagePosition()
+  updateAnchors()
 })
 
 watch(
