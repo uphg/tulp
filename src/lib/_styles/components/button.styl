@@ -1,6 +1,12 @@
 @require '../common/animation'
 @require '../mixins/index'
 
+$base-name = '.tu-button'
+
+line-color(color)
+  color color
+  border-color color
+
 type(base, light, dark)
   --ripple-color base
   color #fff
@@ -9,13 +15,42 @@ type(base, light, dark)
     background-color light
   &:active
     background-color dark
-  &.is-loading, &.is-disabled 
+  &.is-loading, &.is-disabled
     background-color light
+
+dashed(base, light, dark)
+  background-color #0000
+  color base
+  {$base-name}__border
+    border 1px dashed base
+  &:hover, &:focus
+    line-color(light)
+  &:active
+    line-color(dark)
+  &.is-loading, &.is-disabled
+    line-color(light)
+
+ghost(base, light, dark)
+  background-color #0000
+  color base
+  {$base-name}__border
+    border 1px solid base
+  &:hover, &:focus
+    line-color(light)
+  &:active
+    line-color(dark)
+  &.is-loading, &.is-disabled
+    line-color(light)
+
 
 type-style(base, light, dark)
   type(base, light, dark)
+  &.is-dashed
+    dashed(base, light, dark)
+  &.is-ghost
+    ghost(base, light, dark)
 
-.tu-button
+{$base-name}
   position relative
   font-size 14px
   color var(--t-color-text-primary)
@@ -47,33 +82,6 @@ type-style(base, light, dark)
     position-fill()
   &__wave
     wave-effect(wave-spread, wave-opacity)
-
-.tu-button
-  &--default
-    --ripple-color var(--t-color-primary)
-    .tu-button__border
-      border 1px solid var(--t-button-border-color)
-    &:hover, &:focus
-      color var(--t-color-primary)
-      .tu-button__border
-        border-color var(--t-color-primary)
-    &:active
-      color var(--t-color-primary-dark)
-      .tu-button__border
-        border-color var(--t-color-primary-dark)
-  &--primary
-    type-style(var(--t-color-primary), var(--t-color-primary-light), var(--t-color-primary-dark))
-  &--success
-    type-style(var(--t-color-success), var(--t-color-success-light), var(--t-color-success-dark))
-  &--info
-    type-style(var(--t-color-info), var(--t-color-info-light), var(--t-color-info-dark))
-  &--warning
-    type-style(var(--t-color-warning), var(--t-color-warning-light), var(--t-color-warning-dark))
-  &--error
-    type-style(var(--t-color-error), var(--t-color-error-light), var(--t-color-error-dark))
-  &--small
-    padding 0 var(--t-button-small-padding)
-    min-height var(--t-button-small-height)
   &__icon
     box-sizing border-box
     width 18px
@@ -84,13 +92,47 @@ type-style(base, light, dark)
   .tu-icon
     &--left
       margin-right 4px
-      &.is-uncontent
+      &.is-empty
         margin-right 0
     &--right
       order 1
       margin-left 4px
-      &.is-uncontent
+      &.is-empty
         margin-left 0
   &__loading-icon
     width 1em
     height 1em
+
+{$base-name}
+  &--default
+    --ripple-color var(--t-color-primary)
+    {$base-name}__border
+      border 1px solid var(--t-button-border-color)
+    &:hover, &:focus
+      color var(--t-color-primary)
+      {$base-name}__border
+        border-color var(--t-color-primary)
+    &:active
+      color var(--t-color-primary-dark)
+      {$base-name}__border
+        border-color var(--t-color-primary-dark)
+    &.is-dashed
+      {$base-name}__border
+        border-style dashed
+    &.is-ghost
+      background-color #0000
+
+  &--primary
+    type-style(var(--t-color-primary), var(--t-color-primary-light), var(--t-color-primary-dark))
+  &--success
+    type-style(var(--t-color-success), var(--t-color-success-light), var(--t-color-success-dark))
+  &--info
+    type-style(var(--t-color-info), var(--t-color-info-light), var(--t-color-info-dark))
+  &--warning
+    type-style(var(--t-color-warning), var(--t-color-warning-light), var(--t-color-warning-dark))
+  &--error
+    type-style(var(--t-color-error), var(--t-color-error-light), var(--t-color-error-dark))
+
+  &--small
+    padding 0 var(--t-button-small-padding)
+    min-height var(--t-button-small-height)

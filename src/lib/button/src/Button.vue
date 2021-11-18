@@ -4,7 +4,9 @@
     class="tu-button"
     :class="{
       [`tu-button--${type}`]: type,
-      [`tu-button--${size}`]: size
+      [`tu-button--${size}`]: size,
+      [`is-dashed`]: dashed,
+      [`is-ghost`]: ghost,
     }"
     :type="nativeType"
     :disabled="disabled"
@@ -17,7 +19,7 @@
           'tu-button__icon',
           {
             [`tu-icon--${iconPosition}`]: iconPosition,
-            'is-uncontent': !$slots.default
+            'is-empty': !$slots.default
           }
         ]"
       >
@@ -34,7 +36,7 @@
     <span v-if="$slots.default" class="tu-button__content">
       <slot />
     </span>
-    <span class="tu-button__border"></span>
+    <span class="tu-button__border" />
     <span
       v-if="isWave && !text"
       class="tu-button__wave"
@@ -66,14 +68,7 @@ export default defineComponent({
       >,
       default: 'default',
       validator: (value: string) => {
-        return [
-          'default',
-          'primary',
-          'success',
-          'warning',
-          'info',
-          'error'
-        ].includes(value)
+        return [ 'default', 'primary', 'success', 'warning', 'info', 'error' ].includes(value)
       }
     },
     size: {
@@ -102,7 +97,9 @@ export default defineComponent({
     },
     loading: Boolean,
     disabled: Boolean,
-    text: Boolean
+    text: Boolean,
+    dashed: Boolean,
+    ghost: Boolean
   },
   setup() {
     const { isWave, triggerWave } = useTriggerWave()
