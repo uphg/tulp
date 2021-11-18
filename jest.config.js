@@ -11,7 +11,7 @@ module.exports = {
   collectCoverageFrom: ['<rootDir>/src/**/*.(ts|tsx)'],
 
   // 用于跳过测试覆盖率集合的 正则表达式字符串数组
-  // coveragePathIgnorePatterns: ['<rootDir>/node_modules/'],
+  coveragePathIgnorePatterns: ['<rootDir>/node_modules/'],
 
   // An array of directory names to be searched recursively up from the requiring module's location
   // moduleDirectories: ['node_modules'],
@@ -22,21 +22,21 @@ module.exports = {
     'tsx',
     'vue',
     'js',
-    'json',
+    'json'
   ],
 
   // Jest 用于检测测试文件目录的全局配置
   testMatch: [
-    '<rootDir>/test/**/*.(spec|test).(ts|tsx)'
+    '<rootDir>/src/**/*.(spec|test).(ts|tsx)'
   ],
 
   // 测试时需要跳过的文件夹正则数组
-  // testPathIgnorePatterns: ['/node_modules/'],
+  testPathIgnorePatterns: ['/node_modules/'],
 
   transform: {
     '^.+\\.ts$': 'ts-jest',
     '^.+\\.vue$': 'vue-jest',
-    ".+\\.(css|styl)$": "jest-css-modules-transform",
+    '.+\\.(css|styl)$': 'jest-css-modules-transform',
     '^.+\\.(j|t)sx?$': 'babel-jest'
-  },
+  }
 }

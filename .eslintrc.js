@@ -3,7 +3,8 @@ module.exports = {
   env: {
     'vue/setup-compiler-macros': true, // 修复 defineProps、defineEmits 未定义的错误警告
     browser: true, // 浏览器
-    node: true // Node
+    node: true, // Node
+    jest: true
   },
   extends: [
     'eslint:recommended',
