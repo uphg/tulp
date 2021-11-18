@@ -42,6 +42,17 @@ ghost(base, light, dark)
   &.is-loading, &.is-disabled
     line-color(light)
 
+text(base, light, dark)
+  color base
+  &:hover, &:focus
+    color light
+    background-color #0000
+  &:active
+    color dark
+    background-color #0000
+  &.is-loading, &.is-disabled
+    color light
+    background-color #0000
 
 type-style(base, light, dark)
   type(base, light, dark)
@@ -49,6 +60,8 @@ type-style(base, light, dark)
     dashed(base, light, dark)
   &.is-ghost
     ghost(base, light, dark)
+  &{$base-name}--text
+    text(base, light, dark)
 
 {$base-name}
   position relative
@@ -89,6 +102,7 @@ type-style(base, light, dark)
     display inline-flex
     justify-content center
     align-items center
+
   .tu-icon
     &--left
       margin-right 4px
@@ -99,6 +113,7 @@ type-style(base, light, dark)
       margin-left 4px
       &.is-empty
         margin-left 0
+
   &__loading-icon
     width 1em
     height 1em
@@ -133,6 +148,41 @@ type-style(base, light, dark)
   &--error
     type-style(var(--t-color-error), var(--t-color-error-light), var(--t-color-error-dark))
 
+  &.is-round
+    padding 0 var(--t-button-padding-round)
+    border-radius calc(var(--t-button-height) / 2)
+
+  &.is-circle
+    padding 0 var(--t-button-padding-circle)
+    border-radius calc(var(--t-button-height) / 2)
+    {$base-name}__wave
+      wave-effect(large-wave-spread, large-wave-opacity)
+
   &--small
     padding 0 var(--t-button-small-padding)
     min-height var(--t-button-small-height)
+    &.is-round
+      padding 0 var(--t-button-small-padding-round)
+      border-radius calc(var(--t-button-small-height) / 2)
+    &.is-circle
+      padding 0 var(--t-button-small-padding-circle)
+      border-radius calc(var(--t-button-small-height) / 2)
+
+  &--large
+    padding 0 var(--t-button-large-padding)
+    min-height var(--t-button-large-height)
+    &.is-round
+      padding 0 var(--t-button-large-padding-round)
+      border-radius calc(var(--t-button-large-height) / 2)
+    &.is-circle
+      padding 0 var(--t-button-large-padding-circle)
+      border-radius calc(var(--t-button-large-height) / 2)
+
+  &--text
+    background-color: #0000;
+    padding 0
+    min-height auto
+    &--default
+      color var(--t-color-text-primary)
+
+

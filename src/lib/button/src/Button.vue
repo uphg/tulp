@@ -5,8 +5,11 @@
     :class="{
       [`tu-button--${type}`]: type,
       [`tu-button--${size}`]: size,
+      [`tu-button--text`]: text,
       [`is-dashed`]: dashed,
       [`is-ghost`]: ghost,
+      [`is-circle`]: circle,
+      [`is-round`]: round,
     }"
     :type="nativeType"
     :disabled="disabled"
@@ -36,7 +39,7 @@
     <span v-if="$slots.default" class="tu-button__content">
       <slot />
     </span>
-    <span class="tu-button__border" />
+    <span v-if="!text" class="tu-button__border" />
     <span
       v-if="isWave && !text"
       class="tu-button__wave"
@@ -98,6 +101,8 @@ export default defineComponent({
     loading: Boolean,
     disabled: Boolean,
     text: Boolean,
+    circle: Boolean,
+    round: Boolean,
     dashed: Boolean,
     ghost: Boolean
   },
