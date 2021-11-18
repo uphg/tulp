@@ -143,8 +143,6 @@ watch(
   padding-left 320px
   display flex
   flex-wrap nowrap
-  .exapmle
-    margin-bottom 3em
 
 .page-wrapper
   width calc(100% - 154px)
