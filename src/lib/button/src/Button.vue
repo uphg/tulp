@@ -40,6 +40,7 @@
       <slot />
     </span>
     <span v-if="!text" class="tu-button__border" />
+    <!-- <span v-if="!text" class="tu-button__status-border" /> -->
     <span
       v-if="isWave && !text"
       class="tu-button__wave"

@@ -148,11 +148,11 @@ watch(
 
 .page-wrapper
   width calc(100% - 154px)
-  max-width 980px
+  max-width 1920px
   margin-left auto
   margin-right auto
   box-sizing border-box
-  padding 24px
+  padding 24px 56px
 
 @media (max-width 1200px)
   .page .page-wrapper

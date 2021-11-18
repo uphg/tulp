@@ -68,7 +68,7 @@ module.exports = {
     // 'vue/comma-dangle': 'off', // 尾部逗号
     'vue/multiline-html-element-content-newline': ['off'],
     'vue/singleline-html-element-content-newline': ['off'],
-    'vue/max-attributes-per-line': ['off']
+    'vue/max-attributes-per-line': ['off'] // 标签属性是否换行
     /* 'vue/max-attributes-per-line': [
       'error',
       {

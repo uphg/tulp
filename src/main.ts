@@ -6,6 +6,7 @@ import './lib/_styles/common/vars.styl'
 import Example from '~src/components/Example.vue'
 import {
   TButton,
+  TButtonGroup,
   TInput,
   TCollapseTransition,
   TIcon,
@@ -21,6 +22,7 @@ app.mount('#app')
 
 app.component('Example', Example)
 app.component('t-button', TButton)
+app.component('t-button-group', TButtonGroup)
 app.component('t-icon', TIcon)
 app.component('t-input', TInput)
 app.component('t-switch', TSwitch)

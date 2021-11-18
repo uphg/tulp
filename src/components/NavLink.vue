@@ -4,8 +4,7 @@
       :class="['nav-link', { 'nav-link-active': active }]"
       :to="link"
       @click="clickLinks(item.items)"
-      >{{ item?.meta?.title || item.name }}</router-link
-    >
+    >{{ item?.meta?.title || item.name }}</router-link>
   </div>
 </template>
 

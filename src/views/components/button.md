@@ -10,7 +10,7 @@ title: Button 按钮
 
 <Example class="button-demo" :code="ButtonBase" />
 
-## 图标按钮
+## 添加图标
 
 添加图标来增加按钮的辨识度。
 
@@ -22,13 +22,13 @@ title: Button 按钮
 
 <Example class="button-demo" :code="ButtonLoading" />
 
-## 按钮大小
+## 大小
 
 按钮有三种大小
 
 <Example class="button-demo" :code="ButtonSize" />
 
-## 按钮形状
+## 形状
 
 按钮有多种形状。
 
@@ -52,6 +52,10 @@ title: Button 按钮
 
 <Example class="button-demo" :code="ButtonGhost" />
 
+## 按钮组
+
+<Example class="button-demo-group" :code="ButtonGroup" />
+
 <script setup lang="ts">
 import * as ButtonBase from '~src/example/button/base.vue'
 import * as ButtonIcon from '~src/example/button/icon.vue'
@@ -61,6 +65,7 @@ import * as ButtonShape from '~src/example/button/shape.vue'
 import * as ButtonText from '~src/example/button/text.vue'
 import * as ButtonDashed from '~src/example/button/dashed.vue'
 import * as ButtonGhost from '~src/example/button/ghost.vue'
+import * as ButtonGroup from '~src/example/button/group.vue'
 </script>
 
 <style lang="stylus">
@@ -71,6 +76,10 @@ import * as ButtonGhost from '~src/example/button/ghost.vue'
     align-items flex-end
 
   .tu-button
+    margin-right 10px
+
+.button-demo-group
+  .tu-button-group
     margin-right 10px
 
 </style>
