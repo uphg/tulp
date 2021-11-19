@@ -8,3 +8,4 @@ dist-docs
 
 coverage
 yarn.lock
+pnpm-lock.yaml
