@@ -12,29 +12,20 @@
     </div>
     <div class="button-group-row">
       <t-button-group>
-        <t-button dashed>上一页</t-button>
-        <t-button dashed>第1页</t-button>
-        <t-button dashed>第2页</t-button>
-        <t-button dashed>第3页</t-button>
-        <t-button dashed>下一页</t-button>
+        <t-button round>上一页</t-button>
+        <t-button round>第1页</t-button>
+        <t-button round>第2页</t-button>
+        <t-button round>第3页</t-button>
+        <t-button round>下一页</t-button>
       </t-button-group>
     </div>
     <div class="button-group-row">
-      <t-button-group>
-        <t-button type="primary" dashed>上一页</t-button>
-        <t-button type="primary" dashed>第1页</t-button>
-        <t-button type="primary" dashed>第2页</t-button>
-        <t-button type="primary" dashed>第3页</t-button>
-        <t-button type="primary" dashed>下一页</t-button>
-      </t-button-group>
-    </div>
-    <div class="button-group-row">
-      <t-button-group>
-        <t-button>上一页</t-button>
-        <t-button>第1页</t-button>
-        <t-button>第2页</t-button>
-        <t-button>第3页</t-button>
-        <t-button>下一页</t-button>
+      <t-button-group vertical>
+        <t-button round>上一页</t-button>
+        <t-button round>第1页</t-button>
+        <t-button round>第2页</t-button>
+        <t-button round>第3页</t-button>
+        <t-button round>下一页</t-button>
       </t-button-group>
     </div>
     <div style="display: flex;">

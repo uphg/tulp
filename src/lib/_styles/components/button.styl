@@ -3,6 +3,10 @@
 
 $base-name = '.tu-button'
 
+shape(padding, radius)
+  padding 0 padding
+  --t-border-radius radius
+
 border-default(color, style = solid)
   {$base-name}__border, {$base-name}__state-border
     border 1px style
@@ -154,12 +158,10 @@ type-style(base, light, dark)
     type-style(var(--t-color-error), var(--t-color-error-light), var(--t-color-error-dark))
 
   &.is-round
-    padding 0 var(--t-button-padding-round)
-    border-radius calc(var(--t-button-height) / 2)
+    shape(var(--t-button-padding-round), calc(var(--t-button-height) / 2))
 
   &.is-circle
-    padding 0 var(--t-button-padding-circle)
-    border-radius calc(var(--t-button-height) / 2)
+    shape(var(--t-button-padding-circle), calc(var(--t-button-height) / 2))
     {$base-name}__wave
       wave-effect(large-wave-spread, large-wave-opacity)
 
@@ -167,21 +169,17 @@ type-style(base, light, dark)
     padding 0 var(--t-button-small-padding)
     min-height var(--t-button-small-height)
     &.is-round
-      padding 0 var(--t-button-small-padding-round)
-      border-radius calc(var(--t-button-small-height) / 2)
+      shape(var(--t-button-small-padding-round), calc(var(--t-button-small-height) / 2))
     &.is-circle
-      padding 0 var(--t-button-small-padding-circle)
-      border-radius calc(var(--t-button-small-height) / 2)
+      shape(var(--t-button-small-padding-circle), calc(var(--t-button-small-height) / 2))
 
   &--large
     padding 0 var(--t-button-large-padding)
     min-height var(--t-button-large-height)
     &.is-round
-      padding 0 var(--t-button-large-padding-round)
-      border-radius calc(var(--t-button-large-height) / 2)
+      shape(var(--t-button-large-padding-round), calc(var(--t-button-large-height) / 2))
     &.is-circle
-      padding 0 var(--t-button-large-padding-circle)
-      border-radius calc(var(--t-button-large-height) / 2)
+      shape(var(--t-button-large-padding-circle), calc(var(--t-button-large-height) / 2))
 
   &--text
     background-color: #0000;
