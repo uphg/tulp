@@ -3,6 +3,12 @@
 
 $base-name = '.tu-switch'
 
+size(height)
+  min-width calc(height * 2)
+  height height
+  border-radius calc(height / 2)
+  --t-switch-core-height calc(height - 4px)
+
 {$base-name}
   border none
   cursor pointer
@@ -11,7 +17,7 @@ $base-name = '.tu-switch'
   border-radius calc(var(--t-switch-height) / 2)
   background-color var(--t-switch-bg-color)
   position relative
-  padding 0 10px
+  padding 0
   transition var(--t-bg-color-transition), var(--t-box-shadow-transition)
   --ripple-color var(--t-color-primary)
   &:focus
@@ -21,6 +27,14 @@ $base-name = '.tu-switch'
     box-shadow none
   &:active > {$base-name}__core
     width calc(var(--t-switch-core-height) + 4px)
+
+  &__content
+    display flex
+    overflow hidden
+    position relative
+    padding 0 10px
+    height 100%
+    border-radius inherit
 
   &__checked, &__unchecked
     color #fff
@@ -41,7 +55,7 @@ $base-name = '.tu-switch'
   &{$base-name}--checked
     background-color var(--t-switch-active-bg-color)
     & > {$base-name}__core
-      left calc(100% - 18px - 2px)
+      left calc(100% - var(--t-switch-height) + 2px)
     &:focus
       box-shadow var(--t-wave-active-box-shadow)
     &:hover
@@ -68,3 +82,23 @@ $base-name = '.tu-switch'
 
   &__wave
     wave-effect(large-wave-spread, large-wave-opacity)
+
+  &--small
+    min-width calc(var(--t-switch-small-height) * 2)
+    height var(--t-switch-small-height)
+    border-radius calc(var(--t-switch-small-height) / 2)
+    --t-switch-core-height calc(var(--t-switch-small-height) - 4px)
+
+    &{$base-name}--checked > {$base-name}__core
+      left calc(100% - var(--t-switch-small-height) + 2px)
+
+  &--large
+    min-width calc(var(--t-switch-large-height) * 2)
+    height var(--t-switch-large-height)
+    border-radius calc(var(--t-switch-large-height) / 2)
+    --t-switch-core-height calc(var(--t-switch-large-height) - 4px)
+
+    &{$base-name}--checked > {$base-name}__core
+      left calc(100% - var(--t-switch-large-height) + 2px)
+
+

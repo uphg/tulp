@@ -1,6 +1,11 @@
 <template>
   <div class="exapmle">
-    <div class="exapmle-component">
+    <div
+      :class="[
+        'exapmle-component',
+        { [demoClass]: demoClass }
+      ]"
+    >
       <component :is="codeComponent.default" />
     </div>
     <div class="example-options">
@@ -49,7 +54,8 @@ interface ExampleComponent {
 }
 
 const props = defineProps<{
-  code: unknown
+  code: unknown,
+  demoClass: string
 }>()
 
 const visible = ref(false)
