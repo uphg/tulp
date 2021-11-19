@@ -1,5 +1,10 @@
 <template>
-  <div class="tu-button-group" :class="{ 'is-vertical': vertical }">
+  <div
+    :class="[
+      'tu-button-group',
+      { 'is-vertical': vertical }
+    ]"
+  >
     <slot />
   </div>
 </template>
