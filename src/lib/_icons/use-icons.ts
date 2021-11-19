@@ -1,5 +1,5 @@
 import { createApp, h } from 'vue'
-import SvgTemplate from './SvgTemplate.vue'
+import IconPack from './IconPack.vue'
 import { ICON_STATUS_KEY } from './icon-status'
 import type { IconStatus } from './icon-status'
 import isServer from '../_utils/isServer'
@@ -20,7 +20,7 @@ export const useIcons = (window: Window) => {
 
   const app = createApp({
     render() {
-      return h(SvgTemplate)
+      return h(IconPack)
     }
   })
 
