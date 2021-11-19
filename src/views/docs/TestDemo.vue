@@ -1,13 +1,50 @@
 <template>
   <div>
-    <h2>Button 按钮测试</h2>
-    <div class="test-row">
-      <t-button>默认按钮</t-button>
-      <t-button type="primary">主要按钮</t-button>
-      <t-button type="success">成功按钮</t-button>
-      <t-button type="info">信息按钮</t-button>
-      <t-button type="warning">警告按钮</t-button>
-      <t-button type="error">错误按钮</t-button>
+    <h2>按钮组</h2>
+    <div class="button-group-row">
+      <t-button-group>
+        <t-button>上一页</t-button>
+        <t-button>第1页</t-button>
+        <t-button>第2页</t-button>
+        <t-button>第3页</t-button>
+        <t-button>下一页</t-button>
+      </t-button-group>
+    </div>
+    <div class="button-group-row">
+      <t-button-group>
+        <t-button dashed>上一页</t-button>
+        <t-button dashed>第1页</t-button>
+        <t-button dashed>第2页</t-button>
+        <t-button dashed>第3页</t-button>
+        <t-button dashed>下一页</t-button>
+      </t-button-group>
+    </div>
+    <div class="button-group-row">
+      <t-button-group>
+        <t-button type="primary" dashed>上一页</t-button>
+        <t-button type="primary" dashed>第1页</t-button>
+        <t-button type="primary" dashed>第2页</t-button>
+        <t-button type="primary" dashed>第3页</t-button>
+        <t-button type="primary" dashed>下一页</t-button>
+      </t-button-group>
+    </div>
+    <div class="button-group-row">
+      <t-button-group>
+        <t-button>上一页</t-button>
+        <t-button>第1页</t-button>
+        <t-button>第2页</t-button>
+        <t-button>第3页</t-button>
+        <t-button>下一页</t-button>
+      </t-button-group>
+    </div>
+    <div style="display: flex;">
+      <t-button-group>
+        <t-button ghost type="primary">上一页</t-button>
+        <t-button ghost type="primary">第1页</t-button>
+        <t-button ghost type="primary">第2页</t-button>
+        <t-button ghost type="primary">第3页</t-button>
+        <t-button ghost type="primary">下一页</t-button>
+      </t-button-group>
     </div>
     <h2>文本按钮</h2>
     <div class="test-row">
@@ -70,6 +107,15 @@
       <t-button icon="info" size="large" type="warning" circle />
       <t-button icon="info" size="large" type="error" circle />
     </div>
+    <h2>基本按钮测试</h2>
+    <div class="test-row">
+      <t-button>默认按钮</t-button>
+      <t-button type="primary">主要按钮</t-button>
+      <t-button type="success">成功按钮</t-button>
+      <t-button type="info">信息按钮</t-button>
+      <t-button type="warning">警告按钮</t-button>
+      <t-button type="error">错误按钮</t-button>
+    </div>
   </div>
 </template>
 
@@ -79,5 +125,8 @@
   .tu-button {
     margin-right: 10px;
   }
+}
+.button-group-row {
+  margin-bottom: 20px;
 }
 </style>

@@ -4,21 +4,41 @@ $base-name = '.tu-button'
   display inline-flex
   vertical-align middle
   box-sizing border-box
+
   & > {$base-name}
     border-radius 0
-    &:not(:first-child)
+    &:hover, &:focus, &:active
+      {$base-name}__state-border
+        z-index 1
+
+  &:not(.is-vertical) > {$base-name}
+    &:not(:first-child.tu-button)
+    .tu-button.tu-button--default + .tu-button.tu-button--default
       {$base-name}__border
         border-left-width 0
       {$base-name}__state-border
-        left -1px
+        margin-left -1px
     &:first-child
       border-top-left-radius var(--t-border-radius)
       border-bottom-left-radius var(--t-border-radius)
     &:last-child
       border-top-right-radius var(--t-border-radius)
       border-bottom-right-radius var(--t-border-radius)
-    &:hover, &:focus, &:active
+
+  &.is-vertical
+    flex-direction column
+  &.is-vertical > {$base-name}
+    &:not(:first-child.tu-button)
+      {$base-name}__border
+        border-top-width 0
       {$base-name}__state-border
-        z-index 1
+        margin-top -1px
+    &:first-child
+      border-top-left-radius var(--t-border-radius)
+      border-top-right-radius var(--t-border-radius)
+    &:last-child
+      border-bottom-left-radius var(--t-border-radius)
+      border-bottom-right-radius var(--t-border-radius)
+
 
 

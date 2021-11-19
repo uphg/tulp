@@ -69,9 +69,7 @@ export default defineComponent({
   },
   props: {
     type: {
-      type: String as PropType<
-        'default' | 'primary' | 'success' | 'warning' | 'info' | 'error'
-      >,
+      type: String as PropType<'default' | 'primary' | 'success' | 'warning' | 'info' | 'error'>,
       default: 'default',
       validator: (value: string) => {
         return [ 'default', 'primary', 'success', 'warning', 'info', 'error' ].includes(value)
