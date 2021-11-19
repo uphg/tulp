@@ -6,8 +6,7 @@ export function useTriggerWave() {
 
   const destroyTimeout = () => {
     isWave.value = false
-    typeof animationTimerId === 'number' &&
-      window.clearTimeout(animationTimerId)
+    typeof animationTimerId === 'number' && window.clearTimeout(animationTimerId)
     animationTimerId = null
   }
 
