@@ -1,46 +1,70 @@
 @require '../common/animation'
 @require '../mixins/index'
 
-.tu-switch
-  cursor pointer
-  width calc(var(--t-switch-height) * 2)
-  height var(--t-switch-height)
+$base-name = '.tu-switch'
+
+{$base-name}
   border none
+  cursor pointer
+  min-width calc(var(--t-switch-height) * 2)
+  height var(--t-switch-height)
   border-radius calc(var(--t-switch-height) / 2)
-  background-color rgba(0, 0, 0, 0.14)
-  transition background-color 0.25s
-  transition var(--t-bg-color-transition), var(--t-box-shadow-transition)
+  background-color var(--t-switch-bg-color)
   position relative
-  --ripple-color #415fcc
-  &:focus 
+  padding 0 10px
+  transition var(--t-bg-color-transition), var(--t-box-shadow-transition)
+  --ripple-color var(--t-color-primary)
+  &:focus
     outline none
     box-shadow var(--t-wave-box-shadow)
-  &:hover 
+  &:hover
     box-shadow none
-  &:active > .tu-switch__core
+  &:active > {$base-name}__core
     width calc(var(--t-switch-core-height) + 4px)
-  &.tu-switch--checked 
-    background-color #415fcc
-    & > .tu-switch__core
-      left calc(100% - 18px)
-    &:focus 
+
+  &__checked, &__unchecked
+    color #fff
+    display flex
+    align-items center
+    height 100%
+    transition transform var(--t-transition-time)
+  &__checked
+    padding-right calc(var(--t-switch-core-height) - 2px)
+    transform translateX(-100%)
+  &__unchecked
+    position absolute
+    top 0
+    bottom 0
+    padding-left calc(var(--t-switch-core-height) - 2px)
+    transform translateX(0)
+
+  &{$base-name}--checked
+    background-color var(--t-switch-active-bg-color)
+    & > {$base-name}__core
+      left calc(100% - 18px - 2px)
+    &:focus
       box-shadow var(--t-wave-active-box-shadow)
-    &:hover 
+    &:hover
       box-shadow none
-    &:active > .tu-switch__core
+    &:active > {$base-name}__core
       width calc(var(--t-switch-core-height) + 4px)
       margin-left -4px
 
-.tu-switch__core
-  width var(--t-switch-core-height)
-  height var(--t-switch-core-height)
-  border-radius calc(var(--t-switch-core-height) / 2)
-  background-color #fff
-  box-shadow 0 2px 4px #00230b33
-  position absolute
-  top 2px
-  left 2px
-  transition left var(--t-transition-time), margin-left var(--t-transition-time), width var(--t-transition-time)
+    {$base-name}__checked
+      transform translateX(0)
+    {$base-name}__unchecked
+      transform translateX(100%)
 
-.tu-switch__wave
-  wave-effect(large-wave-spread, large-wave-opacity)
+  &__core
+    width var(--t-switch-core-height)
+    height var(--t-switch-core-height)
+    border-radius calc(var(--t-switch-core-height) / 2)
+    background-color #fff
+    box-shadow 0 2px 4px #00230b33
+    position absolute
+    top 2px
+    left 2px
+    transition left var(--t-transition-time), margin-left var(--t-transition-time), width var(--t-transition-time)
+
+  &__wave
+    wave-effect(large-wave-spread, large-wave-opacity)
