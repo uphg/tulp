@@ -3,9 +3,18 @@
 
 $base-name = '.tu-button'
 
+border-default(color, style = solid)
+  {$base-name}__border, {$base-name}__state-border
+    border 1px style
+  {$base-name}__border
+    border-color color
+  {$base-name}__state-border
+    border-color #0000
+
 line-color(color)
   color color
-  border-color color
+  {$base-name}__state-border
+    border-color color
 
 type(base, light, dark)
   --ripple-color base
@@ -19,10 +28,9 @@ type(base, light, dark)
     background-color light
 
 dashed(base, light, dark)
-  background-color #0000
   color base
-  {$base-name}__border
-    border 1px dashed base
+  background-color #0000
+  border-default(base, dashed)
   &:hover, &:focus
     line-color(light)
   &:active
@@ -31,10 +39,9 @@ dashed(base, light, dark)
     line-color(light)
 
 ghost(base, light, dark)
-  background-color #0000
   color base
-  {$base-name}__border
-    border 1px solid base
+  background-color #0000
+  border-default(base)
   &:hover, &:focus
     line-color(light)
   &:active
@@ -87,12 +94,14 @@ type-style(base, light, dark)
     align-items center
     flex-wrap nowrap
   &__border
-    transition var(--t-border-color-transition)
-    box-sizing border-box
     width 100%
+  &__border, &__state-border
+    box-sizing border-box
     border-radius inherit
     pointer-events none
     position-fill()
+  &__state-border
+    transition var(--t-border-color-transition)
   &__wave
     wave-effect(wave-spread, wave-opacity)
   &__icon
@@ -121,18 +130,14 @@ type-style(base, light, dark)
 {$base-name}
   &--default
     --ripple-color var(--t-color-primary)
-    {$base-name}__border
-      border 1px solid var(--t-button-border-color)
+    border-default(var(--t-button-border-color))
     &:hover, &:focus
-      color var(--t-color-primary)
-      {$base-name}__border
-        border-color var(--t-color-primary)
+      line-color(var(--t-color-primary))
     &:active
-      color var(--t-color-primary-dark)
-      {$base-name}__border
-        border-color var(--t-color-primary-dark)
+      line-color(var(--t-color-primary-dark))
     &.is-dashed
-      {$base-name}__border
+      background-color #0000
+      {$base-name}__border, {$base-name}__state-border
         border-style dashed
     &.is-ghost
       background-color #0000

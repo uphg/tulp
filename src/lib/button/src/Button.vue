@@ -39,13 +39,15 @@
     <span v-if="$slots.default" class="tu-button__content">
       <slot />
     </span>
-    <span v-if="!text" class="tu-button__border" />
-    <!-- <span v-if="!text" class="tu-button__status-border" /> -->
-    <span
-      v-if="isWave && !text"
-      class="tu-button__wave"
-      :class="{ active: isWave }"
-    />
+    <template v-if="!text">
+      <span class="tu-button__border" />
+      <span class="tu-button__state-border" />
+      <span
+        v-if="isWave"
+        class="tu-button__wave"
+        :class="{ active: isWave }"
+      />
+    </template>
   </button>
 </template>
 <script lang="ts">

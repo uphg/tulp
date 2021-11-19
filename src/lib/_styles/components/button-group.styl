@@ -7,7 +7,10 @@ $base-name = '.tu-button'
   & > {$base-name}
     border-radius 0
     &:not(:first-child)
-      margin-left -1px
+      {$base-name}__border
+        border-left-width 0
+      {$base-name}__state-border
+        left -1px
     &:first-child
       border-top-left-radius var(--t-border-radius)
       border-bottom-left-radius var(--t-border-radius)
@@ -15,8 +18,7 @@ $base-name = '.tu-button'
       border-top-right-radius var(--t-border-radius)
       border-bottom-right-radius var(--t-border-radius)
     &:hover, &:focus, &:active
-      {$base-name}__border
-        border-color var(--t-color-primary)
+      {$base-name}__state-border
         z-index 1
 
 

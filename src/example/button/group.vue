@@ -1,7 +1,9 @@
 <template>
   <t-button-group>
     <t-button>上一页</t-button>
-    <t-button>中间页</t-button>
+    <t-button>第1页</t-button>
+    <t-button>第2页</t-button>
+    <t-button>第3页</t-button>
     <t-button>下一页</t-button>
   </t-button-group>
 </template>
