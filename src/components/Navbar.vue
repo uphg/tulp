@@ -31,6 +31,13 @@ const toggleSidebar = (): void => {
   box-sizing: border-box;
   border-bottom: 1px solid #eaecef;
   background-color: #fff;
+  &::after {
+    content: '';
+    width 130px
+    @media (max-width 1200px) {
+      display: none;
+    }
+  }
   .navbar-left {
     box-sizing: border-box;
     width: calc(320px - 24px);
