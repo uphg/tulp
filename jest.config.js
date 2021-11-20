@@ -8,7 +8,7 @@ module.exports = {
   // collectCoverage: true,
 
   // 全局配置模式，指定需要收集测试覆盖率的文件目录
-  collectCoverageFrom: ['<rootDir>/src/**/*.(ts|tsx)'],
+  collectCoverageFrom: ['<rootDir>/src/lib/**/*.(ts|tsx)'],
 
   // 用于跳过测试覆盖率集合的 正则表达式字符串数组
   coveragePathIgnorePatterns: ['<rootDir>/node_modules/'],
