@@ -9,8 +9,13 @@
       <component :is="codeComponent.default" />
     </div>
     <div class="example-options">
-      <t-icon class="example-button github" name="github" />
-      <span class="copy-wrap">
+      <a class="button-wrap" :href="githubPath" target="_blank">
+        <t-icon
+          class="example-button github"
+          name="github"
+        />
+      </a>
+      <span class="button-wrap copy-wrap">
         <t-icon
           v-if="!copyStatus"
           class="example-button copy"
@@ -24,7 +29,7 @@
           @click="copyCode"
         />
       </span>
-      <span class="code-wrap">
+      <span class="button-wrap code-wrap">
         <transition name="exapmle-fade">
           <t-icon
             :key="codeIconName"
@@ -50,13 +55,16 @@ import { useClipboard } from '@vueuse/core'
 
 interface ExampleComponent {
   default: DefineComponent
-  __sourceCode: string
+  __sourceCode: string,
+  __filePath: string
 }
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   code: unknown,
-  demoClass: string
-}>()
+  demoClass?: string
+}>(), {
+  demoClass: ''
+})
 
 const visible = ref(false)
 const codeComponent = props.code as ExampleComponent
@@ -64,6 +72,8 @@ const { copy, isSupported } = useClipboard({
   source: decodeURIComponent(codeComponent.__sourceCode),
   read: false
 })
+
+const githubPath = `https://github.com/uphg/tulp/edit/next${codeComponent.__filePath}`
 
 const copyStatus = ref(false)
 const copytimerId = ref<number | null>(null)
@@ -126,17 +136,19 @@ $options-button-gap = 1em;
   .exapmle-code
     border-top 1px solid var(--border-color)
 
-  .code-wrap, .copy-wrap
+  .button-wrap
+    color inherit
     position relative
-    width 1em
-    height 1em
+    width 1.2em
+    height 1.2em
     display flex
     align-items center
+    &:not(:last-child)
+      margin-right $options-button-gap
+
+  .copy-wrap, .code-wrap
     .example-button
       position absolute
-
-  .copy-wrap
-    margin-right $options-button-gap
 
   pre[class*="language-"]
     margin 0

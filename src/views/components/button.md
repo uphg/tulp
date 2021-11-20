@@ -8,55 +8,55 @@ title: Button 按钮
 
 使用 `type` 来定义按钮颜色样式。
 
-<Example class="button-demo" :code="ButtonBase" />
+<Example demo-class="button-demo" :code="ButtonBase" />
 
 ## 大小
 
 按钮有三种大小。
 
-<Example class="button-demo" :code="ButtonSize" />
+<Example demo-class="button-demo" :code="ButtonSize" />
 
 ## 虚线按钮
 
 使用 `dashed` 设置虚线按钮。
 
-<Example class="button-demo" :code="ButtonDashed" />
+<Example demo-class="button-demo" :code="ButtonDashed" />
 
 ## 添加图标
 
 添加图标来增加按钮的辨识度。
 
-<Example class="button-demo" :code="ButtonIcon" />
+<Example demo-class="button-demo" :code="ButtonIcon" />
 
 ## 文本按钮
 
 按钮可以是文本。
 
-<Example class="button-demo" :code="ButtonText" />
+<Example demo-class="button-demo" :code="ButtonText" />
 
 ## 形状
 
 按钮有多种形状。
 
-<Example class="button-demo" :code="ButtonShape" />
+<Example demo-class="button-demo" :code="ButtonShape" />
 
 ## 透明背景
 
 带有 `ghost` 属性的透明背景按钮。
 
-<Example class="button-demo" :code="ButtonGhost" />
+<Example demo-class="button-demo" :code="ButtonGhost" />
 
 ## 加载状态
 
 按钮有 loading 状态。
 
-<Example class="button-demo" :code="ButtonLoading" />
+<Example demo-class="button-demo" :code="ButtonLoading" />
 
 ## 按钮组
 
 可以添加按钮组。
 
-<Example class="button-demo-group" :code="ButtonGroup" />
+<Example demo-class="button-demo-group" :code="ButtonGroup" />
 
 <script setup lang="ts">
 import * as ButtonBase from '~src/example/button/base.vue'
@@ -73,10 +73,8 @@ import * as ButtonGroup from '~src/example/button/group.vue'
 <style lang="stylus">
 
 .button-demo
-  .exapmle-component
-    display flex
-    align-items flex-end
-
+  display flex
+  align-items flex-end
   .tu-button
     margin-right 10px
 

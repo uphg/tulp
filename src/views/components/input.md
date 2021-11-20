@@ -6,7 +6,7 @@ title: Input 输入框
 
 ## 基础用法
 
-<Example class="input-demo" :code="InputBase" />
+<Example demo-class="input-demo" :code="InputBase" />
 
 <script setup lang="ts">
 import * as InputBase from '~src/example/input/base.vue'

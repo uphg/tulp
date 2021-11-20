@@ -6,19 +6,19 @@ Dialog 弹出对话框组件
 
 ## 基本用法
 
-<Example class="dialog-demo" :code="DialogBase" />
+<Example demo-class="dialog-demo" :code="DialogBase" />
 
 ## 自定义模板
 
 可以添加自定义模板
 
-<Example class="dialog-demo" :code="DialogCustom" />
+<Example demo-class="dialog-demo" :code="DialogCustom" />
 
 ## 快捷打开
 
 可以用函数调用的方式快捷打开
 
-<Example class="dialog-demo" :code="DialogQuick" />
+<Example demo-class="dialog-demo" :code="DialogQuick" />
 
 
 <script setup lang="ts">

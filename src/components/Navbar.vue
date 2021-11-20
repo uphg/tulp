@@ -49,7 +49,7 @@ const toggleSidebar = (): void => {
   .logo-link {
     color: #262626;
     font-size: 20px;
-    // font-weight: bold;
+    font-weight: 500;
     text-decoration: none;
     &:active {
       color: #262626;

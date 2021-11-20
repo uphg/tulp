@@ -1,4 +1,7 @@
 import fs from 'fs'
+import path from 'path'
+
+const root = path.resolve()
 
 export const vueExampleCode = () => ({
   name: 'vue-example-code',
@@ -9,7 +12,9 @@ export const vueExampleCode = () => ({
     // 通过文件后缀获取示例组件代码
     // if (!id.endsWith('.exmp.vue')) return
     // if(!(/^.+\.exmp\.vue/.test(id) && !(/\?/.test(id)))) return
-    const file = fs.readFileSync(id).toString()
-    return `${code};\nexport const __sourceCode = ${JSON.stringify(file)};`
+    const sourceCode = fs.readFileSync(id).toString()
+    const filePath = String(id).replace(root.replace(/\\/g, '/'), '')
+    return `${code};\nexport const __sourceCode = ${JSON.stringify(sourceCode)};
+export const __filePath = ${JSON.stringify(filePath)};`
   }
 })
