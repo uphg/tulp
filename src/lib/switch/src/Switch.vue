@@ -17,16 +17,10 @@
       ]"
     />
     <span class="tu-switch__content">
-      <span
-        v-if="$slots.checked"
-        class="tu-switch__checked"
-      >
+      <span v-if="$slots.checked" class="tu-switch__checked">
         <slot name="checked" />
       </span>
-      <span
-        v-if="$slots.unchecked"
-        class="tu-switch__unchecked"
-      >
+      <span v-if="$slots.unchecked" class="tu-switch__unchecked">
         <slot name="unchecked" />
       </span>
     </span>

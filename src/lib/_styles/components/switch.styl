@@ -26,13 +26,13 @@ size(height)
   &:hover
     box-shadow none
   &:active > {$base-name}__core
-    width calc(var(--t-switch-core-height) + 4px)
+    width calc(var(--t-switch-core-height) + var(--t-switch-unfold-width))
 
   &__content
     display flex
     overflow hidden
     position relative
-    padding 0 10px
+    padding 0 var(--t-switch-padding)
     height 100%
     border-radius inherit
 
@@ -43,13 +43,13 @@ size(height)
     height 100%
     transition transform var(--t-transition-time)
   &__checked
-    padding-right calc(var(--t-switch-core-height) - 2px)
+    padding-right calc(var(--t-switch-core-height) - var(--t-switch-padding) / 3)
     transform translateX(-100%)
   &__unchecked
     position absolute
     top 0
     bottom 0
-    padding-left calc(var(--t-switch-core-height) - 2px)
+    padding-left calc(var(--t-switch-core-height) - var(--t-switch-padding) / 3)
     transform translateX(0)
 
   &{$base-name}--checked
@@ -61,8 +61,8 @@ size(height)
     &:hover
       box-shadow none
     &:active > {$base-name}__core
-      width calc(var(--t-switch-core-height) + 4px)
-      margin-left -4px
+      width calc(var(--t-switch-core-height) + var(--t-switch-unfold-width))
+      margin-left calc(var(--t-switch-unfold-width) * -1)
 
     {$base-name}__checked
       transform translateX(0)
@@ -88,6 +88,8 @@ size(height)
     height var(--t-switch-small-height)
     border-radius calc(var(--t-switch-small-height) / 2)
     --t-switch-core-height calc(var(--t-switch-small-height) - 4px)
+    --t-switch-unfold-width 4px
+    --t-switch-padding 8px
 
     &{$base-name}--checked > {$base-name}__core
       left calc(100% - var(--t-switch-small-height) + 2px)
@@ -97,8 +99,9 @@ size(height)
     height var(--t-switch-large-height)
     border-radius calc(var(--t-switch-large-height) / 2)
     --t-switch-core-height calc(var(--t-switch-large-height) - 4px)
+    --t-switch-unfold-width 6px
+    --t-switch-padding 12px
 
     &{$base-name}--checked > {$base-name}__core
       left calc(100% - var(--t-switch-large-height) + 2px)
-
 
