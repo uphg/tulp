@@ -5,10 +5,10 @@ module.exports = {
   clearMocks: true,
 
   // 在执行测试时是否收集覆盖率信息（暂时关闭，配置持续集成后打开）。
-  // collectCoverage: true,
+  collectCoverage: true,
 
   // 全局配置模式，指定需要收集测试覆盖率的文件目录
-  collectCoverageFrom: ['<rootDir>/src/lib/**/*.(ts|tsx)'],
+  collectCoverageFrom: ['<rootDir>/src/lib/**/*.(ts|tsx|vue)'],
 
   // 用于跳过测试覆盖率集合的 正则表达式字符串数组
   coveragePathIgnorePatterns: ['<rootDir>/node_modules/'],
