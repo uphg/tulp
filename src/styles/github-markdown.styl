@@ -732,28 +732,41 @@
 }
 
 .markdown-body table {
-  display: block;
   width: 100%;
   overflow: auto;
+  border-collapse: collapse;
+}
+.markdown-body thead,
+.markdown-body tbody {
+  box-sizing: border-box;
 }
 
 .markdown-body table th {
+  text-align: left;
   font-weight: 600;
+  background-color: #f6f8fa;
 }
 
 .markdown-body table td,
 .markdown-body table th {
-  padding: 6px 13px;
+  padding: 10px 16px;
   border: 1px solid #dfe2e5;
+  border-width: 1px 0;
+  max-width: 360px;
+}
+.markdown-body table td:first-child,
+.markdown-body table th:first-child {
+  border-left-width: 1px;
+}
+
+.markdown-body table td:last-child,
+.markdown-body table th:last-child {
+  border-right-width: 1px;
 }
 
 .markdown-body table tr {
   background-color: #fff;
   border-top: 1px solid #c6cbd1;
-}
-
-.markdown-body table tr:nth-child(2n) {
-  background-color: #f6f8fa;
 }
 
 .markdown-body img {

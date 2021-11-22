@@ -146,7 +146,7 @@ watch(
 
 .page-wrapper
   width calc(100% - 154px)
-  max-width 960px
+  max-width var(--home-page-width)
   margin-left auto
   margin-right auto
   box-sizing border-box

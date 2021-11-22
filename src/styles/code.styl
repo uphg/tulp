@@ -2,7 +2,6 @@ $contentClass = '.markdown-body'
 
 {$contentClass}
   code
-    white-space nowrap
     padding 0.25rem 0.5rem
     margin 0
     font-size 0.85em
@@ -15,7 +14,7 @@ $contentClass = '.markdown-body'
         color $color-primary
 
 {$contentClass}
-  pre, pre[class*="language-"] 
+  pre, pre[class*="language-"]
     font-size 14px
     line-height 1.6
     padding 18px 20px
@@ -72,7 +71,7 @@ div[class~="language-bash"]:before
 div[class~="language-php"]:before
   content "php"
 
-.token.punctuation 
+.token.punctuation
   color #a8a9cc
 
 .attr-name
@@ -109,7 +108,7 @@ div[class~="language-php"]:before
 .token.operator, .token.entity, .token.url
   // color #0b7e7d
   color #986601
-  
+
 .token.comment, .token.block-comment, .token.prolog, .token.doctype, .token.cdata
   // color #848486
   color #a9a9aa
