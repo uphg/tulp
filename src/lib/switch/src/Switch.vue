@@ -24,7 +24,11 @@
         <slot name="unchecked" />
       </span>
     </span>
-    <span class="tu-switch__core" />
+    <span class="tu-switch__core">
+      <span v-if="$slots.unchecked" class="tu-switch__core-unchecked">
+        <slot name="unchecked" />
+      </span>
+    </span>
   </button>
 </template>
 

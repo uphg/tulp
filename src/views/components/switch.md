@@ -4,7 +4,7 @@ title: Switch 组件
 
 用于切换开关状态的组件。
 
-<!-- ## 基础用法
+## 基础用法
 
 绑定 value 来切换 Switch 的状态。
 
@@ -20,7 +20,7 @@ title: Switch 组件
 
 有三种大小。
 
-<Example demo-class="switch-demo" :code="SwitchSize" /> -->
+<Example demo-class="switch-demo" :code="SwitchSize" />
 
 ## 可自定义值
 

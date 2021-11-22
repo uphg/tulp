@@ -2,12 +2,7 @@
 @require '../mixins/index'
 
 $base-name = '.tu-switch'
-
-size(height)
-  min-width calc(height * 2)
-  height height
-  border-radius calc(height / 2)
-  --t-switch-core-height calc(height - 4px)
+// 2px 表示 Switch 的边距
 
 {$base-name}
   border none
@@ -25,49 +20,27 @@ size(height)
     box-shadow var(--t-wave-box-shadow)
   &:hover
     box-shadow none
-  &:active > {$base-name}__core
-    width calc(var(--t-switch-core-height) + var(--t-switch-unfold-width))
+  &:active
+    {$base-name}__core
+      width calc(var(--t-switch-core-height) + var(--t-switch-unfold))
 
   &__content
     display flex
+    flex-direction column
     overflow hidden
     position relative
     padding 0 var(--t-switch-padding)
-    height 100%
     border-radius inherit
 
   &__checked, &__unchecked
     color #fff
     display flex
     align-items center
-    height 100%
+    height var(--t-switch-height)
     transition transform var(--t-transition-time)
+    padding-right calc(var(--t-switch-core-height) - var(--t-switch-padding) + 2px + var(--t-switch-unfold) + 2px)
   &__checked
-    padding-right calc(var(--t-switch-core-height) - var(--t-switch-padding) / 3)
     transform translateX(-100%)
-  &__unchecked
-    position absolute
-    top 0
-    bottom 0
-    padding-left calc(var(--t-switch-core-height) - var(--t-switch-padding) / 3)
-    transform translateX(0)
-
-  &{$base-name}--checked
-    background-color var(--t-switch-active-bg-color)
-    & > {$base-name}__core
-      left calc(100% - var(--t-switch-height) + 2px)
-    &:focus
-      box-shadow var(--t-wave-active-box-shadow)
-    &:hover
-      box-shadow none
-    &:active > {$base-name}__core
-      width calc(var(--t-switch-core-height) + var(--t-switch-unfold-width))
-      margin-left calc(var(--t-switch-unfold-width) * -1)
-
-    {$base-name}__checked
-      transform translateX(0)
-    {$base-name}__unchecked
-      transform translateX(100%)
 
   &__core
     width var(--t-switch-core-height)
@@ -80,16 +53,48 @@ size(height)
     left 2px
     transition left var(--t-transition-time), margin-left var(--t-transition-time), width var(--t-transition-time)
 
+  &__core-unchecked
+    height var(--t-switch-height)
+    padding-left var(--t-switch-unfold)
+    display flex
+    align-items: center;
+    white-space: nowrap;
+    position absolute
+    top -2px
+    left calc(var(--t-switch-core-height) + 2px)
+
   &__wave
     wave-effect(large-wave-spread, large-wave-opacity)
+
+  &{$base-name}--checked
+    background-color var(--t-switch-active-bg-color)
+    & > {$base-name}__core
+      left calc(100% - var(--t-switch-height) + 2px)
+    {$base-name}__core-unchecked
+      transition left var(--t-transition-time)
+
+    &:focus
+      box-shadow var(--t-wave-active-box-shadow)
+    &:hover
+      box-shadow none
+    &:active
+      {$base-name}__core
+        width calc(var(--t-switch-core-height) + var(--t-switch-unfold))
+        margin-left calc(var(--t-switch-unfold) * -1)
+      {$base-name}__core-unchecked
+        left calc(var(--t-switch-core-height) + var(--t-switch-unfold) + 2px)
+
+    {$base-name}__checked
+      transform translateX(0)
 
   &--small
     min-width calc(var(--t-switch-small-height) * 2)
     height var(--t-switch-small-height)
     border-radius calc(var(--t-switch-small-height) / 2)
+    --t-switch-height var(--t-switch-small-height)
+    --t-switch-padding 10px
     --t-switch-core-height calc(var(--t-switch-small-height) - 4px)
-    --t-switch-unfold-width 4px
-    --t-switch-padding 8px
+    --t-switch-unfold 4px
 
     &{$base-name}--checked > {$base-name}__core
       left calc(100% - var(--t-switch-small-height) + 2px)
@@ -98,9 +103,10 @@ size(height)
     min-width calc(var(--t-switch-large-height) * 2)
     height var(--t-switch-large-height)
     border-radius calc(var(--t-switch-large-height) / 2)
+    --t-switch-height var(--t-switch-large-height)
+    --t-switch-padding 14px
     --t-switch-core-height calc(var(--t-switch-large-height) - 4px)
-    --t-switch-unfold-width 6px
-    --t-switch-padding 12px
+    --t-switch-unfold 6px
 
     &{$base-name}--checked > {$base-name}__core
       left calc(100% - var(--t-switch-large-height) + 2px)
