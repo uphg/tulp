@@ -16,17 +16,19 @@
         { active: isWave }
       ]"
     />
-    <span class="tu-switch__content">
-      <span v-if="$slots.checked" class="tu-switch__checked">
-        <slot name="checked" />
+    <span class="tu-switch__wrap">
+      <span v-if="$slots.checked || $slots.unchecked" class="tu-switch__content">
+        <span class="tu-switch__checked">
+          <slot name="checked" />
+        </span>
+        <span class="tu-switch__unchecked">
+          <slot name="unchecked" />
+        </span>
       </span>
-      <span v-if="$slots.unchecked" class="tu-switch__unchecked">
-        <slot name="unchecked" />
-      </span>
-    </span>
-    <span class="tu-switch__core">
-      <span v-if="$slots.unchecked" class="tu-switch__core-unchecked">
-        <slot name="unchecked" />
+      <span class="tu-switch__core">
+        <span v-if="$slots.unchecked" class="tu-switch__core-unchecked">
+          <slot name="unchecked" />
+        </span>
       </span>
     </span>
   </button>
