@@ -96,6 +96,11 @@ $base-name = '.tu-switch'
     {$base-name}__checked
       transform translateX(0)
 
+  &.is-square
+    border-radius 3px
+    {$base-name}__core
+      border-radius 3px
+
   &--small
     min-width calc(var(--t-switch-small-height) * 2)
     height var(--t-switch-small-height)

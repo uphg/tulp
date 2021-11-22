@@ -28,12 +28,19 @@ title: Switch 组件
 
 <Example demo-class="switch-demo" :code="SwitchCustomValue" />
 
+## 形状
+
+可以设置为方形。
+
+<Example demo-class="switch-demo" :code="SwitchShape" />
+
 
 <script setup lang="ts">
 import * as SwitchBase from '~src/example/switch/base.vue'
 import * as SwitchText from '~src/example/switch/text.vue'
 import * as SwitchSize from '~src/example/switch/size.vue'
 import * as SwitchCustomValue from '~src/example/switch/custom-value.vue'
+import * as SwitchShape from '~src/example/switch/shape.vue'
 </script>
 
 <style lang="stylus">

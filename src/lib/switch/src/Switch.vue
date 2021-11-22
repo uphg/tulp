@@ -4,7 +4,8 @@
       'tu-switch',
       {
         'tu-switch--checked': switchValueState,
-        [`tu-switch--${size}`]: size
+        [`tu-switch--${size}`]: size,
+        'is-square': square
       }
     ]"
     @click="toggle"
@@ -58,7 +59,8 @@ export default defineComponent({
     uncheckedValue: {
       type: [String, Number, Boolean],
       default: null
-    }
+    },
+    square: Boolean
   },
   emits: ['update:value'],
   setup(props, context) {
