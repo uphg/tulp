@@ -37,21 +37,28 @@ module.exports = {
     indent: ['error', 2], // 缩进风格
     quotes: ['error', 'single', { 'avoidEscape': true }], // 使用单引号
     'comma-dangle': ['error', 'never'], // 禁止对象尾逗号
+    // 禁止特定语法，参考：https://eslint.org/docs/rules/no-restricted-syntax
     'no-restricted-syntax': [
       'error',
       'WithStatement', // with 语句
       "BinaryExpression[operator='in']" // in 运算符
-    ], // 禁止特定语法，参考：https://eslint.org/docs/rules/no-restricted-syntax
+    ],
     camelcase: 'error', // 必须使用驼峰式命名法，参考：https://eslint.org/docs/rules/camelcase
-    'no-var': 'error',
+    'no-var': 'error', // 禁止全局变量
     'no-empty': 'error', // 禁止空的块语句，参考：https://eslint.org/docs/rules/no-empty
+    // 使用 const 声明固定值，参考：https://cn.eslint.org/docs/rules/prefer-const
     'prefer-const': [
       'warn',
       { destructuring: 'all' /* ignoreReadBeforeAssign: true */ }
-    ], // 使用 const 声明固定值，参考：https://cn.eslint.org/docs/rules/prefer-const
+    ],
     'prefer-template': 'error', // 使用模板字面量拼接字符串，参考：https://eslint.org/docs/rules/prefer-template
     'object-shorthand': 'off', // 使用 ES6+ 语法简写对象，参考：https://eslint.org/docs/rules/object-shorthand
     'no-constant-condition': 'error', // 禁止在条件语句中使用常量，参考：https://eslint.org/docs/rules/no-constant-condition
+    'space-before-function-paren': ['error', 'never'], // 函数声明后空格，参考：https://cn.eslint.org/docs/rules/space-before-function-paren#never
+    'no-multi-spaces': ['error', { ignoreEOLComments: true }], // 禁止多个空格（注释不受影响），参考：https://eslint.org/docs/rules/no-multi-spaces#ignoreeolcomments
+    'no-dupe-args': 'error', // 禁止 function 定义中的重复参数，参考：https://eslint.org/docs/rules/no-dupe-args
+    'key-spacing': ['error', { 'afterColon': true }], // 强制对象键和值之间保持一致的间距，参考：https://eslint.org/docs/rules/key-spacing#aftercolon
+    'space-after-keywords': 'error', // 在关键字后强制使用一致的间距，参考：https://eslint.org/docs/rules/space-after-keywords
 
     // TS
     '@typescript-eslint/explicit-module-boundary-types': 'off', // 关闭全局 TS 检测，只检测指定后缀文件，参考：https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/explicit-module-boundary-types.md#configuring-in-a-mixed-jsts-codebase
