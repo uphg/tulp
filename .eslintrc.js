@@ -58,7 +58,7 @@ module.exports = {
     'no-multi-spaces': ['error', { ignoreEOLComments: true }], // 禁止多个空格（注释不受影响），参考：https://eslint.org/docs/rules/no-multi-spaces#ignoreeolcomments
     'no-dupe-args': 'error', // 禁止 function 定义中的重复参数，参考：https://eslint.org/docs/rules/no-dupe-args
     'key-spacing': ['error', { 'afterColon': true }], // 强制对象键和值之间保持一致的间距，参考：https://eslint.org/docs/rules/key-spacing#aftercolon
-    'space-after-keywords': 'error', // 在关键字后强制使用一致的间距，参考：https://eslint.org/docs/rules/space-after-keywords
+    'keyword-spacing': ['error', { 'before': true }], // 在关键字前后强制使用一致的间距，参考：https://eslint.org/docs/rules/keyword-spacing
 
     // TS
     '@typescript-eslint/explicit-module-boundary-types': 'off', // 关闭全局 TS 检测，只检测指定后缀文件，参考：https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/explicit-module-boundary-types.md#configuring-in-a-mixed-jsts-codebase
