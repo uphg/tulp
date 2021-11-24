@@ -12,7 +12,7 @@ import {
   PropType
 } from 'vue';
 import '../../_styles/components/dialog.styl'
-import { Lib } from '../../_utils/default-config'
+import { Lib } from '../../_utils/config'
 import { offBodyScroll, onBodyScroll } from '../../_utils/body'
 
 export default defineComponent({

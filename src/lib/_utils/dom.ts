@@ -37,6 +37,6 @@ export const removeClass = (el: Element, name: string) => {
 }
 
 export const getStyle = (el: Element) => {
-  const style = window.getComputedStyle(el, null)
+  const style = window.getComputedStyle(el, null) as unknown as { [key: string]: string }
   return style
 }

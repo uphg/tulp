@@ -7,7 +7,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { addClass, removeClass } from '../../_utils/dom'
-import { Lib } from '../../_utils/default-config'
+import { Lib } from '../../_utils/config'
 
 const TRANSITION_CLASS = 'tu-expand-transition--active'
 export default defineComponent({

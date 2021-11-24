@@ -51,7 +51,7 @@
   </button>
 </template>
 <script lang="ts">
-import { Lib } from '../../_utils/default-config'
+import { Lib } from '../../_utils/config'
 import { defineComponent, PropType } from 'vue'
 import { useTriggerWave } from '../../_mixins/use-trigger-wave'
 import { ExpandTransition } from '../../expand-transition/index'

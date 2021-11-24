@@ -1,5 +1,11 @@
 <template>
   <div>
+    <h2>Collapse Transition 组件测试</h2>
+    <div>
+      hi
+    </div>
+  </div>
+  <div>
     <h2>按钮组</h2>
     <div class="button-group-row">
       <t-button-group>

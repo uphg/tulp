@@ -39,7 +39,7 @@
 import { defineComponent, computed } from 'vue'
 import { useTriggerWave } from '../../_mixins/use-trigger-wave'
 import type { PropType } from 'vue'
-import isEmpty from '../../_utils/isEmpty'
+import isNullish from '../../_utils/isNullish'
 
 type SwitchValue = string | number | boolean
 
@@ -65,7 +65,7 @@ export default defineComponent({
   emits: ['update:value'],
   setup(props, context) {
     const { isWave, triggerWave } = useTriggerWave()
-    const hasCustomValue = computed(() => !isEmpty(props.checkedValue) && !isEmpty(props.uncheckedValue))
+    const hasCustomValue = computed(() => !isNullish(props.checkedValue) && !isNullish(props.uncheckedValue))
     const switchValueState = computed(() => hasCustomValue.value ? props.value === props.checkedValue : props.value)
 
     const setValue = (value: SwitchValue) => {

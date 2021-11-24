@@ -1,1 +1,3 @@
-export default (value: any) => value === true || value === false
+const isBoolean = (value: unknown) => value === true || value === false
+
+export default isBoolean
