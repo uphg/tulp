@@ -10,13 +10,14 @@
     ]"
     @click="toggle"
   >
-    <span
+    <!-- <span
       v-if="isWave"
       :class="[
         'tu-switch__wave',
-        { active: isWave }
+        { 'is-active': isWave }
       ]"
-    />
+    /> -->
+    <BaseWave ref="waveRef" big />
     <span class="tu-switch__wrap">
       <span v-if="$slots.checked || $slots.unchecked" class="tu-switch__content">
         <span class="tu-switch__checked">
@@ -36,14 +37,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
-import { useTriggerWave } from '../../_mixins/use-trigger-wave'
-import type { PropType } from 'vue'
+import { defineComponent, ref, computed } from 'vue'
+import { Lib } from '../../_utils/config'
 import isNullish from '../../_utils/isNullish'
+import BaseWave from '../../base-wave/src/BaseWave.vue'
+import type { PropType } from 'vue'
+import type { BaseWaveRef } from '../../base-wave'
 
 type SwitchValue = string | number | boolean
 
 export default defineComponent({
+  name: `${Lib.Prefix}Button`,
+  components: { BaseWave },
   props: {
     value: [String, Number, Boolean],
     size: {
@@ -64,7 +69,7 @@ export default defineComponent({
   },
   emits: ['update:value'],
   setup(props, context) {
-    const { isWave, triggerWave } = useTriggerWave()
+    const waveRef = ref<BaseWaveRef | null>(null)
     const hasCustomValue = computed(() => !isNullish(props.checkedValue) && !isNullish(props.uncheckedValue))
     const switchValueState = computed(() => hasCustomValue.value ? props.value === props.checkedValue : props.value)
 
@@ -73,7 +78,7 @@ export default defineComponent({
     }
 
     const toggle = () => {
-      triggerWave()
+      waveRef.value?.triggerWave()
       if (hasCustomValue.value) {
         setValue((props.value === props.uncheckedValue ? props.checkedValue : props.uncheckedValue) as SwitchValue)
         return
@@ -90,7 +95,7 @@ export default defineComponent({
       }
     }
 
-    return { toggle, isWave, switchValueState }
+    return { toggle, waveRef, switchValueState }
   }
 })
 </script>

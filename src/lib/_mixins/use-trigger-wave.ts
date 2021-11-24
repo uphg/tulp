@@ -2,6 +2,7 @@ import { ref, nextTick, Ref } from 'vue'
 
 export function useTriggerWave() {
   const isWave: Ref<boolean> = ref(false)
+  const selfRef = ref<HTMLElement | null>(null)
   let animationTimerId: number | null = null
 
   const destroyTimeout = () => {
@@ -15,6 +16,8 @@ export function useTriggerWave() {
       destroyTimeout()
     }
     nextTick(() => {
+      // 刷新
+      void selfRef.value?.offsetHeight
       isWave.value = true
       animationTimerId = window.setTimeout(() => {
         destroyTimeout()
@@ -22,5 +25,5 @@ export function useTriggerWave() {
     })
   }
 
-  return { isWave, triggerWave }
+  return { isWave, triggerWave, selfRef }
 }

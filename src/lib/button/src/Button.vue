@@ -40,24 +40,22 @@
       <slot />
     </span>
     <template v-if="!text">
+      <BaseWave ref="waveRef" :big="circle" />
       <span class="tu-button__border" />
       <span class="tu-button__state-border" />
-      <span
-        v-if="isWave"
-        class="tu-button__wave"
-        :class="{ active: isWave }"
-      />
     </template>
   </button>
 </template>
 <script lang="ts">
 import { Lib } from '../../_utils/config'
-import { defineComponent, PropType } from 'vue'
-import { useTriggerWave } from '../../_mixins/use-trigger-wave'
+import { defineComponent, ref } from 'vue'
+import BaseWave from '../../base-wave/src/BaseWave.vue'
 import { ExpandTransition } from '../../expand-transition/index'
 import { FadeTransition } from '../../fade-transition/index'
 import LoadingIcon from './LoadingIcon.vue'
 import { TIcon } from '../../icon/index'
+import type { PropType } from 'vue'
+import type { BaseWaveRef } from '../../base-wave'
 
 export default defineComponent({
   name: `${Lib.Prefix}Button`,
@@ -65,7 +63,8 @@ export default defineComponent({
     TIcon,
     LoadingIcon,
     ExpandTransition,
-    FadeTransition
+    FadeTransition,
+    BaseWave
   },
   props: {
     type: {
@@ -108,11 +107,11 @@ export default defineComponent({
     ghost: Boolean
   },
   setup() {
-    const { isWave, triggerWave } = useTriggerWave()
+    const waveRef = ref<BaseWaveRef | null>(null)
     const handleClick = () => {
-      triggerWave()
+      waveRef.value?.triggerWave()
     }
-    return { isWave, handleClick }
+    return { waveRef, handleClick }
   }
 })
 </script>

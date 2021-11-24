@@ -1,5 +1,5 @@
 @require '../common/animation'
-@require '../mixins/index'
+// @require '../mixins/index'
 
 $base-name = '.tu-switch'
 // 2px 表示 Switch 的边距
@@ -71,9 +71,6 @@ $base-name = '.tu-switch'
     position absolute
     top -2px
     left calc(var(--t-switch-core-height) + 2px)
-
-  &__wave
-    wave-effect(large-wave-spread, large-wave-opacity)
 
   &{$base-name}--checked
     background-color var(--t-switch-active-bg-color)

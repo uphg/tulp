@@ -106,8 +106,6 @@ type-style(base, light, dark)
     position-fill()
   &__state-border
     transition var(--t-border-color-transition)
-  &__wave
-    wave-effect(wave-spread, wave-opacity)
   &__icon
     box-sizing border-box
     width 18px
@@ -162,8 +160,6 @@ type-style(base, light, dark)
 
   &.is-circle
     shape(var(--t-button-padding-circle), calc(var(--t-button-height) / 2))
-    {$base-name}__wave
-      wave-effect(large-wave-spread, large-wave-opacity)
 
   &--small
     padding 0 var(--t-button-small-padding)
