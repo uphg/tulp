@@ -8,6 +8,9 @@
     ]"
   >
     <template v-if="type !== 'textarea'">
+      <span class="tu-input__prefix">
+        <slot name="prefix" />
+      </span>
       <input
         class="tu-input"
         type="text"
@@ -15,6 +18,9 @@
         v-bind="$attrs"
         @input="handleInput"
       >
+      <span class="tu-input__suffix">
+        <slot name="suffix" />
+      </span>
     </template>
     <template v-else>
       <textarea
@@ -23,15 +29,13 @@
         v-bind="$attrs"
       />
     </template>
-    <template v-if="displayBorder">
-      <span class="tu-input__border" />
-      <span class="tu-input__state-border" />
-    </template>
+    <span class="tu-input__border" />
+    <span class="tu-input__state-border" />
   </div>
 </template>
 <script lang="ts">
 import { Lib } from '../../_utils/config'
-import { defineComponent, toRefs, computed } from 'vue'
+import { defineComponent /* toRefs, computed */ } from 'vue'
 import type { PropType } from 'vue'
 
 export default defineComponent({
@@ -48,18 +52,13 @@ export default defineComponent({
   emits: ['update:value'],
   setup(props, context) {
 
-    const { disabled } = toRefs(props)
-
-    const displayBorder = computed(() => !disabled.value)
-
     const handleInput = (event: Event) => {
       const newValue = (event.target as HTMLTextAreaElement).value
       if (newValue === props.value) return
       context.emit('update:value', newValue)
     }
     return {
-      handleInput,
-      displayBorder
+      handleInput
     }
   }
 })
