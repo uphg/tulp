@@ -46,6 +46,7 @@
     </template>
   </button>
 </template>
+
 <script lang="ts">
 import { Lib } from '../../_utils/config'
 import { defineComponent, ref } from 'vue'

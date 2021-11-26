@@ -10,13 +10,6 @@
     ]"
     @click="toggle"
   >
-    <!-- <span
-      v-if="isWave"
-      :class="[
-        'tu-switch__wave',
-        { 'is-active': isWave }
-      ]"
-    /> -->
     <BaseWave ref="waveRef" big />
     <span class="tu-switch__wrap">
       <span v-if="$slots.checked || $slots.unchecked" class="tu-switch__content">
@@ -50,7 +43,10 @@ export default defineComponent({
   name: `${Lib.Prefix}Button`,
   components: { BaseWave },
   props: {
-    value: [String, Number, Boolean],
+    value: {
+      type: [String, Number, Boolean],
+      default: false
+    },
     size: {
       type: String as PropType<'' | 'large' | 'medium' | 'small'>,
       validator: (value: string) => {
@@ -59,11 +55,11 @@ export default defineComponent({
     },
     checkedValue: {
       type: [String, Number, Boolean],
-      default: null
+      default: true
     },
     uncheckedValue: {
       type: [String, Number, Boolean],
-      default: null
+      default: false
     },
     square: Boolean
   },

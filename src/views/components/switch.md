@@ -34,6 +34,18 @@ title: Switch 组件
 
 <Example demo-class="switch-demo" :code="SwitchShape" />
 
+## 属性
+
+| 名称           | 说明           | 类型                                  | 默认值  |
+| -------------- | -------------- | ------------------------------------- | ------- |
+| value          | 开关的状态     | `string \| number \| boolean`         | `false` |
+| size           | 开关的大小     | `'' \| large' \| 'medium' \| 'small'` | `''`    |
+| checkedValue   | 开启时的默认值 | `string \| number \| boolean`         | `false` |
+| uncheckedValue | 关闭时的默认值 | `string \| number \| boolean`         | `false` |
+| square         | 是否为方形     | `boolean`                             | `false` |
+
+
+
 
 <script setup lang="ts">
 import * as SwitchBase from '~src/example/switch/base.vue'

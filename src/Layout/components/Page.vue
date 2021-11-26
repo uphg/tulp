@@ -150,7 +150,7 @@ watch(
   margin-left auto
   margin-right auto
   box-sizing border-box
-  padding 24px 56px
+  padding 24px 56px 140px 56px
 
 @media (max-width 1200px)
   .page .page-wrapper
