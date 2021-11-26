@@ -16,11 +16,12 @@
   "scripts": {
     "dev": "vite",
     "tsc": "vue-tsc --noEmit",
-    "build": "vue-tsc --noEmit --skipLibCheck && vite build && stylus --compress src/lib/_styles/components --out dist/styles && sh scripts/set-file.sh",
+    "build": "vue-tsc --noEmit --skipLibCheck && vite build && sh scripts/build-css.sh",
     "build:docs": "vue-tsc --noEmit --skipLibCheck && vite build --config vite.config.docs.ts",
     "serve": "vite preview",
     "test": "jest test",
-    "lint": "eslint \"src/**/*.{js,ts,tsx,vue}\""
+    "lint": "eslint \"src/**/*.{js,ts,tsx,vue}\"",
+    "stylus": "stylus"
   },
   "dependencies": {
     "@vueuse/core": "^6.5.3",
