@@ -16,7 +16,7 @@ $base-name = '.tu-button'
     .tu-button.tu-button--default + .tu-button.tu-button--default
       {$base-name}__border
         border-left-width 0
-      {$base-name}__state-border
+      {$base-name}__state-border, .tu-base-wave
         margin-left -1px
     &:first-child
       border-top-left-radius var(--t-border-radius)
@@ -31,7 +31,7 @@ $base-name = '.tu-button'
       &:not(:first-child.tu-button)
         {$base-name}__border
           border-top-width 0
-        {$base-name}__state-border
+        {$base-name}__state-border, .tu-base-wave
           margin-top -1px
       &:first-child
         border-top-left-radius var(--t-border-radius)
