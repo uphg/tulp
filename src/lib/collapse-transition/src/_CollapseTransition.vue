@@ -1,3 +1,4 @@
+<!-- 考虑 padding 过渡的情况 -->
 <template>
   <transition v-on="on">
     <slot />

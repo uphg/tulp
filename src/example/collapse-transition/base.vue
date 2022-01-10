@@ -1,9 +1,9 @@
 <template>
   <t-button @click="visible = !visible">点我</t-button>
 
-  <div style="padding: 20px 0; height: 210px">
+  <div style="overflow: hidden; background-color: #eee;">
     <t-collapse-transition>
-      <div v-show="visible">
+      <div v-show="visible" style="margin: 20px 0; background-color: #4caf50;">
         <div class="collapse-box">collapse-transition</div>
         <div class="collapse-box">collapse-transition</div>
       </div>
