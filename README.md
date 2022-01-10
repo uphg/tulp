@@ -5,7 +5,7 @@
 - [x] Button 按钮
 - [ ] Input 输入框
 - [x] Switch 开关
-- [ ] Collapse Transition 过渡
+- [x] Collapse Transition 过渡
 - [x] Dialog 弹框
 
 ## 运行示例
