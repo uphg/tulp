@@ -78,7 +78,7 @@ const githubPath = `https://github.com/uphg/tulp/edit/next${codeComponent.__file
 const copyStatus = ref(false)
 const copytimerId = ref<number | null>(null)
 
-const copyCode = async () => {
+const copyCode = async() => {
   if (!isSupported) {
     console.log('您的浏览器不支持该方法复制')
   }
