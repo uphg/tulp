@@ -15,7 +15,7 @@
     :disabled="disabled"
     @click="handleClick"
   >
-    <ExpandTransition>
+    <TExpandTransition>
       <span
         v-if="icon || loading"
         :class="[
@@ -35,7 +35,7 @@
           </template>
         </FadeTransition>
       </span>
-    </ExpandTransition>
+    </TExpandTransition>
     <span v-if="$slots.default" class="tu-button__content">
       <slot />
     </span>
@@ -47,74 +47,61 @@
   </button>
 </template>
 
-<script lang="ts">
-import { Lib } from '../../_utils/config'
-import { defineComponent, ref } from 'vue'
+<script setup lang="ts">
+import { ref } from 'vue'
 import BaseWave from '../../base-wave/src/BaseWave.vue'
-import { ExpandTransition } from '../../expand-transition/index'
+import { TExpandTransition } from '../../expand-transition/index'
 import { FadeTransition } from '../../fade-transition/index'
 import LoadingIcon from './LoadingIcon.vue'
 import { TIcon } from '../../icon/index'
 import type { PropType } from 'vue'
 import type { BaseWaveRef } from '../../base-wave'
 
-export default defineComponent({
-  name: `${Lib.Prefix}Button`,
-  components: {
-    TIcon,
-    LoadingIcon,
-    ExpandTransition,
-    FadeTransition,
-    BaseWave
-  },
-  props: {
-    type: {
-      type: String as PropType<'default' | 'primary' | 'success' | 'warning' | 'info' | 'error'>,
-      default: 'default',
-      validator: (value: string) => {
-        return [ 'default', 'primary', 'success', 'warning', 'info', 'error' ].includes(value)
-      }
-    },
-    size: {
-      type: String as PropType<'' | 'large' | 'medium' | 'small'>,
-      validator: (value: string) => {
-        return ['', 'large', 'medium', 'small'].includes(value)
-      }
-    },
-    icon: {
-      type: String,
-      default: ''
-    },
-    iconPosition: {
-      type: String as PropType<'left' | 'right'>,
-      default: 'left',
-      validator: (value: string) => {
-        return ['left', 'right'].includes(value)
-      }
-    },
-    nativeType: {
-      type: String as PropType<'button' | 'submit' | 'reset'>,
-      default: 'button',
-      validator: (value: string) => {
-        return ['button', 'submit', 'reset'].includes(value)
-      }
-    },
-    loading: Boolean,
-    disabled: Boolean,
-    text: Boolean,
-    circle: Boolean,
-    round: Boolean,
-    dashed: Boolean,
-    ghost: Boolean
-  },
-  setup() {
-    const waveRef = ref<BaseWaveRef | null>(null)
-    const handleClick = () => {
-      waveRef.value?.triggerWave()
+defineProps({
+  type: {
+    type: String as PropType<'default' | 'primary' | 'success' | 'warning' | 'info' | 'error'>,
+    default: 'default',
+    validator: (value: string) => {
+      return [ 'default', 'primary', 'success', 'warning', 'info', 'error' ].includes(value)
     }
-    return { waveRef, handleClick }
-  }
+  },
+  size: {
+    type: String as PropType<'' | 'large' | 'medium' | 'small'>,
+    validator: (value: string) => {
+      return ['', 'large', 'medium', 'small'].includes(value)
+    }
+  },
+  icon: {
+    type: String,
+    default: ''
+  },
+  iconPosition: {
+    type: String as PropType<'left' | 'right'>,
+    default: 'left',
+    validator: (value: string) => {
+      return ['left', 'right'].includes(value)
+    }
+  },
+  nativeType: {
+    type: String as PropType<'button' | 'submit' | 'reset'>,
+    default: 'button',
+    validator: (value: string) => {
+      return ['button', 'submit', 'reset'].includes(value)
+    }
+  },
+  loading: Boolean,
+  disabled: Boolean,
+  text: Boolean,
+  circle: Boolean,
+  round: Boolean,
+  dashed: Boolean,
+  ghost: Boolean
 })
+
+const waveRef = ref<BaseWaveRef | null>(null)
+const handleClick = () => {
+  waveRef.value?.triggerWave()
+}
 </script>
 
 <style lang="stylus">

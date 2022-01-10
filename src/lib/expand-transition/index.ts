@@ -1,1 +1,1 @@
-export { default as ExpandTransition } from './src/ExpandTransition.vue'
+export { default as TExpandTransition } from './src/ExpandTransition.vue'

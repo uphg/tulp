@@ -9,15 +9,11 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Lib } from '../../_utils/config'
-import { defineComponent } from 'vue'
+<script setup lang="ts">
+import { PropType } from 'vue'
 
-export default defineComponent({
-  name: `${Lib.Prefix}Button`,
-  props: {
-    vertical: Boolean
-  }
+defineProps({
+  vertical: Boolean as PropType<boolean>
 })
 </script>
 
