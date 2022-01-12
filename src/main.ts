@@ -11,7 +11,8 @@ import {
   TCollapseTransition,
   TIcon,
   TSwitch,
-  TDialog
+  TDialog,
+  TPagination
 } from '~src/lib/index'
 import './utils/vue-syntax-highlight'
 
@@ -28,3 +29,4 @@ app.component('t-input', TInput)
 app.component('t-switch', TSwitch)
 app.component('t-dialog', TDialog)
 app.component('t-collapse-transition', TCollapseTransition)
+app.component('t-pagination', TPagination)
