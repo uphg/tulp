@@ -29,9 +29,8 @@
   </button>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, computed } from 'vue'
-import { Lib } from '../../_utils/config'
+<script setup lang="ts">
+import { ref, computed } from 'vue'
 import isNullish from '../../_utils/isNullish'
 import BaseWave from '../../base-wave/src/BaseWave.vue'
 import type { PropType } from 'vue'
@@ -39,61 +38,55 @@ import type { BaseWaveRef } from '../../base-wave'
 
 type SwitchValue = string | number | boolean
 
-export default defineComponent({
-  name: `${Lib.Prefix}Button`,
-  components: { BaseWave },
-  props: {
-    value: {
-      type: [String, Number, Boolean],
-      default: false
-    },
-    size: {
-      type: String as PropType<'' | 'large' | 'medium' | 'small'>,
-      validator: (value: string) => {
-        return ['', 'large', 'medium', 'small'].includes(value)
-      }
-    },
-    checkedValue: {
-      type: [String, Number, Boolean],
-      default: true
-    },
-    uncheckedValue: {
-      type: [String, Number, Boolean],
-      default: false
-    },
-    square: Boolean
+const props = defineProps({
+  value: {
+    type: [String, Number, Boolean],
+    default: false
   },
-  emits: ['update:value'],
-  setup(props, context) {
-    const waveRef = ref<BaseWaveRef | null>(null)
-    const hasCustomValue = computed(() => !isNullish(props.checkedValue) && !isNullish(props.uncheckedValue))
-    const switchValueState = computed(() => hasCustomValue.value ? props.value === props.checkedValue : props.value)
-
-    const setValue = (value: SwitchValue) => {
-      context.emit('update:value', value)
+  size: {
+    type: String as PropType<'' | 'large' | 'medium' | 'small'>,
+    validator: (value: string) => {
+      return ['', 'large', 'medium', 'small'].includes(value)
     }
-
-    const toggle = () => {
-      waveRef.value?.triggerWave()
-      if (hasCustomValue.value) {
-        setValue((props.value === props.uncheckedValue ? props.checkedValue : props.uncheckedValue) as SwitchValue)
-        return
-      }
-      setValue(!props.value)
-    }
-
-    if (hasCustomValue.value) {
-      if (props.value === props.uncheckedValue) {
-        setValue(props.uncheckedValue)
-      }
-      if (props.value === props.checkedValue) {
-        setValue(props.checkedValue)
-      }
-    }
-
-    return { toggle, waveRef, switchValueState }
-  }
+  },
+  checkedValue: {
+    type: [String, Number, Boolean],
+    default: true
+  },
+  uncheckedValue: {
+    type: [String, Number, Boolean],
+    default: false
+  },
+  square: Boolean
 })
+
+const emit = defineEmits(['update:value'])
+
+const waveRef = ref<BaseWaveRef | null>(null)
+const hasCustomValue = computed(() => !isNullish(props.checkedValue) && !isNullish(props.uncheckedValue))
+const switchValueState = computed(() => hasCustomValue.value ? props.value === props.checkedValue : props.value)
+
+const setValue = (value: SwitchValue) => {
+  emit('update:value', value)
+}
+
+const toggle = () => {
+  waveRef.value?.triggerWave()
+  if (hasCustomValue.value) {
+    setValue((props.value === props.uncheckedValue ? props.checkedValue : props.uncheckedValue) as SwitchValue)
+    return
+  }
+  setValue(!props.value)
+}
+
+if (hasCustomValue.value) {
+  if (props.value === props.uncheckedValue) {
+    setValue(props.uncheckedValue)
+  }
+  if (props.value === props.checkedValue) {
+    setValue(props.checkedValue)
+  }
+}
 </script>
 
 <style lang="stylus">

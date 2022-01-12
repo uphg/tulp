@@ -4,20 +4,14 @@
   </svg>
 </template>
 
-<script lang="ts">
-import { Lib } from '../../_utils/config'
-import { defineComponent } from 'vue'
+<script setup lang="ts">
 import { useIcons } from '../../_icons/use-icons'
 
-export default defineComponent({
-  name: `${Lib.Prefix}Icon`,
-  props: {
-    name: String
-  },
-  setup() {
-    useIcons(window)
-  }
-})
+defineProps({
+  name: String
+});
+
+useIcons(window)
 </script>
 
 <style lang="stylus">
