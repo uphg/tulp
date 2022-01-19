@@ -1,23 +1,23 @@
 @require '../common/animation'
 @require '../mixins/index'
 
-$base-name = '.tu-button'
+$base = '.tu-button'
 
 shape(padding, radius)
   padding 0 padding
   --t-border-radius radius
 
 border-default(color, style = solid)
-  {$base-name}__border, {$base-name}__state-border
+  {$base}__border, {$base}__state-border
     border 1px style
-  {$base-name}__border
+  {$base}__border
     border-color color
-  {$base-name}__state-border
+  {$base}__state-border
     border-color #0000
 
 line-color(color)
   color color
-  {$base-name}__state-border
+  {$base}__state-border
     border-color color
 
 type(base, light, dark)
@@ -71,10 +71,10 @@ type-style(base, light, dark)
     dashed(base, light, dark)
   &.is-ghost
     ghost(base, light, dark)
-  &{$base-name}--text
+  &{$base}--text
     text(base, light, dark)
 
-{$base-name}
+{$base}
   position relative
   font-size 14px
   color var(--t-color-text-primary)
@@ -129,7 +129,7 @@ type-style(base, light, dark)
     width 1em
     height 1em
 
-{$base-name}
+{$base}
   &--default
     --ripple-color var(--t-color-primary)
     border-default(var(--t-button-border-color))
@@ -139,7 +139,7 @@ type-style(base, light, dark)
       line-color(var(--t-color-primary-dark))
     &.is-dashed
       background-color #0000
-      {$base-name}__border, {$base-name}__state-border
+      {$base}__border, {$base}__state-border
         border-style dashed
     &.is-ghost
       background-color #0000

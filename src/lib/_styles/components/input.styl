@@ -1,26 +1,56 @@
 @require '../mixins/index'
 
-.tu-input
+$base = '.tu-input'
+
+{$base}
+  box-sizing border-box
+  display inline-block
   font-size var(--t-font-size)
   font-family inherit
-  border 1px solid var(--t-border-color)
-  box-sizing border-box
   border-radius var(--t-border-radius)
-  padding var(--t-input-padding)
-  line-height var(--t-input-line-height)
-  transition var(--t-color-transition), var(--t-border-color-transition), var(--t-box-shadow-transition)
-  placeholder-color var(--t-input-placeholder-color)
+  position relative
+  cursor text
+  &__wrapper
+    padding-left 14px
+    padding-right 14px
+  &__border
+    box-sizing border-box
+    position absolute
+    left 0
+    right 0
+    top 0
+    bottom 0
+    pointer-events none
+    border 1px solid var(--t-border-color)
+    border-radius inherit
+    transition var(--t-box-shadow-transition), var(--t-border-color-transition)
   &:hover
-    border-color var(--t-border-color-dark)
+    {$base}__border
+      border-color var(--t-color-primary)
   &:focus
-    border-color var(--t-color-primary)
-    box-shadow var(--t-wave-active-box-shadow)
+    {$base}__border
+      border-color var(--t-color-primary)
+      box-shadow var(--t-wave-active-box-shadow)
+
+{$base}__base
+  font-size var(--t-font-size)
+  border none
+  border-radius var(--t-border-radius)
+  font-family inherit
+  box-sizing border-box
+  // &-wrapper
+  // border 1px solid var(--t-border-color)
+  // border-radius var(--t-border-radius)
+  // padding var(--t-input-padding)
+  // line-height var(--t-input-line-height)
+  // transition var(--t-color-transition), var(--t-border-color-transition), var(--t-box-shadow-transition)
+  // placeholder-color var(--t-input-placeholder-color)
+  // &:hover
+  //   border-color var(--t-border-color-dark)
+  // &:focus
+  //   border-color var(--t-color-primary)
+  //   box-shadow var(--t-wave-active-box-shadow)
+  
   &:focus, &:focus-visible
     outline none
 
-.tu-input-wrap
-  font-size var(--t-font-size)
-  font-family inherit
-  border 1px solid var(--t-border-color)
-  box-sizing border-box
-  border-radius var(--t-border-radius)
