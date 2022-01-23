@@ -30,6 +30,6 @@ const isHome = computed(() => {
 <style lang="stylus">
 .docs-content
   height calc(100vh - 60px)
-  overflow auto
+  overflow-y scroll
   box-sizing border-box
 </style>

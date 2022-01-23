@@ -1,22 +1,22 @@
-$base-name = '.tu-button'
+$base = '.tu-button'
 
-{$base-name}-group
+{$base}-group
   display inline-flex
   vertical-align middle
   box-sizing border-box
 
-  & > {$base-name}
+  & > {$base}
     border-radius 0
     &:hover, &:focus, &:active
-      {$base-name}__state-border
+      {$base}__state-border
         z-index 1
 
-  &:not(.is-vertical) > {$base-name}
-    &:not(:first-child.tu-button)
-    .tu-button.tu-button--default + .tu-button.tu-button--default
-      {$base-name}__border
+  &:not({$base}--vertical) > {$base}
+    &:not(:first-child{$base})
+    {$base}{$base}--default + {$base}{$base}--default
+      {$base}__border
         border-left-width 0
-      {$base-name}__state-border, .tu-base-wave
+      {$base}__state-border, .tu-base-wave
         margin-left -1px
     &:first-child
       border-top-left-radius var(--t-border-radius)
@@ -25,13 +25,13 @@ $base-name = '.tu-button'
       border-top-right-radius var(--t-border-radius)
       border-bottom-right-radius var(--t-border-radius)
 
-  &.is-vertical
+  &{$base}--vertical
     flex-direction column
-    & > {$base-name}
-      &:not(:first-child.tu-button)
-        {$base-name}__border
+    & > {$base}
+      &:not(:first-child{$base})
+        {$base}__border
           border-top-width 0
-        {$base-name}__state-border, .tu-base-wave
+        {$base}__state-border, .tu-base-wave
           margin-top -1px
       &:first-child
         border-top-left-radius var(--t-border-radius)

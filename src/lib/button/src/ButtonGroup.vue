@@ -2,7 +2,7 @@
   <div
     :class="[
       'tu-button-group',
-      { 'is-vertical': vertical }
+      { 'tu-button--vertical': vertical }
     ]"
   >
     <slot />

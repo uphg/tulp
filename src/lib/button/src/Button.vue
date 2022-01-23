@@ -5,11 +5,11 @@
     :class="{
       [`tu-button--${type}`]: type,
       [`tu-button--${size}`]: size,
-      [`tu-button--text`]: text,
-      [`is-dashed`]: dashed,
-      [`is-ghost`]: ghost,
-      [`is-circle`]: circle,
-      [`is-round`]: round,
+      'tu-button--text': text,
+      'tu-button--dashed': dashed,
+      'tu-button--ghost': ghost,
+      'tu-button--circle': circle,
+      'tu-button--round': round,
     }"
     :type="nativeType"
     :disabled="disabled"
@@ -22,7 +22,7 @@
           'tu-button__icon',
           {
             [`tu-icon--${iconPosition}`]: iconPosition,
-            'is-empty': !$slots.default
+            'tu-icon--empty': !$slots.default
           }
         ]"
       >

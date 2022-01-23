@@ -1,6 +1,8 @@
 @require '../common/animation'
 
-.tu-base-wave
+$base = '.tu-base-wave'
+
+{$base}
   pointer-events none
   box-sizing border-box
   opacity 0
@@ -14,7 +16,7 @@
   animation-iteration-count 1  // 动画执行次数
   animation-duration 0.6s  // 动画持续时间
   animation-timing-function cubic-bezier(0, 0, 0.2, 1), cubic-bezier(0, 0, 0.2, 1)  // 动画过渡效果
-  &.is-active
+  &{$base}--active
     animation-name wave-spread, wave-opacity
-  &.is-big-active
+  &{$base}--big-active
     animation-name big-wave-spread, big-wave-opacity

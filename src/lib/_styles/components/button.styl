@@ -28,7 +28,7 @@ type(base, light, dark)
     background-color light
   &:active
     background-color dark
-  &.is-loading, &.is-disabled
+  &{$base}--loading, &{$base}--disabled
     background-color light
 
 dashed(base, light, dark)
@@ -39,7 +39,7 @@ dashed(base, light, dark)
     line-color(light)
   &:active
     line-color(dark)
-  &.is-loading, &.is-disabled
+  &{$base}--loading, &{$base}--disabled
     line-color(light)
 
 ghost(base, light, dark)
@@ -50,7 +50,7 @@ ghost(base, light, dark)
     line-color(light)
   &:active
     line-color(dark)
-  &.is-loading, &.is-disabled
+  &{$base}--loading, &{$base}--disabled
     line-color(light)
 
 text(base, light, dark)
@@ -61,15 +61,15 @@ text(base, light, dark)
   &:active
     color dark
     background-color #0000
-  &.is-loading, &.is-disabled
+  &{$base}--loading, &{$base}--disabled
     color light
     background-color #0000
 
 type-style(base, light, dark)
   type(base, light, dark)
-  &.is-dashed
+  &{$base}--dashed
     dashed(base, light, dark)
-  &.is-ghost
+  &{$base}--ghost
     ghost(base, light, dark)
   &{$base}--text
     text(base, light, dark)
@@ -117,12 +117,12 @@ type-style(base, light, dark)
   .tu-icon
     &--left
       margin-right 4px
-      &.is-empty
+      &.tu-icon--empty
         margin-right 0
     &--right
       order 1
       margin-left 4px
-      &.is-empty
+      &.tu-icon--empty
         margin-left 0
 
   &__loading-icon
@@ -137,11 +137,11 @@ type-style(base, light, dark)
       line-color(var(--t-color-primary))
     &:active
       line-color(var(--t-color-primary-dark))
-    &.is-dashed
+    &{$base}--dashed
       background-color #0000
       {$base}__border, {$base}__state-border
         border-style dashed
-    &.is-ghost
+    &{$base}--ghost
       background-color #0000
 
   &--primary
@@ -155,26 +155,26 @@ type-style(base, light, dark)
   &--error
     type-style(var(--t-color-error), var(--t-color-error-light), var(--t-color-error-dark))
 
-  &.is-round
+  &{$base}--round
     shape(var(--t-button-padding-round), calc(var(--t-button-height) / 2))
 
-  &.is-circle
+  &{$base}--circle
     shape(var(--t-button-padding-circle), calc(var(--t-button-height) / 2))
 
   &--small
     padding 0 var(--t-button-small-padding)
     min-height var(--t-button-small-height)
-    &.is-round
+    &{$base}--round
       shape(var(--t-button-small-padding-round), calc(var(--t-button-small-height) / 2))
-    &.is-circle
+    &{$base}--circle
       shape(var(--t-button-small-padding-circle), calc(var(--t-button-small-height) / 2))
 
   &--large
     padding 0 var(--t-button-large-padding)
     min-height var(--t-button-large-height)
-    &.is-round
+    &{$base}--round
       shape(var(--t-button-large-padding-round), calc(var(--t-button-large-height) / 2))
-    &.is-circle
+    &{$base}--circle
       shape(var(--t-button-large-padding-circle), calc(var(--t-button-large-height) / 2))
 
   &--text

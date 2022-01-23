@@ -18,7 +18,7 @@ export default defineComponent({
   setup(props) {
     const isActive: Ref<boolean> = ref(false)
     const selfRef = ref<HTMLElement | null>(null)
-    const activeClass = computed(() => props.big ? 'is-big-active' : 'is-active')
+    const activeClass = computed(() => props.big ? 'tu-base-wave--big-active' : 'tu-base-wave--active')
 
     let animationTimerId: number | null = null
 

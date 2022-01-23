@@ -28,6 +28,7 @@ import SidebarLinks from './SidebarLinks.vue'
   &.is-open
     transform translateX(0)
   .nav-links
+    width 100%
     padding 16px 10px
     display none
     flex-direction column

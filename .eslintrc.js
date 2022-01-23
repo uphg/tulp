@@ -37,35 +37,34 @@ module.exports = {
     indent: ['error', 2], // 缩进风格
     quotes: ['error', 'single', { 'avoidEscape': true }], // 使用单引号
     'comma-dangle': ['error', 'never'], // 禁止对象尾逗号
-    // 禁止特定语法，参考：https://eslint.org/docs/rules/no-restricted-syntax
+    // 禁止特定语法
     'no-restricted-syntax': [
       'error',
       'WithStatement', // with 语句
       "BinaryExpression[operator='in']" // in 运算符
     ],
-    camelcase: 'error', // 必须使用驼峰式命名法，参考：https://eslint.org/docs/rules/camelcase
+    camelcase: 'error', // 必须使用驼峰式命名法
     'no-var': 'error', // 禁止全局变量
-    'no-empty': 'error', // 禁止空的块语句，参考：https://eslint.org/docs/rules/no-empty
-    // 使用 const 声明固定值，参考：https://cn.eslint.org/docs/rules/prefer-const
+    'no-empty': 'error', // 禁止空的块语句
+    // 使用 const 声明固定值
     'prefer-const': [
       'warn',
       { destructuring: 'all' /* ignoreReadBeforeAssign: true */ }
     ],
-    'prefer-template': 'error', // 使用模板字面量拼接字符串，参考：https://eslint.org/docs/rules/prefer-template
-    'object-shorthand': 'off', // 使用 ES6+ 语法简写对象，参考：https://eslint.org/docs/rules/object-shorthand
-    'no-constant-condition': 'error', // 禁止在条件语句中使用常量，参考：https://eslint.org/docs/rules/no-constant-condition
-    'space-before-function-paren': ['error', 'never'], // 函数声明后空格，参考：https://cn.eslint.org/docs/rules/space-before-function-paren#never
-    'no-multi-spaces': ['error', { ignoreEOLComments: true }], // 禁止多个空格（注释不受影响），参考：https://eslint.org/docs/rules/no-multi-spaces#ignoreeolcomments
-    'no-dupe-args': 'error', // 禁止 function 定义中的重复参数，参考：https://eslint.org/docs/rules/no-dupe-args
-    'key-spacing': ['error', { 'afterColon': true }], // 强制对象键和值之间保持一致的间距，参考：https://eslint.org/docs/rules/key-spacing#aftercolon
-    'keyword-spacing': ['error', { 'before': true }], // 在关键字前后强制使用一致的间距，参考：https://eslint.org/docs/rules/keyword-spacing
+    'prefer-template': 'error',
+    'object-shorthand': 'off',
+    'no-constant-condition': 'error', // 禁止在条件语句中使用常量
+    'space-before-function-paren': ['error', 'never'], // 函数声明后空格
+    'no-multi-spaces': ['error', { ignoreEOLComments: true }], // 禁止多个空格（注释不受影响）
+    'no-dupe-args': 'error', // 禁止 function 定义中的重复参数
+    'key-spacing': ['error', { 'afterColon': true }], // 强制对象键和值之间保持一致的间距
+    'keyword-spacing': ['error', { 'before': true }], // 在关键字前后强制使用一致的间距
 
     // TS
-    '@typescript-eslint/explicit-module-boundary-types': 'off', // 关闭全局 TS 检测，只检测指定后缀文件，参考：https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/explicit-module-boundary-types.md#configuring-in-a-mixed-jsts-codebase
-    '@typescript-eslint/no-explicit-any': 'off', // 关闭：禁止使用 any 类型，参考：https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-explicit-any.md
-    // '@typescript-eslint/no-non-null-assertion': 'off', // 关闭：禁止使用 ! 进行非空断言，参考：https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-non-null-assertion.md
-    '@typescript-eslint/no-non-null-asserted-optional-chain': 'off', // 关闭：禁止在可选链后使用 ! 进行非空断言，参考：https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-non-null-asserted-optional-chain.md
-
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    // '@typescript-eslint/no-non-null-assertion': 'off', // 关闭：禁止使用 ! 进行非空断言
+    '@typescript-eslint/no-non-null-asserted-optional-chain': 'off', // 关闭：禁止在可选链后使用 ! 进行非空断言
     // vue
     'vue/no-v-html': 'off', // 关闭：禁止使用 v-html
     'vue/require-default-prop': 'off', // 关闭：props 指定类型后必须带有默认值

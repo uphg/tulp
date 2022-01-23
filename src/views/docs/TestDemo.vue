@@ -1,5 +1,13 @@
 <template>
   <div>
+    <t-input v-model:value="value" placeholder="请输入内容">
+      <template #prefix>
+        ￥
+      </template>
+    </t-input>
+    <p>{{ value }}</p>
+  </div>
+  <div>
     <h2>Collapse Transition 组件测试</h2>
     <div>
       hi
@@ -34,13 +42,22 @@
         <t-button round>下一页</t-button>
       </t-button-group>
     </div>
-    <div style="display: flex;">
+    <div class="button-group-row">
       <t-button-group>
-        <t-button ghost type="primary">上一页</t-button>
-        <t-button ghost type="primary">第1页</t-button>
-        <t-button ghost type="primary">第2页</t-button>
-        <t-button ghost type="primary">第3页</t-button>
-        <t-button ghost type="primary">下一页</t-button>
+        <t-button class="primary">上一页</t-button>
+        <t-button class="primary">第1页</t-button>
+        <t-button class="primary">第2页</t-button>
+        <t-button class="primary">第3页</t-button>
+        <t-button class="primary">下一页</t-button>
+      </t-button-group>
+    </div>
+    <div class="button-group-row">
+      <t-button-group>
+        <t-button round>上一页</t-button>
+        <t-button round>第1页</t-button>
+        <t-button round>第2页</t-button>
+        <t-button round>第3页</t-button>
+        <t-button round>下一页</t-button>
       </t-button-group>
     </div>
     <h2>文本按钮</h2>
@@ -115,6 +132,12 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const value = ref('')
+</script>
 
 <style lang="stylus">
 .test-row {
