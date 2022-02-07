@@ -1,0 +1,1 @@
+export { default as BaseClear } from './src/BaseClear.vue'

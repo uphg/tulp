@@ -27,12 +27,3 @@ import { ref } from 'vue'
 const value = ref('')
 </script>
 
-<style>
-.space {
-  max-width: 300px;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
-  gap: 10px;
-}
-</style>

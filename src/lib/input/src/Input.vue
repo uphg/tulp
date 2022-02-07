@@ -28,6 +28,7 @@
           @input="handleInput"
         >
         <span v-if="$slots.suffix" class="tu-input__suffix">
+          <span class="tu-input__" />
           <slot name="suffix" />
         </span>
       </span>
