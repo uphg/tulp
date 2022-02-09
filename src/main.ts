@@ -14,6 +14,8 @@ import {
   TIcon,
   TSwitch,
   TDialog,
+  TTabs,
+  TTabPane,
   TPagination
 } from '~src/lib/index'
 import './utils/vue-syntax-highlight'
@@ -32,5 +34,7 @@ app.component('t-input-group', TInputGroup)
 app.component('t-input-group-label', TInputGroupLabel)
 app.component('t-switch', TSwitch)
 app.component('t-dialog', TDialog)
+app.component('t-tabs', TTabs)
+app.component('t-tab-pane', TTabPane)
 app.component('t-collapse-transition', TCollapseTransition)
 app.component('t-pagination', TPagination)

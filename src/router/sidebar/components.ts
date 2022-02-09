@@ -4,6 +4,7 @@ import SwitchDemo from '~src/views/components/switch.md'
 import DialogDemo from '~src/views/components/dialog.md'
 import IconDemo from '~src/views/components/icon.md'
 import CollapseTransitionDemo from '~src/views/components/collapse-transition.md'
+import TabsDemo from '~src/views/components/tabs.md'
 import PaginationDemo from '~src/views/components/pagination.md'
 import { SidebarType } from '../interface'
 
@@ -46,6 +47,12 @@ export const components: SidebarType[] = [
         name: 'ComponentsCollapseTransition',
         component: CollapseTransitionDemo,
         meta: { title: 'CollapseTransition 过渡' }
+      },
+      {
+        path: 'tabs',
+        name: 'ComponentsTabs',
+        component: TabsDemo,
+        meta: { title: 'Tabs 标签页' }
       },
       {
         path: 'pagination',
