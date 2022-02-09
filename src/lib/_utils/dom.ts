@@ -1,42 +1,39 @@
-// 添加 class
+
+import {
+  camelize
+  // capitalize,
+  // extend,
+  // hasOwn,
+  // hyphenate,
+  // isArray,
+  // isObject,
+  // isString,
+  // isFunction,
+  // looseEqual,
+  // toRawType,
+} from '@vue/shared'
 
 export const trim = (string: string) => {
   return string.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '')
 }
 
-export const addClass = (el: Element, name: string) => {
-  if (!el || !name) return
-  let oldClass = el.className
-  const classes = name.split(' ')
-  for (const item of classes) {
-    if (el.classList) {
-      el.classList.add(item)
-    } else {
-      oldClass += ` ${item}`
-    }
-  }
-  if (!el.classList) {
-    el.className = oldClass
-  }
+export const addClass = (el: Element, ...className: string[]) => {
+  if (!el) return
+  el.classList.add(...className)
 }
 
-export const removeClass = (el: Element, name: string) => {
-  if (!el || !name) return
-  let oldClass = ` ${el.className} `
-  const classes = name.split(' ')
-  for (const item of classes) {
-    if (el.className) {
-      el.classList.remove(item)
-    } else {
-      oldClass = oldClass.replace(` ${item} `, ' ')
-    }
-  }
-  if (!el.classList) {
-    el.className = trim(oldClass)
-  }
+export const removeClass = (el: Element, ...className: string[]) => {
+  if (!el) return
+  el.classList.remove(...className)
 }
 
-export const getStyle = (el: Element) => {
-  const style = window.getComputedStyle(el, null) as unknown as { [key: string]: string }
-  return style
+export const getStyle = (el: Element, styleName: string) => {
+  // const style = window.getComputedStyle(el, null) as unknown as { [key: string]: string }
+  // return style
+  styleName = camelize(styleName)
+  // see: https://developer.mozilla.org/zh-CN/docs/Web/API/Window/getComputedStyle#defaultview
+  const computed = document.defaultView?.getComputedStyle(el, '')
+
+  // @ts-ignore
+  return (computed ? computed?.[styleName] : el['style'][styleName]) || ''
 }

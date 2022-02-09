@@ -20,8 +20,8 @@ const on = {
 
     // 如果离开动画没有做完，禁止存储当前 margin 值
     if (!leaveStatus.value) {
-      el.dataset.oldMarginTop = getStyle(el).marginTop
-      el.dataset.oldMarginBottom = getStyle(el).marginBottom
+      el.dataset.oldMarginTop = getStyle(el, 'marginTop')
+      el.dataset.oldMarginBottom = getStyle(el, 'marginBottom')
     }
 
     el.style.height = '0'
@@ -52,8 +52,8 @@ const on = {
     leaveStatus.value = true
     // 如果进入动画没有做完，禁止存储当前 margin 值
     if (!enterStatus.value) {
-      el.dataset.oldMarginTop = getStyle(el).marginTop
-      el.dataset.oldMarginBottom = getStyle(el).marginBottom
+      el.dataset.oldMarginTop = getStyle(el, 'marginTop')
+      el.dataset.oldMarginBottom = getStyle(el, 'marginBottom')
     }
 
     el.style.height = `${el.scrollHeight}px`

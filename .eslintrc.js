@@ -65,6 +65,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     // '@typescript-eslint/no-non-null-assertion': 'off', // 关闭：禁止使用 ! 进行非空断言
     '@typescript-eslint/no-non-null-asserted-optional-chain': 'off', // 关闭：禁止在可选链后使用 ! 进行非空断言
+    '@typescript-eslint/ban-ts-comment': 'off', // 关闭，禁止使用 @ts-ignore
     // vue
     'vue/no-v-html': 'off', // 关闭：禁止使用 v-html
     'vue/require-default-prop': 'off', // 关闭：props 指定类型后必须带有默认值

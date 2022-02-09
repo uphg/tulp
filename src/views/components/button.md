@@ -105,6 +105,7 @@ import * as ButtonGroup from '~src/example/button/group.vue'
 .button-demo
   display flex
   align-items flex-end
+  flex-wrap wrap
   .tu-button
     margin-right 10px
 .button-demo-group

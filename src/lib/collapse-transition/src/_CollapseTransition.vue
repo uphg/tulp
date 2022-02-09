@@ -24,10 +24,10 @@ export default defineComponent({
 
       // 如果离开动画没有做完，禁止存储当前 padding，margin 值
       if (!leaveStatus.value) {
-        el.dataset.oldPaddingTop = getStyle(el).paddingTop
-        el.dataset.oldPaddingBottom = getStyle(el).paddingBottom
-        el.dataset.oldMarginTop = getStyle(el).marginTop
-        el.dataset.oldMarginBottom = getStyle(el).marginBottom
+        el.dataset.oldPaddingTop = getStyle(el, 'paddingTop')
+        el.dataset.oldPaddingBottom = getStyle(el, 'paddingBottom')
+        el.dataset.oldMarginTop = getStyle(el, 'marginTop')
+        el.dataset.oldMarginBottom = getStyle(el, 'marginBottom')
       }
 
       el.style.height = '0'
@@ -41,7 +41,7 @@ export default defineComponent({
     const enter = (el: HTMLElement) => {
       el.dataset.oldOverflow = el.style.overflow
       void el.scrollHeight
-      if (getStyle(el).boxSizing === 'border-box') {
+      if (getStyle(el, 'boxSizing') === 'border-box') {
         const padding =
           parseFloat(el.dataset.oldPaddingTop as string) +
             parseFloat(el.dataset.oldPaddingBottom as string) || 0
@@ -49,8 +49,8 @@ export default defineComponent({
           el.style.height = `${el.scrollHeight + padding}px`
         } else {
           const extraPadding =
-            parseFloat(getStyle(el).paddingTop) +
-            parseFloat(getStyle(el).paddingBottom)
+            parseFloat(getStyle(el, 'paddingTop')) +
+            parseFloat(getStyle(el, 'paddingBottom'))
           el.style.height = `${el.scrollHeight + padding - extraPadding}px`
         }
       } else {
@@ -58,8 +58,8 @@ export default defineComponent({
           el.style.height = `${el.scrollHeight}px`
         } else {
           const padding =
-            parseFloat(getStyle(el).paddingTop as string) +
-            parseFloat(getStyle(el).paddingBottom as string)
+            parseFloat(getStyle(el, 'paddingTop') as string) +
+            parseFloat(getStyle(el, 'paddingBottom') as string)
           el.style.height = `${el.scrollHeight - padding}px`
         }
       }
@@ -84,13 +84,13 @@ export default defineComponent({
       leaveStatus.value = true
       // 如果进入动画没有做完，禁止存储当前 padding，margin 值
       if (!enterStatus.value) {
-        el.dataset.oldPaddingTop = getStyle(el).paddingTop
-        el.dataset.oldPaddingBottom = getStyle(el).paddingBottom
-        el.dataset.oldMarginTop = getStyle(el).marginTop
-        el.dataset.oldMarginBottom = getStyle(el).marginBottom
+        el.dataset.oldPaddingTop = getStyle(el, 'paddingTop')
+        el.dataset.oldPaddingBottom = getStyle(el, 'paddingBottom')
+        el.dataset.oldMarginTop = getStyle(el, 'marginTop')
+        el.dataset.oldMarginBottom = getStyle(el, 'marginBottom')
       }
 
-      if (getStyle(el).boxSizing === 'content-box') {
+      if (getStyle(el, 'boxSizing') === 'content-box') {
         const padding =
           parseFloat(el.dataset.oldPaddingTop as string) +
           parseFloat(el.dataset.oldPaddingBottom as string)
