@@ -1,10 +1,10 @@
 @require '../common/animation'
 // @require '../mixins/index'
 
-$base-name = '.tu-switch'
+$base = '.tu-switch'
 // 2px 表示 Switch 的边距
 
-{$base-name}
+{$base}
   border none
   cursor pointer
   min-width calc(var(--t-switch-height) * 2)
@@ -21,7 +21,7 @@ $base-name = '.tu-switch'
   &:hover
     box-shadow none
   &:active
-    {$base-name}__core
+    {$base}__core
       width calc(var(--t-switch-core-height) + var(--t-switch-unfold))
 
   &__wrap
@@ -72,11 +72,11 @@ $base-name = '.tu-switch'
     top -2px
     left calc(var(--t-switch-core-height) + 2px)
 
-  &{$base-name}--checked
+  &{$base}--checked
     background-color var(--t-switch-active-bg-color)
-    {$base-name}__core
+    {$base}__core
       left calc(100% - var(--t-switch-height) + 2px)
-    {$base-name}__core-unchecked
+    {$base}__core-unchecked
       transition left var(--t-transition-time)
 
     &:focus
@@ -84,18 +84,18 @@ $base-name = '.tu-switch'
     &:hover
       box-shadow none
     &:active
-      {$base-name}__core
+      {$base}__core
         width calc(var(--t-switch-core-height) + var(--t-switch-unfold))
         margin-left calc(var(--t-switch-unfold) * -1)
-      {$base-name}__core-unchecked
+      {$base}__core-unchecked
         left calc(var(--t-switch-core-height) + var(--t-switch-unfold) + 2px)
 
-    {$base-name}__checked
+    {$base}__checked
       transform translateX(0)
 
   &.is-square
     border-radius 3px
-    {$base-name}__core
+    {$base}__core
       border-radius 3px
 
   &--small
@@ -107,7 +107,7 @@ $base-name = '.tu-switch'
     --t-switch-core-height calc(var(--t-switch-small-height) - 4px)
     --t-switch-unfold 4px
 
-    &{$base-name}--checked > {$base-name}__core
+    &{$base}--checked > {$base}__core
       left calc(100% - var(--t-switch-small-height) + 2px)
 
   &--large
@@ -119,6 +119,6 @@ $base-name = '.tu-switch'
     --t-switch-core-height calc(var(--t-switch-large-height) - 4px)
     --t-switch-unfold 6px
 
-    &{$base-name}--checked > {$base-name}__core
+    &{$base}--checked > {$base}__core
       left calc(100% - var(--t-switch-large-height) + 2px)
 

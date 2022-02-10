@@ -1,17 +1,4 @@
-
-import {
-  camelize
-  // capitalize,
-  // extend,
-  // hasOwn,
-  // hyphenate,
-  // isArray,
-  // isObject,
-  // isString,
-  // isFunction,
-  // looseEqual,
-  // toRawType,
-} from '@vue/shared'
+import camelize from './_camelize'
 
 export const trim = (string: string) => {
   return string.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '')

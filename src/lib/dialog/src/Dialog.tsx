@@ -1,3 +1,4 @@
+import '../../_styles/components/dialog.styl'
 import {
   defineComponent,
   withDirectives,
@@ -11,12 +12,10 @@ import {
   Fragment,
   PropType
 } from 'vue';
-import '../../_styles/components/dialog.styl'
-import { Lib } from '../../_utils/config'
 import { offBodyScroll, onBodyScroll } from '../../_utils/body'
 
 export default defineComponent({
-  name: `${Lib.Prefix}Dialog`,
+  name: `TDialog`,
   emits: ['update:visible', 'open', 'opened', 'close', 'closed', 'maskClick'],
   props: {
     visible: {

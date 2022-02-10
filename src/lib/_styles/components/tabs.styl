@@ -1,0 +1,33 @@
+
+
+$base = '.tu-tabs'
+
+{$base}
+  &-nav
+    display flex
+    border-bottom 1px solid var(--t-border-color)
+    position relative
+  &-tab
+    display inline-flex
+    &:not(:first-child)
+      margin-left 36px
+    &{$base}-tab--active
+      {$base}-tab__label
+        color var(--t-color-primary)
+
+  &-tab__label
+    padding 10px 0
+    cursor pointer
+    transition var(--t-color-transition)
+    &:hover
+      color var(--t-color-primary)
+
+  &__active-bar
+    width 30px
+    height 2px 
+    background-color blue
+    position absolute
+    bottom 0
+
+.tu-tab-pane
+  padding-top 12px

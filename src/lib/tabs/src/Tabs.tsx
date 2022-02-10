@@ -1,3 +1,4 @@
+import '../../_styles/components/tabs.styl'
 import { defineComponent, computed, onMounted, useSlots } from 'vue';
 import type { PropType } from 'vue'
 
@@ -14,7 +15,6 @@ export default defineComponent({
     const content = computed(() => slots.default?.().find((item) => {
       return item.props?.name === props.value
     }))
-
     const titles = computed(() => slots.default?.().map((item) => {
       const { label, name } = item.props || {}
       return { label, name }
@@ -36,16 +36,28 @@ export default defineComponent({
     }
   },
   render() {
-    const { titles, handleTabClick, content } = this
+    const { titles, handleTabClick, content, value } = this
+    console.log('content')
+    console.log(content)
+    console.log('value')
+    console.log(value)
     return (
       <div class="tu-tabs">
         <div class="tu-tabs-nav">
           {titles?.map((item) => (
-            <button
+            <div
+              class={[
+                'tu-tabs-tab',
+                item.name === value && 'tu-tabs-tab--active'
+              ]}
               onClick={() => handleTabClick(item)}
-            >{item.label}</button>
+            >
+              <span
+                class="tu-tabs-tab__label"
+              >{item.label}</span>
+            </div>
           ))}
-          {<div class={'tu-tabs__active-bar'}></div>}
+          {{/* <div class={'tu-tabs__active-bar'} style={{ width: , left:  }}></div> */}}
         </div>
         {content}
       </div>
