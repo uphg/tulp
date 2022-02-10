@@ -1,41 +1,20 @@
 <template>
-  <template v-if="tabIndex === index">
+  <div class="tu-tab-pane">
     <slot />
-  </template>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { inject, onMounted, ref } from 'vue'
-import type { PropType, Ref } from 'vue'
-import { TabItem } from './interfaces';
+import type { PropType } from 'vue'
 
-const props = defineProps({
+defineProps({
   name: {
-    type: String as PropType<string>,
+    type: [String, Number, Boolean] as PropType<string | number | boolean>,
     default: ''
   },
-  tab: {
+  label: {
     type: [String, Number, Boolean] as PropType<string | number | boolean>,
     default: ''
   }
 })
-
-const addTabs = inject<(value: TabItem) => void>('addTabs')
-const tabs = inject<Ref<TabItem[]>>('tabs')
-const tabIndex = inject('tabIndex')
-const index = ref<string | number | boolean>(0)
-
-onMounted(() => {
-  if (tabs?.value) {
-    index.value = props.tab || tabs.value.length
-    addTabs?.({
-      name: props.name,
-      tab: index.value,
-      id: Symbol('tab')
-    })
-    console.log('tabs.value')
-    console.log({...tabs.value})
-  }
-})
-
 </script>

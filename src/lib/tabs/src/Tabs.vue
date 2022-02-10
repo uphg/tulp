@@ -1,39 +1,47 @@
 <template>
   <div class="tu-tabs">
-    <div class="tu-tabs-nav">
-      <div
-        v-for="item in tabs"
-        :key="item.id"
-        class="tu-tabs-nav__item"
-        @click="tabIndex = item.tab"
-      >{{ item.name }}</div>
+    <div class="tu-tab-nav">
+      <button
+        v-for="item in titles"
+        :key="item.name"
+        class="tu-tab-nav__item"
+        @click="handleTabClick(item)"
+      >{{ item.label }}</button>
     </div>
-    <div class="tu-tab-pane">
-      <slot />
-    </div>
+    <component :is="content" :key="content?.props?.name" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { provide, ref } from 'vue'
-import { TabItem } from './interfaces';
+import { computed, onMounted, useSlots } from 'vue'
+import type { PropType } from 'vue'
 
-const tabs = ref<TabItem[]>([])
+const slots = useSlots()
+const props = defineProps({
+  value: {
+    type: [String, Number, Boolean] as PropType<string | number | boolean>
+  }
+})
 
-const tabIndex = ref<string | number | boolean>(0)
+const emit = defineEmits(['update:value'])
 
-const addTabs = (value: TabItem) => {
-  tabs.value.push(value)
+const content = computed(() => slots.default?.().find((item) => {
+  return item.props?.name === props.value
+}))
+
+const titles = computed(() => slots.default?.().map((item) => {
+  const { label, name } = item.props || {}
+  return { label, name }
+}))
+
+const handleTabClick = (item: { label: any, name: any }) => {
+  emit('update:value', item.name)
 }
 
-const setTabs = (index: number, value: TabItem) => {
-  tabs.value[index] = value
-}
-
-provide('tabs', tabs)
-provide('tabIndex', tabIndex)
-provide('addTabs', addTabs)
-provide('setTabs', setTabs)
+onMounted(() => {
+  console.log('content')
+  console.log(content.value)
+})
 
 </script>
 
