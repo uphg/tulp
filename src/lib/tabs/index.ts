@@ -1,2 +1,2 @@
-export { default as TTabs } from './src/Tabs.vue'
-export { default as TTabPane } from './src/TabPane.vue'
+export { default as TTabs } from './src/Tabs'
+export { default as TTabPane } from './src/TabPane'

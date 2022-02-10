@@ -70,7 +70,7 @@ export default defineComponent({
     return { closeDialog, handleBeforeLeave, handleAfterLeave, handleMaskClick }
   },
   render() {
-    const contentTemplate = (
+    const content = (
       <div
         class="tu-dialog__container"
         {...this.$attrs}
@@ -120,10 +120,10 @@ export default defineComponent({
           {{
             default: () => {
               if (this.renderDirective === 'if') {
-                return (this.visible ? contentTemplate : null)
+                return (this.visible ? content : null)
               } else if (this.renderDirective === 'show') {
                 return withDirectives(
-                  contentTemplate,
+                  content,
                   [
                     [vShow, this.visible]
                   ]
