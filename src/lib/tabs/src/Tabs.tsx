@@ -38,17 +38,16 @@ export default defineComponent({
   render() {
     const { titles, handleTabClick, content } = this
     return (
-      <div>
-        <div class="tu-tabs">
-          <div class="tu-tab-nav">
-            {titles?.map((item) => (
-              <button
-                onClick={() => handleTabClick(item)}
-              >{item.label}</button>
-            ))}
-          </div>
-          {content}
+      <div class="tu-tabs">
+        <div class="tu-tabs-nav">
+          {titles?.map((item) => (
+            <button
+              onClick={() => handleTabClick(item)}
+            >{item.label}</button>
+          ))}
+          {<div class={'tu-tabs__active-bar'}></div>}
         </div>
+        {content}
       </div>
     )
   }
