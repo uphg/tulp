@@ -1,6 +1,13 @@
 import '../../_styles/components/tabs.styl'
-import { defineComponent, computed, onMounted, useSlots } from 'vue';
-import type { PropType } from 'vue'
+import { defineComponent, ref, computed, onMounted, watchEffect, nextTick } from 'vue';
+import type { PropType, ComponentPublicInstance } from 'vue'
+// ComponentPublicInstance<HTMLInputElement>
+
+const getRect = (el: HTMLElement | null, property: string)=>{
+  console.log('el')
+  console.log(el)
+  return el?.getBoundingClientRect()[property as keyof DOMRect] as number
+}
 
 export default defineComponent({
   props: {
@@ -10,7 +17,10 @@ export default defineComponent({
   },
   emits: ['update:value'],
   setup(props, context) {
-    const slots = useSlots()
+    const slots = context.slots
+    const navRef = ref<HTMLElement | null>(null)
+    const barRef = ref<HTMLElement | null>(null)
+    const selectRef = ref<HTMLElement | null>(null)
 
     const content = computed(() => slots.default?.().find((item) => {
       return item.props?.name === props.value
@@ -25,30 +35,34 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      console.log('content')
-      console.log(content.value)
+      nextTick(() => {
+        watchEffect(() => {
+          const width = getRect(selectRef.value, 'width')
+          const navLeft = getRect(navRef.value, 'left')
+          const selectLeft = getRect(selectRef.value, 'left')
+          const left = selectLeft - navLeft
+          if (barRef.value) {
+            barRef.value.style.width = width + 'px'
+            barRef.value.style.left = left + 'px'
+          }
+        })
+      })
+      
     })
 
-    return {
-      content,
-      titles,
-      handleTabClick,
-    }
-  },
-  render() {
-    const { titles, handleTabClick, content, value } = this
-    console.log('content')
-    console.log(content)
-    console.log('value')
-    console.log(value)
-    return (
+    return () => (
       <div class="tu-tabs">
-        <div class="tu-tabs-nav">
-          {titles?.map((item) => (
+        <div ref={navRef} class="tu-tabs-nav">
+          {titles.value?.map((item) => (
             <div
+              ref={(el) => {
+                if (item.name === props.value) {
+                  selectRef.value = el as HTMLElement
+                }
+              }}
               class={[
                 'tu-tabs-tab',
-                item.name === value && 'tu-tabs-tab--active'
+                item.name === props.value && 'tu-tabs-tab--active'
               ]}
               onClick={() => handleTabClick(item)}
             >
@@ -57,9 +71,9 @@ export default defineComponent({
               >{item.label}</span>
             </div>
           ))}
-          {{/* <div class={'tu-tabs__active-bar'} style={{ width: , left:  }}></div> */}}
+          <div ref={barRef} class={'tu-tabs__active-bar'}></div>
         </div>
-        {content}
+        {content.value}
       </div>
     )
   }

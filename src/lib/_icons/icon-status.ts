@@ -1,5 +1,5 @@
-export const ICON_STATUS_KEY = Symbol('tulp-icon-symbol')
+export const iconStatusKey = Symbol('tulp-icon-symbol')
 
 export interface IconStatus extends Window {
-  [ICON_STATUS_KEY]: boolean
+  [iconStatusKey]: boolean
 }
