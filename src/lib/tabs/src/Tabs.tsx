@@ -1,12 +1,8 @@
 import '../../_styles/components/tabs.styl'
 import { defineComponent, ref, computed, onMounted, watchEffect, nextTick } from 'vue';
 import type { PropType, ComponentPublicInstance } from 'vue'
-import { addClass } from '~src/lib/_utils/dom';
+import { getRect, addClass } from '../../_utils/dom';
 // ComponentPublicInstance<HTMLInputElement>
-
-const getRect = (el: HTMLElement | null, property: string)=>{
-  return el?.getBoundingClientRect()[property as keyof DOMRect] as number
-}
 
 export default defineComponent({
   props: {
@@ -24,6 +20,7 @@ export default defineComponent({
     const content = computed(() => slots.default?.().find((item) => {
       return item.props?.name === props.value
     }))
+
     const titles = computed(() => slots.default?.().map((item) => {
       const { label, name } = item.props || {}
       return { label, name }

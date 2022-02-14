@@ -24,3 +24,7 @@ export const getStyle = (el: Element, styleName: string) => {
   // @ts-ignore
   return (computed ? computed?.[styleName] : el['style'][styleName]) || ''
 }
+
+export const getRect = (el: HTMLElement | null, property: string)=>{
+  return el?.getBoundingClientRect()[property as keyof DOMRect] as number
+}

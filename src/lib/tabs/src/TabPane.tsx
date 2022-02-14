@@ -1,4 +1,4 @@
-import { defineComponent, computed, onMounted, useSlots } from 'vue';
+import { defineComponent } from 'vue';
 import type { PropType } from 'vue'
 
 export default defineComponent({
