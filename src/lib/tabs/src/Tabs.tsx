@@ -1,11 +1,10 @@
 import '../../_styles/components/tabs.styl'
 import { defineComponent, ref, computed, onMounted, watchEffect, nextTick } from 'vue';
 import type { PropType, ComponentPublicInstance } from 'vue'
+import { addClass } from '~src/lib/_utils/dom';
 // ComponentPublicInstance<HTMLInputElement>
 
 const getRect = (el: HTMLElement | null, property: string)=>{
-  console.log('el')
-  console.log(el)
   return el?.getBoundingClientRect()[property as keyof DOMRect] as number
 }
 
@@ -34,20 +33,28 @@ export default defineComponent({
       context.emit('update:value', item.name)
     }
 
+    const initNavBar = () => {
+      const width = getRect(selectRef.value, 'width')
+      const navLeft = getRect(navRef.value, 'left')
+      const selectLeft = getRect(selectRef.value, 'left')
+      const left = selectLeft - navLeft
+      const bar = barRef.value
+      if (bar) {
+        bar.style.width = width + 'px'
+        bar.style.left = left + 'px'
+      }
+
+      // 强制更新一次 DOM
+      void bar?.offsetHeight
+      nextTick(() => {
+        bar && addClass(bar, 'tu-tabs__active-bar--transition')
+      })
+    }
+
     onMounted(() => {
       nextTick(() => {
-        watchEffect(() => {
-          const width = getRect(selectRef.value, 'width')
-          const navLeft = getRect(navRef.value, 'left')
-          const selectLeft = getRect(selectRef.value, 'left')
-          const left = selectLeft - navLeft
-          if (barRef.value) {
-            barRef.value.style.width = width + 'px'
-            barRef.value.style.left = left + 'px'
-          }
-        })
+        watchEffect(initNavBar)
       })
-      
     })
 
     return () => (
