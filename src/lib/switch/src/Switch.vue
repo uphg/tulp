@@ -31,7 +31,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import isNullish from '../../_utils/isNullish'
+import isNil from '../../_utils/isNil'
 import BaseWave from '../../base-wave/src/BaseWave.vue'
 import type { PropType } from 'vue'
 import type { BaseWaveRef } from '../../base-wave'
@@ -63,7 +63,7 @@ const props = defineProps({
 const emit = defineEmits(['update:value'])
 
 const waveRef = ref<BaseWaveRef | null>(null)
-const hasCustomValue = computed(() => !isNullish(props.checkedValue) && !isNullish(props.uncheckedValue))
+const hasCustomValue = computed(() => !isNil(props.checkedValue) && !isNil(props.uncheckedValue))
 const switchValueState = computed(() => hasCustomValue.value ? props.value === props.checkedValue : props.value)
 
 const setValue = (value: SwitchValue) => {

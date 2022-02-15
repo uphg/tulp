@@ -1,3 +1,3 @@
-import typeTester from './typeTester'
+const isString = (value: unknown) => typeof value === 'string'
 
-export default (value: unknown) => typeTester(value, 'String')
+export default isString
