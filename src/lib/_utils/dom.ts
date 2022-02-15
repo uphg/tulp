@@ -1,9 +1,5 @@
 import camelize from './_camelize'
 
-export const trim = (string: string) => {
-  return string.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '')
-}
-
 export const addClass = (el: Element, ...className: string[]) => {
   if (!el) return
   el.classList.add(...className)
@@ -22,7 +18,7 @@ export const getStyle = (el: Element, styleName: string) => {
   const computed = document.defaultView?.getComputedStyle(el, '')
 
   // @ts-ignore
-  return (computed ? computed?.[styleName] : el['style'][styleName]) || ''
+  return computed && computed?.[styleName]
 }
 
 export const getRect = (el: HTMLElement | null, property: string)=>{
