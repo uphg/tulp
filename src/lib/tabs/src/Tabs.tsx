@@ -4,10 +4,19 @@ import type { PropType, ComponentPublicInstance } from 'vue'
 import { getRect, addClass } from '../../_utils/dom';
 // ComponentPublicInstance<HTMLInputElement>
 
+interface TTabsTabItem {
+  label: string | number | boolean,
+  name: string | number | boolean
+}
+
 export default defineComponent({
   props: {
     value: {
       type: [String, Number, Boolean] as PropType<string | number | boolean>
+    },
+    type: {
+      type: [String] as PropType<'default' | 'segment'>,
+      default: 'default'
     }
   },
   emits: ['update:value'],
@@ -21,16 +30,18 @@ export default defineComponent({
       return item.props?.name === props.value
     }))
 
-    const titles = computed(() => slots.default?.().map((item) => {
-      const { label, name } = item.props || {}
-      return { label, name }
-    }))
+    const titles = computed<TTabsTabItem[] | undefined>(() => {
+      return slots.default?.().map((item) => {
+        const { label, name } = item.props || {}
+        return { label, name }
+      })
+    })
 
-    const handleTabClick = (item: { label: string | number | boolean, name: string | number | boolean }) => {
+    const handleTabClick = (item: TTabsTabItem) => {
       context.emit('update:value', item.name)
     }
 
-    const initNavBar = () => {
+    const updateBar = () => {
       const width = getRect(selectRef.value, 'width')
       const navLeft = getRect(navRef.value, 'left')
       const selectLeft = getRect(selectRef.value, 'left')
@@ -40,7 +51,10 @@ export default defineComponent({
         bar.style.width = width + 'px'
         bar.style.left = left + 'px'
       }
+    }
 
+    const initTransitionBar = () => {
+      const bar = barRef.value
       // 强制更新一次 DOM
       void bar?.offsetHeight
       nextTick(() => {
@@ -48,15 +62,24 @@ export default defineComponent({
       })
     }
 
-    onMounted(() => {
+    props.type === 'default' && onMounted(() => {
       nextTick(() => {
-        watchEffect(initNavBar)
+        watchEffect(updateBar)
+        initTransitionBar()
       })
     })
 
     return () => (
       <div class="tu-tabs">
-        <div ref={navRef} class="tu-tabs-nav">
+        <div
+          ref={navRef}
+          class={
+            [
+              'tu-tabs-nav',
+              props.type === 'segment' && 'tu-tabs-nav--segment'
+            ]
+          }
+        >
           {titles.value?.map((item) => (
             <div
               ref={(el) => {
@@ -75,7 +98,7 @@ export default defineComponent({
               >{item.label}</span>
             </div>
           ))}
-          <div ref={barRef} class={'tu-tabs__active-bar'}></div>
+          {props.type === 'default' && <div ref={barRef} class={'tu-tabs__active-bar'}></div>}
         </div>
         {content.value}
       </div>

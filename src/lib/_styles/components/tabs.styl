@@ -7,8 +7,11 @@ $base = '.tu-tabs'
     display flex
     border-bottom 1px solid var(--t-border-color)
     position relative
+
   &-tab
+    cursor pointer
     display inline-flex
+    padding 10px 0
     &:not(:first-child)
       margin-left 36px
     &{$base}-tab--active
@@ -16,8 +19,6 @@ $base = '.tu-tabs'
         color var(--t-color-primary)
 
   &-tab__label
-    padding 10px 0
-    cursor pointer
     transition var(--t-color-transition)
     &:hover
       color var(--t-color-primary)
@@ -31,6 +32,28 @@ $base = '.tu-tabs'
     margin-bottom -1px
     &--transition
       transition left 0.25s, width 0.25s
+
+{$base}-nav
+  &&--segment
+    border-bottom 0
+    background-color #f7f7fa
+    padding 3px
+    border-radius 3px
+    {$base}-tab
+      display flex
+      flex-grow 1
+      align-items center
+      justify-content center
+      padding 6px 0
+      transition var(--t-bg-color-transition), var(--t-box-shadow-transition)
+      border-radius 3px 
+      &__label
+        color inherit
+      &:not(:first-child)
+        margin-left 0
+      &--active
+        background-color #fff
+        box-shadow 0 1px 3px 0 rgba(0, 0, 0, 0.08)        
 
 .tu-tab-pane
   padding-top 12px
