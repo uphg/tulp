@@ -60,14 +60,10 @@ const createDialog = (options: DialogOptions) => {
         void nextTick(() => { visible.value = true })
       })
 
-      return { visible, handleCancel, handleConfirm }
-    },
-    
-    render() {
-      return (
+      return () => (
         <Dialog
           title={title}
-          v-model={[this.visible, 'visible']}
+          v-model={[visible.value, 'visible']}
           onClosed={unmountDialog}
         >
           {{
@@ -77,7 +73,7 @@ const createDialog = (options: DialogOptions) => {
               <span
                 class="tu-dialog__close"
                 onClick={() => {
-                  this.visible = false
+                  visible.value = false
                 }}
               />
             ],
@@ -87,7 +83,7 @@ const createDialog = (options: DialogOptions) => {
                 TButton,
                 {
                   size: 'small',
-                  onClick: this.handleCancel
+                  onClick: handleCancel
                 },
                 { default: () => '取消' }
               ),
@@ -96,7 +92,7 @@ const createDialog = (options: DialogOptions) => {
                 {
                   type: 'primary',
                   size: 'small',
-                  onClick: this.handleConfirm
+                  onClick: handleConfirm
                 },
                 { default: () => '确定' }
               )

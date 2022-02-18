@@ -66,72 +66,70 @@ export default defineComponent({
       value && openDialog()
     })
 
-    return { closeDialog, handleBeforeLeave, handleAfterLeave, handleMaskClick }
-  },
-  render() {
-    const content = (
-      <div
-        class="tu-dialog__container"
-        {...this.$attrs}
-      >
+    return () => {
+      const content = (
         <div
-          class="tu-dialog__overlay"
-          onClick={this.handleMaskClick}
-        ></div>
-        <div class="tu-dialog">
-          {
-            this.preset === 'default' ? (
-              <div class="tu-dialog__content">
-                <div class="tu-dialog__header">
-                  {
-                    !this.$slots.header ? (
-                      <>
-                        <span class="tu-dialog__title">{this.title}</span>
-                        <span class="tu-dialog__close" onClick={this.closeDialog}></span>
-                      </>
-                    ) : (
-                      renderSlot(this.$slots, 'header')
-                    )
-                  }
-                </div>
-                <div class="tu-dialog__body">
-                  {renderSlot(this.$slots, 'default')}
-                </div>
-                <div class="tu-dialog__footer">
-                  {renderSlot(this.$slots, 'footer')}
-                </div>
-              </div>
-            ) : (
-              this.preset === 'custom' ? renderSlot(this.$slots, 'default') : null
-            )
-          }
-        </div>
-      </div>
-    )
-
-    return (
-      <Teleport to="body" disabled={this.wrap}>
-        <Transition
-          name="dialog-fade"
-          onAfterLeave={this.handleAfterLeave}
-          onBeforeLeave={this.handleBeforeLeave}
+          class="tu-dialog__container"
+          {...context.attrs}
         >
-          {{
-            default: () => {
-              if (this.renderDirective === 'if') {
-                return (this.visible ? content : null)
-              } else if (this.renderDirective === 'show') {
-                return withDirectives(
-                  content,
-                  [
-                    [vShow, this.visible]
-                  ]
-                )
-              }
+          <div
+            class="tu-dialog__overlay"
+            onClick={handleMaskClick}
+          ></div>
+          <div class="tu-dialog">
+            {
+              props.preset === 'default' ? (
+                <div class="tu-dialog__content">
+                  <div class="tu-dialog__header">
+                    {
+                      !context.slots.header ? (
+                        <>
+                          <span class="tu-dialog__title">{props.title}</span>
+                          <span class="tu-dialog__close" onClick={closeDialog}></span>
+                        </>
+                      ) : (
+                        renderSlot(context.slots, 'header')
+                      )
+                    }
+                  </div>
+                  <div class="tu-dialog__body">
+                    {renderSlot(context.slots, 'default')}
+                  </div>
+                  <div class="tu-dialog__footer">
+                    {renderSlot(context.slots, 'footer')}
+                  </div>
+                </div>
+              ) : (
+                props.preset === 'custom' ? renderSlot(context.slots, 'default') : null
+              )
             }
-          }}
-        </Transition>
-      </Teleport>
-    )
+          </div>
+        </div>
+      )
+      return (
+        <Teleport to="body" disabled={props.wrap}>
+          <Transition
+            name="dialog-fade"
+            onAfterLeave={handleAfterLeave}
+            onBeforeLeave={handleBeforeLeave}
+          >
+            {{
+              default: () => {
+                if (props.renderDirective === 'if') {
+                  return (props.visible ? content : null)
+                } else if (props.renderDirective === 'show') {
+                  return withDirectives(
+                    content,
+                    [
+                      [vShow, props.visible]
+                    ]
+                  )
+                }
+              }
+            }}
+          </Transition>
+        </Teleport>
+      )
+    }
   }
 })
